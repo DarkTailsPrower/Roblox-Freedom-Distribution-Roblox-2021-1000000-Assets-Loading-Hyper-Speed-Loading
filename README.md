@@ -1,3 +1,16 @@
+A working Roblox launch with a config. But there are downsides, for example, I don't know how to set up the web port correctly, and some bugs still need fixing. Also, the server launch needs to be redone to be asynchronous or multithreaded.
+
+if you need more information or want to help, for example, add a map editor for Roblox 2021, or how to improve this project, or improve the code, or speed it up, or redo it. - https://discord.gg/wdncumJ2BM.
+
+I decided to tweak this project a bit. Or change its architecture; it can be sped up by making it work asynchronously or multithreaded. Also, I need a map editor for 2021.
+
+this project is taken from the original windows81 distribution roblox https://github.com/Windows81/Roblox-Freedom-Distribution.
+
+I’m going to redo it.
+
+
+
+
 <img src="/Assets/Banner.png">
 
 <p align="center">
