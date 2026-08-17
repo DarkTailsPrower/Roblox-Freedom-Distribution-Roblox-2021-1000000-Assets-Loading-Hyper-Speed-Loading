@@ -1,18 +1,15 @@
-*/**
+# Разрешаем отслеживание всех файлов и папок по умолчанию
+!*
+!**/*
 
-!.vscode/
-!Guides/
-!Guides/**
-!ReleaseScripts/
-!ReleaseScripts/**
-!Source/
-!Source/**
-!Examples/
-!Examples/**
+# Исключения для папки Examples
 Examples/**/AssetCache/
+
+# Блокируем исполняемые файлы (компиляты)
 RFD
 *.exe
 **/*.exe
+
 
 GlobalBasicSettings_13.xml
 GlobalSettings_13.xml
