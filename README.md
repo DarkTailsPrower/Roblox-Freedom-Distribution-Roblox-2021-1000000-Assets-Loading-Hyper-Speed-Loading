@@ -1,3 +1,6 @@
+
+how to use and unpack all the files in RFD for example or into any folder, you already have the 2018 and 2021 client and server that you can start playing in right away
+
 Roblox 2021 Client
 Roblox 2018 Client
 
@@ -12,6 +15,8 @@ I decided to tweak this project a bit. Or change its architecture; it can be spe
 this project is taken from the original windows81 distribution roblox https://github.com/Windows81/Roblox-Freedom-Distribution.
 
 I’m going to redo it.
+
+
 
 
 
