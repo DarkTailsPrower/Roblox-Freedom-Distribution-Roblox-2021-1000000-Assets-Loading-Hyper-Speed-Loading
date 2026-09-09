@@ -1,6 +1,12 @@
 
 how to use and unpack all the files in RFD for example or into any folder, you already have the 2018 and 2021 client and server that you can start playing in right away
 
+start running game -
+
+rfd.exe server --config Lumber./GameConfig.toml --port 2005 --ipv4-only
+
+RFD.exe player -h 127.0.0.1 -p 2005
+
 gametoml config - 
 ```
 # EXAMPLE GAME CONFIGURATION FILE.
