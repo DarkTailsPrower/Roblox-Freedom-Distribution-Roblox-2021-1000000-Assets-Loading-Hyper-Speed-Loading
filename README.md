@@ -2,7 +2,7 @@
 how to use and unpack all the files in RFD for example or into any folder, you already have the 2018 and 2021 client and server that you can start playing in right away
 
 gametoml config - 
-
+```
 # EXAMPLE GAME CONFIGURATION FILE.
 # PLEASE REVIEW AND MODIFY IF YOU WISH TO RUN YOUR OWN SERVERS!
 # Some arguments are provided as absolute paths and only work on my machine.
@@ -154,7 +154,7 @@ chat_style = 'ClassicAndBubble'
 
 # ... ваши старые настройки (title, startup_script) ...
 preferred_port = 2005
-
+```
 Roblox 2021 Client
 Roblox 2018 Client
 
