@@ -12,6 +12,98 @@ second C:\RFD\Unpacked\2.exe_extracted\Source
 
 _main.py player -h 127.0.0.1 -p 2005
 
+
+Посмотрите на метод extract в оригинальном коде разработчика:
+
+try:
+    item = self.input_queue.get(
+        block=True,
+        timeout=20,
+    )
+
+Вот она, главная причина задержек! Когда очередь пуста, сервер искусственно засыпает и блокирует весь поток веб-сервера на 20 секунд (timeout=20), ожидая хотя бы один элемент. Пока этот поток спит, все остальные сетевые запросы, включая загрузку ассетов (/asset/?id=...), встают в жесткую очередь.
+При этом цикл while True ниже уже умеет забирать элементы пачкой (get_nowait()), но из-за первой 20-секундной блокировки этот батчинг никогда не работал нормально.
+Давайте полностью уберем эту 20-секундную задержку и заставим метод extract мгновенно выгребать все накопленные элементы (до 100 000 — 1 000 000) одной пачкой без единой секунды простоя.
+Замените весь код в файле Source\data_transfer\transferer.py на этот полностью оптимизированный вариант:
+
+# Standard library importsimport dataclassesimport queueimport uuid
+# Typing importsfrom typing import Any
+
+
+@dataclasses.dataclassclass _input_type:
+    path: str
+    guid: str
+    args: tuple[Any, ...]
+
+class obj_type:
+    def __init__(self):
+        super().__init__()
+        self.was_triggered = False
+        self.input_queue = queue.Queue[_input_type]()
+        self.output_dict = dict[str, queue.Queue[_input_type]]()
+        self.batch_limit = 1000000  # Наш лимит на мега-пакет (до 1 млн элементов)
+
+    def _generate_guid(self) -> str:
+        while True:
+            guid = str(uuid.uuid4())
+            if guid not in self.output_dict:
+                return guid
+
+    def call(self, path: str, game_config, *call_args):
+        temp_queue = queue.Queue()
+        guid = self._generate_guid()
+        self.output_dict[guid] = temp_queue
+
+        self.input_queue.put(_input_type(
+            path=path,
+            guid=guid,
+            args=call_args,
+        ))
+
+        result = temp_queue.get(block=True)
+        del self.output_dict[guid]
+        return result
+
+    def extract(self) -> dict[str, dict[str, Any]]:
+        '''
+        Оптимизированный метод: полностью убран таймаут блокировки.
+        Выгребает абсолютно ВСЕ элементы из очереди в один мега-батч и мгновенно отдает их.
+        '''
+        self.was_triggered = True
+        result = {}
+        items_count = 0
+
+        # Жадный цикл: забираем всё, что накопилось в очереди, без блокировки и задержек
+        while items_count < self.batch_limit:
+            try:
+                item = self.input_queue.get_nowait()
+                result[item.guid] = dataclasses.asdict(item)
+                items_count += 1
+            except queue.Empty:
+                break  # Если очередь пуста, сразу выходим и отдаем то, что успели собрать
+
+        return result
+
+    def insert(self, data: dict[str, Any]) -> None:
+        # Быстрая вставка ответов обратно в потоки
+        for guid, result in data.items():
+            if guid in self.output_dict:
+                self.output_dict[guid].put(result)
+
+## ⚡️ Почему сервер теперь станет реактивным:
+
+   1. Уничтожен таймаут timeout=20: Теперь веб-сервер при вызове /rfd/data-transfer проверяет буфер за доли миллисекунды. Если там что-то есть — он пакует всё в один огромный JSON и отдает. Если там пусто — он мгновенно возвращает {}, освобождая поток для загрузки моделей и текстур.
+   2. Честный мега-батчинг: Цикл while теперь работает как пылесос. Если игра сгенерировала 50 000 или 100 000 запросов к серверу, они больше не будут обрабатываться поодиночке. Они улетят в RCCService одним махом.
+
+Сохраните изменения в файле transferer.py и запустите ваш сервер командой python _main.py ....
+Давайте протестируем этот финальный аккорд оптимизации. Напишите:
+
+* Пропали ли задержки на POST-запросах в консоли?
+* Появилось ли ощущение, что карта Lumber Tycoon 2 теперь прогружается плавно и монолитно?
+
+
+
+
 Код файла queue.py выполняет очень специфическую задачу — дедупликацию потоков (Thread Deduplication). Если игра запрашивает один и тот же ассет 10 раз одновременно, этот код делает так, чтобы функция func(key) скачивания из интернета сработала всего 1 раз, а остальные 9 потоков просто подождали первый и забрали его результат.
 Поскольку этот скрипт работает на уровне отдельных ключей (ID ассетов), он физически не видит всю картину и обрабатывает поступающие ID строго поодиночке.
 Чтобы реализовать вашу идею и заставить эмулятор передавать ассеты огромными пачками от 100 000 до 1 000 000 элементов, нам нужно внедрить глобальный накопительный батч-буфер. Мы перепишем этот класс так, чтобы при запросе любого ассета Python мгновенно забирал из общей очереди все накопившиеся запросы, скачивал или считывал их за один проход и массово раздавал потокам игры.
