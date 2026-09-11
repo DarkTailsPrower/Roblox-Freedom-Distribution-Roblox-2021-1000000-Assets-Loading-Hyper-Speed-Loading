@@ -1,5 +1,12 @@
+this is Hyper server loading speed Verison with fixed 
+Assets load quickly, and data transfer and console logs are removed so as not to slow down the loading of assets and data transfers by creating a pointless queue.
 
 how to use unpack RFD
+
+
+
+
+
 
 and go to cd C:\RFD\Unpacked\2.exe_extracted\Source
 
