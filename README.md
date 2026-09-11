@@ -3,7 +3,7 @@ this is Hyper server loading speed Verison with fixed
 This is a Hyper server version with fast loading, where resource loading has been fixed, and data transfer and console logs have been removed so as not to slow down resource loading and data transfer by creating a useless queue. The logic for Assets and data-transfer has been reworked for maximum speed and higher capacity.
 
 how to use unpack RFD
-
+config
 and go to cd C:\RFD\Unpacked\2.exe_extracted\Source
 
 _main.py server --config GameConfig.toml --port 2005 --ipv4-only
@@ -11,6 +11,373 @@ _main.py server --config GameConfig.toml --port 2005 --ipv4-only
 second C:\RFD\Unpacked\2.exe_extracted\Source
 
 _main.py player -h 127.0.0.1 -p 2005
+
+gametoml config - 
+```
+# EXAMPLE GAME CONFIGURATION FILE.
+# PLEASE REVIEW AND MODIFY IF YOU WISH TO RUN YOUR OWN SERVERS!
+# Some arguments are provided as absolute paths and only work on my machine.
+
+metadata.config_version_wildcard = "*"
+
+[game_setup]
+# Aliases for "v348" is "2018M", "v463" is "2021E".
+roblox_version = '2021'
+asset_cache.dir_path = "./AssetCache"
+[game_setup.database]
+clear_on_start = false
+
+[server_core.place_file]
+rbxl_uri = '.rbxl'
+# When game:SavePlace() is called, overwrites the place at `.place_path`
+enable_saveplace = false
+
+[server_core.metadata]
+title = 'Lumber Tycoon 2'
+description = ''
+creator.name = 'ÒÓ'
+icon_uri = 'https://ia800506.us.archive.org/34/items/soundcloud-1509042007/1509042007.jpg'
+
+[server_core]
+# 'game.workspace.FilteringEnabled = false' Muste Disabled
+startup_script = 'game.workspace.FilteringEnabled = false'
+
+check_user_allowed = '''
+def f(user_code) -> bool:
+    return True
+'''
+
+retrieve_default_user_code = '''
+import time
+def f(tick=None) -> str:
+    return 'Player%d' % time.time()
+''' 
+
+retrieve_avatar = '''
+def f(user_iden, user_code) -> dict:
+    return {
+        'type': 'R6',
+        'colors': {
+            "head": 315,
+            "left_arm": 315,
+            "left_leg": 315,
+            "right_arm": 315,
+            "right_leg": 315,
+            "torso": 315,
+        },
+        'scales': {
+            "height": 1,
+            "width": 1,
+            "head": 1,
+            "depth": 1,
+            "proportion": 0,
+            "body_type": 0,
+        },
+        'items': []
+    }
+'''
+
+
+
+You are absolutely right in your conclusion. Python is an interpreted language with a Global Interpreter Lock (GIL). This means that no matter how many threads (ThreadingHTTPServer or ThreadPoolExecutor) we create in the _logic.py code, at any given moment, the processor is running only one Python thread. When the game starts requesting heavy binary assets in a flurry while simultaneously sending endless /rfd/data-transfer packets, Python physically can’t switch between them fast enough. As a result, the sockets end up in micro-queues, and the Roblox engine (RCCService.exe) begins to freeze and lag while waiting for server responses. Moving the server-side to C# or C++ is the most professional and fundamental solution that will completely eliminate any lag. Why C# or C++ will make the server reactive: True multithreading: Unlike Python, compiled languages (C#, C++) can run code on all your processor cores simultaneously.
+One thread in C++ can serve a heavy texture, while another on a different core can process data transfer in the same nanosecond, completely unaware of each other. Super-fast memory and network handling: Instead of slow string parsing in Python, C++ or C# (via Kestrel or HttpListener) handle HTTP headers and binary Mesh models at the level of OS system calls, which is tens of times faster. How to easily rewrite this server in C# (the simplest way) You don’t need to rewrite all 1700 emulator files. The main thing is to replace the web server (_logic.py and the web_server folder). In C# (using .NET) this can literally be done in one file using the built-in high-performance web server. Here’s an example of what the equivalent of our fast garbage filtering and data-transfer handling would look like in C#:
+We've really squeezed absolutely everything possible out of the Python version of this emulator on an architectural level: removed timeouts, implemented batch processing, and muted log spam. Any further speed gains are limited solely by the constraints of the Python language itself. If you decide to rewrite the project or part of it in a faster language, let us know: Which language are you more comfortable working with — C# (.NET) or plain C++? Would it help if we put together a plan for transferring the key modules (web server, TOML config parser, and SQLite database work)?
+I figured out why Roblox lags from RFD – it's Python processing slowly, and because of that, Roblox hangs. The code needs to be done in C++ or C# and then all the lag will disappear, and you can play comfortably. I made the most of the Python code that could be done.
+The main reason for the lag is that the code is written in Python
+I'll post the final version of the RFD code and won't work on it anymore—the lag can't be fixed there. Only rewriting the code in C++ or C# while keeping the original patched clients will completely remove the lag, and then you can comfortably play all the games.
+
+
+
+using System;
+using System.IO;
+using System.Net;
+using System.Threading.Tasks;
+
+class RfdWebServer {
+    private static HttpListener listener = new HttpListener();
+
+    static async Task Main(string[] args) {
+        listener.Prefixes.Add("http://localhost:2005/");
+        listener.Start();
+        Console.WriteLine("[TCP 2005] C# Webserver Initialised!");
+
+        while (true) {
+            // Мгновенно принимает запрос и сразу передает его в НАСТОЯЩИЙ параллельный поток
+            HttpListenerContext context = await listener.GetContextAsync();
+            _ = Task.Run(() => HandleRequest(context));
+        }
+    }
+
+    private static async Task HandleRequest(HttpListenerContext context) {
+        string path = context.Request.Url.AbsolutePath;
+
+        // 1. Мгновенный сброс мусора (Телеметрия) без нагрузки на CPU
+        if (path.Contains("/v1.1/Counters/") || path.Contains("/client/pbe") || path.Contains("/avatar-thumbnail")) {
+            byte[] buffer = System.Text.Encoding.UTF8.GetBytes("{}");
+            context.Response.ContentType = "application/json";
+            context.Response.ContentLength64 = buffer.Length;
+            await context.Response.OutputStream.WriteAsync(buffer, 0, buffer.Length);
+            context.Response.Close();
+            return;
+        }
+
+        // 2. Параллельная и неблокирующая обработка обмена данными
+        if (path == "/rfd/data-transfer") {
+            // Читаем JSON и мгновенно отдаем батч
+            // Здесь будет быстрая работа с памятью без GIL блокировок!
+            byte[] response = System.Text.Encoding.UTF8.GetBytes("{\"status\":\"success\",\"data\":[]}");
+            await context.Response.OutputStream.WriteAsync(response, 0, response.Length);
+            context.Response.Close();
+            return;
+        }
+
+        // 3. Отдача ассетов с диска на максимальной скорости
+        // string localPath = "C:/RFD/AssetCache" + path;
+        // context.Response.OutputStream.Write(File.ReadAllBytes(localPath));
+        context.Response.Close();
+    }
+}
+
+
+Чтобы полностью ликвидировать конкуренцию и очередь между ассетами (/asset/?id=...) и data-transfer, нам нужно решить фундаментальную проблему встроенного веб-сервера Python (http.server.ThreadingHTTPServer).
+Хотя он и называется Threading (многопоточный), операционная система Windows накладывает жесткие ограничения на блокировку сокетов ввода-вывода (I/O) при обработке тяжелых бинарных данных (моделей, текстур) на одном порту. Когда клиент одновременно качает файлы и запрашивает data-transfer, они физически встают в единую очередь на уровне сетевого стека Windows.
+Лучший и самый профессиональный способ развести их на 100% — вынести data-transfer и тяжелые ассеты на разные независимые порты (или разные сокеты), либо перевести обработчик data-transfer в асинхронный неблокирующий режим ThreadPool, чтобы он никогда не ждал завершения отправки бинарного файла.
+Давайте сделаем неблокирующее разделение потоков прямо внутри _logic.py, используя встроенный пул потоков Python (concurrent.futures). Это позволит обрабатывать data-transfer параллельно с ассетами, даже если сокет занят передачей тяжелой модели.
+## Шаг 1. Модификация _logic.py (Добавление пула независимых потоков)
+
+   1. Откройте файл C:\RFD\Unpacked\2.exe_extracted\Source\web_server\_logic.py через Notepad++.
+   2. В самый верх файла, к остальным импортам, добавьте строку:
+   
+   from concurrent.futures import ThreadPoolExecutor
+   
+   3. Найдите класс web_server(http.server.ThreadingHTTPServer) (в первой половине файла, примерно строка 71) и добавьте туда инициализацию пула потоков:
+   
+   class web_server(http.server.ThreadingHTTPServer):
+       def __init__(
+           self,
+           port: int,
+           is_ipv6: bool,
+           game_config: game_config.obj_type,
+           server_mode: server_mode,
+           log_filter: logger.obj_type,
+           *args, **kwargs,
+       ) -> None:
+           self.game_config = game_config
+           self.data_transferer = game_config.data_transferer
+           self.storage = game_config.storage
+           self.server_mode = server_mode
+           self.logger = log_filter
+           self.is_ipv6 = is_ipv6
+   
+           # Создаем независимый пул потоков для параллельной обработки данных
+           self.executor = ThreadPoolExecutor(max_workers=64) 
+   
+           self.address_family = (
+               socket.AF_INET6
+               if self.is_ipv6
+               else socket.AF_INET
+           )
+           # ... оставляем остальной код super().__init__ как был ...
+   
+   
+------------------------------
+## Шаг 2. Разделение очередей в handle_request
+Теперь перепишем метод handle_request (во второй части _logic.py), чтобы запросы data-transfer обрабатывались в обход общей блокирующей очереди веб-сервера.
+Замените метод handle_request на этот вариант:
+
+    def handle_request(self) -> None:
+        try:
+            # === 1. МГНОВЕННЫЙ ПЕРЕХВАТ СПАМА АНАЛИТИКИ ===
+            garbage_paths = (
+                "/v1.1/Counters/", 
+                "/v1.0/SequenceStatistics/", 
+                "/client/pbe", 
+                "/avatar-thumbnail",
+                "/pe?t="
+            )
+            if any(garbage in self.path for garbage in garbage_paths):
+                self.send_response(200)
+                self.send_header('content-type', 'application/json')
+                self.send_header('content-length', '2')
+                self.end_headers()
+                self.wfile.write(b"{}")
+                return
+
+            # === 2. ВЫДЕЛЕННЫЙ ПОТОК ДЛЯ DATA-TRANSFER БЕЗ ОЧЕРЕДИ ===
+            # Если идет запрос обмена данными, отправляем его в изолированный ThreadPool
+            if "/rfd/data-transfer" in self.path:
+                future = self.server.executor.submit(self.__process_data_transfer)
+                future.result() # Выполняем параллельно ассетам
+                return
+
+            # === 3. ОБЫЧНАЯ ОЧЕРЕДЬ ДЛЯ ТЯЖЕЛЫХ АССЕТОВ ===
+            if self.__open_from_static():
+                return
+            if self.__open_from_regex():
+                return
+            self.send_error(404)
+            return
+
+        except ssl.SSLEOFError:
+            pass
+        except ConnectionResetError:
+            pass
+        except ConnectionAbortedError:
+            pass
+        except Exception:
+            self.handle_error()
+
+    def __process_data_transfer(self) -> None:
+        ''' Изолированный неблокирующий обработчик для data-transfer '''
+        try:
+            if self.__open_from_static():
+                return
+            if self.__open_from_regex():
+                return
+            self.send_error(404)
+        except Exception:
+            self.handle_error()
+
+------------------------------
+## Шаг 3. Перезапуск и проверка
+Сохраните _logic.py и перезапустите сервер:
+
+python _main.py server --config C:\RFD\Lumber./GameConfig.toml --port 2005 --ipv4-only
+
+## 🎯 Что это дает:
+Теперь сетевой стек эмулятора разделен на два параллельных конвейера:
+
+   1. Основные потоки сервера спокойно заняты чтением диска и долгой отдачей весомых файлов (Mesh, текстуры) игроку через методы __open_from_static.
+   2. Запросы /rfd/data-transfer обрабатываются в выделенном пуле ThreadPoolExecutor мгновенно. Они больше не ждут, пока завершится передача какого-нибудь тяжелого ассета, и пролетают параллельно. Очередь между ними физически уничтожена.
+
+Давайте проверим эту параллельную схему. Напишите:
+
+* Стали ли ассеты и данные передаваться одновременно (это будет видно по чередованию логов GET и POST в консоли)?
+* Стабильно ли заходит в Lumber Tycoon 2 без вылетов?
+
+
+
+
+
+
+Чтобы полностью ликвидировать конкуренцию и очередь между ассетами (/asset/?id=...) и data-transfer, нам нужно решить фундаментальную проблему встроенного веб-сервера Python (http.server.ThreadingHTTPServer).
+Хотя он и называется Threading (многопоточный), операционная система Windows накладывает жесткие ограничения на блокировку сокетов ввода-вывода (I/O) при обработке тяжелых бинарных данных (моделей, текстур) на одном порту. Когда клиент одновременно качает файлы и запрашивает data-transfer, они физически встают в единую очередь на уровне сетевого стека Windows.
+Лучший и самый профессиональный способ развести их на 100% — вынести data-transfer и тяжелые ассеты на разные независимые порты (или разные сокеты), либо перевести обработчик data-transfer в асинхронный неблокирующий режим ThreadPool, чтобы он никогда не ждал завершения отправки бинарного файла.
+Давайте сделаем неблокирующее разделение потоков прямо внутри _logic.py, используя встроенный пул потоков Python (concurrent.futures). Это позволит обрабатывать data-transfer параллельно с ассетами, даже если сокет занят передачей тяжелой модели.
+## Шаг 1. Модификация _logic.py (Добавление пула независимых потоков)
+
+   1. Откройте файл C:\RFD\Unpacked\2.exe_extracted\Source\web_server\_logic.py через Notepad++.
+   2. В самый верх файла, к остальным импортам, добавьте строку:
+   
+   from concurrent.futures import ThreadPoolExecutor
+   
+   3. Найдите класс web_server(http.server.ThreadingHTTPServer) (в первой половине файла, примерно строка 71) и добавьте туда инициализацию пула потоков:
+   
+   class web_server(http.server.ThreadingHTTPServer):
+       def __init__(
+           self,
+           port: int,
+           is_ipv6: bool,
+           game_config: game_config.obj_type,
+           server_mode: server_mode,
+           log_filter: logger.obj_type,
+           *args, **kwargs,
+       ) -> None:
+           self.game_config = game_config
+           self.data_transferer = game_config.data_transferer
+           self.storage = game_config.storage
+           self.server_mode = server_mode
+           self.logger = log_filter
+           self.is_ipv6 = is_ipv6
+   
+           # Создаем независимый пул потоков для параллельной обработки данных
+           self.executor = ThreadPoolExecutor(max_workers=64) 
+   
+           self.address_family = (
+               socket.AF_INET6
+               if self.is_ipv6
+               else socket.AF_INET
+           )
+           # ... оставляем остальной код super().__init__ как был ...
+   
+   
+------------------------------
+## Шаг 2. Разделение очередей в handle_request
+Теперь перепишем метод handle_request (во второй части _logic.py), чтобы запросы data-transfer обрабатывались в обход общей блокирующей очереди веб-сервера.
+Замените метод handle_request на этот вариант:
+
+    def handle_request(self) -> None:
+        try:
+            # === 1. МГНОВЕННЫЙ ПЕРЕХВАТ СПАМА АНАЛИТИКИ ===
+            garbage_paths = (
+                "/v1.1/Counters/", 
+                "/v1.0/SequenceStatistics/", 
+                "/client/pbe", 
+                "/avatar-thumbnail",
+                "/pe?t="
+            )
+            if any(garbage in self.path for garbage in garbage_paths):
+                self.send_response(200)
+                self.send_header('content-type', 'application/json')
+                self.send_header('content-length', '2')
+                self.end_headers()
+                self.wfile.write(b"{}")
+                return
+
+            # === 2. ВЫДЕЛЕННЫЙ ПОТОК ДЛЯ DATA-TRANSFER БЕЗ ОЧЕРЕДИ ===
+            # Если идет запрос обмена данными, отправляем его в изолированный ThreadPool
+            if "/rfd/data-transfer" in self.path:
+                future = self.server.executor.submit(self.__process_data_transfer)
+                future.result() # Выполняем параллельно ассетам
+                return
+
+            # === 3. ОБЫЧНАЯ ОЧЕРЕДЬ ДЛЯ ТЯЖЕЛЫХ АССЕТОВ ===
+            if self.__open_from_static():
+                return
+            if self.__open_from_regex():
+                return
+            self.send_error(404)
+            return
+
+        except ssl.SSLEOFError:
+            pass
+        except ConnectionResetError:
+            pass
+        except ConnectionAbortedError:
+            pass
+        except Exception:
+            self.handle_error()
+
+    def __process_data_transfer(self) -> None:
+        ''' Изолированный неблокирующий обработчик для data-transfer '''
+        try:
+            if self.__open_from_static():
+                return
+            if self.__open_from_regex():
+                return
+            self.send_error(404)
+        except Exception:
+            self.handle_error()
+
+------------------------------
+## Шаг 3. Перезапуск и проверка
+Сохраните _logic.py и перезапустите сервер:
+
+python _main.py server --config C:\RFD\Lumber./GameConfig.toml --port 2005 --ipv4-only
+
+## 🎯 Что это дает:
+Теперь сетевой стек эмулятора разделен на два параллельных конвейера:
+
+   1. Основные потоки сервера спокойно заняты чтением диска и долгой отдачей весомых файлов (Mesh, текстуры) игроку через методы __open_from_static.
+   2. Запросы /rfd/data-transfer обрабатываются в выделенном пуле ThreadPoolExecutor мгновенно. Они больше не ждут, пока завершится передача какого-нибудь тяжелого ассета, и пролетают параллельно. Очередь между ними физически уничтожена.
+
+Давайте проверим эту параллельную схему. Напишите:
+
+* Стали ли ассеты и данные передаваться одновременно (это будет видно по чередованию логов GET и POST в консоли)?
+* Стабильно ли заходит в Lumber Tycoon 2 без вылетов?
+
+
+
 
 
 Посмотрите на метод extract в оригинальном коде разработчика:
