@@ -76,7 +76,7 @@ def f(user_iden, user_code) -> dict:
         'items': []
     }
 '''
-
+```
 
 
 You are absolutely right in your conclusion. Python is an interpreted language with a Global Interpreter Lock (GIL). This means that no matter how many threads (ThreadingHTTPServer or ThreadPoolExecutor) we create in the _logic.py code, at any given moment, the processor is running only one Python thread. When the game starts requesting heavy binary assets in a flurry while simultaneously sending endless /rfd/data-transfer packets, Python physically can’t switch between them fast enough. As a result, the sockets end up in micro-queues, and the Roblox engine (RCCService.exe) begins to freeze and lag while waiting for server responses. Moving the server-side to C# or C++ is the most professional and fundamental solution that will completely eliminate any lag. Why C# or C++ will make the server reactive: True multithreading: Unlike Python, compiled languages (C#, C++) can run code on all your processor cores simultaneously.
