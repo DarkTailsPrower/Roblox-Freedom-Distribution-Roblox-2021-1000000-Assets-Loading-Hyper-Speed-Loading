@@ -1,5 +1,6 @@
 this is Hyper server loading speed Verison with fixed 
-Assets load quickly, and data transfer and console logs are removed so as not to slow down the loading of assets and data transfers by creating a pointless queue.
+
+This is a Hyper server version with fast loading, where resource loading has been fixed, and data transfer and console logs have been removed so as not to slow down resource loading and data transfer by creating a useless queue. The logic for Assets and data-transfer has been reworked for maximum speed and higher capacity.
 
 how to use unpack RFD
 
