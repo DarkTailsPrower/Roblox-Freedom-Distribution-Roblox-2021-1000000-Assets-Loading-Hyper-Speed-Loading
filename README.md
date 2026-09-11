@@ -4,20 +4,13 @@ This is a Hyper server version with fast loading, where resource loading has bee
 
 how to use unpack RFD
 
-
-
-
-
-
 and go to cd C:\RFD\Unpacked\2.exe_extracted\Source
 
+write from C:\RFD\Unpacked\2.exe_extracted\Source 
+_main.py server --config GameConfig.toml --port 2005 --ipv4-only
 
-
-
-
-
-
-
+second console write on from C:\RFD\Unpacked\2.exe_extracted\Source
+_main.py player -h 127.0.0.1 -p 2005
 
 Код файла queue.py выполняет очень специфическую задачу — дедупликацию потоков (Thread Deduplication). Если игра запрашивает один и тот же ассет 10 раз одновременно, этот код делает так, чтобы функция func(key) скачивания из интернета сработала всего 1 раз, а остальные 9 потоков просто подождали первый и забрали его результат.
 Поскольку этот скрипт работает на уровне отдельных ключей (ID ассетов), он физически не видит всю картину и обрабатывает поступающие ID строго поодиночке.
