@@ -8,7 +8,7 @@ and go to cd C:\RFD\Unpacked\2.exe_extracted\Source
 
 _main.py server --config GameConfig.toml --port 2005 --ipv4-only
 
-second from C:\RFD\Unpacked\2.exe_extracted\Source
+second C:\RFD\Unpacked\2.exe_extracted\Source
 
 _main.py player -h 127.0.0.1 -p 2005
 
