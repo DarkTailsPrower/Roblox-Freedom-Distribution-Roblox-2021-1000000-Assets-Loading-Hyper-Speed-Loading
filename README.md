@@ -6,8 +6,6 @@ how to use unpack RFD
 
 and go to cd C:\RFD\Unpacked\2.exe_extracted\Source
 
-write from C:\RFD\Unpacked\2.exe_extracted\Source 
-
 _main.py server --config GameConfig.toml --port 2005 --ipv4-only
 
 second console write on from C:\RFD\Unpacked\2.exe_extracted\Source
