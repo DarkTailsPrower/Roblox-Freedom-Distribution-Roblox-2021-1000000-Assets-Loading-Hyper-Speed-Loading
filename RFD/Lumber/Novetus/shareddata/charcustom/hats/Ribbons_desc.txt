@@ -1,0 +1,1 @@
+It prevents almost all status ailments but Stop, Freeze, Imp, and other ailments that cannot be prevented in the first place.

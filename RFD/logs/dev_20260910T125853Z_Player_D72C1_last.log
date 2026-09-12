@@ -1,0 +1,149 @@
+1789045133.12887,3a28,6 [FLog::Output] The channel is NULL
+1789045133.15087,3a28,6 [FLog::Output] LoadClientSettingsFromLocal: "{
+	"DFFlagCheckCSGSharedStringProp": true,
+	"FFlagWrapDeformer": true,
+	"DFFlagEnableMessagingService": true,
+	"FFlagDevConsoleIsVeryStickyWhyWillItNotLetGo": true,
+	"FFlagRespectDisplayOrderForOnTopOfCoreBlur": true,
+	"FFlagReportDevConsoleOpenClose": false,
+	"FFlagDevConsoleLogNewLineFix": true,
+	"FFlagGroupEditDevConsoleButton": true,
+	"DFFlagEnableRemoteProfilingForDevConsole": true,
+	"DFFlagThrottleDeveloperConsoleEvents": true,
+	"DFFlagAdminServerLogs": true,
+	"DFFlagAdminRemoteMicroProfiler": false,
+	"FFlagDevConsoleAnalyticsIncludeOwner": true,
+	"FFlagFixScriptRateDevConsole": true,
+	"FFlagPlayAudioVideoInPlugins": true,
+	"DFFlagAllowSoundsToBePlayableInPlugins": true,
+	"FFlagFutureIsBrightPhase3": true,
+	"FFlagFutureIsBrightPhase3Vulkan": true,
+	"FFlagFutureIsBrightPhase3iOS": true,
+	"DFFlagServerCopiesPlayerGui3": true,
+	"FFlagFixCGECursor": true,
+	"FFlagFixGamepadCursorIdlePosition": true,
+	"FFlagClickDetectorCursorIconEnabled":
+1789045133.16487,3a28,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 0 active: 0>
+1789045133.16887,3a28,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 4 active: 4>
+1789045133.20187,3a28,104 [FLog::Output] Loading AppSettings.xml from C:\RFD\Roblox\v463\Player\AppSettings.xml
+1789045133.20287,3a28,104 [FLog::Output] setAssetFolder Content
+1789045133.20387,3a28,104 [FLog::Output] setExtraAssetFolder 
+1789045133.47255,3a28,104 [FLog::Output] CrashReporter Start
+1789045133.47255,3538,104 [FLog::Output] WatcherThread Started
+1789045133.47555,3a28,106 [FLog::Error] Error: Important !Loading shader files
+1789045133.48055,3a28,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 4 active: 4>
+1789045133.48155,3a28,104 [FLog::Output] Info: Initializing new game
+1789045133.49255,3a28,104 [FLog::Output] account = UA-43420590-13, schedule = 500
+1789045133.49255,3a28,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 4 active: 4>
+1789045133.49555,3a28,101 [FLog::LocalStorage] LocalStorage loading from path: ../../../LocalStorage\27.0.0.1:2005_appStorage.json
+1789045133.49955,3f84,101 [FLog::LocalStorage] LocalStorage loading data: {"AppConfiguration":"{\"GUAC:3771438:app-policy\":\"{\\\"ChatConversationHeaderGroupDetails\\\": true, \\\"ChatHeaderSearch\\\": true, \\\"ChatHeaderCreateChatGroup\\\": true, \\\"ChatHeaderHomeButton\\\": false, \\\"ChatHeaderNotifications\\\": true, \\\"ChatPlayTogether\\\": true, \\\"ChatShareGameToChatFromChat\\\": true, \\\"ChatTapConversationThumbnail\\\": true, \\\"ChatViewProfileOption\\\": true, \\\"GamesDropDownList\\\": true, \\\"UseNewDropDown\\\": false, \\\"GameDetailsMorePage\\\": true, \\\"GameDetailsShowGlobalCounters\\\": true, \\\"GameDetailsPlayWithFriends\\\": true, \\\"GameDetailsSubtitle\\\": true, \\\"GameInfoList\\\": true, \\\"GameInfoListDeveloper\\\": true, \\\"GamePlaysAndRatings\\\": true, \\\"GameInfoShowBadges\\\": true, \\\"GameInfoShowCreated\\\": true, \\\"GameInfoShowGamepasses\\\": true, \\\"GameInfoShowGenre\\\": true, \\\"GameInfoShowMaxPlayers\\\": true, \\\"GameInfoShowServers\\\": true, \\\"Ga
+1789045137.04663,0670,101 [FLog::LocalStorage] LocalStorage loading from path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789045137.05363,3a28,104 [FLog::Output] Studio D3D9 GPU: Intel(R) Iris(R) Xe Graphics
+1789045137.05363,3a28,104 [FLog::Output] Studio D3D9 GPU: Vendor 8086 Device 9a49
+1789045137.05363,3a28,104 [FLog::Output] Studio D3D9 Driver: igdumdim32.dll 30.0.100.9955
+1789045137.05463,3a28,104 [FLog::Output] ESGamePerfMonitor GPU: Vendor 00008086 Device 00009a49
+1789045137.07063,3a28,104 [FLog::Output] ESGamePerfMonitor GPU: SubSys 87fe103c Revision 00000001
+1789045137.07063,3a28,104 [FLog::Output] ESGamePerfMonitor GPU: DedicatedVidMem 134217728 DedicatedSysMem 4107571200 SharedSystemMemory 176297189046222848
+1789045137.08663,2e3c,104 [FLog::Output] PlaceLauncher URL : https://127.0.0.1:2005/game/PlaceLauncher.ashx?MachineAddress=127.0.0.1&ServerPort=2005&UserCode=Player1789045131&rcc-host-addr=127.0.0.1&rcc-port=2005&user-code=Player1789045131
+1789045137.18664,1e2c,101 [FLog::LocalStorage] LocalStorage loading data: {"CpuMem":"98025432","GpuMem":"53117192","SyncTime":"1789042946"}
+1789045137.39562,1f6c,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789045137.39862,0d6c,101 [FLog::LocalStorage] LocalStorage will flush (size:66): {"CpuMem":"102300320","GpuMem":"49272400","SyncTime":"1789045137"}
+1789045137.39862,0d6c,101 [FLog::LocalStorage] LocalStorage: Wrote 66 bytes to disk
+1789045137.69766,3b34,104 [FLog::Output] ! Joining game '1818' place 1818 at 127.0.0.1
+1789045137.72168,3b34,104 [FLog::Output] Connecting to 127.0.0.1:2005
+1789045137.85762,1e2c,104 [FLog::Output] Connection accepted from 127.0.0.1|2005
+1789045138.12764,2bdc,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_appStorage.json
+1789045138.14564,2bdc,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_appStorage.json
+1789045138.45562,3b34,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_appStorage.json
+1789045138.45962,3b34,106 [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=12221990: unsupported file format
+1789045138.45962,3b34,106 [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=12222152: unsupported file format
+1789045138.45962,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/bass.wav: unsupported file format
+1789045138.45962,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/bass.wav: unsupported file format
+1789045138.46062,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/switch.wav: unsupported file format
+1789045138.46062,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/switch.wav: unsupported file format
+1789045138.46062,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/glassbreak.wav: unsupported file format
+1789045138.46062,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/glassbreak.wav: unsupported file format
+1789045138.46062,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/clickfast.wav: unsupported file format
+1789045138.46062,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/clickfast.wav: unsupported file format
+1789045138.46162,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/electronicpingshort.wav: unsupported file format
+1789045138.46162,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/electronicpingshort.wav: unsupported file format
+1789045138.46162,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/splat.wav: unsupported file format
+1789045138.46162,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/splat.wav: unsupported file format
+1789045138.46162,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/SWITCH3.wav: unsupported file format
+1789045138.46162,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/SWITCH3.wav: unsupported file format
+1789045138.46162,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/victory.wav: unsupported file format
+1789045138.46162,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/victory.wav: unsupported file format
+1789045138.46162,3b34,106 [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=10548108: unsupported file format
+1789045138.46262,3b34,106 [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=10548108: unsupported file format
+1789045138.46262,3b34,106 [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=10548108: unsupported file format
+1789045138.46262,3b34,106 [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=10548108: unsupported file format
+1789045138.46262,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/flashbulb.wav: unsupported file format
+1789045138.46262,3b34,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/flashbulb.wav: unsupported file format
+1789045138.46662,0670,101 [FLog::LocalStorage] LocalStorage will flush (size:222416): {"AppConfiguration":"{\"GUAC:3771438:app-policy\":\"{\\\"ChatConversationHeaderGroupDetails\\\": true, \\\"ChatHeaderSearch\\\": true, \\\"ChatHeaderCreateChatGroup\\\": true, \\\"ChatHeaderHomeButton\\\": false, \\\"ChatHeaderNotifications\\\": true, \\\"ChatPlayTogether\\\": true, \\\"ChatShareGameToChatFromChat\\\": true, \\\"ChatTapConversationThumbnail\\\": true, \\\"ChatViewProfileOption\\\": true, \\\"GamesDropDownList\\\": true, \\\"UseNewDropDown\\\": false, \\\"GameDetailsMorePage\\\": true, \\\"GameDetailsShowGlobalCounters\\\": true, \\\"GameDetailsPlayWithFriends\\\": true, \\\"GameDetailsSubtitle\\\": true, \\\"GameInfoList\\\": true, \\\"GameInfoListDeveloper\\\": true, \\\"GamePlaysAndRatings\\\": true, \\\"GameInfoShowBadges\\\": true, \\\"GameInfoShowCreated\\\": true, \\\"GameInfoShowGamepasses\\\": true, \\\"GameInfoShowGenre\\\": true, \\\"GameInfoShowMaxPlayers\\\": true, \\\"GameInfoShowServers\\\": 
+1789045138.46762,0670,101 [FLog::LocalStorage] LocalStorage: Wrote 222416 bytes to disk
+1789045138.46962,0670,101 [FLog::LocalStorage] LocalStorage will flush (size:222538): {"AppConfiguration":"{\"GUAC:3771438:app-policy\":\"{\\\"ChatConversationHeaderGroupDetails\\\": true, \\\"ChatHeaderSearch\\\": true, \\\"ChatHeaderCreateChatGroup\\\": true, \\\"ChatHeaderHomeButton\\\": false, \\\"ChatHeaderNotifications\\\": true, \\\"ChatPlayTogether\\\": true, \\\"ChatShareGameToChatFromChat\\\": true, \\\"ChatTapConversationThumbnail\\\": true, \\\"ChatViewProfileOption\\\": true, \\\"GamesDropDownList\\\": true, \\\"UseNewDropDown\\\": false, \\\"GameDetailsMorePage\\\": true, \\\"GameDetailsShowGlobalCounters\\\": true, \\\"GameDetailsPlayWithFriends\\\": true, \\\"GameDetailsSubtitle\\\": true, \\\"GameInfoList\\\": true, \\\"GameInfoListDeveloper\\\": true, \\\"GamePlaysAndRatings\\\": true, \\\"GameInfoShowBadges\\\": true, \\\"GameInfoShowCreated\\\": true, \\\"GameInfoShowGamepasses\\\": true, \\\"GameInfoShowGenre\\\": true, \\\"GameInfoShowMaxPlayers\\\": true, \\\"GameInfoShowServers\\\": 
+1789045138.47062,0670,101 [FLog::LocalStorage] LocalStorage: Wrote 222538 bytes to disk
+1789045138.47262,0670,101 [FLog::LocalStorage] LocalStorage will flush (size:222538): {"AppConfiguration":"{\"GUAC:3771438:app-policy\":\"{\\\"ChatConversationHeaderGroupDetails\\\": true, \\\"ChatHeaderSearch\\\": true, \\\"ChatHeaderCreateChatGroup\\\": true, \\\"ChatHeaderHomeButton\\\": false, \\\"ChatHeaderNotifications\\\": true, \\\"ChatPlayTogether\\\": true, \\\"ChatShareGameToChatFromChat\\\": true, \\\"ChatTapConversationThumbnail\\\": true, \\\"ChatViewProfileOption\\\": true, \\\"GamesDropDownList\\\": true, \\\"UseNewDropDown\\\": false, \\\"GameDetailsMorePage\\\": true, \\\"GameDetailsShowGlobalCounters\\\": true, \\\"GameDetailsPlayWithFriends\\\": true, \\\"GameDetailsSubtitle\\\": true, \\\"GameInfoList\\\": true, \\\"GameInfoListDeveloper\\\": true, \\\"GamePlaysAndRatings\\\": true, \\\"GameInfoShowBadges\\\": true, \\\"GameInfoShowCreated\\\": true, \\\"GameInfoShowGamepasses\\\": true, \\\"GameInfoShowGenre\\\": true, \\\"GameInfoShowMaxPlayers\\\": true, \\\"GameInfoShowServers\\\": 
+1789045138.47362,0670,101 [FLog::LocalStorage] LocalStorage: Wrote 222538 bytes to disk
+1789045138.61666,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=31327380" load failed in Workspace.Model.EpikHat.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.62066,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=6687137" load failed in Workspace.Ball Givers.By: LCPLgeek.Rainbow Ball Path Giver.Smooth Block Model.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.62166,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=12336225" load failed in Workspace.Ball Givers.Part.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.67867,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35421501" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.68267,2114,106 [FLog::Error] Error: MeshContentProvider failed to process https://127.0.0.1:2005/v1/asset?id=16101994 because Error reading mesh data: unknown version
+1789045138.68967,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35421756" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.68967,2114,106 [FLog::Error] Error: MeshContentProvider failed to process https://127.0.0.1:2005/v1/asset?id=15392960 because Error reading mesh data: unknown version
+1789045138.68967,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35420971" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.68967,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35421799" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.69067,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=16412516" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.69067,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35420912" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.69067,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=47702589" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.69067,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35421410" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.69067,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35421089" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.69067,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35421153" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.69067,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=31100020" load failed in Workspace.Dominus Infernus.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.69067,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=15392970" load failed in Workspace.Little Angel wings.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.69067,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=2752483" load failed in Workspace.Hot Tub.Part.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.70567,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=12102654" load failed in Workspace.Model.Brick.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.70667,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=1667792" load failed in Workspace.Model.You Won!.Humanoid.Clothes: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.73863,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=63760920" load failed in Workspace.Part.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.73963,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=6803418" load failed in Workspace.Model.Swingset by Weaselman50.Swing.VehicleSeat.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.81672,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=23154016" load failed in Workspace.SkateRack.SkateTool.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.81772,2114,106 [FLog::Error] Error: MeshContentProvider failed to process https://127.0.0.1:2005/v1/asset?id=23153998 because Error reading mesh data: unknown version
+1789045138.81873,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=23154789" load failed in Workspace.SkateRack.Part.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.86777,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=56936322" load failed in Workspace.Base.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045138.87577,2668,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=23724903" load failed in Workspace.Model.Part.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789045144.80298,2bdc,106 [FLog::Error] Error: ContentProvider callback exception: SerializerPugi::deserializeImpl ill-formed XML.
+1789045197.86394,1fe0,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789045197.87994,1bc0,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130367400","GpuMem":"103295051","SyncTime":"1789045198"}
+1789045197.87994,1bc0,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1789045258.86112,3b6c,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789045258.87712,3f84,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130338448","GpuMem":"103300379","SyncTime":"1789045259"}
+1789045258.87712,3f84,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1789045319.85911,31c4,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789045319.87613,0d6c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130401288","GpuMem":"103302155","SyncTime":"1789045320"}
+1789045319.87613,0d6c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1789045380.87195,1f6c,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789045380.88895,1e2c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130384376","GpuMem":"103303931","SyncTime":"1789045381"}
+1789045380.88895,1e2c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1789045438.34885,2bdc,106 [FLog::Error] Error: ContentProvider callback exception: SerializerPugi::deserializeImpl ill-formed XML.
+1789045441.86969,1fe0,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789045441.88669,1e2c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130577848","GpuMem":"124782960","SyncTime":"1789045442"}
+1789045441.88769,1e2c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1789045502.86749,3b6c,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789045502.88350,3f84,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130819584","GpuMem":"127859748","SyncTime":"1789045503"}
+1789045502.88450,3f84,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1789045563.86617,31c4,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789045563.88217,1bc0,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130556072","GpuMem":"127875564","SyncTime":"1789045564"}
+1789045563.88217,1bc0,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1789045624.86289,1f6c,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789045624.87889,1e2c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130485008","GpuMem":"127868460","SyncTime":"1789045625"}
+1789045624.87889,1e2c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1789045685.85988,1fe0,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789045685.87787,3b34,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130528224","GpuMem":"127879116","SyncTime":"1789045686"}
+1789045685.87787,3b34,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1789045746.85787,3b6c,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789045746.87487,1e2c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130547368","GpuMem":"127879116","SyncTime":"1789045747"}
+1789045746.87487,1e2c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1789045807.87208,31c4,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789045807.88809,0d6c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130496240","GpuMem":"127873788","SyncTime":"1789045808"}
+1789045807.88809,0d6c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk

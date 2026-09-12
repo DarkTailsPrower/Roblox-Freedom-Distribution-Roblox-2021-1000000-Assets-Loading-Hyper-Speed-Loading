@@ -1,0 +1,815 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="HopperBin" referent="RBX0">
+		<Properties>
+			<bool name="Active">false</bool>
+			<token name="BinType">3</token>
+			<string name="Name">Copy</string>
+			<Content name="TextureId"><url>rbxasset://Textures\Clone.png</url></Content>
+			<bool name="archivable">true</bool>
+		</Properties>
+	</Item>
+	<Item class="HopperBin" referent="RBX1">
+		<Properties>
+			<bool name="Active">false</bool>
+			<token name="BinType">4</token>
+			<string name="Name">Delete</string>
+			<Content name="TextureId"><url>rbxasset://Textures\Hammer.png</url></Content>
+			<bool name="archivable">true</bool>
+		</Properties>
+	</Item>
+	<Item class="HopperBin" referent="RBX2">
+		<Properties>
+			<bool name="Active">false</bool>
+			<token name="BinType">1</token>
+			<string name="Name">Grab</string>
+			<Content name="TextureId"><url>rbxasset://Textures\GameTool.png</url></Content>
+			<bool name="archivable">true</bool>
+		</Properties>
+	</Item>
+	<Item class="HopperBin" referent="RBX3">
+		<Properties>
+			<bool name="Active">false</bool>
+			<token name="BinType">0</token>
+			<string name="Name">Rocket</string>
+			<Content name="TextureId"><url>rbxasset://Textures\Rocket.png</url></Content>
+			<bool name="archivable">true</bool>
+		</Properties>
+		<Item class="Part" referent="RBX4">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">3</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">3</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">23</int>
+				<CoordinateFrame name="CFrame">
+					<X>-0.5</X>
+					<Y>0.5</Y>
+					<Z>0</Z>
+					<R00>0</R00>
+					<R01>1</R01>
+					<R02>-0</R02>
+					<R10>1</R10>
+					<R11>0</R11>
+					<R12>-0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>-1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="DraggingV1">false</bool>
+				<float name="Elasticity">0.5</float>
+				<token name="FormFactor">0</token>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">3</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">3</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<token name="Material">256</token>
+				<string name="Name">Rocket</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">3</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">3</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<bool name="archivable">true</bool>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1</Y>
+					<Z>4</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Sound" referent="RBX5">
+				<Properties>
+					<bool name="Looped">true</bool>
+					<string name="Name">Swoosh</string>
+					<float name="Pitch">1</float>
+					<int name="PlayCount">-1</int>
+					<bool name="PlayOnRemove">false</bool>
+					<Content name="SoundId"><url>rbxasset://sounds\Rocket whoosh 01.wav</url></Content>
+					<float name="Volume">0.699999988</float>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+			<Item class="Sound" referent="RBX6">
+				<Properties>
+					<bool name="Looped">false</bool>
+					<string name="Name">Explosion</string>
+					<float name="Pitch">1</float>
+					<int name="PlayCount">0</int>
+					<bool name="PlayOnRemove">true</bool>
+					<Content name="SoundId"><url>rbxasset://sounds\collide.wav</url></Content>
+					<float name="Volume">1</float>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX7">
+				<Properties>
+					<bool name="Disabled">true</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">RocketScript</string>
+					<ProtectedString name="Source">r = game:service(&quot;RunService&quot;)
+
+shaft = script.Parent
+position = shaft.Position
+
+function fly()
+	direction = shaft.CFrame.lookVector 
+	position = position + direction
+	error = position - shaft.Position
+	shaft.Velocity = 7*error
+end
+
+function blow()
+	swoosh:stop()
+	explosion = Instance.new(&quot;Explosion&quot;)
+	explosion.Position = shaft.Position
+
+
+	-- find instigator tag
+	local creator = script.Parent:findFirstChild(&quot;creator&quot;)
+	if creator ~= nil then
+		explosion.Hit:connect(function(part, distance)  onPlayerBlownUp(part, distance, creator) end)
+	end
+
+	explosion.Parent = game.Workspace
+	connection:disconnect()
+	wait(.1)
+	shaft:remove()
+end
+
+function onPlayerBlownUp(part, distance, creator)
+	
+	if part.Name == &quot;Head&quot; then
+	
+		local humanoid = part.Parent:findFirstChild(&quot;Humanoid&quot;)
+		tagHumanoid(humanoid, creator)
+	end
+end
+
+function tagHumanoid(humanoid, creator)
+	-- tag does not need to expire iff all explosions lethal
+	
+	if creator ~= nil then
+		local new_tag = creator:clone()
+		new_tag.Parent = humanoid
+		
+	end
+end
+
+function untagHumanoid(humanoid)
+	if humanoid ~= nil then
+		local tag = humanoid:findFirstChild(&quot;creator&quot;)
+		if tag ~= nil then
+		
+			tag.Parent = nil
+		end
+	end
+end
+
+t, s = r.Stepped:wait()
+
+swoosh = script.Parent.Swoosh
+swoosh:play()
+
+d = t + 10.0 - s
+connection = shaft.Touched:connect(blow)
+
+while t &lt; d do
+	fly()
+	t = r.Stepped:wait()
+end
+
+-- at max range
+script.Parent.Explosion.PlayOnRemove = false
+swoosh:stop()
+shaft:remove()
+</ProtectedString>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Script" referent="RBX8">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Launcher</string>
+				<ProtectedString name="Source">print(&quot;New rocket script loaded&quot;)
+
+bin = script.Parent
+
+
+function fire(target)
+	
+	local head = game.Players.LocalPlayer.Character:findFirstChild(&quot;Head&quot;)
+	if head == nil then return end
+
+	local dir = target - head.Position
+	dir = computeDirection(dir)
+
+	print(&quot;DIR X:&quot;, dir.x, &quot;Y:&quot;, dir.y, &quot;z:&quot;, dir.z)
+
+	local missile = bin.Rocket:clone()
+
+	local spawnPos = game.Players.LocalPlayer.Character.PrimaryPart.Position
+
+	local pos = spawnPos + (dir * 8)
+	
+	--missile.Position = pos
+	missile.CFrame = CFrame.new(pos,  pos + dir)
+
+	local creator_tag = Instance.new(&quot;ObjectValue&quot;)
+	creator_tag.Value = game.Players.LocalPlayer
+	creator_tag.Name = &quot;creator&quot;
+	creator_tag.Parent = missile
+	
+	missile.RocketScript.Disabled = false
+
+	missile.Parent = game.Workspace
+
+end
+
+function computeDirection(vec)
+	local lenSquared = vec.magnitude * vec.magnitude
+	local invSqrt = 1 / math.sqrt(lenSquared)
+	return Vector3.new(vec.x * invSqrt, vec.y * invSqrt, vec.z * invSqrt)
+end
+
+enabled = true
+function onButton1Down(mouse)
+	if not enabled then
+		return
+	end
+
+	enabled = false
+	mouse.Icon = &quot;rbxasset://textures\\GunWaitCursor.png&quot;
+
+	-- find the best cf
+	local cf = mouse.Hit
+	--local v = cf.lookVector
+	local target = cf.p
+
+	fire(target)
+
+	wait(7)
+	mouse.Icon = &quot;rbxasset://textures\\GunCursor.png&quot;
+	enabled = true
+
+end
+
+function onSelected(mouse)
+	print(&quot;rocket selected&quot;)
+	mouse.Icon = &quot;rbxasset://textures\\GunCursor.png&quot;
+	mouse.Button1Down:connect(function() onButton1Down(mouse) end)
+end
+
+bin.Selected:connect(onSelected)
+</ProtectedString>
+				<bool name="archivable">true</bool>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="HopperBin" referent="RBX9">
+		<Properties>
+			<bool name="Active">false</bool>
+			<token name="BinType">0</token>
+			<string name="Name">Slingshot</string>
+			<Content name="TextureId"><url>rbxasset://Textures\Slingshot.png</url></Content>
+			<bool name="archivable">true</bool>
+		</Properties>
+		<Item class="Part" referent="RBX10">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">194</int>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>6.39999962</Y>
+					<Z>-8</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="DraggingV1">false</bool>
+				<float name="Elasticity">0.5</float>
+				<token name="FormFactor">0</token>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Pellet</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<bool name="archivable">true</bool>
+				<token name="shape">0</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Script" referent="RBX11">
+				<Properties>
+					<bool name="Disabled">true</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">PelletScript</string>
+					<ProtectedString name="Source">pellet = script.Parent
+damage = 8
+
+function onTouched(hit)
+	humanoid = hit.Parent:findFirstChild(&quot;Humanoid&quot;)
+	if humanoid~=nil then
+		tagHumanoid(humanoid)
+		humanoid.Health = humanoid.Health - damage
+		wait(2)
+		untagHumanoid(humanoid)
+	else
+		damage = damage / 2
+		if damage &lt; 0.1 then
+			connection:disconnect()
+		end
+	end
+end
+
+function tagHumanoid(humanoid)
+	-- todo: make tag expire
+	local tag = pellet:findFirstChild(&quot;creator&quot;)
+	if tag ~= nil then
+		local new_tag = tag:clone()
+		new_tag.Parent = humanoid
+		
+	end
+end
+
+
+function untagHumanoid(humanoid)
+	if humanoid ~= nil then
+		local tag = humanoid:findFirstChild(&quot;creator&quot;)
+		if tag ~= nil then
+			
+			tag.Parent = nil
+		end
+	end
+end
+
+connection = pellet.Touched:connect(onTouched)
+
+r = game:service(&quot;RunService&quot;)
+t, s = r.Stepped:wait()
+d = t + 2.0 - s
+while t &lt; d do
+	t = r.Stepped:wait()
+end
+
+pellet.Parent = nil</ProtectedString>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Script" referent="RBX12">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Slingshot</string>
+				<ProtectedString name="Source">print(&quot;Slingshot script loaded&quot;)
+
+bin = script.Parent
+VELOCITY = 85 -- constant
+
+function fire(mouse_pos)
+
+
+	sound = Instance.new(&quot;Sound&quot;)
+		sound.SoundId = &quot;rbxasset://sounds\\Rubber band sling shot.wav&quot;
+		sound.Parent = script.Parent
+		sound:play()
+
+-- find player&apos;s head pos
+
+
+
+	local head = game.Players.LocalPlayer.Character:findFirstChild(&quot;Head&quot;)
+	if head == nil then return end
+
+	local dir = mouse_pos - head.Position
+	dir = computeDirection(dir)
+
+	local launch = head.Position + 5 * dir
+
+	local delta = mouse_pos - launch
+	
+	local dy = delta.y
+	
+	local new_delta = Vector3.new(delta.x, 0, delta.z)
+	delta = new_delta
+
+	local dx = delta.magnitude
+	local unit_delta = delta.unit
+	
+	-- acceleration due to gravity in RBX units
+	local g = (-9.81 * 20)
+
+	local theta = computeLaunchAngle( dx, dy, g)
+
+	local vy = math.sin(theta)
+	local xz = math.cos(theta)
+	local vx = unit_delta.x * xz
+	local vz = unit_delta.z * xz
+	
+
+	local missile = script.Parent.Pellet:clone()
+        
+
+		
+
+	missile.Position = launch
+	missile.Velocity = Vector3.new(vx,vy,vz) * VELOCITY
+
+	print(&quot;Pos X:&quot;, launch.x, &quot;Y:&quot;, launch.y, &quot;Z:&quot;, launch.z)
+	print(&quot;Vel X:&quot;, vx, &quot;Y:&quot;, vy, &quot;Z:&quot;, vz)
+
+	missile.PelletScript.Disabled = false
+
+	local creator_tag = Instance.new(&quot;ObjectValue&quot;)
+	creator_tag.Value = game.Players.LocalPlayer
+	creator_tag.Name = &quot;creator&quot;
+	creator_tag.Parent = missile
+	
+	missile.Parent = game.Workspace
+
+end
+
+
+function computeLaunchAngle(dx,dy,grav)
+	-- arcane
+	-- http://en.wikipedia.org/wiki/Trajectory_of_a_projectile
+	
+	local g = math.abs(grav)
+	local inRoot = (VELOCITY*VELOCITY*VELOCITY*VELOCITY) - (g * ((g*dx*dx) + (2*dy*VELOCITY*VELOCITY)))
+	if inRoot &lt;= 0 then
+		return .25 * math.pi
+	end
+	local root = math.sqrt(inRoot)
+	local inATan1 = ((VELOCITY*VELOCITY) + root) / (g*dx)
+
+	local inATan2 = ((VELOCITY*VELOCITY) - root) / (g*dx)
+	local answer1 = math.atan(inATan1)
+	local answer2 = math.atan(inATan2)
+	if answer1 &lt; answer2 then return answer1 end
+	return answer2
+end
+
+function computeDirection(vec)
+	local lenSquared = vec.magnitude * vec.magnitude
+	local invSqrt = 1 / math.sqrt(lenSquared)
+	return Vector3.new(vec.x * invSqrt, vec.y * invSqrt, vec.z * invSqrt)
+end
+
+enabled = true
+function onButton1Down(mouse)
+	if not enabled then
+		return
+	end
+
+	enabled = false
+	mouse.Icon = &quot;rbxasset://textures\\GunWaitCursor.png&quot;
+
+	-- find the best cf
+	--local cf = mouse.Hit
+	--local v = cf.lookVector
+
+	local pos = mouse.Hit.p
+
+	fire(pos)
+
+	wait(.2)
+	mouse.Icon = &quot;rbxasset://textures\\GunCursor.png&quot;
+	enabled = true
+
+end
+
+function onSelected(mouse)
+	print(&quot;slingshot selected&quot;)
+	mouse.Icon = &quot;rbxasset://textures\\GunCursor.png&quot;
+	mouse.Button1Down:connect(function() onButton1Down(mouse) end)
+end
+
+bin.Selected:connect(onSelected)
+</ProtectedString>
+				<bool name="archivable">true</bool>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="HopperBin" referent="RBX13">
+		<Properties>
+			<bool name="Active">false</bool>
+			<token name="BinType">0</token>
+			<string name="Name">Time Bomb</string>
+			<Content name="TextureId"><url>rbxasset://Textures/Bomb.png</url></Content>
+			<bool name="archivable">true</bool>
+		</Properties>
+		<Item class="Script" referent="RBX14">
+			<Properties>
+				<bool name="Disabled">true</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Bomb</string>
+				<ProtectedString name="Source">updateInterval = .4
+
+currentColor = 1
+colors = {26, 21} 
+
+ticksound = Instance.new(&quot;Sound&quot;)
+ticksound.SoundId = &quot;rbxasset://sounds\\clickfast.wav&quot;
+ticksound.Parent = script.Parent
+
+function update()
+	updateInterval = updateInterval * .9
+
+	script.Parent.BrickColor = BrickColor.new(colors[currentColor])
+	currentColor = currentColor + 1
+	if (currentColor &gt; 2) then currentColor = 1 end
+end
+
+
+function blowUp()
+	local sound = Instance.new(&quot;Sound&quot;)
+		sound.SoundId = &quot;rbxasset://sounds\\Rocket shot.wav&quot;
+		sound.Parent = script.Parent
+		sound.Volume = 1
+		sound:play()
+	explosion = Instance.new(&quot;Explosion&quot;)
+	explosion.BlastRadius = 12
+	explosion.BlastPressure = 1000000 -- these are really wussy units
+
+	-- find instigator tag
+	local creator = script.Parent:findFirstChild(&quot;creator&quot;)
+	if creator ~= nil then
+		explosion.Hit:connect(function(part, distance)  onPlayerBlownUp(part, distance, creator) end)
+	end
+
+	explosion.Position = script.Parent.Position
+	explosion.Parent = game.Workspace
+	script.Parent.Transparency = 1
+end
+
+function onPlayerBlownUp(part, distance, creator)
+	if part.Name == &quot;Head&quot; then
+		local humanoid = part.Parent:findFirstChild(&quot;Humanoid&quot;)
+		tagHumanoid(humanoid, creator)
+	end
+end
+
+function tagHumanoid(humanoid, creator)
+	-- tag does not need to expire iff all explosions lethal
+	
+	if creator ~= nil then
+		local new_tag = creator:clone()
+		new_tag.Parent = humanoid
+	end
+end
+
+function untagHumanoid(humanoid)
+	if humanoid ~= nil then
+		local tag = humanoid:findFirstChild(&quot;creator&quot;)
+		if tag ~= nil then
+			tag.Parent = nil
+		end
+	end
+end
+
+while updateInterval &gt; .1 do
+	wait(updateInterval)
+	update()
+
+	
+	ticksound:play()
+	
+end
+
+blowUp()
+wait(2)
+script.Parent:remove()
+</ProtectedString>
+				<bool name="archivable">true</bool>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX15">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">PlantBomb</string>
+				<ProtectedString name="Source">print(&quot;Bomb hopper script loaded&quot;)
+
+bin = script.Parent
+bombScript = script.Parent.Bomb
+
+function plant()
+	local bomb = Instance.new(&quot;Part&quot;)
+
+        
+
+	local spawnPos = game.Players.LocalPlayer.Character.PrimaryPart.Position
+
+
+	
+
+	bomb.Position = Vector3.new(spawnPos.x, spawnPos.y+3, spawnPos.z)
+	bomb.Size = Vector3.new(2,2,2)
+	
+	bomb.BrickColor = BrickColor.new(21)
+	bomb.Shape = 0
+	bomb.BottomSurface = 0
+	bomb.TopSurface = 0
+	bomb.Reflectance = 1
+	bomb.Name = &quot;TimeBomb&quot;
+	bomb.Locked = true
+
+	local creator_tag = Instance.new(&quot;ObjectValue&quot;)
+	creator_tag.Value = game.Players.LocalPlayer
+	creator_tag.Name = &quot;creator&quot;
+	creator_tag.Parent = bomb
+
+	bomb.Parent = game.Workspace
+	local new_script = bombScript:clone()
+	new_script.Disabled = false
+	new_script.Parent = bomb
+
+end
+
+
+
+enabled = true
+function onButton1Down(mouse)
+	if not enabled then
+		return
+	end
+
+	enabled = false
+	mouse.Icon = &quot;rbxasset://textures\\ArrowFarCursor.png&quot;
+
+
+
+	plant()
+
+	wait(6)
+	mouse.Icon = &quot;rbxasset://textures\\ArrowCursor.png&quot;
+	enabled = true
+
+end
+
+function onSelected(mouse)
+	print(&quot;bomb selected&quot;)
+	mouse.Icon = &quot;rbxasset://textures\\ArrowCursor.png&quot;
+	mouse.Button1Down:connect(function() onButton1Down(mouse) end)
+end
+
+bin.Selected:connect(onSelected)
+</ProtectedString>
+				<bool name="archivable">true</bool>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="HopperBin" referent="RBX16">
+		<Properties>
+			<bool name="Active">false</bool>
+			<token name="BinType">0</token>
+			<string name="Name">Wall</string>
+			<Content name="TextureId"><url>rbxasset://Textures/Wall.png</url></Content>
+			<bool name="archivable">true</bool>
+		</Properties>
+		<Item class="Script" referent="RBX17">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">WallScript</string>
+				<ProtectedString name="Source">wallWait = 5
+
+function snap(v)
+	if math.abs(v.x)&gt;math.abs(v.z) then
+		if v.x&gt;0 then
+			return Vector3.new(1,0,0)
+		else
+			return Vector3.new(-1,0,0)
+		end
+	else
+		if v.z&gt;0 then
+			return Vector3.new(0,0,1)
+		else
+			return Vector3.new(0,0,-1)
+		end
+	end
+end
+
+enabled = true
+function onButton1Down(mouse)
+	if not enabled then
+		return
+	end
+
+	enabled = false
+	mouse.Icon = &quot;rbxasset://textures\\ArrowFarCursor.png&quot;
+
+sound = Instance.new(&quot;Sound&quot;)
+		sound.SoundId = &quot;rbxasset://sounds\\bass.wav&quot;
+		sound.Parent = script.Parent
+
+		sound:play()
+
+	-- find the best cf
+	local cf = mouse.Hit
+	local lookAt = snap(cf.lookVector)
+	cf = CFrame.new(cf.p, cf.p + lookAt)
+
+	-- send a wall request to the game (possibly to another peer in multiplayer)
+	local newWall = Instance.new(&quot;CFrameValue&quot;)
+	newWall.Name = &quot;NewWall&quot;
+	newWall.Value = cf
+	newWall.Parent = game.Workspace.WallBuilder
+
+	wait(wallWait)
+
+	mouse.Icon = &quot;rbxasset://textures\\ArrowCursor.png&quot;
+	enabled = true
+
+
+end
+
+function onSelected(mouse)
+	print(&quot;Wall selected&quot;)
+	mouse.Icon = &quot;rbxasset://textures\\ArrowCursor.png&quot;
+	mouse.Button1Down:connect(function() onButton1Down(mouse) end)
+end
+
+script.Parent.Selected:connect(onSelected)
+</ProtectedString>
+				<bool name="archivable">true</bool>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>

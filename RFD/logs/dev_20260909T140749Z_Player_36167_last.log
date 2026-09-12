@@ -1,0 +1,240 @@
+1788962869.14853,1170,6 [FLog::Output] The channel is NULL
+1788962869.17753,1170,6 [FLog::Output] LoadClientSettingsFromLocal: "{
+	"DFFlagCheckCSGSharedStringProp": true,
+	"FFlagWrapDeformer": true,
+	"DFFlagEnableMessagingService": true,
+	"FFlagDevConsoleIsVeryStickyWhyWillItNotLetGo": true,
+	"FFlagRespectDisplayOrderForOnTopOfCoreBlur": true,
+	"FFlagReportDevConsoleOpenClose": false,
+	"FFlagDevConsoleLogNewLineFix": true,
+	"FFlagGroupEditDevConsoleButton": true,
+	"DFFlagEnableRemoteProfilingForDevConsole": true,
+	"DFFlagThrottleDeveloperConsoleEvents": true,
+	"DFFlagAdminServerLogs": true,
+	"DFFlagAdminRemoteMicroProfiler": false,
+	"FFlagDevConsoleAnalyticsIncludeOwner": true,
+	"FFlagFixScriptRateDevConsole": true,
+	"FFlagPlayAudioVideoInPlugins": true,
+	"DFFlagAllowSoundsToBePlayableInPlugins": true,
+	"FFlagFutureIsBrightPhase3": true,
+	"FFlagFutureIsBrightPhase3Vulkan": true,
+	"FFlagFutureIsBrightPhase3iOS": true,
+	"DFFlagServerCopiesPlayerGui3": true,
+	"FFlagFixCGECursor": true,
+	"FFlagFixGamepadCursorIdlePosition": true,
+	"FFlagClickDetectorCursorIconEnabled":
+1788962869.19153,1170,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 0 active: 0>
+1788962869.19353,1170,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 4 active: 4>
+1788962869.24839,1170,104 [FLog::Output] Loading AppSettings.xml from C:\RFD\Roblox\v463\Player\AppSettings.xml
+1788962869.24938,1170,104 [FLog::Output] setAssetFolder Content
+1788962869.25037,1170,104 [FLog::Output] setExtraAssetFolder 
+1788962869.59754,1170,104 [FLog::Output] CrashReporter Start
+1788962869.59754,2e80,104 [FLog::Output] WatcherThread Started
+1788962869.60054,1170,106 [FLog::Error] Error: Important !Loading shader files
+1788962869.64056,1170,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 4 active: 4>
+1788962869.64256,1170,104 [FLog::Output] Info: Initializing new game
+1788962869.66056,1170,104 [FLog::Output] account = UA-43420590-13, schedule = 500
+1788962869.66156,1170,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 4 active: 4>
+1788962869.66456,1170,101 [FLog::LocalStorage] LocalStorage loading from path: ../../../LocalStorage\27.0.0.1:2005_appStorage.json
+1788962869.67556,0c7c,101 [FLog::LocalStorage] LocalStorage loading data: {"AppConfiguration":"{\"GUAC:3771438:app-policy\":\"{\\\"ChatConversationHeaderGroupDetails\\\": true, \\\"ChatHeaderSearch\\\": true, \\\"ChatHeaderCreateChatGroup\\\": true, \\\"ChatHeaderHomeButton\\\": false, \\\"ChatHeaderNotifications\\\": true, \\\"ChatPlayTogether\\\": true, \\\"ChatShareGameToChatFromChat\\\": true, \\\"ChatTapConversationThumbnail\\\": true, \\\"ChatViewProfileOption\\\": true, \\\"GamesDropDownList\\\": true, \\\"UseNewDropDown\\\": false, \\\"GameDetailsMorePage\\\": true, \\\"GameDetailsShowGlobalCounters\\\": true, \\\"GameDetailsPlayWithFriends\\\": true, \\\"GameDetailsSubtitle\\\": true, \\\"GameInfoList\\\": true, \\\"GameInfoListDeveloper\\\": true, \\\"GamePlaysAndRatings\\\": true, \\\"GameInfoShowBadges\\\": true, \\\"GameInfoShowCreated\\\": true, \\\"GameInfoShowGamepasses\\\": true, \\\"GameInfoShowGenre\\\": true, \\\"GameInfoShowMaxPlayers\\\": true, \\\"GameInfoShowServers\\\": true, \\\"Ga
+1788962873.51969,52b4,101 [FLog::LocalStorage] LocalStorage loading from path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788962873.53370,1170,104 [FLog::Output] Studio D3D9 GPU: Intel(R) Iris(R) Xe Graphics
+1788962873.53370,1170,104 [FLog::Output] Studio D3D9 GPU: Vendor 8086 Device 9a49
+1788962873.53370,1170,104 [FLog::Output] Studio D3D9 Driver: igdumdim32.dll 30.0.100.9955
+1788962873.53570,1170,104 [FLog::Output] ESGamePerfMonitor GPU: Vendor 00008086 Device 00009a49
+1788962873.53570,1170,104 [FLog::Output] ESGamePerfMonitor GPU: SubSys 87fe103c Revision 00000001
+1788962873.53570,1170,104 [FLog::Output] ESGamePerfMonitor GPU: DedicatedVidMem 134217728 DedicatedSysMem 4107571200 SharedSystemMemory 176297189046222848
+1788962873.54670,36c8,104 [FLog::Output] PlaceLauncher URL : https://127.0.0.1:2005/game/PlaceLauncher.ashx?MachineAddress=127.0.0.1&ServerPort=2005&UserCode=Player1788962867&rcc-host-addr=127.0.0.1&rcc-port=2005&user-code=Player1788962867
+1788962873.68272,0dcc,101 [FLog::LocalStorage] LocalStorage loading data: {"CpuMem":"132965288","GpuMem":"129645236","SyncTime":"1786968938"}
+1788962873.97870,4b74,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788962874.12270,5320,104 [FLog::Output] ! Joining game '1818' place 1818 at 127.0.0.1
+1788962874.16970,5320,104 [FLog::Output] Connecting to 127.0.0.1:2005
+1788962874.17070,52b4,101 [FLog::LocalStorage] LocalStorage will flush (size:65): {"CpuMem":"97270312","GpuMem":"54056604","SyncTime":"1788962874"}
+1788962874.17070,52b4,101 [FLog::LocalStorage] LocalStorage: Wrote 65 bytes to disk
+1788962874.29471,44cc,104 [FLog::Output] Connection accepted from 127.0.0.1|2005
+1788962874.71666,2480,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_appStorage.json
+1788962874.97171,4540,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_appStorage.json
+1788962874.97471,4540,106 [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=12221990: unsupported file format
+1788962874.97471,4540,106 [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=12222152: unsupported file format
+1788962874.97471,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/glassbreak.wav: unsupported file format
+1788962874.97571,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/glassbreak.wav: unsupported file format
+1788962874.97571,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/bass.wav: unsupported file format
+1788962874.97571,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/bass.wav: unsupported file format
+1788962874.97571,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/switch.wav: unsupported file format
+1788962874.97571,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/switch.wav: unsupported file format
+1788962874.97571,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/clickfast.wav: unsupported file format
+1788962874.97571,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/clickfast.wav: unsupported file format
+1788962874.97571,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/splat.wav: unsupported file format
+1788962874.97571,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/splat.wav: unsupported file format
+1788962874.97571,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/electronicpingshort.wav: unsupported file format
+1788962874.97571,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/electronicpingshort.wav: unsupported file format
+1788962874.97571,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/SWITCH3.wav: unsupported file format
+1788962874.97671,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/SWITCH3.wav: unsupported file format
+1788962874.97671,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/flashbulb.wav: unsupported file format
+1788962874.97671,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/flashbulb.wav: unsupported file format
+1788962874.97671,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/victory.wav: unsupported file format
+1788962874.97671,4540,106 [FLog::Error] Error: Failed to load sound rbxasset://Sounds/victory.wav: unsupported file format
+1788962874.97871,4540,106 [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=10548108: unsupported file format
+1788962874.97871,4540,106 [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=10548108: unsupported file format
+1788962874.97971,4540,106 [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=10548108: unsupported file format
+1788962874.97971,4540,106 [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=10548108: unsupported file format
+1788962874.98071,44cc,101 [FLog::LocalStorage] LocalStorage will flush (size:201825): {"AppConfiguration":"{\"GUAC:3771438:app-policy\":\"{\\\"ChatConversationHeaderGroupDetails\\\": true, \\\"ChatHeaderSearch\\\": true, \\\"ChatHeaderCreateChatGroup\\\": true, \\\"ChatHeaderHomeButton\\\": false, \\\"ChatHeaderNotifications\\\": true, \\\"ChatPlayTogether\\\": true, \\\"ChatShareGameToChatFromChat\\\": true, \\\"ChatTapConversationThumbnail\\\": true, \\\"ChatViewProfileOption\\\": true, \\\"GamesDropDownList\\\": true, \\\"UseNewDropDown\\\": false, \\\"GameDetailsMorePage\\\": true, \\\"GameDetailsShowGlobalCounters\\\": true, \\\"GameDetailsPlayWithFriends\\\": true, \\\"GameDetailsSubtitle\\\": true, \\\"GameInfoList\\\": true, \\\"GameInfoListDeveloper\\\": true, \\\"GamePlaysAndRatings\\\": true, \\\"GameInfoShowBadges\\\": true, \\\"GameInfoShowCreated\\\": true, \\\"GameInfoShowGamepasses\\\": true, \\\"GameInfoShowGenre\\\": true, \\\"GameInfoShowMaxPlayers\\\": true, \\\"GameInfoShowServers\\\": 
+1788962874.98171,44cc,101 [FLog::LocalStorage] LocalStorage: Wrote 201825 bytes to disk
+1788962874.98371,44cc,101 [FLog::LocalStorage] LocalStorage will flush (size:201825): {"AppConfiguration":"{\"GUAC:3771438:app-policy\":\"{\\\"ChatConversationHeaderGroupDetails\\\": true, \\\"ChatHeaderSearch\\\": true, \\\"ChatHeaderCreateChatGroup\\\": true, \\\"ChatHeaderHomeButton\\\": false, \\\"ChatHeaderNotifications\\\": true, \\\"ChatPlayTogether\\\": true, \\\"ChatShareGameToChatFromChat\\\": true, \\\"ChatTapConversationThumbnail\\\": true, \\\"ChatViewProfileOption\\\": true, \\\"GamesDropDownList\\\": true, \\\"UseNewDropDown\\\": false, \\\"GameDetailsMorePage\\\": true, \\\"GameDetailsShowGlobalCounters\\\": true, \\\"GameDetailsPlayWithFriends\\\": true, \\\"GameDetailsSubtitle\\\": true, \\\"GameInfoList\\\": true, \\\"GameInfoListDeveloper\\\": true, \\\"GamePlaysAndRatings\\\": true, \\\"GameInfoShowBadges\\\": true, \\\"GameInfoShowCreated\\\": true, \\\"GameInfoShowGamepasses\\\": true, \\\"GameInfoShowGenre\\\": true, \\\"GameInfoShowMaxPlayers\\\": true, \\\"GameInfoShowServers\\\": 
+1788962874.98371,44cc,101 [FLog::LocalStorage] LocalStorage: Wrote 201825 bytes to disk
+1788962875.16571,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=6687137" load failed in Workspace.Ball Givers.By: LCPLgeek.Rainbow Ball Path Giver.Smooth Block Model.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962875.18071,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=12336225" load failed in Workspace.Ball Givers.Part.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962875.20871,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=31327380" load failed in Workspace.Model.EpikHat.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962875.33371,2480,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_appStorage.json
+1788962875.34171,52b4,101 [FLog::LocalStorage] LocalStorage will flush (size:201947): {"AppConfiguration":"{\"GUAC:3771438:app-policy\":\"{\\\"ChatConversationHeaderGroupDetails\\\": true, \\\"ChatHeaderSearch\\\": true, \\\"ChatHeaderCreateChatGroup\\\": true, \\\"ChatHeaderHomeButton\\\": false, \\\"ChatHeaderNotifications\\\": true, \\\"ChatPlayTogether\\\": true, \\\"ChatShareGameToChatFromChat\\\": true, \\\"ChatTapConversationThumbnail\\\": true, \\\"ChatViewProfileOption\\\": true, \\\"GamesDropDownList\\\": true, \\\"UseNewDropDown\\\": false, \\\"GameDetailsMorePage\\\": true, \\\"GameDetailsShowGlobalCounters\\\": true, \\\"GameDetailsPlayWithFriends\\\": true, \\\"GameDetailsSubtitle\\\": true, \\\"GameInfoList\\\": true, \\\"GameInfoListDeveloper\\\": true, \\\"GamePlaysAndRatings\\\": true, \\\"GameInfoShowBadges\\\": true, \\\"GameInfoShowCreated\\\": true, \\\"GameInfoShowGamepasses\\\": true, \\\"GameInfoShowGenre\\\": true, \\\"GameInfoShowMaxPlayers\\\": true, \\\"GameInfoShowServers\\\": 
+1788962875.34271,52b4,101 [FLog::LocalStorage] LocalStorage: Wrote 201947 bytes to disk
+1788962875.97072,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35421501" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962875.98472,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35421756" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.00873,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35421410" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.03987,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=47702589" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.05789,2004,106 [FLog::Error] Error: MeshContentProvider failed to process https://127.0.0.1:2005/v1/asset?id=16101994 because Error reading mesh data: unknown version
+1788962876.12598,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35421799" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.15271,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35421153" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.20364,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35421089" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.22561,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35420971" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.24175,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=35420912" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.26875,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=16412516" load failed in Workspace.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.30176,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=15392970" load failed in Workspace.Little Angel wings.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.32776,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=31100020" load failed in Workspace.Dominus Infernus.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.34071,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=2752483" load failed in Workspace.Hot Tub.Part.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.35370,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=12102654" load failed in Workspace.Model.Brick.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.36870,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=63760920" load failed in Workspace.Part.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.38369,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=6803418" load failed in Workspace.Model.Swingset by Weaselman50.Swing.VehicleSeat.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.39369,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=1667792" load failed in Workspace.Model.Please Dont "Throw" Your Hats. Use the Hat Remover.Humanoid.Clothes: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.41568,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=23724903" load failed in Workspace.Model.Part.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.42968,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=56936322" load failed in Workspace.Base.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.43370,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=23154789" load failed in Workspace.SkateRack.Part.Decal.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.45270,18dc,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/v1/asset?id=23154016" load failed in Workspace.SkateRack.SkateTool.Handle.Mesh.TextureId: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1788962876.73882,2004,106 [FLog::Error] Error: MeshContentProvider failed to process https://127.0.0.1:2005/v1/asset?id=15392960 because Error reading mesh data: unknown version
+1788962876.93105,2004,106 [FLog::Error] Error: MeshContentProvider failed to process https://127.0.0.1:2005/v1/asset?id=23153998 because Error reading mesh data: unknown version
+1788962877.74584,2480,106 [FLog::Error] Error: ContentProvider callback exception: SerializerPugi::deserializeImpl ill-formed XML.
+1788962934.57192,59a0,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788962934.58792,44cc,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130313512","GpuMem":"124777632","SyncTime":"1788962935"}
+1788962934.58892,44cc,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788962995.56846,4508,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788962995.58646,24e8,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130470200","GpuMem":"124797960","SyncTime":"1788962996"}
+1788962995.58646,24e8,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963056.56755,4b74,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963056.58455,5320,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130498008","GpuMem":"124799736","SyncTime":"1788963057"}
+1788963056.58555,5320,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963117.56413,59a0,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963117.58113,0c7c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130796664","GpuMem":"124797472","SyncTime":"1788963118"}
+1788963117.58113,0c7c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963178.56180,4e18,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963178.57879,0c7c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130530816","GpuMem":"124804576","SyncTime":"1788963179"}
+1788963178.57879,0c7c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963239.56014,4508,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963239.57614,52b4,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130453944","GpuMem":"124808128","SyncTime":"1788963240"}
+1788963239.57614,52b4,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963300.57366,4b74,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963300.59067,4540,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130520544","GpuMem":"124813456","SyncTime":"1788963301"}
+1788963300.59167,4540,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963361.57109,59a0,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963361.58809,4540,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130507360","GpuMem":"124806352","SyncTime":"1788963362"}
+1788963361.58809,4540,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963422.56816,4e18,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963422.58516,395c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130492536","GpuMem":"127902508","SyncTime":"1788963423"}
+1788963422.58616,395c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963483.57326,4508,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963483.58326,0c7c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130838288","GpuMem":"127898956","SyncTime":"1788963484"}
+1788963483.58426,0c7c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963540.19853,2480,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/avatar-thumbnail/image?width=100&height=100&format=png&userId=6285497" load failed in CoreGui.RobloxGui.SettingsShield.SettingsShield.MenuContainer.PageViewClipper.PageView.PageViewInnerFrame.Players.PlayerLabelPlayer1788962867.Icon.Image: Request failed
+1788963544.56605,4b74,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963544.58005,52b4,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131305768","GpuMem":"129627972","SyncTime":"1788963545"}
+1788963544.58005,52b4,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963605.56184,59a0,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963605.57784,5320,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131585520","GpuMem":"129638628","SyncTime":"1788963606"}
+1788963605.57884,5320,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963666.55964,4e18,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963666.57664,5320,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131193608","GpuMem":"129638628","SyncTime":"1788963667"}
+1788963666.57664,5320,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963727.57279,4508,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963727.58979,44cc,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131295800","GpuMem":"129635076","SyncTime":"1788963728"}
+1788963727.58979,44cc,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963788.57161,4b74,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963788.58761,395c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131724248","GpuMem":"129642180","SyncTime":"1788963789"}
+1788963788.58761,395c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963849.56812,59a0,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963849.58513,0c7c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131426184","GpuMem":"129643956","SyncTime":"1788963850"}
+1788963849.58513,0c7c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963910.56662,4e18,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963910.58262,52b4,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131613808","GpuMem":"129638628","SyncTime":"1788963911"}
+1788963910.58262,52b4,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788963922.63901,2480,106 [FLog::Error] Error: ContentProvider callback exception: SerializerPugi::deserializeImpl ill-formed XML.
+1788963971.57551,4508,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788963971.57850,395c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131721784","GpuMem":"129640404","SyncTime":"1788963972"}
+1788963971.57850,395c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964032.56147,4b74,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964032.57846,44cc,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131349360","GpuMem":"129640404","SyncTime":"1788964033"}
+1788964032.57846,44cc,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964093.56064,59a0,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964093.57664,5320,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131326320","GpuMem":"129635076","SyncTime":"1788964094"}
+1788964093.57664,5320,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964154.58661,4e18,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964154.59163,44cc,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131525256","GpuMem":"129638628","SyncTime":"1788964155"}
+1788964154.59163,44cc,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964215.56030,4508,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964215.56431,24e8,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131118240","GpuMem":"129642180","SyncTime":"1788964216"}
+1788964215.56531,24e8,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964276.59304,4b74,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964276.59605,0c7c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131265720","GpuMem":"129636852","SyncTime":"1788964277"}
+1788964276.59705,0c7c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964337.57184,59a0,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964337.58884,52b4,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131477400","GpuMem":"129636852","SyncTime":"1788964338"}
+1788964337.58884,52b4,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964398.57057,4e18,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964398.58657,395c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131175136","GpuMem":"129640404","SyncTime":"1788964399"}
+1788964398.58657,395c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964459.56686,4508,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964459.58387,44cc,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131630800","GpuMem":"129642180","SyncTime":"1788964460"}
+1788964459.58387,44cc,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964520.56614,4b74,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964520.58214,5320,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131637320","GpuMem":"129640404","SyncTime":"1788964521"}
+1788964520.58914,5320,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964581.56372,59a0,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964581.57872,395c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131523240","GpuMem":"129636852","SyncTime":"1788964582"}
+1788964581.57872,395c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964642.55996,4e18,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964642.57696,52b4,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131685248","GpuMem":"129635076","SyncTime":"1788964643"}
+1788964642.57796,52b4,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964703.55734,4508,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964703.57434,44cc,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"130030568","GpuMem":"129578520","SyncTime":"1788964704"}
+1788964703.57534,44cc,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964764.57318,4b74,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964764.58917,0dcc,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131254200","GpuMem":"129642524","SyncTime":"1788964765"}
+1788964764.59017,0dcc,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964825.56934,59a0,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964825.58634,52b4,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131278832","GpuMem":"129638972","SyncTime":"1788964826"}
+1788964825.58634,52b4,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964886.56758,4e18,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964886.58358,4540,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131311712","GpuMem":"129642524","SyncTime":"1788964887"}
+1788964886.58458,4540,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788964947.56443,4508,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788964947.58143,24e8,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131281688","GpuMem":"129647852","SyncTime":"1788964948"}
+1788964947.58143,24e8,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788965008.56202,4b74,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788965008.57901,0c7c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131266056","GpuMem":"129637196","SyncTime":"1788965009"}
+1788965008.57901,0c7c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788965069.55985,59a0,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788965069.57686,44cc,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131327064","GpuMem":"129635420","SyncTime":"1788965070"}
+1788965069.57786,44cc,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788965130.55724,4e18,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788965130.57425,4540,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131256904","GpuMem":"129642524","SyncTime":"1788965131"}
+1788965130.57425,4540,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788965191.57269,4508,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788965191.58870,395c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131304488","GpuMem":"129642524","SyncTime":"1788965192"}
+1788965191.58970,395c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788965252.56961,4b74,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788965252.58561,0dcc,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131311608","GpuMem":"129642524","SyncTime":"1788965253"}
+1788965252.58561,0dcc,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788965313.56728,59a0,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788965313.58428,52b4,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131321032","GpuMem":"129640748","SyncTime":"1788965314"}
+1788965313.58528,52b4,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk
+1788965374.56526,4e18,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1788965374.58226,395c,101 [FLog::LocalStorage] LocalStorage will flush (size:67): {"CpuMem":"131301864","GpuMem":"129640748","SyncTime":"1788965375"}
+1788965374.58226,395c,101 [FLog::LocalStorage] LocalStorage: Wrote 67 bytes to disk

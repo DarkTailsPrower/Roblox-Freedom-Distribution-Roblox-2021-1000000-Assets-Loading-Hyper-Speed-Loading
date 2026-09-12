@@ -1,0 +1,526 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="NumberValue" referent="RBX7605434FB57C441694F0994980ABF965">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">ScaleDampeningPercent</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<double name="Value">1</double>
+		</Properties>
+	</Item>
+	<Item class="StringValue" referent="RBX7ADEAF3780AD4EB69EA0B47200391525">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">cheer</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX3A9D315560A04864B950C060EF620805">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507770677</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">CheerAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX77433B0AF3A444EFB69EE03A06AA3866">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">climb</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBXF616E6DBEE9943A28852EB79C9F7346A">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507765644</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">ClimbAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX688A03FA170C49388C0E436B66525B6E">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">dance</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX59D9E62AA3FA420A8D7B6E8E778683E9">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507771019</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">Animation1</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+			<Item class="NumberValue" referent="RBXD285DA34181E45849F3305A7707D0514">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Weight</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+					<double name="Value">10</double>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Animation" referent="RBX987885AC58324C868A6A6848B51AD46B">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507771955</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">Animation2</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+			<Item class="NumberValue" referent="RBX3C1A70DA60A64756836DAFA6DEA7C04D">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Weight</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+					<double name="Value">10</double>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Animation" referent="RBX4AFFA263994F42C6A462FA90FA11E9B2">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507772104</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">Animation3</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+			<Item class="NumberValue" referent="RBX6503EE06E8B44B868673A39EB86B05B2">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Weight</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+					<double name="Value">10</double>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX077FCBE5FC9845849ABDEFCEF1691574">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">dance2</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX41EC967E2ED74C7DB9E34C15E182D693">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507776043</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">Animation1</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+			<Item class="NumberValue" referent="RBX53B70E64B5A444F0A9F09035D715C34A">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Weight</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+					<double name="Value">10</double>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Animation" referent="RBX7694EA506CD5489698D4BF610D1B0439">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507776720</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">Animation2</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+			<Item class="NumberValue" referent="RBX7E236C6322E24B4ABF8326FE47D9E908">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Weight</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+					<double name="Value">10</double>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Animation" referent="RBXC640F623CB204F2FBA1ABC7C1F91587F">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507776879</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">Animation3</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+			<Item class="NumberValue" referent="RBX7EAC34F371AD451FA606EA0D13218199">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Weight</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+					<double name="Value">10</double>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX644426D91C3B4DD68D433D146D2A4870">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">dance3</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBXA98835FCA173459A8C5ABADC0FFC6080">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507777268</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">Animation1</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+			<Item class="NumberValue" referent="RBXA78884D9251144D2AF2EAD214D5B4EAB">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Weight</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+					<double name="Value">10</double>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Animation" referent="RBXE468ED18EA464F9E9CA4553CC57B2CB4">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507777451</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">Animation2</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+			<Item class="NumberValue" referent="RBXA4AC014A9AFC46768B80E056715798CA">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Weight</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+					<double name="Value">10</double>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Animation" referent="RBX5073B1C760454AC08542418D5BA1F009">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507777623</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">Animation3</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+			<Item class="NumberValue" referent="RBX8C2A63EE53A54348BB0F9816DC997CEC">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Weight</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+					<double name="Value">10</double>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX3BECD4F40B6240799B31C4E619538D5B">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">fall</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBXD338A5D220E642269F5BF0BA23498103">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507767968</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">FallAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX07C23D9D996E42D9A6311A25DAF47940">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">idle</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX84D31352A19D4005BB9F66FA2303A7EA">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507766388</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">Animation1</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+			<Item class="NumberValue" referent="RBX096BB903AD0D4153A0945704D52A6E92">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Weight</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+					<double name="Value">9</double>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Animation" referent="RBXDC6D6E01377A44DE9062F1DCC6DA5FD6">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507766666</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">Animation2</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+			<Item class="NumberValue" referent="RBXD551FF9D7C5D4053A0B4B8D25D0A91E3">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Weight</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+					<double name="Value">1</double>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX9ABAEEBBA88F44E1B5C393F4E572D98A">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">jump</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX4E6B2CDE55EF47DAA1181AC3D1BACFCC">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507765000</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">JumpAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX669C25C48AF24305805C39E68506D72C">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">laugh</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBXBA997DEFD28143419D14A601F7C84B93">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507770818</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">LaughAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX71211A7D785244269C5359B6E9CA4AFA">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">point</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX1C7199F17729452FAB48C932CED719C6">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507770453</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">PointAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX48C2C0CAD1804DDDB3FBEAE5FCC13EC9">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">run</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBXDF63E671DB4C40DA8573A4A90C0E0EE1">
+			<Properties>
+				<string name="AnimationId">rbxassetid://913376220</string>
+				<string name="AttributesSerialize">&#1;&#0;&#0;&#0;&#14;&#0;&#0;&#0;LinearVelocity&#16;&#0;&#0;&#0;&#0;&#205;&#204;LA</string>
+				<string name="Name">RunAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBXC8F5C60FCE124712A130156DE56A53CE">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">sit</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBXB6FCC0F46FC74DBDB689BAB03F326DDA">
+			<Properties>
+				<string name="AnimationId">rbxassetid://2506281703</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">SitAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX2F6196DE50C543589C0A848E8E083A1D">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">swim</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX0B21BDCA4713486AA2FDA2C00D6094B8">
+			<Properties>
+				<string name="AnimationId">rbxassetid://2510199791</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">Swim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX1EB6A795D65A4CE487E3C783DAB1DD88">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">swimidle</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX9EF07A79F41A458B94B9257B919ABD34">
+			<Properties>
+				<string name="AnimationId">rbxassetid://2510201162</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">SwimIdle</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX1283124F27524653ADEAEB71F4728FFD">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">toollunge</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX553B9F491C3344E48F08FE5438A41C2F">
+			<Properties>
+				<string name="AnimationId">rbxassetid://522638767</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">ToolLungeAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX9321BF00E96240608BE7CA76E735251A">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">toolnone</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBXB5D41197CB03410A8266FAE56A373475">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507768375</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">ToolNoneAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX1C8E172A31204A06A60B2A0F5A0D9BBC">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">toolslash</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX1769A7B2D1AC44F4AC4C233D8AD572E8">
+			<Properties>
+				<string name="AnimationId">rbxassetid://522635514</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">ToolSlashAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX196067AE1D8A4188A9A2B0B6BB9F9287">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">walk</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX4708EED526F640FF9188947E5884E713">
+			<Properties>
+				<string name="AnimationId">rbxassetid://913402848</string>
+				<string name="AttributesSerialize">&#1;&#0;&#0;&#0;&#14;&#0;&#0;&#0;LinearVelocity&#16;&#0;&#0;&#0;&#0;&#205;&#204;&#204;@</string>
+				<string name="Name">WalkAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBXD8A0B67BF135449B82986E9387BFEA4B">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">wave</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX2B56E48363EB4426B3BA2368BDDCA009">
+			<Properties>
+				<string name="AnimationId">rbxassetid://507770239</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">WaveAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="BindableFunction" referent="RBX0190115D5CBA44878AFEBD8EEC200FBA">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">PlayEmote</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+		</Properties>
+	</Item>
+</roblox>

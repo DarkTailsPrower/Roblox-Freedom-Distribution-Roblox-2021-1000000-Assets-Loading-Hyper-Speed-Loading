@@ -1,0 +1,2734 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Folder" referent="RBXD22EC85DA2664725AAE22709C9DB7045">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">CharacterStateMachine</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+		</Properties>
+		<Item class="Folder" referent="RBX26DA9271B4664B56919D154313B855E5">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">BaseStateMachine</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+			<Item class="ModuleScript" referent="RBXDACFA7D0EE8A4742B35DFDFE8A199C77">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="LinkedSource"></string>
+					<string name="Name">BaseStateMachineModule</string>
+					<string name="ScriptGuid">{4794EAED-2033-45E3-8A1F-9FFBF55DE883}</string>
+					<string name="Source">local baseState = require(script.Parent:WaitForChild(&quot;BaseStateModule&quot;))
+local baseTransition = require(script.Parent:WaitForChild(&quot;BaseTransitionModule&quot;))
+
+
+local BaseStateMachine = {}
+BaseStateMachine.__index = BaseStateMachine
+BaseStateMachine.name = script.Name 
+
+------------------- DEFINITION  ------------------------------------
+
+BaseStateMachine.definition = {
+&#9;startingStateName = &quot;&quot;,
+&#9;stateDefs = {},
+&#9;transitionDefs = {}
+}&#9;
+
+------------------- LOCAL FUNCTIONS ------------------------------------
+local function SplitStringByCharacter(list, character : string)
+&#9;local out = {}
+&#9;local gmatachString : string = &quot;[^&quot;.. character .. &quot;]+&quot;
+&#9;for entry in string.gmatch(list, gmatachString) do
+&#9;&#9;entry = string.gsub(entry, &apos;^%s*(.-)%s*$&apos;, &apos;%1&apos;)
+&#9;&#9;table.insert(out, entry)
+&#9;end
+&#9;return out
+end
+
+function BaseStateMachine:SetupStates()
+&#9;local Definition = self.definition
+&#9;for stateName, stateDef in pairs(Definition.stateDefs) do
+&#9;&#9;local stateInstance = stateDef.new()
+&#9;&#9;self.states[stateName] = stateInstance
+&#9;end
+end
+
+function BaseStateMachine:SetupTranstions()
+&#9;local Definition = self.definition
+&#9;for _, transitionDef in pairs(Definition.transitionDefs) do
+&#9;&#9;local transitionInstance = transitionDef.new()
+&#9;&#9;-- local transitionSourceAttrib = transitionModule:GetAttribute(&quot;Source&quot;)
+&#9;&#9;local transitionSourceAttrib = transitionInstance.sourceName
+&#9;&#9;if transitionSourceAttrib ~= nil and transitionSourceAttrib ~= &quot;None&quot; then
+&#9;&#9;&#9;local transitionSourceList = SplitStringByCharacter(transitionSourceAttrib, &quot;,&quot;)
+&#9;&#9;&#9;for _, sourceString in pairs(transitionSourceList) do
+&#9;&#9;&#9;&#9;local sourceState = self:GetStateByName(sourceString)
+&#9;&#9;&#9;&#9;if sourceState ~= nil then
+&#9;&#9;&#9;&#9;&#9;sourceState:AddTransition(transitionInstance)
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;print(&quot;Undefined state&quot;, sourceString, &quot;in source for transition&quot;, transitionDef.name)
+&#9;&#9;&#9;&#9;end&#9;&#9;&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;end
+&#9;&#9;end&#9;&#9;
+&#9;&#9;transitionInstance.destination = self:GetStateByName(transitionInstance.destinationName)
+&#9;end
+end
+
+function BaseStateMachine:SetStateFromState(newState)
+&#9;if newState ~= self.currentState then
+&#9;&#9;local oldState = self.currentState
+&#9;&#9;local oldStateName, newStateName
+&#9;&#9;if self.currentState ~= nil then
+&#9;&#9;&#9;oldStateName = self.currentState.name
+&#9;&#9;&#9;self.currentState:OnExit(self, newStateName)
+&#9;&#9;end
+&#9;&#9;self.currentState = newState
+&#9;&#9;if self.currentState ~= nil then
+&#9;&#9;&#9;newStateName = self.currentState.name
+&#9;&#9;&#9;self.currentState:OnEnter(self, oldStateName)
+&#9;&#9;end
+&#9;&#9;if self.OnStateChanged then
+&#9;&#9;&#9;self.OnStateChanged:Fire(newStateName, oldStateName)
+&#9;&#9;end
+&#9;end
+end
+
+function BaseStateMachine:InitializeFromDefinition()
+&#9;self.currentState = nil
+&#9;self.context = { }
+&#9;self.states = { }
+
+&#9;self:SetupStates()
+&#9;self:SetupTranstions()
+&#9;if self.definition.startingStateName == nil then
+&#9;&#9;warn(&quot;No Starting State Specified.&quot;)
+&#9;else
+&#9;&#9;self:SetState(self.definition.startingStateName)
+&#9;end
+end
+
+function BaseStateMachine:InternalNew(...)
+&#9;local newSelf = {}
+&#9;local baseClass = self.baseClass
+&#9;if baseClass then
+&#9;&#9;newSelf = baseClass:InternalNew(...)
+&#9;&#9;newSelf.name = self.name
+&#9;else
+&#9;&#9;newSelf = {
+&#9;&#9;&#9;name = BaseStateMachine.name,
+&#9;&#9;&#9;OnStateChanged = Instance.new(&quot;BindableEvent&quot;),
+&#9;&#9;&#9;currentState = nil,
+&#9;&#9;&#9;context = { },
+&#9;&#9;&#9;states = { }&#9;
+&#9;&#9;}
+&#9;end
+&#9;setmetatable(newSelf, self)
+&#9;return newSelf
+end
+
+----------------------- PUBLIC FUNCTIONS -----------------------
+function BaseStateMachine:CreateTransition()
+&#9;return baseTransition:inherit()
+&#9;-- may need to add this transition to the state machine transition definition list
+end
+
+function BaseStateMachine:CreateState()
+&#9;return baseState:inherit()
+&#9;-- may need to add this state to the state machine state definition list
+end
+
+function BaseStateMachine:GetStateByName(stateName : string)
+&#9;for name, state in pairs(self.states) do
+&#9;&#9;if name == stateName then
+&#9;&#9;&#9;return state
+&#9;&#9;end
+&#9;end
+&#9;return nil
+end
+
+function BaseStateMachine:SetState(newStateName : string)
+&#9;local newState = self:GetStateByName(newStateName)
+&#9;if newState == nil then
+&#9;&#9;warn(&quot;SetState(): Unable to find state named&quot; .. newStateName .. &quot;.&quot;)
+&#9;&#9;return
+&#9;end
+&#9;
+&#9;self:SetStateFromState(newState)
+end
+
+function BaseStateMachine:GetCurrentStateName() : string
+&#9;if self.currentState ~= nil then
+&#9;&#9;return self.currentState.name
+&#9;else
+&#9;&#9;return &quot;nil&quot;
+&#9;end
+end
+
+function BaseStateMachine:OnStepped(dt)&#9;
+&#9;-- check for state transitions
+&#9;if self.currentState ~= nil then
+&#9;&#9;self:SetStateFromState(self.currentState:CheckTransitions(self))
+
+&#9;&#9;-- run current state, need to check for nil again since it could have changed in transitions above
+&#9;&#9;if self.currentState ~= nil then
+&#9;&#9;&#9;self.currentState:OnStepped(self, dt)
+&#9;&#9;end
+&#9;end
+end
+
+function BaseStateMachine:OnCreate(...)
+end
+
+-- need to plumb extend as the basic mechanism for inheritence through the entire model
+-- child classes should &apos;extend&apos; from base classes at all levels to ensure the functions correctly has the base classes set
+function BaseStateMachine:inherit()&#9;
+&#9;local derivedSM = setmetatable({
+&#9;&#9;baseClass = self,
+&#9;&#9;definition = {
+&#9;&#9;&#9;startingStateName = self.definition.startingStateName,
+&#9;&#9;&#9;stateDefs = { },
+&#9;&#9;&#9;transitionDefs = { }
+&#9;&#9;} 
+&#9;}, self)
+&#9;local Definition = self.definition
+&#9;for StateName, StateDef in pairs(Definition.stateDefs) do
+&#9;&#9;derivedSM.definition.stateDefs[StateName] = StateDef 
+&#9;end
+&#9;for TransitionName, TransitionDef in pairs(Definition.transitionDefs) do
+&#9;&#9;derivedSM.definition.transitionDefs[TransitionName] = TransitionDef 
+&#9;end
+&#9;derivedSM.__index = derivedSM
+&#9;
+&#9;function derivedSM.new(...)
+&#9;&#9;local self = derivedSM:InternalNew(...)
+&#9;&#9;self:InitializeFromDefinition()
+&#9;&#9;self:OnCreate(...)
+&#9;&#9;return self
+&#9;end
+&#9;
+&#9;return derivedSM&#9;
+end
+
+function BaseStateMachine.new(...)
+&#9;local self = BaseStateMachine:InternalNew(...)
+&#9;self:InitializeFromDefinition()
+&#9;self:OnCreate(...)
+
+&#9;return self
+end
+
+function BaseStateMachine:delete()&#9;
+end
+
+return BaseStateMachine
+
+</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXA8B71B2A0CC749E3A75B0664EFA4E9FC">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="LinkedSource"></string>
+					<string name="Name">BaseStateModule</string>
+					<string name="ScriptGuid">{0D6683B8-03DD-4082-98F8-87F2ADB8317E}</string>
+					<string name="Source">local BaseState = {}
+BaseState.__index = BaseState
+
+BaseState.name = script.Name
+
+
+----------------------------------------------------
+-- L O C A L    F U N C T I O N S
+----------------------------------------------------
+
+function BaseState:CheckTransitions(stateMachine)
+
+&#9;for _, transition in pairs(self.transitions) do
+&#9;&#9;local results = transition:Test(stateMachine)
+&#9;&#9;if results then
+&#9;&#9;&#9;return transition.destination
+&#9;&#9;end
+&#9;end
+&#9;return self
+end
+
+function BaseState:AddTransition(transition)
+&#9;-- check for duplicate names&#9;
+&#9;for _, t in pairs(self.transitions) do
+&#9;&#9;if t.name == transition.name then
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;end
+
+&#9;for idx, t in pairs(self.transitions) do
+&#9;&#9;if transition.priority &lt; t.priority then
+&#9;&#9;&#9;table.insert(self.transitions, idx, transition)
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;end
+&#9;table.insert(self.transitions, transition)
+end
+
+function BaseState:RemoveTransition(TransitionName)
+&#9;for i, transition in pairs(self.transitions) do
+&#9;&#9;if transition and transition.name == TransitionName then
+&#9;&#9;&#9;table.remove(self.transitions, i)
+&#9;&#9;&#9;break
+&#9;&#9;end
+&#9;end
+end
+
+
+function BaseState:InternalNew(...)
+&#9;local newSelf = {}
+&#9;local baseClass = self.baseClass
+&#9;if baseClass then
+&#9;&#9;newSelf = baseClass:InternalNew(...)
+&#9;&#9;newSelf.name = self.name
+&#9;else
+&#9;&#9;newSelf = {
+&#9;&#9;&#9;name = BaseState.name,&#9;&#9;&#9;
+&#9;&#9;&#9;transitions = {}
+&#9;&#9;}
+&#9;end
+&#9;setmetatable(newSelf, self)
+&#9;return newSelf
+end
+
+----------------------------------------------------
+-- P U B L I C    F U N C T I O N S
+----------------------------------------------------
+
+function BaseState.new(...)
+&#9;local self = BaseState:InternalNew(...)
+&#9;self:OnCreate(...)
+&#9;return self
+end
+
+function BaseState:inherit()&#9;
+&#9;local derivedState = setmetatable({
+&#9;&#9;baseClass = self 
+&#9;}, self)
+&#9;derivedState.__index = derivedState
+
+&#9;function derivedState.new(...)
+&#9;&#9;local newObject = derivedState:InternalNew(...)&#9;
+&#9;&#9;newObject:OnCreate(...)
+&#9;&#9;return newObject
+&#9;end
+&#9;
+&#9;return derivedState&#9;
+end
+
+function BaseState:OnCreate(...)
+&#9;
+end
+
+function BaseState:OnStepped(stateMachine, dt)
+&#9;
+end
+
+function BaseState:OnEnter(stateMachine, oldStateName)
+
+end
+
+function BaseState:OnExit(stateMachine, newStateName)
+
+end
+
+return BaseState
+
+
+</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX19B025102E9A42DAB4ABA3FF89F78BB6">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="LinkedSource"></string>
+					<string name="Name">BaseStateModule.spec</string>
+					<string name="ScriptGuid">{B7E363F3-AC6A-4832-BAC3-3F04BADF482A}</string>
+					<string name="Source">local Packages = game.ReplicatedStorage.Packages
+
+local JestGlobals = require(Packages.Dev.JestGlobals)
+local beforeEach = JestGlobals.beforeEach
+local describe = JestGlobals.describe
+local expect = JestGlobals.expect
+local it = JestGlobals.it
+local jest = JestGlobals.jest
+
+local BaseStateMachine = script.Parent
+local State = require(BaseStateMachine.BaseStateModule)
+local Transition = require(BaseStateMachine.BaseTransitionModule)
+
+local testState
+
+describe(&quot;Handling State Transitions&quot;, function()
+
+    beforeEach(function()
+        testState = State.new()
+    end)
+
+    it(&quot;SHOULD start with no transitions&quot;, function()
+        expect(#testState.transitions).toEqual(0)
+
+        local transition = Transition.new()
+        testState:AddTransition(transition)
+        expect(#testState.transitions).toEqual(1)
+    end)
+
+    it(&quot;SHOULD test all transitions&quot;, function()
+        local testFn = jest.fn(function()
+            return false
+        end)
+        
+        local transition1 = Transition.new()
+        transition1.name = &quot;Transition 1&quot;
+        transition1.Test = testFn
+        testState:AddTransition(transition1)
+
+        local transition2 = Transition.new()
+        transition2.name = &quot;Transition 2&quot;
+        transition2.Test = testFn
+        testState:AddTransition(transition2)
+
+        local nextState = testState:CheckTransitions()
+        expect(testFn).toBeCalledTimes(2)
+        expect(nextState).toBe(testState)
+    end)
+end)</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX53E26D26F1C94CBC9FD334A334FEB60B">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="LinkedSource"></string>
+					<string name="Name">BaseTransitionModule</string>
+					<string name="ScriptGuid">{C95D1726-BD44-4CC1-AEB0-6E8576EFB59E}</string>
+					<string name="Source">local BaseTransition = {}
+BaseTransition.__index = BaseTransition
+BaseTransition.name = script.Name
+BaseTransition.destinationName = &quot;&quot;
+BaseTransition.sourceName = &quot;&quot;
+BaseTransition.priority = &quot;&quot;
+
+----------------  LOCAL FUNCTIONS ---------------- 
+function BaseTransition:InternalNew(...)
+&#9;local newSelf = {}
+&#9;local baseClass = self.baseClass
+&#9;if baseClass then
+&#9;&#9;newSelf = baseClass:InternalNew(...)
+&#9;&#9;newSelf.name = self.name
+&#9;else
+&#9;&#9;newSelf = {
+&#9;&#9;&#9;name = BaseTransition.name,&#9;&#9;&#9;
+&#9;&#9;&#9;destination = nil
+&#9;&#9;}
+&#9;end
+&#9;setmetatable(newSelf, self)
+&#9;return newSelf
+end
+
+----------------  PUBLIC FUNCTIONS ---------------- 
+function BaseTransition.new(...)
+&#9;local self = BaseTransition:InternalNew(...)
+&#9;self:OnCreate(...)
+&#9;return self
+end
+
+function BaseTransition:inherit()&#9;
+&#9;local derivedTransition = setmetatable({
+&#9;&#9;baseClass = self 
+&#9;}, self)
+&#9;derivedTransition.__index = derivedTransition
+
+&#9;function derivedTransition.new(...)
+&#9;&#9;local newSelf = derivedTransition:InternalNew(...)&#9;
+&#9;&#9;newSelf:OnCreate(...)
+&#9;&#9;return newSelf
+&#9;end
+
+&#9;return derivedTransition&#9;
+end
+
+function BaseTransition:OnCreate(...)
+
+end
+
+function BaseTransition:Test(stateMachine)
+&#9;return false
+end
+
+return BaseTransition
+
+
+</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="ModuleScript" referent="RBXA7C3AF37816D4FB5BE430D270B5642D7">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="LinkedSource"></string>
+				<string name="Name">CharacterControlStateMachine</string>
+				<string name="ScriptGuid">{C1CC5D72-AA52-4A27-A75B-AA6FC35101E2}</string>
+				<string name="Source">--[[ CharacterControlStateMachine ]]--
+
+local baseStateMachineClass = require(script.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseStateMachineModule&quot;))
+local characterBaseStateClass = require(script:WaitForChild(&quot;CharacterControlBaseStateModule&quot;))
+
+local CharacterControlStateMachine = baseStateMachineClass:inherit()
+CharacterControlStateMachine.name = script.Name
+CharacterControlStateMachine.definition.name = script.Name
+CharacterControlStateMachine.definition.startingStateName = &quot;FreeFall&quot;
+
+local debug_string = false
+local debug_visual = false
+
+local debugSphere
+
+----------------------------------------------------------------------------------------------------------------------
+-- Extension of baseStateMachineClass
+----------------------------------------------------------------------------------------------------------------------
+function CharacterControlStateMachine:OnCreate(parentCharacter, ...)
+&#9;self.context.character = parentCharacter
+&#9;local humanoid = parentCharacter:FindFirstChildOfClass(&quot;Humanoid&quot;)
+&#9;self.context.humanoid = humanoid
+&#9;self.context.controllerManager = humanoid:WaitForChild(&quot;ControllerManager&quot;)
+&#9;self.context.noFloorTimer = 0
+&#9;self.context.hadHealth = false
+&#9;if debug_visual then
+&#9;&#9;debugSphere = Instance.new(&quot;Part&quot;)
+&#9;&#9;debugSphere.Shape = Enum.PartType.Ball
+&#9;&#9;debugSphere.Material = Enum.Material.SmoothPlastic
+&#9;&#9;debugSphere.Parent = workspace
+&#9;&#9;debugSphere.CanCollide = false
+&#9;&#9;debugSphere.Anchored = true
+&#9;&#9;debugSphere.Size = Vector3.new(1, 1, 1)
+&#9;end
+end
+
+function CharacterControlStateMachine:OnStepped(dt)
+&#9;self:UpdateFloorDistance()
+&#9;baseStateMachineClass.OnStepped(self, dt)
+&#9;self.context.hadHealth = self.context.hadHealth or self.context.humanoid.Health &gt; 0
+end
+
+function CharacterControlStateMachine:CreateState()
+&#9;return characterBaseStateClass:inherit()
+&#9;-- may need to add this transition to the state machine transition definition list
+end
+
+----------------------------------------------------------------------------------------------------------------------
+-- New methods for state machine
+----------------------------------------------------------------------------------------------------------------------
+function CharacterControlStateMachine:OnStartup()
+end
+
+function CharacterControlStateMachine:OnShutdown()
+end
+
+
+function CharacterControlStateMachine:UpdateFloorDistance()
+&#9;if not self.context.controllerManager or not self.context.controllerManager.GroundSensor then
+&#9;&#9;return
+&#9;end
+&#9;local groundOffset = self.context.controllerManager.RunningController.GroundOffset
+&#9;local groundSensor = self.context.controllerManager.GroundSensor
+&#9;local humanoid = self.context.humanoid
+&#9;local humanoidRootPartSize = Vector3.new(2, 2, 1)
+&#9;local character = humanoid.Parent
+&#9;local torso = nil
+&#9;-- TODO: not sure about these
+&#9;if humanoid.RigType == Enum.HumanoidRigType.R6 then
+&#9;&#9;torso = character:WaitForChild(&quot;Torso&quot;)
+&#9;else
+&#9;&#9;torso = character:WaitForChild(&quot;HumanoidRootPart&quot;)
+&#9;end
+&#9;local torsoSize = torso.Size
+&#9;local halfSize = torsoSize * 0.4
+
+&#9;-- these reinitialized depending on rig type below
+&#9;local characterScale = 1
+&#9;local maxDistance = torsoSize.y * 0.5
+
+&#9;if humanoid.RigType == Enum.HumanoidRigType.R15 then
+&#9;&#9;-- If AutomaticScaling is enabled then the HumanoidRootPart will be moved to align with the leg length of the character.
+&#9;&#9;if humanoid.AutomaticScalingEnabled then
+&#9;&#9;&#9;-- Half size is 40% of the size, this is the remaining 10%
+&#9;&#9;&#9;maxDistance = 0.1 * torsoSize.y
+&#9;&#9;else
+&#9;&#9;&#9;-- This compensates for the lower HumanoidRootPart height
+&#9;&#9;&#9;local rigSet = -0.25 * torsoSize.y
+&#9;&#9;&#9;halfSize.y = rigSet
+&#9;&#9;&#9;maxDistance -= rigSet
+&#9;&#9;end
+
+&#9;&#9;local currentHipHeight = groundOffset - torsoSize.y * 0.5
+&#9;&#9;characterScale = currentHipHeight / 2 -- 2 is the R15 hipHeight
+&#9;else
+&#9;&#9;-- For R6 the scale of the HumanoidRootPart should not be added to the max size
+&#9;&#9;-- The floor raycast is offset by the halfSize distance
+&#9;&#9;-- This distance is 10% less than half the size of the root part so we add in that difference here
+&#9;&#9;maxDistance = torsoSize.y * 0.1
+&#9;&#9;characterScale = torsoSize.y / humanoidRootPartSize.y
+&#9;end
+
+&#9;local oldFloor = groundSensor.SensedPart
+&#9;local hysteresis = oldFloor and 1.5 or 1.1
+&#9;-- TODO: haha this better be right
+&#9;local verticalVelocity = math.abs(torso.AssemblyLinearVelocity.y)
+&#9;verticalVelocity /= characterScale
+&#9;-- NOTE: the 100 comes from DFInt::FreeFallFloorSearchDistanceIncreaseVelocity
+&#9;if verticalVelocity &gt; 100 then
+&#9;&#9;hysteresis += verticalVelocity / 100
+&#9;end
+
+&#9;if humanoid.RigType == Enum.HumanoidRigType.R6 then
+&#9;&#9;local leftLegHeight = 0
+&#9;&#9;local rightLegHeight = 0
+
+&#9;&#9;local leftLeg = character:WaitForChild(&quot;LeftLeg&quot;)
+&#9;&#9;if leftLeg ~= nil then
+&#9;&#9;&#9;leftLegHeight = leftLeg.Size.y
+&#9;&#9;end
+
+&#9;&#9;local rightLeg = character:WaitForChild(&quot;RightLeg&quot;)
+&#9;&#9;if rightLeg ~= nil then
+&#9;&#9;&#9;rightLegHeight = rightLeg.Size.y
+&#9;&#9;end
+
+&#9;&#9;maxDistance += hysteresis * math.max(leftLegHeight, rightLegHeight);
+&#9;else
+&#9;&#9;maxDistance += hysteresis * groundOffset
+&#9;end
+&#9;if debug_visual then
+&#9;&#9;debugSphere.CFrame = torso.CFrame + Vector3.yAxis * -1 * maxDistance
+&#9;end
+&#9;groundSensor.SearchDistance = maxDistance
+end
+
+----------------------------------------------------------------------------------------------------------------------
+-- Initialization of Definition
+----------------------------------------------------------------------------------------------------------------------
+
+local States = { &quot;Climbing&quot;, &quot;FreeFall&quot;, &quot;Dead&quot;, &quot;FallingDown&quot;, &quot;GettingUp&quot;, &quot;Landed&quot;, &quot;Physics&quot;, &quot;Ragdoll&quot;,
+&#9;&quot;Running&quot;, &quot;Jumping&quot;, &quot;Seated&quot;, &quot;Swimming&quot;, &quot;PlatformStanding&quot;}
+
+local Transitions = { &quot;AwayLdr&quot;, &quot;OffFloorJumping&quot;, &quot;JumpRagdollCmd&quot;, &quot;SitCmd&quot;, &quot;NoHealth&quot;, &quot;NoSitCmd&quot;, 
+&#9;&quot;NoPlatformStandCmd&quot;, &quot;OffFloorGrace&quot;, &quot;OnFloor&quot;, &quot;OnFloorClimbing&quot;, &quot;Finished&quot;, &quot;HasBuoyancy&quot;,  
+&#9;&quot;TimerUpGettingUp&quot;, &quot;TimerUpRunning&quot;, &quot;NoBuoyancy&quot;, &quot;TouchedHard&quot;, &quot;Tipped&quot;, &quot;PlatformStandCmd&quot;,  
+&#9;&quot;Upright&quot;, &quot;JumpCmd&quot;, &quot;NoNeck&quot;, &quot;FaceLdr&quot; }
+
+local Definition = CharacterControlStateMachine.definition
+local StateFolder = script:WaitForChild(&quot;States&quot;)
+if StateFolder ~= nil then
+&#9;for _, stateName in pairs (States) do
+&#9;&#9;stateModule = StateFolder:WaitForChild(stateName)
+&#9;&#9;if stateModule:IsA(&quot;ModuleScript&quot;) then
+&#9;&#9;&#9;Definition.stateDefs[stateModule.name] = require(stateModule)
+&#9;&#9;end
+&#9;end
+end
+
+local TransitionFolder = script:WaitForChild(&quot;Transitions&quot;)
+if TransitionFolder ~= nil then
+&#9;for _, transitionName in pairs (Transitions) do
+&#9;&#9;local transitionModule = TransitionFolder:WaitForChild(transitionName)
+&#9;&#9;if transitionModule:IsA(&quot;ModuleScript&quot;) then
+&#9;&#9;&#9;Definition.transitionDefs[transitionModule.name] = require(transitionModule)
+&#9;&#9;end
+&#9;end
+end
+
+local startState = Definition.startingStateName
+if startState ~= nil then
+&#9;Definition.startingStateName = startState
+end
+
+return CharacterControlStateMachine
+</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+			<Item class="ModuleScript" referent="RBX506A839CA9A642FBADAC902EF6798921">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="LinkedSource"></string>
+					<string name="Name">CharacterControlBaseStateModule</string>
+					<string name="ScriptGuid">{B2D7F609-6EFB-4252-A1FF-90607B0B74A2}</string>
+					<string name="Source">--[[ CCSM Base State ]]--
+local baseState = require(script.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseStateModule&quot;))
+local commonTypes = require(script.Parent.Parent:WaitForChild(&quot;CharacterStateMachineTypes&quot;))
+
+local CCSMBaseState = baseState:inherit()
+CCSMBaseState.name = script.Name 
+CCSMBaseState.activeController = &quot;&quot;
+&#9;
+----------------------------------------------------------------------------------
+
+function CCSMBaseState.WindingPart(rad)
+&#9;return math.floor((rad + math.pi) / (2 * math.pi))
+end
+
+function CCSMBaseState.RadWrap(rad)
+&#9;if rad &gt;= -math.pi and rad &lt; math.pi then
+&#9;&#9;return rad;
+&#9;end
+
+&#9;local answer = rad - ((2 * math.pi) * CCSMBaseState.WindingPart(rad))
+&#9;return answer
+end
+
+function CCSMBaseState.GetHeading(direction : Vector3)
+&#9;return &#9;math.atan2(-direction.x, direction.z) -- might need to wrap this to -pi to pi
+end
+
+------------------------------------------------------------------------------------
+function CCSMBaseState:SetPartsCollide(humanoid : Humanoid, collide : boolean, parts)
+&#9;local character = humanoid.Parent
+&#9;for _, partName in pairs(parts) do
+&#9;&#9;local part = character:FindFirstChild(partName)
+&#9;&#9;if part then
+&#9;&#9;&#9;part.CanCollide = collide
+&#9;&#9;end
+&#9;end
+end
+
+function CCSMBaseState:SetArmsCollide(humanoid : Humanoid, collide : boolean)
+&#9;local parts
+&#9;if humanoid.RigType == Enum.HumanoidRigType.R15 then
+&#9;&#9;parts = { &quot;LeftUpperArm&quot;, &quot;RightUpperArm&quot;, &quot;LeftLowerArm&quot;, &quot;RightLowerArm&quot;, &quot;LeftHand&quot;, &quot;RightHand&quot; }
+&#9;else
+&#9;&#9;parts = { &quot;LeftArm&quot;, &quot;RightArm&quot; }
+&#9;end
+&#9;self:SetPartsCollide(humanoid, collide, parts)
+end
+
+function CCSMBaseState:SetLegsCollide(humanoid : Humanoid, collide : boolean)
+&#9;local parts
+&#9;if humanoid.RigType == Enum.HumanoidRigType.R15 then
+&#9;&#9;parts = { &quot;LeftUpperLeg&quot;, &quot;RightUpperLeg&quot;, &quot;LeftLowerLeg&quot;, &quot;RightLowerLeg&quot;, &quot;LeftFoot&quot;, &quot;RightFoot&quot; }
+&#9;else
+&#9;&#9;parts = { &quot;LeftLeg&quot;, &quot;RightLeg&quot; }
+&#9;end
+&#9;self:SetPartsCollide(humanoid, collide, parts)
+end
+
+function CCSMBaseState:SetTorsoCollide(humanoid : Humanoid, collide : boolean)
+&#9;local parts
+&#9;if humanoid.RigType == Enum.HumanoidRigType.R15 then
+&#9;&#9;parts = { &quot;UpperTorso&quot;, &quot;LowerTorso&quot; }
+&#9;else
+&#9;&#9;parts = { &quot;Torso&quot; }
+&#9;end
+&#9;self:SetPartsCollide(humanoid, collide, parts)
+end
+
+function CCSMBaseState:SetHeadCollide(humanoid : Humanoid, collide : boolean)
+&#9;local parts = { &quot;Head&quot; }
+&#9;self:SetPartsCollide(humanoid, collide, parts)
+end
+
+------------------------------------------------------------------------------------
+
+function CCSMBaseState:OnCreate(...)
+&#9;baseState.OnCreate(self, ...)
+&#9;
+&#9;self.timer = 0
+&#9;self.armsShouldCollide = false
+&#9;self.legsShouldCollide = false
+&#9;self.headShouldCollide = true
+&#9;self.torsoShouldCollide = true
+end
+
+function CCSMBaseState:OnEnter(stateMachine)
+&#9;baseState.OnEnter(self, stateMachine)
+&#9;
+&#9;local humanoid = stateMachine.context.humanoid
+&#9;if humanoid ~= nil then
+&#9;&#9;humanoid:ChangeState(self.humanoidState)
+&#9;&#9;humanoid:SetAttribute(commonTypes.StateAttribute, self.name)
+&#9;&#9;if stateMachine.localEvent ~= nil then
+&#9;&#9;&#9;local record : ChangeStateSMRecord = {
+&#9;&#9;&#9;&#9;character = stateMachine.context.character,
+&#9;&#9;&#9;&#9;newState = self.name,
+&#9;&#9;&#9;&#9;newHumanoidState = self.humanoidState.Name
+&#9;&#9;&#9;}
+&#9;&#9;&#9;stateMachine.localEvent:Fire(stateMachine.context.character, humanoid, &quot;ChangeStateSM&quot;, record)
+&#9;&#9;end
+&#9;&#9;self:SetArmsCollide(humanoid, self.armsShouldCollide)
+&#9;&#9;self:SetLegsCollide(humanoid, self.legsShouldCollide)
+&#9;&#9;self:SetTorsoCollide(humanoid, self.torsoShouldCollide)
+&#9;&#9;self:SetHeadCollide(humanoid, self.headShouldCollide)
+&#9;end
+&#9;local controllerManager = stateMachine.context.controllerManager
+&#9;if controllerManager ~= nil then
+&#9;&#9;controllerManager.ActiveController = controllerManager:FindFirstChild(self.activeController)
+&#9;end
+&#9;self.timer = 0
+end
+
+function CCSMBaseState:OnStepped(stateMachine, dt)
+&#9;baseState.OnStepped(self, stateMachine, dt)
+&#9;self.timer = self.timer + dt
+&#9;stateMachine.context.noFloorTimer = stateMachine.context.noFloorTimer + dt
+end
+
+return CCSMBaseState</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Folder" referent="RBXDF75CF9BFB234BE9A3ABE909C8E1B83C">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">States</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+				<Item class="ModuleScript" referent="RBX3B6C242A83D04437899F1F63F3B9BA4A">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">Climbing</string>
+						<string name="ScriptGuid">{8EA625D2-8F7D-4215-8B61-6DCB129B0725}</string>
+						<string name="Source">--[[ Climbing State ]]--
+local baseState = require(script.Parent.Parent:WaitForChild(&quot;CharacterControlBaseStateModule&quot;))
+
+local Climbing = baseState:inherit()
+Climbing.name = script.Name
+Climbing.humanoidState = Enum.HumanoidStateType.Climbing 
+Climbing.activeController = &quot;ClimbController&quot;
+
+function Climbing:OnStepped(stateMachine, dt)
+&#9;baseState.OnStepped(self, stateMachine, dt)
+
+&#9;local humanoid = stateMachine.context.humanoid
+
+&#9;local moveDir = stateMachine.context.MoveDirection
+
+&#9;if moveDir.Magnitude &lt; 0.1 then&#9;&#9;
+&#9;&#9;stateMachine.context.controllerManager.MovingDirection = Vector3.zero
+&#9;else
+&#9;&#9;stateMachine.context.controllerManager.MovingDirection = moveDir
+&#9;end
+
+&#9;if humanoid.AutoRotate then
+&#9;&#9;-- TODO: Face direction of ladder object
+&#9;end&#9;
+end
+
+
+
+return Climbing
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXFF15147893E94DFCAB70730F12327FC9">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">Dead</string>
+						<string name="ScriptGuid">{C2BE92EF-1D58-4D3F-9CE8-3FEA2183468F}</string>
+						<string name="Source">--[[ Dead State ]]--
+local baseState = require(script.Parent.Parent:WaitForChild(&quot;CharacterControlBaseStateModule&quot;))
+
+local Dead = baseState:inherit()
+Dead.name = script.Name
+Dead.humanoidState = Enum.HumanoidStateType.Dead 
+Dead.activeController = &quot;&quot;
+
+function Dead:OnCreate(...)
+&#9;baseState.OnCreate(self, ...)
+
+&#9;self.armsShouldCollide = true
+&#9;self.legsShouldCollide = true
+&#9;self.headShouldCollide = true
+&#9;self.torsoShouldCollide = true
+end
+
+function Dead:OnEnter(stateMachine)
+&#9;baseState.OnEnter(self, stateMachine)
+
+&#9;local humanoid = stateMachine.context.humanoid
+&#9;if humanoid and humanoid.BreakJointsOnDeath then
+&#9;&#9;humanoid.Parent:BreakJoints()
+&#9;end&#9;
+end
+
+
+return Dead</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX64DB8253C96049B6B1BE1EDACEAC7043">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">FallingDown</string>
+						<string name="ScriptGuid">{D9C5413C-E390-4CA6-8AFE-B48D38412E91}</string>
+						<string name="Source">--[[ FallingDown State ]]--
+local baseState = require(script.Parent.Parent:WaitForChild(&quot;CharacterControlBaseStateModule&quot;))
+
+local FallingDown = baseState:inherit()
+FallingDown.name = script.Name
+FallingDown.humanoidState = Enum.HumanoidStateType.FallingDown 
+FallingDown.activeController = &quot;&quot;
+FallingDown.timerCount = 3.0
+
+function FallingDown:OnEnter(stateMachine)
+&#9;baseState.OnEnter(self, stateMachine)
+
+&#9;stateMachine.context.timer = self.timerCount&#9;
+end
+
+function FallingDown:OnStepped(stateMachine, dt)
+&#9;baseState.OnStepped(self, stateMachine, dt)
+&#9;
+&#9;stateMachine.context.timer = stateMachine.context.timer - dt
+end
+
+return FallingDown
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXCED39069551A477AAF93815DE10C432D">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">FreeFall</string>
+						<string name="ScriptGuid">{78C397E0-D78B-4705-BD85-F7FDE7FAAEEB}</string>
+						<string name="Source">--[[ FreeFall State ]]--
+local baseState = require(script.Parent.Parent:WaitForChild(&quot;CharacterControlBaseStateModule&quot;))
+
+local FreeFall = baseState:inherit()
+FreeFall.name = script.Name
+FreeFall.humanoidState = Enum.HumanoidStateType.Freefall 
+FreeFall.activeController = &quot;AirController&quot;
+
+function FreeFall:OnEnter(stateMachine)
+&#9;baseState.OnEnter(self, stateMachine)
+
+&#9;local humanoid = stateMachine.context.humanoid
+&#9;if humanoid then
+&#9;&#9;local rootPart = humanoid.Parent.PrimaryPart
+&#9;&#9;if rootPart then
+&#9;&#9;&#9;stateMachine.context.controllerManager.FacingDirection = rootPart.CFrame.LookVector
+&#9;&#9;end
+&#9;end&#9;
+end
+
+function FreeFall:OnStepped(stateMachine, dt)
+&#9;baseState.OnStepped(self, stateMachine, dt)
+
+&#9;local humanoid = stateMachine.context.humanoid
+&#9;
+&#9;local moveDir = stateMachine.context.MoveDirection
+&#9;local movementInput = moveDir.Magnitude &gt; 0.1 
+&#9;if movementInput then&#9;&#9;
+&#9;&#9;stateMachine.context.controllerManager.MovingDirection = moveDir
+&#9;else&#9;&#9;
+&#9;&#9;stateMachine.context.controllerManager.MovingDirection = Vector3.zero
+&#9;end
+&#9;
+&#9;if humanoid.AutoRotate then
+&#9;&#9;if movementInput then
+&#9;&#9;&#9;stateMachine.context.controllerManager.FacingDirection = stateMachine.context.controllerManager.MovingDirection.Unit
+&#9;&#9;else
+&#9;&#9;&#9;local rootPart = humanoid.Parent.PrimaryPart
+&#9;&#9;&#9;if rootPart then
+&#9;&#9;&#9;&#9;stateMachine.context.controllerManager.FacingDirection = rootPart.CFrame.LookVector
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end&#9;
+end
+
+
+
+return FreeFall</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXE0D0778D87284EA482730A1310501244">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">GettingUp</string>
+						<string name="ScriptGuid">{38C7A8A0-4885-48BE-A211-C0E628ACFA19}</string>
+						<string name="Source">--[[ GettingUp State ]]--
+local baseState = require(script.Parent.Parent:WaitForChild(&quot;CharacterControlBaseStateModule&quot;))
+
+local GettingUp = baseState:inherit()
+GettingUp.name = script.Name
+GettingUp.humanoidState = Enum.HumanoidStateType.GettingUp 
+GettingUp.activeController = &quot;GettingUpController&quot;
+
+return GettingUp
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX6DE2488357EF4B0D8594DC1B841BE0E0">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">Jumping</string>
+						<string name="ScriptGuid">{C53BA2E3-EAB5-4407-9657-9B57FA18FE1F}</string>
+						<string name="Source">--[[ Jumping State ]]--
+local baseState = require(script.Parent.Parent:WaitForChild(&quot;CharacterControlBaseStateModule&quot;))
+
+local Jumping = baseState:inherit()
+Jumping.name = script.Name
+Jumping.humanoidState = Enum.HumanoidStateType.Jumping 
+Jumping.activeController = &quot;JumpController&quot;
+Jumping.timerCount = 0.5
+
+function Jumping:OnEnter(stateMachine)
+&#9;baseState.OnEnter(self, stateMachine)
+
+&#9;stateMachine.context.timer = self.timerCount&#9;
+end
+
+function Jumping:OnStepped(stateMachine, dt)
+&#9;baseState.OnStepped(self, stateMachine, dt)
+&#9;
+&#9;stateMachine.context.timer = stateMachine.context.timer - dt
+end
+
+
+return Jumping</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXA66C0544BF31417C80148A99C219C3FF">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">Landed</string>
+						<string name="ScriptGuid">{F2526958-4776-406D-B130-B2F432565D0E}</string>
+						<string name="Source">--[[ Landed State ]]--
+local baseState = require(script.Parent.Parent:WaitForChild(&quot;CharacterControlBaseStateModule&quot;))
+
+local Landed = baseState:inherit()
+Landed.name = script.Name
+Landed.humanoidState = Enum.HumanoidStateType.Landed 
+Landed.activeController = &quot;RunningController&quot;
+Landed.timerCount = 0.05 
+
+function Landed:OnEnter(stateMachine)
+&#9;baseState.OnEnter(self, stateMachine)
+
+&#9;stateMachine.context.timer = self.timerCount&#9;
+end
+
+function Landed:OnStepped(stateMachine, dt)
+&#9;baseState.OnStepped(self, stateMachine, dt)
+&#9;
+&#9;stateMachine.context.timer = stateMachine.context.timer - dt
+end
+&#9;
+
+return Landed
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX2485CECE3DAB43C8A17903B1A29633F6">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">Physics</string>
+						<string name="ScriptGuid">{69BEDEEE-0BDD-407A-913E-D220FC16C6F1}</string>
+						<string name="Source">--[[ Physics State ]]--
+local baseState = require(script.Parent.Parent:WaitForChild(&quot;CharacterControlBaseStateModule&quot;))
+
+local Physics = baseState:inherit()
+Physics.name = script.Name
+Physics.humanoidState = Enum.HumanoidStateType.Physics 
+Physics.activeController = &quot;&quot;
+
+return Physics
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXA9B08541A7EA4F2FBCDDCE4CA620D944">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">PlatformStanding</string>
+						<string name="ScriptGuid">{29A13824-91B2-418D-BDF3-58E9A937DD4A}</string>
+						<string name="Source">--[[ PlatformStanding State ]]--
+local baseState = require(script.Parent.Parent:WaitForChild(&quot;CharacterControlBaseStateModule&quot;))
+
+local PlatformStanding = baseState:inherit()
+PlatformStanding.name = script.Name
+PlatformStanding.humanoidState = Enum.HumanoidStateType.PlatformStanding 
+PlatformStanding.activeController = &quot;&quot;
+
+return PlatformStanding
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX959C953D8C70473EA704934258F6F393">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">Ragdoll</string>
+						<string name="ScriptGuid">{87DF4B46-6B97-47B3-A762-91039176B264}</string>
+						<string name="Source">--[[ Ragdoll State ]]--
+local baseState = require(script.Parent.Parent:WaitForChild(&quot;CharacterControlBaseStateModule&quot;))
+
+local Ragdoll = baseState:inherit()
+Ragdoll.name = script.Name
+Ragdoll.humanoidState = Enum.HumanoidStateType.Ragdoll 
+Ragdoll.activeController = &quot;&quot;
+
+return Ragdoll
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXEE3504C7B6234217BB4B7FFC56E5BBAA">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">Running</string>
+						<string name="ScriptGuid">{0ED6AAEF-8376-4E33-A54D-0BBD60BEBD38}</string>
+						<string name="Source">--[[ Ground State ]]--
+local baseState = require(script.Parent.Parent:WaitForChild(&quot;CharacterControlBaseStateModule&quot;))
+
+local Running = baseState:inherit()
+Running.name = script.Name
+Running.humanoidState = Enum.HumanoidStateType.Running 
+Running.activeController = &quot;RunningController&quot;
+
+function Running:OnEnter(stateMachine)
+&#9;baseState.OnEnter(self, stateMachine)
+
+&#9;local humanoid = stateMachine.context.humanoid
+&#9;if humanoid then
+&#9;&#9;local rootPart = humanoid.Parent.PrimaryPart
+&#9;&#9;if rootPart then
+&#9;&#9;&#9;stateMachine.context.controllerManager.FacingDirection = rootPart.CFrame.LookVector
+&#9;&#9;end
+&#9;end&#9;
+end
+
+function Running:OnStepped(stateMachine, dt)
+&#9;baseState.OnStepped(self, stateMachine, dt)
+&#9;
+&#9;local humanoid = stateMachine.context.humanoid
+&#9;
+&#9;local moveDir = stateMachine.context.MoveDirection&#9;
+&#9;local movementInput = moveDir.Magnitude &gt; 0.1 
+&#9;if movementInput then&#9;&#9;
+&#9;&#9;stateMachine.context.controllerManager.MovingDirection = moveDir
+&#9;else&#9;&#9;
+&#9;&#9;stateMachine.context.controllerManager.MovingDirection = Vector3.zero
+&#9;end
+&#9;
+&#9;if humanoid.AutoRotate then
+&#9;&#9;if movementInput then
+&#9;&#9;&#9;stateMachine.context.controllerManager.FacingDirection = stateMachine.context.controllerManager.MovingDirection.Unit
+&#9;&#9;else
+&#9;&#9;&#9;local rootPart = humanoid.Parent.PrimaryPart
+&#9;&#9;&#9;if rootPart then
+&#9;&#9;&#9;&#9;stateMachine.context.controllerManager.FacingDirection = rootPart.CFrame.LookVector
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end&#9;
+end
+
+
+return Running</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX3996E53A0BD149C88514A327D29A639C">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">Seated</string>
+						<string name="ScriptGuid">{85C53DDA-314C-455F-B150-0D86D832DC08}</string>
+						<string name="Source">--[[ Seated State ]]--
+local baseState = require(script.Parent.Parent:WaitForChild(&quot;CharacterControlBaseStateModule&quot;))
+
+local Seated = baseState:inherit()
+Seated.name = script.Name
+Seated.humanoidState = Enum.HumanoidStateType.Seated 
+Seated.activeController = &quot;&quot;
+
+function Seated:OnExit(stateMachine)
+&#9;local humanoid = stateMachine.context.humanoid
+&#9;humanoid.Sit = false
+--&#9;humanoid.SeatPart = nil
+&#9;-- done sitting signal
+end
+
+return Seated
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXAD8CF9E4ECBB48B99634E3C7A792753F">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">Swimming</string>
+						<string name="ScriptGuid">{D6635448-7DFD-4DC3-B753-824A8A714199}</string>
+						<string name="Source">--[[ Swimming State ]]--
+local baseState = require(script.Parent.Parent:WaitForChild(&quot;CharacterControlBaseStateModule&quot;))
+
+local Swimming = baseState:inherit()
+Swimming.name = script.Name
+Swimming.humanoidState = Enum.HumanoidStateType.Swimming 
+Swimming.activeController = &quot;SwimController&quot;
+
+function Swimming:OnStepped(stateMachine, dt)
+&#9;baseState.OnStepped(self, stateMachine, dt)
+
+&#9;local humanoid = stateMachine.context.humanoid
+
+&#9;local moveDir = stateMachine.context.MoveDirection
+&#9;
+&#9;if moveDir.Magnitude &lt; 0.1 then&#9;&#9;
+&#9;&#9;stateMachine.context.controllerManager.MovingDirection = Vector3.zero
+&#9;else&#9;&#9;
+&#9;&#9;stateMachine.context.controllerManager.MovingDirection = moveDir
+&#9;end
+
+&#9;if humanoid.AutoRotate then
+&#9;&#9;if stateMachine.context.controllerManager.MovingDirection.Magnitude &gt; 0 then
+&#9;&#9;&#9;stateMachine.context.controllerManager.FacingDirection = stateMachine.context.controllerManager.MovingDirection.Unit
+&#9;&#9;end
+&#9;end&#9;
+end
+
+return Swimming
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Folder" referent="RBX3DBA3A788BCC4565892757EF45BD12E6">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Transitions</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+				<Item class="ModuleScript" referent="RBX85765E6C181144CA845AA5100DC7060E">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">AwayLdr</string>
+						<string name="ScriptGuid">{402E9BB7-60A4-432C-B748-6D5D298B9A9F}</string>
+						<string name="Source">--[[ AwayLdr Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local AwayLdr = baseTransition:inherit()
+AwayLdr.name = script.Name
+AwayLdr.destinationName = &quot;Running&quot;
+AwayLdr.sourceName = &quot;Climbing&quot;
+AwayLdr.priority = 3
+
+function AwayLdr:Test(stateMachine)
+&#9;local climbSensor = stateMachine.context.humanoid.Parent.HumanoidRootPart.ClimbSensor
+&#9;return climbSensor.SensedPart == nil
+end
+
+return AwayLdr</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX6C0CD9B3948246EF8ED4B8D4E157BDF5">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">FaceLdr</string>
+						<string name="ScriptGuid">{994BDB88-5EF0-4FF6-A862-9E7CC33D6690}</string>
+						<string name="Source">--[[ FaceLdr Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local FaceLdr = baseTransition:inherit()
+FaceLdr.name = script.Name
+FaceLdr.destinationName = &quot;Climbing&quot;
+FaceLdr.sourceName = &quot;FreeFall, Running&quot;
+FaceLdr.priority = 3
+
+function FaceLdr:Test(stateMachine)
+&#9;local climbSensor = stateMachine.context.humanoid.Parent.HumanoidRootPart.ClimbSensor
+&#9;return climbSensor.SensedPart ~= nil
+end
+
+return FaceLdr</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX597CE4DF79AC43AFA284F19472873AAE">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">Finished</string>
+						<string name="ScriptGuid">{299CA972-B803-4108-B014-BE77BA7BFBD4}</string>
+						<string name="Source">--[[ Finished Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local Finished = baseTransition:inherit()
+Finished.name = script.Name
+Finished.destinationName = &quot;FreeFall&quot;
+Finished.sourceName = &quot;Jumping&quot;
+Finished.priority = 3
+
+function Finished:Test(stateMachine)
+&#9;-- TODO: Add measurement for peak height reached
+&#9;return false
+end
+
+return Finished</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX2D63B0050F5840BDABCC7226D5C344BD">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">HasBuoyancy</string>
+						<string name="ScriptGuid">{9C25FE7D-52F6-4E2D-867A-E95F84C1A31C}</string>
+						<string name="Source">--[[ HasBuoyancy Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local HasBuoyancy = baseTransition:inherit()
+HasBuoyancy.name = script.Name
+HasBuoyancy.destinationName = &quot;Swimming&quot;
+HasBuoyancy.sourceName = &quot;FallingDown, GettingUp, FreeFall, Landed, Running, Climbing&quot;
+HasBuoyancy.priority = 3
+
+function HasBuoyancy:Test(stateMachine)
+&#9;local visibleTorso
+&#9;if stateMachine.context.humanoid.RigType == Enum.HumanoidRigType.R6 then
+&#9;&#9;visibleTorso = stateMachine.context.humanoid.Parent:FindFirstChild(&quot;Torso&quot;)
+&#9;else
+&#9;&#9;visibleTorso = stateMachine.context.humanoid.Parent:FindFirstChild(&quot;UpperTorso&quot;)
+&#9;end
+&#9;if not visibleTorso then
+&#9;&#9;return false
+&#9;end
+&#9;local BuoyancySensor = visibleTorso:FindFirstChild(&quot;BuoyancySensor&quot;)
+&#9;return BuoyancySensor and (BuoyancySensor.FullySubmerged or BuoyancySensor.TouchingSurface)
+end
+
+return HasBuoyancy</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXA17861FAAB464C77A3BD71CEE64569D0">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">JumpCmd</string>
+						<string name="ScriptGuid">{54A2D600-6226-4F72-B05E-9608C021313B}</string>
+						<string name="Source">--[[ JumpCmd Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local JumpCmd = baseTransition:inherit()
+JumpCmd.name = script.Name
+JumpCmd.destinationName = &quot;Jumping&quot;
+JumpCmd.sourceName = &quot;Swimming, Running, Climbing, Seated, PlatformStanding&quot;
+JumpCmd.priority = 3
+
+function JumpCmd:Test(stateMachine)
+&#9;local humanoid = stateMachine.context.humanoid
+&#9;local jumped = humanoid.Jump
+&#9;local currentState = stateMachine:GetCurrentStateName()
+&#9;
+&#9;-- need to check for too steep floor
+&#9;-- need to check if they are off floor for too long
+&#9;-- no jump if underwater
+&#9;
+&#9;if humanoid.Parent.PrimaryPart.Anchored == true then
+&#9;&#9;return false
+&#9;end&#9;
+&#9;
+&#9;-- TODO - put this back once climbing sensor is working
+&#9;--if currentState == &quot;Climbing&quot; and not humanoid.FacingLadder then
+&#9;if currentState == &quot;Climbing&quot; then
+&#9;&#9;return false
+&#9;elseif currentState == &quot;Seated&quot; and humanoid.SeatPart == nil then
+&#9;&#9;humanoid.Sit = false
+&#9;&#9;return false
+&#9;end
+&#9;
+&#9;return jumped
+end
+
+return JumpCmd</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX0E06B86983ED464A8F2EC4C933D4E729">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">JumpRagdollCmd</string>
+						<string name="ScriptGuid">{5C69AD0F-23D0-46D1-96FE-742C6DA4E9BF}</string>
+						<string name="Source">--[[ JumpRagdollCmd Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local JumpRagdollCmd = baseTransition:inherit()
+JumpRagdollCmd.name = script.Name
+JumpRagdollCmd.destinationName = &quot;GettingUp&quot;
+JumpRagdollCmd.sourceName = &quot;Ragdoll&quot;
+JumpRagdollCmd.priority = 3
+
+function JumpRagdollCmd:Test(stateMachine)
+&#9;local jumped = stateMachine.context.humanoid.Jump
+&#9;return jumped
+end
+
+return JumpRagdollCmd</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXE558C58AC3CF4BA38ACFD8F70C59C113">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">NoBuoyancy</string>
+						<string name="ScriptGuid">{BFD93F53-9308-4AE7-AF00-4075AFD17129}</string>
+						<string name="Source">--[[ NoBuoyancy Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local NoBuoyancy = baseTransition:inherit()
+NoBuoyancy.name = script.Name
+NoBuoyancy.destinationName = &quot;GettingUp&quot;
+NoBuoyancy.sourceName = &quot;Swimming&quot;
+NoBuoyancy.priority = 3
+
+function NoBuoyancy:Test(stateMachine)local visibleTorso
+&#9;if stateMachine.context.humanoid.RigType == Enum.HumanoidRigType.R6 then
+&#9;&#9;visibleTorso = stateMachine.context.humanoid.Parent:FindFirstChild(&quot;Torso&quot;)
+&#9;else
+&#9;&#9;visibleTorso = stateMachine.context.humanoid.Parent:FindFirstChild(&quot;UpperTorso&quot;)
+&#9;end
+&#9;if not visibleTorso then
+&#9;&#9;return true
+&#9;end
+&#9;local BuoyancySensor = visibleTorso:FindFirstChild(&quot;BuoyancySensor&quot;)
+&#9;return not BuoyancySensor or (not BuoyancySensor.FullySubmerged and not BuoyancySensor.TouchingSurface)
+end
+
+return NoBuoyancy</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX4BCCF76CA8C14F1DAE1DF2DBBD622CA1">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">NoHealth</string>
+						<string name="ScriptGuid">{9ECE0AF3-D54B-4FDB-9048-4DC119A08925}</string>
+						<string name="Source">--[[ NoHealth Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local NoHealth = baseTransition:inherit()
+NoHealth.name = script.Name
+NoHealth.destinationName = &quot;Dead&quot;
+NoHealth.sourceName = &quot;Climbing, FallingDown, FreeFall, GettingUp, Jumping, Landed, Physics, PlatformStanding, Ragdoll, Running, Seated, Swimming&quot;
+NoHealth.priority = 3
+
+function NoHealth:Test(stateMachine)
+&#9;return stateMachine.context.humanoid.Health &lt;= 0 and stateMachine.context.hadHealth
+end
+
+return NoHealth
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXB36B75660C894CCEB25EBE99D55547F7">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">NoNeck</string>
+						<string name="ScriptGuid">{BB5209EE-52B5-4840-A9CA-FC98AC5B0EEA}</string>
+						<string name="Source">--[[ NoNeck Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local NoNeck = baseTransition:inherit()
+NoNeck.name = script.Name
+NoNeck.destinationName = &quot;Dead&quot;
+NoNeck.sourceName = &quot;Climbing, FallingDown, FreeFall, GettingUp, Jumping, Landed, Physics, PlatformStanding, Ragdoll, Running, Seated, Swimming&quot;
+NoNeck.priority = 3
+
+function NoNeck:Test(stateMachine)
+&#9;return false
+end
+
+return NoNeck
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX465D7BFFD5E243FD9AA036F3E69DF683">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">NoPlatformStandCmd</string>
+						<string name="ScriptGuid">{FBAF7873-1A3D-44A6-A44B-9DA969FB5E78}</string>
+						<string name="Source">--[[ NoPlatformStandCmd Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local NoPlatformStandCmd = baseTransition:inherit()
+NoPlatformStandCmd.name = script.Name
+NoPlatformStandCmd.destinationName = &quot;Running&quot;
+NoPlatformStandCmd.sourceName = &quot;PlatformStanding&quot;
+NoPlatformStandCmd.priority = 3
+
+function NoPlatformStandCmd:Test(stateMachine)
+&#9;local jumped = stateMachine.context.humanoid.Jump
+&#9;return jumped
+end
+
+return NoPlatformStandCmd</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX4CBFFE41171F482EABB5101970233993">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">NoSitCmd</string>
+						<string name="ScriptGuid">{7514A6B0-3312-4E50-96F2-F390688192F8}</string>
+						<string name="Source">--[[ NoSitCmd Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local NoSitCmd = baseTransition:inherit()
+NoSitCmd.name = script.Name
+NoSitCmd.destinationName = &quot;Running&quot;
+NoSitCmd.sourceName = &quot;Seated&quot;
+NoSitCmd.priority = 3
+
+function NoSitCmd:Test(stateMachine)
+&#9;local humanoid = stateMachine.context.humanoid
+&#9;local seated = humanoid.Sit
+&#9;return not seated
+end
+
+return NoSitCmd</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX8AFFC545D49B41659B9F3E54C797832C">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">OffFloorGrace</string>
+						<string name="ScriptGuid">{45015311-1C17-4117-B713-4618A51D500A}</string>
+						<string name="Source">--[[ OffFloorGrace Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local OffFloorGrace = baseTransition:inherit()
+OffFloorGrace.name = script.Name
+OffFloorGrace.destinationName = &quot;FreeFall&quot;
+OffFloorGrace.sourceName = &quot;Jumping, Landed, Running&quot;
+OffFloorGrace.priority = 3
+
+OffFloorGrace.delay = 0.125
+
+function OffFloorGrace:Test(stateMachine)
+&#9;local groundSensor = stateMachine.context.humanoid.Parent.HumanoidRootPart.GroundSensor
+&#9;local onFloor = groundSensor.SensedPart ~= nil -- TODO: Need to check for relative velocity to floor
+&#9;if onFloor then
+&#9;&#9;stateMachine.context.noFloorTimer = 0
+&#9;end
+&#9;return stateMachine.context.noFloorTimer &gt; OffFloorGrace.delay 
+end
+
+return OffFloorGrace</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX92A21DF6DAF94C368007E20BF0732822">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">OffFloorJumping</string>
+						<string name="ScriptGuid">{EE646C0D-0252-4BDA-99A6-F829FE453834}</string>
+						<string name="Source">--[[ OffFloorJumping Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local OffFloorJumping = baseTransition:inherit()
+OffFloorJumping.name = script.Name
+OffFloorJumping.destinationName = &quot;FreeFall&quot;
+OffFloorJumping.sourceName = &quot;Jumping&quot;
+OffFloorJumping.priority = 3
+
+function OffFloorJumping:Test(stateMachine)
+&#9;local groundSensor = stateMachine.context.humanoid.Parent.HumanoidRootPart.GroundSensor
+&#9;return groundSensor.SensedPart == nil
+end
+
+return OffFloorJumping</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXA1FA45FC304840DE8228173880EFD260">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">OnFloor</string>
+						<string name="ScriptGuid">{16F8C12A-9C99-4DCE-85AE-0A9701A7C4D8}</string>
+						<string name="Source">--[[ OnFloor Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local OnFloor = baseTransition:inherit()
+OnFloor.name = script.Name
+OnFloor.destinationName = &quot;Landed&quot;
+OnFloor.sourceName = &quot;FreeFall&quot;
+OnFloor.priority = 3
+
+function OnFloor:Test(stateMachine)
+&#9;local onFloor = false
+&#9;local groundSensor = stateMachine.context.humanoid.Parent.HumanoidRootPart.GroundSensor
+&#9;if groundSensor then
+&#9;&#9;onFloor = groundSensor.SensedPart ~= nil -- TODO: Need to check for relative velocity to floor
+&#9;end
+&#9;if onFloor then
+&#9;&#9;stateMachine.context.noFloorTimer = 0
+&#9;end
+&#9;return onFloor
+end
+
+return OnFloor</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX63FFC3D41529476AA12E759EADB814F6">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">OnFloorClimbing</string>
+						<string name="ScriptGuid">{9732440E-A316-44D2-8D24-D80C8428F91E}</string>
+						<string name="Source">--[[ OnFloorClimbing Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local OnFloorClimbing = baseTransition:inherit()
+OnFloorClimbing.name = script.Name
+OnFloorClimbing.destinationName = &quot;Running&quot;
+OnFloorClimbing.sourceName = &quot;Climbing&quot;
+OnFloorClimbing.priority = 3
+
+OnFloorClimbing.forwardThreshold = -0.01
+
+function OnFloorClimbing:Test(stateMachine)
+&#9;local groundSensor = stateMachine.context.humanoid.Parent.HumanoidRootPart.GroundSensor
+&#9;local onFloor = groundSensor.SensedPart ~= nil -- TODO: Need to check for relative velocity to floor
+&#9;
+&#9;if onFloor then
+&#9;&#9;local humanoid = stateMachine.context.humanoid
+&#9;&#9;local moveDir = stateMachine.context.MoveDirection
+&#9;&#9;local rootPart = humanoid.Parent.PrimaryPart
+&#9;&#9;if rootPart then
+&#9;&#9;&#9;if moveDir:Dot(rootPart.CFrame.LookVector) &gt; OnFloorClimbing.forwardThreshold then
+&#9;&#9;&#9;&#9;onFloor = false
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;if onFloor then
+&#9;&#9;stateMachine.context.noFloorTimer = 0
+&#9;end
+&#9;return onFloor
+end
+
+return OnFloorClimbing
+
+
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXB1DD981F4C7042B6AC9D44D3F0BFAD55">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">PlatformStandCmd</string>
+						<string name="ScriptGuid">{E4172019-F26A-4816-A188-04102BE53031}</string>
+						<string name="Source">--[[ PlatformStandCmd Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local PlatformStandCmd = baseTransition:inherit()
+PlatformStandCmd.name = script.Name
+PlatformStandCmd.destinationName = &quot;PlatformStanding&quot;
+PlatformStandCmd.sourceName = &quot;Climbing, FreeFall, FallingDown, GettingUp, Landed, Running, Jumping, Swimming&quot;
+PlatformStandCmd.priority = 3
+
+function PlatformStandCmd:Test(stateMachine)
+&#9;return false
+end
+
+return PlatformStandCmd
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX805CFDC51320410A910BB08D6F370B0D">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">SitCmd</string>
+						<string name="ScriptGuid">{FF2EB45F-26A6-4B16-B49D-76D6F27BD1D5}</string>
+						<string name="Source">--[[ SitCmd Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local SitCmd = baseTransition:inherit()
+SitCmd.name = script.Name
+SitCmd.destinationName = &quot;Seated&quot;
+SitCmd.sourceName = &quot;Climbing, FreeFall, FallingDown, GettingUp, Landed, Running, Jumping, Swimming&quot;
+SitCmd.priority = 3
+
+function SitCmd:Test(stateMachine)
+&#9;local humanoid = stateMachine.context.humanoid
+&#9;local seated = humanoid.Sit and humanoid.SeatPart ~= nil
+&#9;return seated
+end
+
+return SitCmd
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXA6641C511CDB4600BCA698255898E59E">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">TimerUpGettingUp</string>
+						<string name="ScriptGuid">{35570D89-7410-4486-B1A7-A2E1E1C46902}</string>
+						<string name="Source">--[[ TimerUpGettingUp Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local TimerUpGettingUp = baseTransition:inherit()
+TimerUpGettingUp.name = script.Name
+TimerUpGettingUp.destinationName = &quot;GettingUp&quot;
+TimerUpGettingUp.sourceName = &quot;FallingDown, Ragdoll&quot;
+TimerUpGettingUp.priority = 3
+
+function TimerUpGettingUp:Test(stateMachine)
+&#9;return stateMachine.context.timer &lt; 0.0 
+end
+
+return TimerUpGettingUp
+</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX8495A49D51FD4C25BC50A1E65BCBEAA5">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">TimerUpRunning</string>
+						<string name="ScriptGuid">{8E2ED483-949E-4CE6-9D3F-7AC636B96BCF}</string>
+						<string name="Source">--[[ TimerUpRunning Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local TimerUpRunning = baseTransition:inherit()
+TimerUpRunning.name = script.Name
+TimerUpRunning.destinationName = &quot;Running&quot;
+TimerUpRunning.sourceName = &quot;Landed&quot;
+TimerUpRunning.priority = 3
+
+function TimerUpRunning:Test(stateMachine)
+&#9;return stateMachine.context.timer &lt; 0.0
+end
+
+return TimerUpRunning</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX2ACFD422D9B24EA3860BC6E754270DAC">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">Tipped</string>
+						<string name="ScriptGuid">{AFFC049E-541F-408E-94FC-E27D32CE4EA3}</string>
+						<string name="Source">--[[ Tipped Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local Tipped = baseTransition:inherit()
+Tipped.name = script.Name
+Tipped.destinationName = &quot;FallingDown&quot;
+Tipped.sourceName = &quot;Landed, Running&quot;
+Tipped.priority = 3
+Tipped.tiltThreshhold = 0.7
+
+function Tipped:Test(stateMachine)
+&#9;local rootPart = stateMachine.context.humanoid.Parent.PrimaryPart
+&#9;if rootPart then
+&#9;&#9;local upVec = rootPart.CFrame.upVector&#9;&#9;
+&#9;&#9;return upVec.y &lt; Tipped.tiltThreshhold -- TODO: and not just get out of water?
+&#9;else
+&#9;&#9;return true
+&#9;end&#9;
+end
+
+return Tipped</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX73C336A000C94DEA94A0C9AC12D0C98F">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">TouchedHard</string>
+						<string name="ScriptGuid">{5DCB2156-9D65-45E6-9EEB-9D3AD2629958}</string>
+						<string name="Source">--[[ TouchedHard Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local TouchedHard = baseTransition:inherit()
+TouchedHard.name = script.Name
+TouchedHard.destinationName = &quot;Ragdoll&quot;
+TouchedHard.sourceName = &quot;Swimming, Running&quot;
+TouchedHard.priority = 3
+
+function TouchedHard:Test(stateMachine)
+&#9;return false
+end
+
+return TouchedHard</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX74E03C1B7B6B45B094AB315731DF71C8">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="LinkedSource"></string>
+						<string name="Name">Upright</string>
+						<string name="ScriptGuid">{5D4E0FB8-0883-4EF6-848D-7E5094ED9C61}</string>
+						<string name="Source">--[[ Upright Transition ]]--
+local baseTransition = require(script.Parent.Parent.Parent:WaitForChild(&quot;BaseStateMachine&quot;):WaitForChild(&quot;BaseTransitionModule&quot;))
+
+local Upright = baseTransition:inherit()
+Upright.name = script.Name
+Upright.destinationName = &quot;Running&quot;
+Upright.sourceName = &quot;GettingUp&quot;
+Upright.priority = 3
+Upright.upAngle = 0.90
+
+function Upright:Test(stateMachine)
+&#9;local rootPart = stateMachine.context.humanoid.Parent.PrimaryPart
+&#9;if rootPart then
+&#9;&#9;local upVec = rootPart.CFrame.upVector&#9;&#9;
+&#9;&#9;return upVec.y &gt; Upright.upAngle
+&#9;else
+&#9;&#9;return true
+&#9;end&#9;
+end
+
+return Upright</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+					</Properties>
+				</Item>
+			</Item>
+		</Item>
+		<Item class="ModuleScript" referent="RBX1D8375CA4DB74308BD835736CB0E0325">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="LinkedSource"></string>
+				<string name="Name">CharacterPhysicsControllerLoader</string>
+				<string name="ScriptGuid">{1CA6323E-CE70-4A85-877A-5468455AF877}</string>
+				<string name="Source">--! strict
+local CharacterPhysicsControllerLoader = {}
+CharacterPhysicsControllerLoader.__index = CharacterPhysicsControllerLoader
+CharacterPhysicsControllerLoader.name = script.Name
+
+
+function CharacterPhysicsControllerLoader:clampJumpPower(jumpPower)
+&#9;local MinJumpPower = 0.0
+&#9;local MaxJumpPower = 1000.0
+&#9;return math.clamp(jumpPower, MinJumpPower, MaxJumpPower);
+end
+
+function CharacterPhysicsControllerLoader:oldCalculateJumpPower(gravity, jumpHeight)
+&#9;return math.sqrt(2.0 * gravity * jumpHeight) / (self.JumpPowerInstantControllerMultiplierPercent * 0.01)
+end
+
+
+function CharacterPhysicsControllerLoader:calculateJumpPower()
+&#9;local humanoid = self.humanoid
+&#9;if humanoid.UseJumpPower then
+&#9;&#9;return humanoid.JumpPower
+&#9;else
+&#9;&#9;if humanoid:IsDescendantOf(game.Workspace) then
+&#9;&#9;&#9;return self:clampJumpPower(self:oldCalculateJumpPower(workspace.Gravity, humanoid.JumpHeight))
+&#9;&#9;end
+&#9;end
+&#9;return 0.0
+end
+
+function CharacterPhysicsControllerLoader:createGroundControllerController(name : string)
+&#9;local groundController = Instance.new(&quot;GroundController&quot;, self.controllerManager)
+&#9;groundController.Name = name&#9;
+&#9;groundController.GroundOffset = self.humanoid.HipHeight
+&#9;return groundController
+end
+
+function CharacterPhysicsControllerLoader:createAirControllerController(name : string, jumpForce : Vector3)
+&#9;local airController = Instance.new(&quot;AirController&quot;, self.controllerManager)
+&#9;airController.Name = name
+&#9;if jumpForce ~= nil then 
+&#9;&#9;airController.VectorForce = jumpForce&#9;
+&#9;end
+&#9;return airController
+end
+
+function CharacterPhysicsControllerLoader:createSwimControllerController(name : string)
+&#9;local swimController = Instance.new(&quot;SwimController&quot;, self.controllerManager)
+&#9;return swimController
+end
+
+function CharacterPhysicsControllerLoader:createClimbControllerController(name : string)
+&#9;local climbController = Instance.new(&quot;ClimbController&quot;, self.controllerManager)
+&#9;return climbController
+end
+
+
+
+function CharacterPhysicsControllerLoader:addDefaultControllers()
+&#9;local runningController = self.controllerManager:FindFirstChild(&quot;RunningController&quot;)
+&#9;if runningController == nil then
+&#9;&#9;self:createGroundControllerController(&quot;RunningController&quot;)&#9;
+&#9;end
+
+&#9;local gettingUpController = self.controllerManager:FindFirstChild(&quot;GettingUpController&quot;)
+&#9;if gettingUpController == nil then
+&#9;&#9;self:createGroundControllerController(&quot;GettingUpController&quot;)
+&#9;end
+
+&#9;local airController = self.controllerManager:FindFirstChild(&quot;AirController&quot;)
+&#9;if airController == nil then
+&#9;&#9;airController = self:createAirControllerController(&quot;AirController&quot;, nil)&#9;
+&#9;end
+
+&#9;local jumpController = self.controllerManager:FindFirstChild(&quot;JumpController&quot;)
+&#9;if jumpController == nil then
+&#9;&#9;local jumForce = Vector3.new(0, self:calculateJumpPower(), 0);
+&#9;&#9;jumpController = self:createAirControllerController(&quot;JumpController&quot;, jumForce)&#9;
+&#9;end
+
+&#9;local swimController = self.controllerManager:FindFirstChild(&quot;SwimController&quot;)
+&#9;if swimController == nil then
+&#9;&#9;swimController = self:createSwimControllerController(&quot;SwimController&quot;)
+&#9;end
+
+&#9;local climbController = self.controllerManager:FindFirstChild(&quot;ClimbController&quot;)
+&#9;if climbController == nil then
+&#9;&#9;climbController = self:createClimbControllerController(&quot;ClimbController&quot;)
+&#9;end
+end
+
+function CharacterPhysicsControllerLoader:createAndAddGroundSensor()
+&#9;local groundSensor = Instance.new(&quot;ControllerPartSensor&quot;, self.humanoidRootPart)
+&#9;groundSensor.Name = &quot;GroundSensor&quot;
+&#9;groundSensor.SensorMode = Enum.SensorMode.Floor
+&#9;self.controllerManager.GroundSensor = groundSensor&#9;
+
+&#9;return groundSensor
+
+end
+
+function CharacterPhysicsControllerLoader:createAndAddClimbSensor()
+&#9;local climbSensor = Instance.new(&quot;ControllerPartSensor&quot;, self.humanoidRootPart)
+&#9;climbSensor.Name = &quot;ClimbSensor&quot;
+&#9;climbSensor.SensorMode = Enum.SensorMode.Ladder
+&#9;climbSensor.SearchDistance = 2
+&#9;self.controllerManager.ClimbSensor = climbSensor
+
+&#9;return climbSensor
+end
+
+function CharacterPhysicsControllerLoader:createAndAddBuoyancySensor(torsoattach)
+&#9;local buoyancySensor = Instance.new(&quot;BuoyancySensor&quot;, torsoattach)
+&#9;return buoyancySensor
+end
+
+function CharacterPhysicsControllerLoader:addDefaultSensors()
+&#9;local groundSensor = self.humanoidRootPart:FindFirstChild(&quot;GroundSensor&quot;)
+&#9;if groundSensor == nil then
+&#9;&#9;groundSensor = self:createAndAddGroundSensor()
+&#9;end
+&#9;local climbSensor = self.humanoidRootPart:FindFirstChild(&quot;ClimbSensor&quot;)
+&#9;if climbSensor == nil then 
+&#9;&#9;climbSensor = self:createAndAddClimbSensor()&#9;
+&#9;end
+
+&#9;local torsoattach
+&#9;if self.humanoid.RigType == Enum.HumanoidRigType.R6 then
+&#9;&#9;torsoattach = self.humanoid.Parent:WaitForChild(&quot;Torso&quot;)
+&#9;else
+&#9;&#9;torsoattach = self.humanoid.Parent:WaitForChild(&quot;UpperTorso&quot;)
+&#9;end
+
+&#9;local buoyancySensor = torsoattach:FindFirstChild(&quot;BuoyancySensor&quot;)
+&#9;if buoyancySensor == nil then
+&#9;&#9;buoyancySensor = self:createAndAddBuoyancySensor()&#9;
+&#9;end
+
+end
+
+function CharacterPhysicsControllerLoader:loadSensorsAndPhysicsController()
+&#9;if self.humanoid.EvaluateStateMachine == true then
+&#9;&#9;error(&quot;Error !! Please set EvaluateStateMachine property on Humanoid to false&quot;)
+&#9;&#9;return
+&#9;end
+&#9;self:addDefaultControllers()
+&#9;self:addDefaultSensors()
+
+end
+
+function CharacterPhysicsControllerLoader.new(humanoidInstance : Instance, controllerManagerInstance:ControllerManager, humanoidRootPart : Instance)
+&#9;local self = {
+&#9;&#9;humanoid = humanoidInstance,
+&#9;&#9;controllerManager = if controllerManagerInstance then controllerManagerInstance else  Instance.new(&quot;ControllerManager&quot;),
+&#9;&#9;JumpPowerInstantControllerMultiplierPercent = 106, -- taken from C++ DFFlag::JumpPowerInstantControllerMultiplierPercent
+&#9;&#9;humanoidRootPart = humanoidRootPart
+&#9;}
+
+&#9;self.controllerManager.BaseMoveSpeed = self.humanoid.WalkSpeed
+&#9;self.controllerManager.Parent = self.humanoid
+&#9;setmetatable(self, CharacterPhysicsControllerLoader)
+&#9;return self
+end
+
+return CharacterPhysicsControllerLoader</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+		<Item class="ModuleScript" referent="RBXB6A7AD1AD66D4A269F6008251C3A80B6">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="LinkedSource"></string>
+				<string name="Name">CharacterStateMachineCommon</string>
+				<string name="ScriptGuid">{14DD4AF8-E024-40F0-A706-A5AC2F24DEBA}</string>
+				<string name="Source">--!strict
+local CharacterStateMachineCommon = {}
+
+local replicatedStorage : ReplicatedStorage = game:GetService(&quot;ReplicatedStorage&quot;)
+local characterStateMachineFolder = replicatedStorage:WaitForChild(&quot;CharacterStateMachine&quot;)
+local commonTypes = require(replicatedStorage:WaitForChild(&quot;CharacterStateMachine&quot;):WaitForChild(&quot;CharacterStateMachineTypes&quot;))
+local CCSMDef = require(characterStateMachineFolder:WaitForChild(&quot;CharacterControlStateMachine&quot;))
+local moveToListener = require(characterStateMachineFolder:WaitForChild(&quot;MoveToListener&quot;))
+local RunService : RunService = game:FindService(&quot;RunService&quot;)
+
+local debug = false
+
+
+--[[
+&#9;Event Types
+&#9;&#9;RegisterHumanoidSM (client-&gt;server): Client has started a new SM for a new character
+&#9;&#9;TransferHumanoidSM (server-&gt;client): Server is requesting shutdown of SM owned by client
+&#9;&#9;ContextDataHumanoidSM (client-&gt;server): Context data for SM previously running on client 
+&#9;&#9;StartHumanoidSM (server-&gt;client): Server is requesting startup of SM on client
+&#9;&#9;ConfirmStartHumanoidSM (client-&gt;server): Client confirming start of newly transfered SM
+
+]]
+
+function CharacterStateMachineCommon.StartStateMachine(character : Model, humanoid : Humanoid, ccsmDef : any, localEvent : BindableEvent,
+&#9;runStartUp : boolean): commonTypes.RunningStateMachineRecord? 
+
+&#9;if character == nil or humanoid == nil or humanoid.Parent == nil or ccsmDef == nil then
+&#9;&#9;return nil
+&#9;end
+&#9;
+&#9;
+&#9;local moveToListenerObject = moveToListener.new(humanoid) 
+&#9;local record : commonTypes.RunningStateMachineRecord = {
+&#9;&#9;character = character,
+&#9;&#9;humanoid = humanoid,
+&#9;&#9;CCSM = ccsmDef.new(character),
+&#9;&#9;moveToListenerInstance = moveToListenerObject,
+&#9;&#9;heartbeatFunc = nil
+&#9;}
+
+&#9;local CCSM : any = record.CCSM
+&#9;local currentState :string = &quot;&quot;
+&#9;CCSM.localEvent = localEvent
+
+&#9;if debug then
+&#9;&#9;print(&quot;CCSM Created&quot;, CCSM, CCSM.definition)
+&#9;end
+
+&#9;record.heartbeatFunc = RunService.PreAnimation:Connect(function(dt)
+&#9;&#9;CCSM.context[&quot;MoveDirection&quot;] = moveToListenerObject:getMoveDirection()
+&#9;&#9;CCSM:OnStepped(dt)
+ 
+&#9;&#9;if debug then
+&#9;&#9;&#9;local newCurrentState = CCSM:GetCurrentStateName() 
+&#9;&#9;&#9;if (newCurrentState ~= currentState) then
+&#9;&#9;&#9;&#9;currentState = newCurrentState
+&#9;&#9;&#9;&#9;print(currentState)
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end)
+
+&#9;if runStartUp then
+&#9;&#9;record.CCSM:OnStartup()
+&#9;end
+&#9;
+&#9;return record
+end
+
+function CharacterStateMachineCommon.ContinueStateMachine(character : Model, humanoid : Humanoid, ccsmDef : any, localEvent : BindableEvent, 
+&#9;stateName : string?, context : any): commonTypes.RunningStateMachineRecord? 
+&#9;
+&#9;if humanoid == nil or humanoid.Parent == nil or ccsmDef == nil then
+&#9;&#9;return
+&#9;end
+&#9;
+&#9;local record : commonTypes.RunningStateMachineRecord? = 
+&#9;&#9;CharacterStateMachineCommon.StartStateMachine(character, humanoid, ccsmDef, localEvent, false)
+&#9;
+&#9;if record == nil then
+&#9;&#9;warn(&quot;Unable to start state machine for&quot;, character)
+&#9;&#9;return nil
+&#9;else
+&#9;&#9;if stateName ~= nil then
+&#9;&#9;&#9;local state = record.CCSM:GetStateByName(stateName)
+&#9;&#9;&#9;if state ~= nil then
+&#9;&#9;&#9;&#9;record.CCSM:SetState(stateName)
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;if context ~= nil then
+&#9;&#9;&#9;record.CCSM.context = context
+&#9;&#9;&#9;record.CCSM.localEvent = localEvent
+&#9;&#9;end
+&#9;&#9;record.CCSM:OnStartup()
+
+&#9;&#9;return record
+&#9;end
+end
+
+function CharacterStateMachineCommon.StopStateMachine(record : commonTypes.RunningStateMachineRecord)
+&#9;if record.heartbeatFunc ~= nil then
+&#9;&#9;record.heartbeatFunc:Disconnect()
+&#9;end
+
+&#9;record.CCSM:OnShutdown()
+end
+
+function CharacterStateMachineCommon.SetState(character : Model, newState : string)
+&#9;local humanoid : Humanoid? = character:FindFirstChildOfClass(&quot;Humanoid&quot;)
+&#9;if humanoid ~= nil then
+&#9;&#9;humanoid:SetAttribute(commonTypes.StateAttribute, newState)
+&#9;end
+end
+
+return CharacterStateMachineCommon
+</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+		<Item class="ModuleScript" referent="RBX94F2F6D606B44BA0BDDDC606F5C977A8">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="LinkedSource"></string>
+				<string name="Name">CharacterStateMachineTypes</string>
+				<string name="ScriptGuid">{EE7383CC-5987-4CBF-ABA0-9765262A5B3B}</string>
+				<string name="Source">local CharacterStateMachineTypes = {}
+
+-- Event Data for &quot;RegisterHumanoidSM&quot;
+export type RegisterHumanoidSMDataType = {
+&#9;characterModel : Model,
+&#9;humanoidInstance : Humanoid&#9;
+}
+
+-- Data for &quot;ContextDataHumanoidSM&quot; and &quot;StartHumanoidSM&quot;
+export type ContextTransferDataType = {
+&#9;oldOwner : Player?,
+&#9;character : Model,
+&#9;currentState : string,
+&#9;context : unknown,
+&#9;ccsmDef : unknown&#9;
+}
+
+-- Storage for humanoidUploadTransferInProgress
+export type OwnerTransferDataType = {
+&#9;oldOwner : Player?,
+&#9;newOwner : Player?&#9;
+}
+
+-- Storage for humanoidStartupTransferInProgress
+export type OwnerContextTransferDataType = {
+&#9;oldOwner : Player?,
+&#9;newOwner : Player?,&#9;
+&#9;currentState : string,
+&#9;context : unknown&#9;
+}
+
+export type RunningStateMachineRecord =&#9;{
+&#9;character : Model,
+&#9;humanoid : Humanoid,
+&#9;CCSM : any,
+&#9;moveToListenerInstance : Signal,
+&#9;heartbeatFunc : RBXScriptConnection?
+}
+
+export type ChangeStateSMRecord =&#9;{
+&#9;character : Model,
+&#9;newState : string,
+&#9;newHumanoidState : string
+}
+
+
+CharacterStateMachineTypes.StateAttribute = &quot;Avatar_ControlState&quot;
+
+return CharacterStateMachineTypes
+</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+		<Item class="ModuleScript" referent="RBX623304B714CC4C659C2789CD4F928821">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="LinkedSource"></string>
+				<string name="Name">ClientMonitor</string>
+				<string name="ScriptGuid">{609496A8-B6EA-4603-8D2E-5981E0D56A8C}</string>
+				<string name="Source">--! strict
+local replicatedStorage : ReplicatedStorage = game:GetService(&quot;ReplicatedStorage&quot;)
+local humanoidStateMachineUpdateInstance : Instance = replicatedStorage:WaitForChild(&quot;HumanoidStateMachineUpdate&quot;)
+local characterStateMachineFolder : Instance = replicatedStorage:WaitForChild(&quot;CharacterStateMachine&quot;)
+local commonTypes = require(characterStateMachineFolder:WaitForChild(&quot;CharacterStateMachineTypes&quot;))
+local commonFuncs = require(characterStateMachineFolder:WaitForChild(&quot;CharacterStateMachineCommon&quot;))
+local playersService : Players = game:FindService(&quot;Players&quot;)
+
+local humanoidStateMachineUpdateInstance : Instance = replicatedStorage:WaitForChild(&quot;HumanoidStateMachineUpdate&quot;)
+local humanoidStateMachineUpdateEvent : RemoteEvent = nil
+if humanoidStateMachineUpdateInstance:IsA(&quot;RemoteEvent&quot;) then
+&#9;humanoidStateMachineUpdateEvent = humanoidStateMachineUpdateInstance
+end
+
+local ClientMonitor = {}
+ClientMonitor.__index = ClientMonitor
+ClientMonitor.name = script.Name
+
+
+function ClientMonitor:onLocalCharacterStateMachineEvent(characterInstance : Model, humanoidInstance : Humanoid, ccsmDef : any, eventType : string, data : any)
+
+&#9;if eventType == &quot;ChangeStateSM&quot; then
+&#9;&#9;-- changes to character state
+&#9;&#9;humanoidStateMachineUpdateEvent:FireServer(&quot;ChangeStateSM&quot;, data)
+&#9;elseif eventType == &quot;RegisterHumanoidSM&quot; then
+&#9;&#9;-- New PC starting up --
+&#9;&#9;local registerRecord : commonTypes.RegisterHumanoidSMDataType = {
+&#9;&#9;&#9;characterModel = characterInstance,
+&#9;&#9;&#9;humanoidInstance = humanoidInstance
+&#9;&#9;}
+&#9;&#9;humanoidStateMachineUpdateEvent:FireServer(&quot;RegisterHumanoidSM&quot;, registerRecord)
+&#9;&#9;local record : commonTypes.RunningStateMachineRecord? = commonFuncs.StartStateMachine(characterInstance, humanoidInstance, ccsmDef, self.localEvent, true)
+&#9;&#9;if record ~= nil then
+&#9;&#9;&#9;self.runningStateMachines[characterInstance] = record&#9;
+&#9;&#9;end
+
+&#9;end
+end
+
+function ClientMonitor:onClientHumanoidRemoteEventClient(eventType : string, data : any, ccsmdef : any)
+&#9;if eventType == &quot;TransferHumanoidSM&quot; then
+&#9;&#9;local transferDataModel : Model = data
+&#9;&#9;local record : commonTypes.RunningStateMachineRecord? = self.runningStateMachines[transferDataModel]
+&#9;&#9;if record == nil then
+&#9;&#9;&#9;warn(&quot;Unable to find currently running state machine for.&quot;)
+&#9;&#9;else
+&#9;&#9;&#9;-- copy context and shut down local SM
+&#9;&#9;&#9;local contextXfer : commonTypes.ContextTransferDataType = {
+&#9;&#9;&#9;&#9;oldOwner = playersService.LocalPlayer,
+&#9;&#9;&#9;&#9;character = data,&#9;
+&#9;&#9;&#9;&#9;currentState = record.humanoid:GetState().Name,
+&#9;&#9;&#9;&#9;context = record.CCSM.context
+&#9;&#9;&#9;}
+&#9;&#9;&#9;humanoidStateMachineUpdateEvent:FireServer(&quot;ContextDataHumanoidSM&quot;, contextXfer)
+&#9;&#9;&#9;commonFuncs.StopStateMachine(record)&#9;
+&#9;&#9;&#9;self.runningStateMachines[transferDataModel] = nil
+&#9;&#9;end
+&#9;elseif eventType == &quot;ContextDataHumanoidSM&quot; then
+&#9;&#9;if data ~= nil then
+&#9;&#9;&#9;local contextXfer : commonTypes.ContextTransferDataType = data
+&#9;&#9;&#9;local humanoid : Humanoid? = contextXfer.character:FindFirstChildOfClass(&quot;Humanoid&quot;)
+&#9;&#9;&#9;if humanoid ~= nil and humanoid.Parent ~=nil then
+&#9;&#9;&#9;&#9;local record : commonTypes.RunningStateMachineRecord? = nil
+&#9;&#9;&#9;&#9;record = commonFuncs.ContinueStateMachine(contextXfer.character, humanoid, ccsmdef, contextXfer.localHumanoidStateMachineEvent, contextXfer.currentState, contextXfer.context)
+&#9;&#9;&#9;&#9;if record ~= nil then
+&#9;&#9;&#9;&#9;&#9;-- send confirmation to server
+&#9;&#9;&#9;&#9;&#9;humanoidStateMachineUpdateEvent:FireServer(&quot;ConfirmStartHumanoidSM&quot;, contextXfer.character)
+&#9;&#9;&#9;&#9;&#9;self.runningStateMachines[contextXfer.character] = record
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+
+&#9;&#9;end
+&#9;else
+&#9;&#9;print(&quot;Unknown state machine message: &quot;, eventType)
+&#9;end
+end
+
+function ClientMonitor.new(event : BindableEvent)
+&#9;local self = {
+&#9;&#9;localEvent = event,
+&#9;&#9;runningStateMachines = {}
+&#9;}
+&#9;setmetatable(self, ClientMonitor)
+&#9;return self
+end
+
+return ClientMonitor</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+		<Item class="ModuleScript" referent="RBX2AF40F32B23D4295B72C0B98B00B8E78">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="LinkedSource"></string>
+				<string name="Name">MoveToListener</string>
+				<string name="ScriptGuid">{16059962-5F04-4AC5-8602-144886550E3D}</string>
+				<string name="Source">--! strict
+local MoveToListener = {}
+MoveToListener.__index = MoveToListener
+MoveToListener.name = script.Name
+
+function MoveToListener:getHumanoidPosition()
+&#9;local torso
+&#9;if self.humanoid.RigType == Enum.HumanoidRigType.R6 then
+&#9;&#9;torso = self.humanoid.Parent:FindFirstChild(&quot;Torso&quot;)
+&#9;else
+&#9;&#9;torso = self.humanoid.Parent:FindFirstChild(&quot;UpperTorso&quot;)
+&#9;end
+&#9;local offset = self.humanoid.HipHeight + (0.5 * torso.Size.Y)  --hip height + half of torso
+&#9;return torso.CFrame.Position - Vector3.new(0, offset, 0)
+end
+
+function MoveToListener:calcDesiredDirection()
+&#9;local moveToDirection = Vector3.zero
+&#9;-- If walkToTarget is set then calculate world position based on walkToPoint (objectspace).
+&#9;if self.humanoid.WalkToPart then
+&#9;&#9;local position = self.humanoid.WalkToPart.CFrame:pointToWorldSpace(self.humanoid.WalkToPoint)
+&#9;&#9;moveToDirection = (position - self:getHumanoidPosition()).Unit
+&#9;else
+&#9;&#9;moveToDirection = (self.humanoid.WalkToPoint - self:getHumanoidPosition()).Unit
+&#9;end
+&#9;return moveToDirection
+end
+
+function MoveToListener:getMoveDirection()
+&#9;if self.moveToActive then
+&#9;&#9;return self:calcDesiredDirection()
+&#9;else
+&#9;&#9;return self.humanoid.MoveDirection
+&#9;end
+end
+
+
+
+function MoveToListener:OnMoveDirectionChanged()
+&#9;-- reset or local state
+&#9;if self.reachedConnection then 
+&#9;&#9;self.reachedConnection:Disconnect()
+&#9;end
+&#9;-- abort any other walk targets if active.
+&#9;-- Move takes precedence over MoveTo
+&#9;self.moveToActive = false
+end
+
+function MoveToListener:OnWalkToPointChanged()
+&#9;-- disconnect from older connection.
+&#9;if self.reachedConnection then 
+&#9;&#9;self.reachedConnection:Disconnect()
+&#9;end
+
+&#9;self.moveToActive = true
+&#9;self.reachedConnection = self.humanoid.MoveToFinished:Connect(function(reached)
+&#9;&#9;self.moveToDirection = Vector3.zero
+&#9;&#9;self.reachedConnection:Disconnect()
+&#9;&#9;self.moveToActive = false
+&#9;end)
+end
+
+function MoveToListener.new(humanoidInstance : Humanoid)
+&#9;local self = {
+&#9;&#9;reachedConnection = nil,
+&#9;&#9;humanoid = humanoidInstance,
+&#9;&#9;moveToDirection = Vector3.zero,
+&#9;&#9;moveToPosition = Vector3.zero,
+&#9;&#9;moveToActive = false
+&#9;}
+
+&#9;setmetatable(self, MoveToListener)
+&#9;humanoidInstance:GetPropertyChangedSignal(&quot;WalkToPoint&quot;):Connect(function() self:OnWalkToPointChanged() end)
+&#9;humanoidInstance:GetPropertyChangedSignal(&quot;MoveDirection&quot;):Connect(function() self:OnMoveDirectionChanged() end)
+&#9;
+&#9;return self
+end
+
+return MoveToListener
+</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+		<Item class="ModuleScript" referent="RBX02275F1365E8484AAEFE6A141EE7081E">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="LinkedSource"></string>
+				<string name="Name">ServerMonitor</string>
+				<string name="ScriptGuid">{F6156488-EB54-4EB1-AB58-2594A797C0DF}</string>
+				<string name="Source">--! strict
+local replicatedStorage : ReplicatedStorage = game:GetService(&quot;ReplicatedStorage&quot;)
+local humanoidStateMachineUpdateInstance : Instance = replicatedStorage:WaitForChild(&quot;HumanoidStateMachineUpdate&quot;)
+local characterStateMachineFolder : Instance = replicatedStorage:WaitForChild(&quot;CharacterStateMachine&quot;)
+local commonTypes = require(characterStateMachineFolder:WaitForChild(&quot;CharacterStateMachineTypes&quot;))
+local commonFuncs = require(characterStateMachineFolder:WaitForChild(&quot;CharacterStateMachineCommon&quot;))
+local playersService : Players = game:FindService(&quot;Players&quot;)
+local sensorAndControllerLoader = require(characterStateMachineFolder:WaitForChild(&quot;CharacterPhysicsControllerLoader&quot;))
+
+local humanoidStateMachineUpdateInstance : Instance = replicatedStorage:WaitForChild(&quot;HumanoidStateMachineUpdate&quot;)
+local humanoidStateMachineUpdateEvent : RemoteEvent = nil
+if humanoidStateMachineUpdateInstance:IsA(&quot;RemoteEvent&quot;) then
+&#9;humanoidStateMachineUpdateEvent = humanoidStateMachineUpdateInstance
+end
+
+local debug = false
+
+local ServerMonitor = {}
+ServerMonitor.__index = ServerMonitor
+ServerMonitor.name = script.Name
+
+local function getHumanoidStateMachineUpdateEvent(humanoidInstance : Humanoid)
+&#9;local localHumanoidStateMachineEventInstance  : Instance = humanoidInstance.Parent:WaitForChild(&quot;LocalHumanoidStateMachineEvent&quot;)
+&#9;local localHumanoidStateMachineEvent : BindableEvent  = nil
+
+&#9;if localHumanoidStateMachineEventInstance:IsA(&quot;BindableEvent&quot;) then
+&#9;&#9;localHumanoidStateMachineEvent = localHumanoidStateMachineEventInstance
+&#9;end
+
+&#9;if localHumanoidStateMachineEvent == nil then
+&#9;&#9;error(&quot;Error !! Expecting LocalHumanoidStateMachineEvent under the character model&quot;)
+&#9;&#9;return
+&#9;end
+&#9;return localHumanoidStateMachineEvent
+end
+
+function ServerMonitor:onServerHumanoidRemoteEventServer(player : Player, eventType : string, data : any)
+&#9;if player == nil  or player.Character == nil then
+&#9;&#9;return
+&#9;end
+
+&#9;if eventType == &quot;ChangeStateSM&quot; then
+&#9;&#9;-- changes to character state
+&#9;&#9;local changeStateData : commonTypes.ChangeStateSMRecord = data
+&#9;&#9;commonFuncs.SetState(changeStateData.character, changeStateData.newState)
+&#9;elseif eventType == &quot;RegisterHumanoidSM&quot; then
+&#9;&#9;if debug then
+&#9;&#9;&#9;print(&quot;Server: New Humanoid&quot;, data)
+&#9;&#9;end
+&#9;&#9;local humanoid =  player.Character:WaitForChild(&quot;Humanoid&quot;)
+&#9;&#9;if humanoid == nil or  humanoid.Parent == nil then
+&#9;&#9;&#9;return 
+&#9;&#9;end
+&#9;&#9;local humanoidRootPart = humanoid.Parent:FindFirstChild(&quot;HumanoidRootPart&quot;)
+&#9;&#9;if humanoidRootPart ~= nil then
+&#9;&#9;&#9;local sensorAndControllerLoaderObject = sensorAndControllerLoader.new(humanoid, Instance.new(&quot;ControllerManager&quot;), humanoidRootPart) 
+&#9;&#9;&#9;sensorAndControllerLoaderObject:loadSensorsAndPhysicsController()
+&#9;&#9;end
+&#9;&#9;self.humanoidOwnershipList[player] = data
+&#9;&#9;self.trackedOwnershipList[data.characterModel] = player
+&#9;elseif eventType == &quot;ContextDataHumanoidSM&quot; then
+&#9;&#9;-- Received SM Context Information From Client
+&#9;&#9;if debug then
+&#9;&#9;&#9;print(&quot;Server: Received Context Data&quot;, data)
+&#9;&#9;end
+
+&#9;&#9;local contextXfer : commonTypes.ContextTransferDataType = data
+&#9;&#9;if (contextXfer.ccsmDef ~= self.ccsmDefinition) then
+&#9;&#9;&#9;error(&quot;Error !! CCSM def from client doesnot match&quot;)
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;&#9;-- check to see if we&apos;re expecting a transfer
+&#9;&#9;local transferRecord : commonTypes.OwnerTransferDataType = self.humanoidUploadTransferInProgress[contextXfer.character]
+&#9;&#9;if  transferRecord ~= nil then
+&#9;&#9;&#9;-- Check to see if we&apos;re expecting it from this Client
+&#9;&#9;&#9;if transferRecord.oldOwner == contextXfer.oldOwner then
+&#9;&#9;&#9;&#9;self.humanoidUploadTransferInProgress[contextXfer.character] = nil
+&#9;&#9;&#9;&#9;commonFuncs.SetState(contextXfer.character, contextXfer.currentState)
+&#9;&#9;&#9;&#9;if  transferRecord.newOwner == nil then
+&#9;&#9;&#9;&#9;&#9;-- server owned
+&#9;&#9;&#9;&#9;&#9;local humanoid : Humanoid? = contextXfer.character:FindFirstChildOfClass(&quot;Humanoid&quot;)
+&#9;&#9;&#9;&#9;&#9;if humanoid ~= nil and humanoid.Parent ~= nil then
+&#9;&#9;&#9;&#9;&#9;&#9;local localHumanoidStateMachineEventInstance  : Instance = humanoid.Parent:WaitForChild(&quot;LocalHumanoidStateMachineEvent&quot;)
+&#9;&#9;&#9;&#9;&#9;&#9;local localHumanoidStateMachineEvent : BindableEvent  = nil
+
+&#9;&#9;&#9;&#9;&#9;&#9;if localHumanoidStateMachineEventInstance:IsA(&quot;BindableEvent&quot;) then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;localHumanoidStateMachineEvent = localHumanoidStateMachineEventInstance
+&#9;&#9;&#9;&#9;&#9;&#9;end
+
+&#9;&#9;&#9;&#9;&#9;&#9;if localHumanoidStateMachineEvent == nil then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;print(&quot;Error !! Expecting LocalHumanoidStateMachineEvent under the character model&quot;)
+&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;commonFuncs.ContinueStateMachine(contextXfer.character, humanoid, self.ccsmDefinition , contextXfer.currentState, contextXfer.context)
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;self.trackedOwnershipList[contextXfer.character] = &quot;server&quot;
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;-- new client owner, send it to them
+&#9;&#9;&#9;&#9;&#9;local newOwner = transferRecord.newOwner
+&#9;&#9;&#9;&#9;&#9;local newTransferRecord : commonTypes.OwnerContextTransferDataType = {
+&#9;&#9;&#9;&#9;&#9;&#9;oldOwner = transferRecord.oldOwner,
+&#9;&#9;&#9;&#9;&#9;&#9;newOwner = newOwner,
+&#9;&#9;&#9;&#9;&#9;&#9;currentState = contextXfer.currentState,
+&#9;&#9;&#9;&#9;&#9;&#9;context = contextXfer.context
+&#9;&#9;&#9;&#9;&#9;}
+&#9;&#9;&#9;&#9;&#9;self.humanoidStartupTransferInProgress[contextXfer.character] = newTransferRecord 
+
+&#9;&#9;&#9;&#9;&#9;self.trackedOwnershipList[contextXfer.character] = newOwner
+&#9;&#9;&#9;&#9;&#9;humanoidStateMachineUpdateEvent:FireClient(newOwner, &quot;ContextDataHumanoidSM&quot;, contextXfer)
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;warn(&quot;Unexpected context recieved from&quot;, contextXfer.oldOwner)
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;elseif eventType == &quot;ConfirmStartHumanoidSM&quot; then&#9;
+&#9;&#9;if data ~= nil then
+&#9;&#9;&#9;local character : Model = data
+&#9;&#9;&#9;local startupRecord : commonTypes.OwnerContextTransferDataType? = self.humanoidStartupTransferInProgress[character]
+&#9;&#9;&#9;if startupRecord == nil then
+&#9;&#9;&#9;&#9;-- error
+&#9;&#9;&#9;&#9;if debug then
+&#9;&#9;&#9;&#9;&#9;warn(&quot;Startup confirmation from unexpected client&quot;, character, self.humanoidStartupTransferInProgress)
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;-- check to verify that this client is supposed to own this
+&#9;&#9;&#9;&#9;if startupRecord.newOwner == player then
+&#9;&#9;&#9;&#9;&#9;-- clear record
+&#9;&#9;&#9;&#9;&#9;self.humanoidStartupTransferInProgress[character] = nil
+&#9;&#9;&#9;&#9;&#9;self.trackedOwnershipList[character] = player
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;warn(&quot;Unexpected client attempting to start up state machine&quot;, player, character)
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+end
+
+function ServerMonitor:onServerLocalHumanoidStateMachineEvent(characterInstance : Model, humanoidInstance : Humanoid, eventType : string, data : any)
+&#9;if characterInstance == nil or humanoidInstance == nil or humanoidInstance.Parent == nil  then
+&#9;&#9;return
+&#9;end
+&#9;if eventType == &quot;ChangeStateSM&quot; then
+&#9;&#9;-- changes to character state
+&#9;&#9;print(&quot;local server state change&quot;)
+&#9;&#9;local changeStateData : commonTypes.ChangeStateSMRecord = data
+&#9;&#9;commonFuncs.SetState(changeStateData.character, changeStateData.newState)
+&#9;elseif eventType == &quot;RegisterHumanoidSM&quot; then
+&#9;&#9;-- New character starting up --
+&#9;&#9;local registerRecord : commonTypes.RegisterHumanoidSMDataType = {
+&#9;&#9;&#9;characterModel = characterInstance,
+&#9;&#9;&#9;humanoidInstance = humanoidInstance
+&#9;&#9;}
+
+&#9;&#9;humanoidStateMachineUpdateEvent:FireServer(&quot;RegisterHumanoidSM&quot;, registerRecord)
+
+&#9;&#9;local humanoidRootPart : Instance? = humanoidInstance.Parent:FindFirstChild(&quot;HumanoidRootPart&quot;)
+&#9;&#9;if humanoidRootPart ~= nil then
+&#9;&#9;&#9;-- Load sensors and controller if not present.
+&#9;&#9;&#9;local sensorAndControllerLoaderObject = sensorAndControllerLoader.new(humanoidInstance, Instance.new(&quot;ControllerManager&quot;), humanoidRootPart) 
+&#9;&#9;&#9;sensorAndControllerLoaderObject:loadSensorsAndPhysicsController()
+
+&#9;&#9;&#9;-- start the state machine
+&#9;&#9;&#9;local record : commonTypes.RunningStateMachineRecord? = commonFuncs.StartStateMachine(characterInstance, humanoidInstance, self.ccsmDefinition, self.localEvent, true)
+&#9;&#9;&#9;if record ~= nil then
+&#9;&#9;&#9;&#9;self.runningStateMachines[characterInstance] = record&#9;
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+end
+
+function ServerMonitor:requestOwnershipTransfer(character : Model, newHost : Player?, oldHost : Player?)
+&#9;-- Check to see if a transfer has already been requested
+&#9;local transferRecord : commonTypes.OwnerTransferDataType = self.humanoidUploadTransferInProgress[character]
+&#9;if transferRecord == nil then
+&#9;&#9;-- If its not currently being tranferred, record the transfer and request the context information
+&#9;&#9;-- from the current owner
+&#9;&#9;transferRecord = {
+&#9;&#9;&#9;oldOwner = oldHost,
+&#9;&#9;&#9;newOwner = newHost
+&#9;&#9;}
+&#9;&#9;self.humanoidUploadTransferInProgress[character] = transferRecord
+&#9;&#9;if oldHost == nil then
+&#9;&#9;else
+&#9;&#9;&#9;humanoidStateMachineUpdateEvent:FireClient(oldHost, &quot;TransferHumanoidSM&quot;, character)
+&#9;&#9;end
+&#9;else
+&#9;&#9;if transferRecord.newOwner ~= newHost then
+&#9;&#9;&#9;-- Ownership change was requested, but the current owner is not the previously recored one
+&#9;&#9;&#9;transferRecord.newOwner = newHost
+&#9;&#9;end
+&#9;end
+end
+
+
+function ServerMonitor:pollForNetworkOwnership()
+&#9;for characterModel : Model, p : Player? | string in pairs(self.trackedOwnershipList) do&#9;
+&#9;&#9;if characterModel ~= nil and characterModel.PrimaryPart ~= nil then
+&#9;&#9;&#9;local isInWorkspace = workspace:FindFirstChild(characterModel.Name)
+&#9;&#9;&#9;if not isInWorkspace then
+&#9;&#9;&#9;&#9;continue
+&#9;&#9;&#9;end
+
+&#9;&#9;&#9;local currentOwnerInstance : Instance = characterModel.PrimaryPart:GetNetworkOwner()
+&#9;&#9;&#9;local player : Player?
+&#9;&#9;&#9;if typeof(p) == &quot;string&quot; then
+&#9;&#9;&#9;&#9;player = nil
+&#9;&#9;&#9;else 
+&#9;&#9;&#9;&#9;player = p
+&#9;&#9;&#9;end
+
+&#9;&#9;&#9;if currentOwnerInstance ~= player then
+&#9;&#9;&#9;&#9;-- check to see if there is already a request pending
+&#9;&#9;&#9;&#9;if self.humanoidUploadTransferInProgress[characterModel] == nil then
+&#9;&#9;&#9;&#9;&#9;if player == nil then
+&#9;&#9;&#9;&#9;&#9;&#9;-- Need to shut down server owned SM and transfer it to a client
+&#9;&#9;&#9;&#9;&#9;&#9;if debug then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;print(&quot;Owner changed from server to&quot;, currentOwnerInstance.Name, characterModel)
+&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;local record : commonTypes.RunningStateMachineRecord? = self.runningStateMachines[characterModel]
+&#9;&#9;&#9;&#9;&#9;&#9;if record == nil then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;if self.humanoidStartupTransferInProgress[characterModel] == nil then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;-- need to transfer a state machine from the server, but the server doesn&apos;t have a record of it
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;-- and there is no record of it currently being transfered
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;warn(&quot;Unable to find currently running state machine for&quot;, characterModel, self.runningStateMachines)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;if currentOwnerInstance:IsA(&quot;Player&quot;) then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;-- record startup request for client
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;local xferRequest : commonTypes.OwnerContextTransferDataType = {
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;oldOwner = nil,
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;newOwner = currentOwnerInstance,
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;currentState = record.humanoid:GetState().Name,
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;context = record.CCSM.context
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;self.humanoidStartupTransferInProgress[characterModel] = xferRequest
+
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;-- copy context and shut down local SM
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;local contextXfer : commonTypes.ContextTransferDataType = {
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;oldOwner = nil,
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;character = characterModel,&#9;
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;currentState = record.humanoid:GetState().Name,
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;context = record.CCSM.context,
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;ccsmDef = self.ccsmDefinition
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}
+
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;humanoidStateMachineUpdateEvent:FireClient(currentOwnerInstance, &quot;ContextDataHumanoidSM&quot;, contextXfer)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;commonFuncs.StopStateMachine(record)&#9;
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;self.runningStateMachines[characterModel] = nil
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;warn(&quot;New State Machine owner is not a player or nil&quot;, currentOwnerInstance)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;&#9;if player:IsA(&quot;Player&quot;) then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;local p : Player = player
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;-- Need to shut down client owned SM and transfer it to another owner
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;if currentOwnerInstance == nil then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if debug then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;print(&quot;Owner changed from&quot;, player.Name, &quot;to server.&quot;)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;self:requestOwnershipTransfer(characterModel, nil, player)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;elseif currentOwnerInstance:IsA(&quot;Player&quot;) then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if debug then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;print(&quot;Owner changed from&quot;, player.Name, &quot;to &quot;, currentOwnerInstance.Name)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;self:requestOwnershipTransfer(characterModel, currentOwnerInstance, player)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;warn(&quot;Unknown type of player&quot;)
+&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;end&#9;
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+end
+
+function ServerMonitor.new(event : BindableEvent, ccsmDef : any)
+&#9;local self = {
+&#9;&#9;ccsmDefinition = ccsmDef,
+&#9;&#9;localEvent = event,
+&#9;&#9;runningStateMachines = {},
+&#9;&#9;humanoidUploadTransferInProgress  = {},
+&#9;&#9;humanoidStartupTransferInProgress  = {},
+&#9;&#9;trackedOwnershipList = {},
+&#9;&#9;humanoidOwnershipList = {}
+&#9;}
+&#9;setmetatable(self, ServerMonitor)
+&#9;return self
+end
+
+return ServerMonitor</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>

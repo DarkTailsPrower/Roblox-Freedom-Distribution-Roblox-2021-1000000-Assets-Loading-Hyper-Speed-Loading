@@ -1,0 +1,470 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Hat" referent="RBX0">
+		<Properties>
+			<CoordinateFrame name="AttachmentPoint">
+				<X>0</X>
+				<Y>-0.0799999982</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<string name="Name">Doombringer</string>
+			<bool name="archivable">true</bool>
+		</Properties>
+		<Item class="Part" referent="RBX1">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">194</int>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>258.200012</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<float name="Elasticity">0.5</float>
+				<token name="FormFactor">2</token>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<token name="Material">256</token>
+				<string name="Name">Handle</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<bool name="archivable">true</bool>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>2</X>
+					<Y>1.60000002</Y>
+					<Z>2</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX2">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><url>rbxasset://../../../shareddata/charcustom/hats/fonts/IronBucket.mesh</url></Content>
+					<token name="MeshType">5</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+					<Content name="TextureId"><url>rbxasset://../../../shareddata/charcustom/hats/textures/UglyBucketofDoom.png</url></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX3">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">bucketscript</string>
+					<ProtectedString name="Source">-----MrDoomBringer
+
+local hat = script.Parent
+
+wait(1)
+
+while hat.Parent.Name == &quot;Workspace&quot; do wait(2) end
+
+player = game.Players:GetPlayerFromCharacter(hat.Parent)
+
+print(&quot;Satellite sniper script&quot;)
+
+
+--Look for the sat in the workspace
+sat = game.Workspace:FindFirstChild(&quot;SatDeployed&quot;)
+
+if (sat == nil) then
+--If the sat is not in the workspace, then this creates it.
+	sat = Instance.new(&quot;Part&quot;)
+	sat.Size = Vector3.new(5, 16.8, 5)
+	sat.Position = Vector3.new(100, 3e+003, 0)
+	sat.Name = &quot;SatDeployed&quot;
+	sat.Parent = game.Workspace
+--This part creates the BodyGyro object
+	bodygyronew = Instance.new(&quot;BodyGyro&quot;)
+	bodygyronew.maxTorque = Vector3.new(0, 4e+005, 4e+005)
+	bodygyronew.D = 500
+	bodygyronew.P = 3e+003
+	bodygyronew.Parent = sat
+--This part creates the BodyPosition to keep the sat stable
+	bodyposnew = Instance.new(&quot;BodyPosition&quot;)
+	bodyposnew.D = 3e+003
+	bodyposnew.maxForce = Vector3.new(4e+006, 4e+006, 4e+006)
+	bodyposnew.position = Vector3.new(100, 3e+003, 0)
+	bodyposnew.Parent = sat
+--I&apos;d try to put in the satellite mesh, but the MeshId is a &quot;Content&quot; property that doesn&apos;t like to be set.
+--From now on the script proceedes to use the &quot;sat&quot; object created here. It&apos;s a global value, so it&apos;ll remain
+--All the other variables for the creation of the supporting children don&apos;t matter.
+end
+	
+function check(name)
+return true
+end
+
+--/*Clockwork
+function fire(sattarget)
+	if (sattarget~=nil) then
+		--point sat at the person, then rotate it so that the right face of the sat is pointing at it, not the side
+		sat.BodyGyro.cframe = CFrame.new(sat.Position, sattarget) * CFrame.fromAxisAngle(Vector3.new(1,0,0),-3.14/2)
+		wait(1)
+		--lerp the pretty balefire from satellite&apos;s position to the target
+		delta = sattarget - sat.Position
+		maxSize = 30
+		minSize = 10
+		for i=25,100 do
+			lol = Instance.new(&quot;Explosion&quot;)
+			lol.Position = i / 100 * delta + sat.Position
+			lol.BlastRadius = i / 100 * (maxSize - minSize) + minSize
+			lol.Parent = game.Workspace
+			wait()
+		end
+	end
+end
+--Clockwork*/
+
+function kill(name, source)
+	local p=game.Workspace:FindFirstChild(name)
+	if p==nil then return end
+	if p.Humanoid==nil then return end
+	p.Humanoid.Health = 0
+end
+
+function killall(source)
+	local c = game.Players:GetPlayers()
+	for i=1,#c do
+		if (c[i].Character ~= nil and c[i].Character.Humanoid ~= nil) then
+			if (string.lower(c[i].Name) ~= player.Name) then
+				c[i].Character.Humanoid.Health = 0
+			end
+		end
+	end
+end
+
+function onChatted(msg, recipient, speaker)
+	-- convert to all lower case
+	local source = string.lower(speaker.Name)
+	msg = string.lower(msg)
+	-- Below is only for Admins
+	if not check(source) then return end
+	--
+	--
+	--&quot;kill&quot; command, sets player&apos;s humanoid to health 0
+	if (string.find(msg, &quot;kill&quot;) == 1) then
+		if string.match(msg, &quot;all&quot;) then
+			killall(source)
+		else
+			local players = game.Players:GetPlayers()
+			for word in msg:gmatch(&quot;%w+&quot;) do
+				if word ~= &quot;kill&quot; then
+					for i = 1, #players do
+						if (string.find(string.lower(players[i].Name), word) == 1) then
+							kill(players[i].Name)
+						end
+					end
+				end
+			end
+		end
+	end
+	--
+	--
+	--&quot;giveweapon&quot; command, gives the SatTarget weapon to an individual player, letting them shoot at things
+	if (string.find(msg, &quot;giveweapon&quot;) == 1) then
+		local players = game.Players:GetPlayers()
+		for word in msg:gmatch(&quot;%w+&quot;) do
+			if word ~= &quot;giveweapon&quot; then
+				for i = 1, #players do
+					if (string.find(string.lower(players[i].Name), word) == 1) then
+						tool = script.Parent:FindFirstChild(&quot;SatTarget&quot;):Clone()
+						if tool~=nil then
+							tool.Parent = players[i].Backpack
+						end
+					end
+				end
+			end
+		end
+	end
+	--
+	--
+	--&quot;location&quot; command, creates hint for admin with XYZ.
+	if (string.find(msg, &quot;location&quot;) == 1) then
+		me = game.Workspace:FindFirstChild(speaker.Name)
+		if me~=nil then
+			message = Instance.new(&quot;Hint&quot;)
+			message.Text = &quot;Location is x:&quot; .. math.floor(me.Torso.Position.x) .. &quot; Y: &quot; .. math.floor(me.Torso.Position.y) .. &quot; Z: &quot; .. math.floor(me.Torso.Position.z)
+			message.Parent = me
+			wait(8)
+			message.Parent = nil
+		end
+	end
+	--
+	--
+	--&quot;target&quot; command, hits a position after finding using location
+	if (string.find(msg, &quot;target&quot;) == 1) then
+		word1 = nil
+		word2 = nil
+		word3 = nil
+		me = game.Workspace:FindFirstChild(speaker.Name)
+		if me~=nil then
+			message = Instance.new(&quot;Hint&quot;)
+			message.Text = (&quot; &quot;)
+			message.Parent = me
+			go = 0
+			for word in msg:gmatch(&quot;%S+&quot;) do
+				if word ~= &quot;target&quot; then
+					go = go + 1
+					if go==1 then
+						word1 = word
+						message.Text = word1 .. &quot;  Number 1&quot;
+					end
+					if go==2 then
+						word2 = word
+						message.Text = word2 .. &quot;  Number 2&quot;
+					end
+					if go==3 then
+						word3 = word
+						message.Text = word3 .. &quot;  Number 3&quot;
+					end
+					wait(1)
+				end
+			end
+			word1 = tonumber(word1)
+			word2 = tonumber(word2)
+			word3 = tonumber(word3)
+			if (word1~=nil) and (word2~=nil) and (word3~=nil) then
+				message.Text = &quot;Target:  X:  &quot; .. word1 .. &quot;  Y:  &quot; .. word2 .. &quot;  Z:  &quot; .. word3
+				targetvector = Vector3.new(word1, word2, word3)
+				fire(targetvector)
+			end
+			message.Parent = nil
+		end
+	end
+	--
+	--
+	--&quot;armageddon&quot; command, fires 50 streams of death to random locations in a 512x512 area
+	if (string.find(msg, &quot;armageddon&quot;) == 1) then
+		me = game.Workspace:FindFirstChild(speaker.Name)
+		if me~=nil then
+			message = Instance.new(&quot;Hint&quot;)
+			message.Text = (&quot;Armageddon!&quot;)
+			message.Parent = me
+			wait(2)
+			for n = 1, 25 do
+				vec = Vector3.new(math.random(-256, 256), 0, math.random(-256, 256))
+				fire(vec)
+				message.Text = (&quot;Firing number &quot; .. n)
+			end
+			message.Parent = nil
+		end
+	end		
+	--
+	--
+	--&quot;movesat&quot; command, moves the satellite to a new location
+	if (string.find(msg, &quot;movesat&quot;) == 1) then
+		word1 = nil
+		word2 = nil
+		word3 = nil
+		me = game.Workspace:FindFirstChild(speaker.Name)
+		if me~=nil then
+			message = Instance.new(&quot;Hint&quot;)
+			message.Text = (&quot; &quot;)
+			message.Parent = me
+			go = 0
+			for word in msg:gmatch(&quot;%S+&quot;) do
+				if word ~= &quot;movesat&quot; then
+					go = go + 1
+					if go==1 then
+						word1 = word
+						message.Text = word1 .. &quot;  Number 1&quot;
+					end
+					if go==2 then
+						word2 = word
+						message.Text = word2 .. &quot;  Number 2&quot;
+					end
+					if go==3 then
+						word3 = word
+						message.Text = word3 .. &quot;  Number 3&quot;
+					end
+					wait(1)
+				end
+			end
+			word1 = tonumber(word1)
+			word2 = tonumber(word2)
+			word3 = tonumber(word3)
+			if (word1~=nil) and (word2~=nil) and (word3~=nil) then
+				message.Text = &quot;Movement To:  X:  &quot; .. word1 .. &quot;  Y:  &quot; .. word2 .. &quot;  Z:  &quot; .. word3
+				targetvector = Vector3.new(word1, word2, word3)
+				sat.BodyPosition.position = targetvector
+			end
+			message.Parent = nil
+		end
+	end
+	--
+	--
+	--&quot;smite&quot; command, fires sat beam on a player.
+	if (string.find(msg, &quot;smite&quot;) == 1) then
+		local players = game.Players:GetPlayers()
+		for word in msg:gmatch(&quot;%w+&quot;) do
+			if word ~= &quot;smite&quot; then
+				for i = 1, #players do
+					if (string.find(string.lower(players[i].Name), word) == 1) then
+						target = game.Workspace:FindFirstChild(players[i].Name)
+						if target ~= nil then
+							message = Instance.new(&quot;Message&quot;)
+							message.Parent = players[i]
+							message.Text = (&quot;You&apos;re toast now.&quot;)
+							firetarget = target.Torso.Position
+							fire(firetarget)
+							message.Parent = nil
+						end
+					end
+				end
+			end
+		end
+	end
+	--
+end
+
+function onPlayerEntered(newPlayer)
+	newPlayer.Chatted:connect(function(msg, recipient) onChatted(msg, recipient, newPlayer) end) 
+end
+
+game.Players.PlayerAdded:connect(onPlayerEntered)
+</ProtectedString>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+			<Item class="HopperBin" referent="RBX4">
+				<Properties>
+					<bool name="Active">false</bool>
+					<token name="BinType">0</token>
+					<string name="Name">SatTarget</string>
+					<Content name="TextureId"><null></null></Content>
+					<bool name="archivable">true</bool>
+				</Properties>
+				<Item class="Script" referent="RBX5">
+					<Properties>
+						<bool name="Disabled">false</bool>
+						<Content name="LinkedSource"><null></null></Content>
+						<string name="Name">targetscript</string>
+						<ProtectedString name="Source">wait(1)
+
+print(&quot;sat targeting script&quot;)
+
+tool = script.Parent
+
+sat = game.Workspace:FindFirstChild(&quot;SatDeployed&quot;)
+
+--/*Clockwork
+function fire(sattarget)
+	if (sattarget~=nil) then
+		--point sat at the person, then rotate it so that the right face of the sat is pointing at it, not the side
+		sat.BodyGyro.cframe = CFrame.new(sat.Position, sattarget) * CFrame.fromAxisAngle(Vector3.new(1,0,0),-3.14/2)
+		wait(2)
+		--lerp the pretty balefire from satelliteapos;s position to the target
+		delta = sattarget - sat.Position
+		maxSize = 30
+		minSize = 10
+		for i=25,100 do
+			lol = Instance.new(&quot;Explosion&quot;)
+			lol.Position = i / 100 * delta + sat.Position
+			lol.BlastRadius = i / 100 * (maxSize - minSize) + minSize
+			lol.Parent = game.Workspace
+			wait()
+		end
+	end
+end
+--Clockwork*/
+
+enabled = true
+function onClick(mouse)
+	if enabled then
+		mouse.Icon = &quot;rbxasset://textures\\GunWaitCursor.png&quot;
+		enabled = false
+		target = mouse.Hit.p
+		message = Instance.new(&quot;Hint&quot;)
+		message.Parent = tool.Parent.Parent
+		message.Text = &quot;Targeting X: &quot; .. math.floor(target.x) .. &quot;  Y: &quot; .. math.floor(target.y) .. &quot;  Z: &quot; .. math.floor(target.z)
+		fire(target)
+		wait(1)
+		message.Parent = nil
+		mouse.Icon = &quot;rbxasset://textures\\GunCursor.png&quot;
+		enabled = true
+	end
+end
+
+function onEquipped(mouse)
+	mouse.Icon = &quot;rbxasset://textures\\GunCursor.png&quot;
+	mouse.Button1Down:connect(function() onClick(mouse) end)
+end
+
+tool.Selected:connect(onEquipped)</ProtectedString>
+						<bool name="archivable">true</bool>
+					</Properties>
+				</Item>
+			</Item>
+		</Item>
+	</Item>
+</roblox>

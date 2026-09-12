@@ -1,0 +1,735 @@
+1789134014.13963,04fc,6 [FLog::Output] Loading AppSettings.xml, current path: C:\RFD\Unpacked\2.exe_extracted\Roblox\v463\Server
+1789134014.14163,04fc,6 [FLog::RCCServiceInit] Got Base url: https://localhost:2005/
+1789134014.14363,04fc,6 [FLog::Output] CrashReporter Start
+1789134014.14363,04fc,6 [FLog::Output] Service starting
+1789134014.14563,0c04,6 [FLog::Output] WatcherThread Started
+1789134014.14963,04fc,6 [FLog::Output] setAssetFolder C:\RFD\Unpacked\2.exe_extracted\Roblox\v463\Server\Content\
+1789134014.15063,04fc,6 [FLog::Output] setExtraAssetFolder 
+1789134014.15763,04fc,6 [DFLog::RCCExecuteInfo] Initializing Roblox Web Service
+1789134014.16163,04fc,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 0 active: 0>
+1789134014.16363,04fc,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 3 ) <req: 4 active: 4>
+1789134014.17163,188c,6 [DFLog::RCCExecuteInfo] SecurityDataUpdater failed to fetch data from , HttpError: InvalidUrl
+1789134014.18063,04fc,104 [FLog::Output] Service started on port 0
+1789134014.25831,04fc,101 [FLog::LocalStorage] LocalStorage loading from path: ../../../LocalStorage\ocalhost:2005_appStorage.json
+1789134014.25930,3dac,101 [FLog::LocalStorage] LocalStorage failed to load: ../../../LocalStorage\ocalhost:2005_appStorage.json
+1789134014.25930,04fc,102 [FLog::RCCServiceJobs] Opened JobItem Test
+1789134014.25930,04fc,102 [FLog::RCCServiceJobs] DataModel: 0475F390
+1789134014.25930,04fc,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] RCC Executing: [{"Mode": "GameServer", "GameId": 13058, "Settings": {"Type": "Avatar", "PlaceId": 1818, "GameId": "Test", "MachineAddress": "https://localhost:2005", "PlaceFetchUrl": "https://localhost:2005/asset/?id=1818", "MaxPlayers": 1000000000, "PreferredPlayerCapacity": 1000000000, "CharacterAppearance": "https://localhost:2005/v1.1/avatar-fetch", "MaxGameInstances": 1, "GsmInterval": 5, "ApiKey": "", "DataCenterId": "69420", "PlaceVisitAccessKey": "", "UniverseId": 13058, "MatchmakingContextId": 1, "CreatorId": 0, "CreatorType": "Group", "PlaceVersion": 1, "BaseUrl": "https://localhost:2005/.127.0.0.1", "JobId": "Test", "PreferredPort": 2005}, "Arguments": {}}]
+1789134014.26029,04fc,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] Executing job with mode GameServer
+1789134014.26029,26ac,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] Fetching place 1818
+1789134014.26227,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134014.46262,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134014.46262,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::9a99:dadb:2c9:d03f|2005 after 0.200354
+1789134020.80215,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 6.339527
+1789134020.84415,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134020.84415,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134021.04513,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134021.05513,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::855f:d1fd:6760:1b40|2005 after 0.210982
+1789134021.05513,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134021.06713,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::855f:d1fd:6760:1b40|2005 after 0.222980
+1789134021.07313,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.027997
+1789134021.07713,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.021998
+1789134023.73064,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134023.76664,26ac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Started network server ::1|2005
+1789134023.93364,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134023.94364,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::75:67fd:9876:2340%741086976|2005 after 0.211001
+1789134023.95064,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.016998
+1789134024.75834,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134024.76034,26ac,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Workspace.Content.Exterior.VFX.LightningVFX.StormEyeLightning.BeamPart.LightningVFX:49: attempt to call a nil value
+    Stack Begin
+    Script 'Workspace.Content.Exterior.VFX.LightningVFX.StormEyeLightning.BeamPart.LightningVFX', Line 49
+    Stack End
+1789134024.76635,26ac,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: ServerScriptService.SocialInteractions.Install.DevModuleInstaller.install:24: Expected identifier when parsing method name, got ':'
+1789134024.76835,26ac,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Requested module experienced an error while loading
+    Stack Begin
+    Script 'ServerScriptService.SocialInteractions.Install.DevModuleInstaller', Line 3
+    Stack End
+1789134024.76835,26ac,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Requested module experienced an error while loading
+    Stack Begin
+    Script 'ServerScriptService.SocialInteractions.Install', Line 1
+    Stack End
+1789134024.77336,26ac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Hello world!
+1789134024.80740,26ac,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Destroying is not a valid member of Model "Workspace.TempStorage.Test.RestoredSeal_A"
+    Stack Begin
+    Script 'ServerScriptService.RestorableManager', Line 31 - function InitRestorable
+    Script 'ServerScriptService.RestorableManager', Line 101 - function Init
+    Script 'ServerScriptService.GameStateManager', Line 1115 - function Init
+    Script 'ServerScriptService.GameStateManager', Line 1219
+    Stack End
+1789134024.80840,26ac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Respawn: volume added Workspace.Content.Global.CorruptedRoom_Skybox_A.Kill_Volume.Kill_Volume
+1789134024.80940,26ac,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] ***
+1789134024.80940,26ac,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] Finished initializing game
+1789134024.80940,26ac,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] ***
+1789134024.83330,2a1c,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: GetPivot is not a valid member of MeshPart "Workspace.Content.Interior.Kitchen.Normal.Kitchen.Props.Additions.GrandfatherClock.Pendulum"
+    Stack Begin
+    Script 'Workspace.Content.Interior.Kitchen.Normal.Kitchen.Props.Additions.GrandfatherClock.Pendulum.PendulumSwinging', Line 6
+    Stack End
+1789134024.83430,2a1c,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: GetPivot is not a valid member of MeshPart "Workspace.Content.Interior.Livingroom.Props.GrandfatherClock.Pendulum"
+    Stack Begin
+    Script 'Workspace.Content.Interior.Livingroom.Props.GrandfatherClock.Pendulum.PendulumSwinging', Line 6
+    Stack End
+1789134024.83430,2a1c,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: GetPivot is not a valid member of MeshPart "Workspace.Content.Interior.Dining_Room.Props.GrandfatherClock.Pendulum"
+    Stack Begin
+    Script 'Workspace.Content.Interior.Dining_Room.Props.GrandfatherClock.Pendulum.PendulumSwinging', Line 6
+    Stack End
+1789134024.96430,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134024.96930,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::14a9:1518:4584:2540%1634493696|2005 after 0.210964
+1789134025.26629,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134025.47329,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134025.47329,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::1fab:1c91:5788:2640|2005 after 0.207002
+1789134025.53930,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.066003
+1789134026.89582,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 1.930518
+1789134027.82682,3dac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Initialised RFD server scripts.
+1789134027.86682,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134028.06782,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134028.06782,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::33ef:5f9c:cfbb:2b40|2005 after 0.201000
+1789134044.16153,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134044.36251,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134044.36251,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::7bc3:3700:5a29:3e40|2005 after 0.200978
+1789134044.37750,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.014993
+1789134044.37850,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134044.58054,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134044.58054,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::8098:f66:e560:3e40%168364288|2005 after 0.202045
+1789134044.58854,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.007999
+1789134048.08563,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.017815
+1789134048.09363,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134048.29560,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134048.30559,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::a0f:b432:fc0b:4140%168364288|2005 after 0.211961
+1789134068.31556,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.019965
+1789134068.32963,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134068.53162,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134068.53162,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::12bc:a409:522a:4b40%1006661888|2005 after 0.200992
+1789134074.86353,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134075.06434,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134075.06434,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::7ba7:580a:886e:4e40%1023409920|2005 after 0.200815
+1789134075.07234,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.008000
+1789134078.25639,3dac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] New connection from ::ffff:127.0.0.1|50893
+1789134078.26139,3dac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] RakNet connect: ::ffff:127.0.0.1|50893
+1789134078.27539,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134078.42900,3dac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Player 10590522 added
+1789134078.43099,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134078.43099,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134078.43198,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134078.43298,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134078.43298,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134078.43397,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134078.47578,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134078.48573,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::96f9:e16e:b011:5040%1023409920|2005 after 0.209337
+1789134078.49369,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.017916
+1789134078.49369,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134078.50763,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 52.216.77.102|443
+1789134078.63200,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134078.63300,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134078.63500,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::2dbd:5595:a51b:5040|2005 after 0.203018
+1789134078.63600,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134078.63800,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::2dbd:5595:a51b:5040%1023409920|2005 after 0.206018
+1789134078.64300,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134078.64300,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134078.64400,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134078.64900,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::d700:7d46:951b:5040%1006632960|2005 after 0.218012
+1789134078.66800,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.034998
+1789134078.66800,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134078.67500,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.041997
+1789134078.67600,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134078.68100,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.044997
+1789134078.68200,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134078.69500,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134078.69500,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::f259:d3ad:981f:5040%1023409920|2005 after 0.201302
+1789134078.70700,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.011999
+1789134078.87001,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134078.87001,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::fd40:be77:c02a:5040|2005 after 0.202008
+1789134078.87801,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134078.87901,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::1cdc:2088:432b:5040|2005 after 0.202009
+1789134078.88901,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134078.89001,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::d723:7736:b62b:5040%1013156864|2005 after 0.207009
+1789134078.89301,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.023000
+1789134078.89701,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.019000
+1789134078.90801,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.018000
+1789134079.58398,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::8379:2ee4:b51b:5040%1023409920|2005 after 1.151003
+1789134079.65600,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::8379:2ee4:b51b:5040%1020921088|2005 after 1.223022
+1789134079.78301,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::2ef2:df81:d61b:5040%1023409920|2005 after 1.348044
+1789134079.86603,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 1.223027
+1789134079.87503,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 1.232029
+1789134079.88803,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 1.244030
+1789134082.23127,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 52.216.77.102|443 after 3.723644
+1789134083.93119,3dac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Info: Stack Begin
+1789134083.93219,3dac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Info: Script 'ServerScriptService.GrabServer2', Line 233 - function OnCharacterAdded
+1789134083.93219,3dac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Info: Script 'ServerScriptService.GrabServer2', Line 262
+1789134083.93219,3dac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Info: Stack End
+1789134088.55840,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.026775
+1789134088.57443,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134088.77438,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134088.77538,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::e152:9476:c3a4:5240%1006632960|2005 after 0.200951
+1789134104.93691,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134105.13987,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134105.13987,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::7c37:4c9:6bc:5640%1006632960|2005 after 0.201954
+1789134105.15087,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.010999
+1789134105.15287,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134105.35386,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134105.35486,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::833b:1792:c8c9:5640%1006632960|2005 after 0.201996
+1789134105.36786,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.013999
+1789134108.79490,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.020525
+1789134108.81091,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134109.01293,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134109.01493,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::d73e:92e3:e5b3:5740|2005 after 0.204023
+1789134129.03372,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.020792
+1789134129.04672,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134129.24871,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134129.24871,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::cd95:fc78:fdc2:5c40%1010429184|2005 after 0.201988
+1789134135.03246,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134135.23347,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134135.23347,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::46f2:a4d8:1342:5e40%1010853120|2005 after 0.201007
+1789134135.32146,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.087988
+1789134146.78269,3b44,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: ContentProvider callback exception: tag expected
+1789134147.35799,34a8,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Starting event: InventoryStart
+1789134149.27515,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.026440
+1789134149.29407,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134149.49571,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134149.49672,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::ee7a:3c09:69e9:6040%1021064704|2005 after 0.202647
+1789134154.37344,2a1c,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Stopped event: InventoryStart
+1789134165.09758,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134165.29753,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134165.30253,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::8006:a668:1fe3:6240%4294967040|2005 after 0.204945
+1789134165.31752,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.018991
+1789134169.52419,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.028481
+1789134169.54020,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134169.74165,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134169.74165,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::c80d:5f4f:4971:6340|2005 after 0.201448
+1789134189.76082,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.019175
+1789134189.76582,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134189.96792,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134189.96792,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::f83:499b:81f8:6540%1006661888|2005 after 0.202099
+1789134195.23678,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134195.43752,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134195.43953,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::3360:f5b2:93a7:6640|2005 after 0.202750
+1789134195.47771,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.040193
+1789134210.20318,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.235264
+1789134210.22007,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134210.42246,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134210.42246,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::f7a6:13c9:a87:6840%1006648576|2005 after 0.202395
+1789134225.33433,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134225.53484,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134225.53584,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::9f15:53cd:b26a:6a40%1006632960|2005 after 0.201513
+1789134225.71384,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.178999
+1789134230.43566,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.013195
+1789134230.43867,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134230.63961,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134230.64162,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::75d3:ad97:90e:6b40|2005 after 0.202951
+1789134250.71016,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.069548
+1789134250.72215,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134250.92347,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134250.92447,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::5a15:1fd9:1b97:6d40|2005 after 0.202316
+1789134255.40078,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134255.60282,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134255.60382,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::59d:912c:d32c:6e40|2005 after 0.203044
+1789134255.63284,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.030019
+1789134270.94620,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.022731
+1789134270.95420,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134271.15619,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134271.15619,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::359:4c62:440f:7040%1023409920|2005 after 0.202000
+1789134285.45798,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134285.66047,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134285.66147,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::24b7:79de:53f7:7040%1006632960|2005 after 0.203492
+1789134285.67947,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.019002
+1789134291.17663,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.020440
+1789134291.18763,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134291.38869,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134291.38869,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::48d0:2c8a:53:7140|2005 after 0.201058
+1789134311.51555,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.126863
+1789134311.52255,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134311.72301,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134311.72301,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::8d4b:395f:5c98:7240|2005 after 0.200459
+1789134314.18023,188c,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] SecurityDataUpdater failed to fetch data from , HttpError: InvalidUrl
+1789134315.55080,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134315.75141,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134315.75441,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::4333:3513:d0d8:7240%1006632960|2005 after 0.203605
+1789134315.77140,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.019999
+1789134323.77686,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134323.79286,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134323.99491,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134323.99591,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::39e5:2b90:af5c:7340|2005 after 0.203046
+1789134323.99691,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134324.00191,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::d41f:b1a8:b35c:7340|2005 after 0.208048
+1789134324.03187,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.036960
+1789134324.03887,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.041958
+1789134331.79211,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.069099
+1789134331.80711,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134332.00824,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134332.01124,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::6020:e5ed:e9dc:7340%1006632960|2005 after 0.204128
+1789134352.03815,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.028909
+1789134352.05015,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134352.25112,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134352.25112,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::2c25:f67:cd20:7540%1006648576|2005 after 0.200977
+1789134355.62940,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134355.83039,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134355.83239,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::2ea4:8807:125a:7540|2005 after 0.202986
+1789134355.87138,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.039995
+1789134372.35766,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.106535
+1789134372.39052,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134372.59181,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134372.60281,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::1feb:5790:3f66:7640%989855744|2005 after 0.212294
+1789134385.76955,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134385.97010,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134385.97010,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::142c:ed11:503c:7740%1018617600|2005 after 0.200548
+1789134385.97807,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.007975
+1789134392.62341,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.031594
+1789134392.63242,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134392.83342,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134392.84442,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::c698:4e67:1eaa:7740%1023409920|2005 after 0.211995
+1789134412.86802,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.034606
+1789134412.88802,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134413.09004,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134413.10104,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::aabd:a756:35ee:7840|2005 after 0.213022
+1789134415.79137,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134415.99337,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134415.99437,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::e0fb:db72:a91c:7940%1006661888|2005 after 0.203004
+1789134416.00637,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.013001
+1789134433.11539,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.025352
+1789134433.12874,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134433.33092,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134433.33092,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::e040:2e55:f32:7a40%1015349248|2005 after 0.202179
+1789134445.86452,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134446.06647,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134446.06748,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::9b4c:5416:d5fd:7a40%1129526784|2005 after 0.201951
+1789134446.07553,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.009053
+1789134453.35166,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.020739
+1789134453.36257,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134453.56489,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134453.56489,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::2868:b31a:cd75:7b40|2005 after 0.202317
+1789134464.43483,2a1c,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] touch
+1789134467.71004,34a8,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] touch
+1789134473.58297,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.018078
+1789134473.59499,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134473.79777,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134473.79777,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::cfb6:1215:85b9:7c40|2005 after 0.202783
+1789134475.92752,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134476.12865,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134476.13166,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::c0f3:824:d7de:7c40|2005 after 0.203131
+1789134476.15266,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.024002
+1789134494.28825,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.490474
+1789134494.29925,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134494.50124,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134494.50124,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::94f6:bcd1:cd04:7e40%4294967040|2005 after 0.200989
+1789134505.96149,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134506.16248,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134506.16548,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::561d:3640:62bf:7e40|2005 after 0.203997
+1789134506.23273,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.070249
+1789134514.51845,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.017212
+1789134514.52792,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134514.72893,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134514.72993,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::3c58:bd5e:7248:7f40%1012879872|2005 after 0.202007
+1789134534.74801,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.019082
+1789134534.80106,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134535.00290,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134535.00290,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::d75d:7591:6846:8040%4294967040|2005 after 0.201845
+1789134536.02703,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134536.22793,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134536.22793,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::3b81:c25c:3750:8040|2005 after 0.200895
+1789134536.23788,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.009951
+1789134555.02739,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.024482
+1789134555.02839,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134555.23073,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134555.23172,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::6e62:562f:3ce8:8040|2005 after 0.202336
+1789134566.08279,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134566.28553,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134566.28752,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::489b:d38d:a940:8140|2005 after 0.204727
+1789134566.29746,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.011931
+1789134575.25022,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.019490
+1789134575.25922,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134575.45922,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134575.45922,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::c424:ece0:128a:8140%1006632960|2005 after 0.199998
+1789134595.47427,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.015050
+1789134595.49227,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134595.69328,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134595.69428,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::c1dd:529:f02b:8240%28928|2005 after 0.202013
+1789134596.15727,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134596.35826,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134596.35826,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::9332:6919:4231:8240|2005 after 0.200988
+1789134596.36926,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.010999
+1789134614.18051,188c,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] SecurityDataUpdater failed to fetch data from , HttpError: InvalidUrl
+1789134615.72354,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.030257
+1789134615.73359,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134615.93558,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134615.93758,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::4a58:8c6e:e0cd:8240%1006648576|2005 after 0.202999
+1789134626.21476,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134626.41473,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134626.41573,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::7427:f6d5:b721:8340%1006632960|2005 after 0.200966
+1789134626.42677,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.012042
+1789134635.95134,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.015760
+1789134635.95734,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134636.15708,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134636.15708,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::b0b1:a8a1:a86f:8340%1023409920|2005 after 0.199736
+1789134656.17654,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.019466
+1789134656.19154,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134656.25953,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134656.39249,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134656.39249,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::d34d:8e47:8811:8440%1023409920|2005 after 0.200944
+1789134656.45955,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134656.46055,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::bd79:9484:1312:8440%4294967040|2005 after 0.201018
+1789134656.46955,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.010003
+1789134676.40643,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.013947
+1789134676.42243,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134676.62344,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134676.62444,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::b710:1725:61b3:8440%1012797184|2005 after 0.202008
+1789134686.34975,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134686.55273,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134686.55373,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::8c7a:1c61:d002:8540%1006632960|2005 after 0.201987
+1789134686.57274,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.020002
+1789134696.64665,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.023212
+1789134696.65265,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134696.85371,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134696.86471,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::2d0c:1ba2:3855:8540|2005 after 0.212060
+1789134716.40176,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134716.60221,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134716.60221,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::d47c:a0cb:36f3:8540|2005 after 0.200453
+1789134716.61213,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.009919
+1789134716.88931,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.035601
+1789134716.90436,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134717.10602,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134717.10702,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::1d9:e222:3cf7:8540|2005 after 0.202659
+1789134737.13038,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.024363
+1789134737.14235,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134737.34238,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134737.34338,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::d8b4:d78a:2399:8640%1023409920|2005 after 0.201021
+1789134746.43905,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134746.64012,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134746.64012,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::7660:b12d:83e3:8640%1006698496|2005 after 0.201067
+1789134746.64812,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.008005
+1789134748.81816,3dac,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Brightness is not a valid member of ParticleEmitter "Workspace.Content.Exterior.House.Front.Props.Driveway_Light_Post_Flicker.Object_Trigger_Light_Flicker.Light.ParticleEmitter"
+    Stack Begin
+    Script 'Workspace.Content.Exterior.House.Front.Props.Driveway_Light_Post_Flicker.Object_Trigger_Light_Flicker.Light_Flicker', Line 64 - function touched
+    Stack End
+1789134755.66438,2a1c,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Brightness is not a valid member of ParticleEmitter "Workspace.Content.Exterior.House.Front.Props.Driveway_Light_Post_Flicker.Object_Trigger_Light_Flicker.Light.ParticleEmitter"
+    Stack Begin
+    Script 'Workspace.Content.Exterior.House.Front.Props.Driveway_Light_Post_Flicker.Object_Trigger_Light_Flicker.Light_Flicker', Line 64 - function touched
+    Stack End
+1789134757.35662,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.014239
+1789134757.36858,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134757.56850,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134757.57844,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::2588:40dc:f23a:8740%1023409920|2005 after 0.209856
+1789134769.01618,2a1c,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Starting event: HouseFirstGlimpse
+1789134776.47765,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134776.67868,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134776.68069,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::90f5:df39:d2d3:8740|2005 after 0.203038
+1789134776.69673,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.018047
+1789134777.59254,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.024045
+1789134777.60250,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134777.80430,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134777.80430,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::eac4:45eb:d1dc:8740%1006648576|2005 after 0.201804
+1789134781.04307,34a8,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Stopped event: HouseFirstGlimpse
+1789134796.00442,3dac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Starting event: RitualFirstGlimpse
+1789134798.09906,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.294754
+1789134798.10208,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134798.30404,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134798.30404,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::b0c6:8f0d:d180:8840%1006648576|2005 after 0.201964
+1789134806.59978,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134806.80298,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134806.81305,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::ad8b:6058:ccc4:8840%1013866752|2005 after 0.213271
+1789134806.82412,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.021135
+1789134808.01322,2a1c,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Stopped event: RitualFirstGlimpse
+1789134818.42918,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.125144
+1789134818.44425,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134818.64454,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134818.64454,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::b125:edd1:8d23:8940%1006632960|2005 after 0.200296
+1789134822.83615,3dac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Starting event: DaughterRoom01
+1789134834.85563,34a8,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Stopped event: DaughterRoom01
+1789134835.84878,34a8,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Disconnect from ::ffff:127.0.0.1|50893
+1789134835.86378,34a8,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] RakNet disco: ::ffff:127.0.0.1|50893 after 757.602387
+1789134836.52218,34a8,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Player 10590522 leaving
+1789134836.59021,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134836.79221,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134836.79221,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::5093:31c2:b8b4:8940%1007513344|2005 after 0.201994
+1789134836.80121,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.009000
+1789134838.98251,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.337965
+1789134839.00351,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134839.20865,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134839.22066,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::764:830:7c8:8940%1006632960|2005 after 0.217149
+1789134859.38970,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.181050
+1789134859.39970,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134859.60168,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134859.60168,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::631b:c96:326b:8a40%1006661888|2005 after 0.201976
+1789134866.68582,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134866.88838,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134866.88838,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::6758:cf8d:7ca5:8a40|2005 after 0.202559
+1789134866.89938,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.011000
+1789134879.62308,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.021402
+1789134879.63064,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134879.83163,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134879.83163,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::9a6b:b68a:b0d:8b40%1016018944|2005 after 0.200992
+1789134896.74099,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134896.94300,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134896.94300,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::e477:18c:ed95:8b40%1006632960|2005 after 0.202006
+1789134896.95100,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.008001
+1789134899.84105,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.009421
+1789134899.84705,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134900.04804,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134900.04804,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::cd20:bbc1:c6ae:8b40|2005 after 0.200988
+1789134914.18137,188c,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] SecurityDataUpdater failed to fetch data from , HttpError: InvalidUrl
+1789134920.05968,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.011647
+1789134920.06168,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134920.26367,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134920.27467,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::a650:c653:7e50:8c40|2005 after 0.212989
+1789134926.76774,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134926.96875,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134926.96875,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::de48:a456:2486:8c40|2005 after 0.201005
+1789134926.97975,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.011000
+1789134926.98275,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134927.18634,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134927.18735,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::8a74:47ab:dc87:8c40|2005 after 0.204599
+1789134927.19543,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.009091
+1789134940.28869,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.025018
+1789134940.29869,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134940.49969,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134940.49969,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::6a9b:85b7:63f2:8c40%1006632960|2005 after 0.201000
+1789134956.82041,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134957.02287,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134957.02287,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::51bc:4233:9076:8d40|2005 after 0.202460
+1789134957.03185,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.008984
+1789134960.52436,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.024674
+1789134960.53044,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134960.73243,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134960.73543,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::8642:e055:3e94:8d40|2005 after 0.204993
+1789134980.76157,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.028139
+1789134980.77657,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134980.97955,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134980.97955,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::9022:a77:3836:8e40%1006648576|2005 after 0.201983
+1789134986.86419,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789134987.06520,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789134987.06520,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::3017:2bdc:e966:8e40%1006632960|2005 after 0.201011
+1789134987.07320,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.008000
+1789135001.00540,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.025851
+1789135001.01041,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135001.21235,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135001.22234,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::105c:324f:15d8:8e40|2005 after 0.211935
+1789135016.90501,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135017.10602,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135017.11703,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::ed06:bf77:3d57:8f40|2005 after 0.212012
+1789135017.12503,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.019001
+1789135021.23553,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.023180
+1789135021.24153,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135021.44253,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135021.44253,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::7247:6bb1:f079:8f40%1013277952|2005 after 0.200006
+1789135041.45384,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.011310
+1789135041.45784,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135041.65983,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135041.66983,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::bd7e:aed4:d40d:9040|2005 after 0.210991
+1789135046.94385,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135047.14585,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135047.14585,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::440b:5080:c623:9040%1014523136|2005 after 0.201997
+1789135047.15585,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.010000
+1789135051.49003,3dac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] New connection from ::ffff:127.0.0.1|62725
+1789135051.49204,3dac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] RakNet connect: ::ffff:127.0.0.1|62725
+1789135051.70009,2a1c,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Player 12130349 added
+1789135051.70109,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135051.70309,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135051.70409,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135051.70609,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135051.70910,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135051.70910,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135051.71010,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135051.90193,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135051.90493,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::1a12:9fea:cd36:9040|2005 after 0.203837
+1789135051.90892,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135051.90892,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135051.90992,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135051.90992,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135051.90992,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135051.91092,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135051.96097,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.059045
+1789135051.96197,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135052.16298,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135052.16497,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::705f:ae15:da37:9040%4294930688|2005 after 0.202001
+1789135052.19596,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.031984
+1789135052.19696,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135052.39672,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135052.40074,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::461c:71af:c938:9040|2005 after 0.202775
+1789135052.41277,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::32:9bfd:d036:9040|2005 after 0.708682
+1789135052.41478,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::32:9bfd:d036:9040|2005 after 0.710689
+1789135052.42481,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::4347:430a:d336:9040%1006632960|2005 after 0.718719
+1789135052.43649,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::2867:3f1d:d636:9040%1006661888|2005 after 0.723398
+1789135052.44049,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::2867:3f1d:d636:9040%1013277440|2005 after 0.731397
+1789135052.44249,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::ca71:9323:d736:9040|2005 after 0.732396
+1789135052.45049,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.052765
+1789135052.45049,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135052.48149,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.571565
+1789135052.49749,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.588563
+1789135052.51149,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.601562
+1789135052.54658,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.637660
+1789135052.55859,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.647668
+1789135052.58261,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.671688
+1789135052.65357,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135052.65957,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::db13:e953:ce39:9040|2005 after 0.208078
+1789135052.68357,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.028000
+1789135057.93929,3dac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Info: Stack Begin
+1789135057.94029,3dac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Info: Script 'ServerScriptService.GrabServer2', Line 233 - function OnCharacterAdded
+1789135057.94029,3dac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Info: Script 'ServerScriptService.GrabServer2', Line 262
+1789135057.94029,3dac,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Info: Stack End
+1789135061.69178,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.031943
+1789135061.69677,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135061.89886,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135061.89886,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::6c5c:f083:ca5e:9040|2005 after 0.201090
+1789135076.99691,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135077.19961,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135077.19961,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::ecf5:93d6:fc9b:9040%1022220288|2005 after 0.202698
+1789135077.20859,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.008975
+1789135077.21058,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135077.41086,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135077.41086,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::177b:43a2:d79c:9040|2005 after 0.200279
+1789135077.41986,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.009004
+1789135081.92340,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.024538
+1789135081.94065,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135082.14374,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135082.14475,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::20c5:542:c4af:9040%4294967040|2005 after 0.203089
+1789135083.09493,2a1c,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Starting event: InventoryStart
+1789135090.10787,34a8,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Stopped event: InventoryStart
+1789135102.15822,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.014477
+1789135102.17424,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135102.37378,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135102.37577,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::8b50:5b6c:b200:9140%1010143232|2005 after 0.201526
+1789135107.16663,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135107.36870,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135107.36870,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::4031:3ea1:aa14:9140%1006648576|2005 after 0.202064
+1789135107.37877,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.010074
+1789135122.48867,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.114896
+1789135122.49470,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135122.69621,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135122.69621,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::c3ee:b093:fa51:9140%4294967040|2005 after 0.201508
+1789135137.18567,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135137.38562,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135137.39656,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::6ae:8820:be8c:9140%1006632960|2005 after 0.210892
+1789135137.40452,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.018893
+1789135142.71605,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.019839
+1789135142.72405,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135142.92606,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135142.92606,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::fe1a:d273:e6a2:9140%4294967040|2005 after 0.201004
+1789135162.94530,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.019250
+1789135162.95429,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135163.15445,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135163.15445,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::afc3:2230:d1f3:9140%4294967040|2005 after 0.200167
+1789135167.27577,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135167.47523,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135167.47924,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::936a:9063:1a05:9240%1006632960|2005 after 0.203465
+1789135167.48925,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.014022
+1789135183.17698,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.022530
+1789135183.18598,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135183.38750,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135183.38850,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::330e:4a72:be44:9240%1006632960|2005 after 0.202517
+1789135197.37011,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135197.57059,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135197.57059,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::1892:f5fc:7a7d:9240%1006648576|2005 after 0.200487
+1789135197.58056,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.009972
+1789135201.23498,2a1c,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] touch
+1789135203.41290,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.025399
+1789135203.42091,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135203.62327,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135203.62327,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::a27e:c601:af95:9240%1013212416|2005 after 0.202365
+1789135214.18559,188c,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] SecurityDataUpdater failed to fetch data from , HttpError: InvalidUrl
+1789135223.64138,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.018112
+1789135223.65438,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135223.85639,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135223.85639,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::c7a8:821c:9fe6:9240%1022121984|2005 after 0.201005
+1789135227.41247,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135227.61274,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135227.61373,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::8337:c55f:a6f5:9240%1013435392|2005 after 0.201260
+1789135227.62171,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.008973
+1789135243.87107,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.014681
+1789135243.87607,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135244.07802,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135244.07802,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::ca:181f:8237:9340%1006632960|2005 after 0.200947
+1789135257.47773,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135257.67875,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135257.67875,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::4001:3732:e96d:9340%1006632960|2005 after 0.201020
+1789135257.68775,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.009002
+1789135264.09560,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.017581
+1789135264.09959,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135264.30129,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135264.30129,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::9876:f0fa:6588:9340|2005 after 0.201701
+1789135266.69018,34a8,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] touch
+1789135284.32574,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.024444
+1789135284.33936,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135284.54081,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135284.54081,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::d8dd:7680:5bd9:9340%1006632960|2005 after 0.201452
+1789135287.51147,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135287.71348,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135287.71448,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::9c6b:dabd:be6:9340%1006648576|2005 after 0.203016
+1789135287.72848,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.014994
+1789135304.55645,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.015639
+1789135304.56746,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135304.76812,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135304.76812,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::d563:7c14:452a:9440%1006648576|2005 after 0.200657
+1789135317.61367,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135317.81502,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135317.81603,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::e1ad:2e65:745e:9440|2005 after 0.202361
+1789135317.82720,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.012180
+1789135324.79260,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.024484
+1789135324.80260,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135325.00476,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135325.00476,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::387e:86dc:357b:9440%1006648576|2005 after 0.202161
+1789135331.49574,34a8,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] touch
+1789135340.76483,2a1c,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] touch
+1789135341.89555,34a8,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] touch
+1789135343.59539,2a1c,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] touch
+1789135345.02424,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.019482
+1789135345.03616,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135345.23711,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135345.23711,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::3cf:3e08:25cc:9440|2005 after 0.200948
+1789135347.67386,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135347.87485,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135347.87585,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::d84d:a308:b2d6:9440|2005 after 0.201991
+1789135350.09059,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 2.215741
+1789135356.44679,34a8,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Disconnect from ::ffff:127.0.0.1|62725
+1789135356.46679,34a8,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] RakNet disco: ::ffff:127.0.0.1|62725 after 304.975757
+1789135356.86279,34a8,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Player 12130349 leaving
+1789135365.25660,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.019492
+1789135365.26160,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135365.46161,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135365.47261,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::3c27:c7e1:b1d:9540%1007026176|2005 after 0.211007
+1789135377.73580,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135377.93679,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135377.93679,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::2f33:d276:f14e:9540%1006648576|2005 after 0.200988
+1789135377.94578,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.008990
+1789135385.48139,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.019781
+1789135385.50139,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135385.70240,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135385.70240,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::b676:9f6c:16e:9540|2005 after 0.201005
+1789135405.72627,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.023876
+1789135405.74327,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135405.94527,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135405.94527,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::5f56:d11a:f9be:9540|2005 after 0.201999
+1789135407.79626,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135407.99726,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135407.99827,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::8125:975f:2fc7:9540|2005 after 0.202002
+1789135408.00627,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.009000
+1789135425.96328,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.018013
+1789135425.98428,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135426.18528,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135426.18628,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::82b2:cde6:ef0f:9640%4294967040|2005 after 0.201998
+1789135437.82801,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135438.03005,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135438.03005,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::b637:40e2:4f3f:9640%1006648576|2005 after 0.202039
+1789135438.04006,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.010006
+1789135446.20668,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.021400
+1789135446.20868,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135446.40969,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135446.40969,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::3137:9cb5:d660:9640%1022268672|2005 after 0.200014
+1789135466.42711,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.017418
+1789135466.44413,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135466.64503,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135466.64603,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::b991:39c9:c6b1:9640%1006632960|2005 after 0.201902
+1789135468.00381,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135468.20521,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135468.21629,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::2f60:71e7:3b8:9640|2005 after 0.212478
+1789135468.22737,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.022165
+1789135486.67272,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.027689
+1789135486.69164,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135486.89292,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135486.89392,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::83a5:713d:c402:9740%1006632960|2005 after 0.202278
+1789135497.99940,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135498.20139,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135498.21139,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::9111:2762:ff2f:9740|2005 after 0.211991
+1789135498.22439,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.022999
+1789135506.91658,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.023662
+1789135506.92458,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789135507.12616,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789135507.12616,3fac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::7863:2ac5:b253:9740|2005 after 0.201584
+1789135514.18668,188c,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] SecurityDataUpdater failed to fetch data from , HttpError: InvalidUrl

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Statistic Version="1">
+    <Profile Name="RobloxPlayerBeta">
+        <File Name="RobloxPlayerBeta.exe" />
+        <DriverVersion Value="0.3.1" />
+        <CmdLine Value="C:\RFD\Roblox\v463\Player\RobloxPlayerBeta.exe -a https://127.0.0.1:2005/login/negotiate.ashx -j https://127.0.0.1:2005/game/PlaceLauncher.ashx?MachineAddress=127.0.0.1&amp;ServerPort=2005&amp;UserCode=Player1785023025&amp;rcc-host-addr=127.0.0.1&amp;rcc-port=2005&amp;user-code=Player1785023025 -t 1" />
+        <Counters>
+            <RenderTargetSurface Count="1" />
+            <DepthStencilSurface Count="5" />
+            <Texture Count="76" />
+            <TextureDefault Count="1" />
+            <RenderTargetTexture Count="10" />
+            <RenderTargetR32FTexture Count="0" />
+            <RenderTargetSquareTexture Count="6" />
+            <RenderTargetLessThanBBTexture Count="3" />
+            <DepthStencilTexture Count="0" />
+            <CubeTexture Count="3" />
+            <CubeTextureDefault Count="0" />
+            <RenderTargetCubeTexture Count="1" />
+            <DepthStencilCubeTexture Count="0" />
+            <VolumeTexture Count="5" />
+            <VolumeTextureDefault Count="2" />
+        </Counters>
+        <Warnings>
+            <CantCreateWideSurface Value="0" />
+            <OutOfVideoMemory Value="0" />
+            <MonoDepthStencil Value="0" />
+            <UseMultipleSwapChains Value="0" />
+            <EmulateFullscreenMode Value="0" />
+        </Warnings>
+        <Sessions>
+            <Count Mono="14" Stereo="5" />
+            <TotalTime Mono="19.055805" Stereo="15.594371" />
+            <MaxTime Mono="3.027114" Stereo="12.641722" />
+        </Sessions>
+    </Profile>
+</Statistic>

@@ -1,0 +1,23 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="StringValue" referent="RBX55F9AD5C425E41B29E479CCE6876BB96">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">mood</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBXC3A5E99E35FB4ACDB6DAFC01CFCCA9EE">
+			<Properties>
+				<string name="AnimationId">rbxassetid://7715096377</string>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">Animation1</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>

@@ -1,0 +1,1635 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="LocalScript" referent="RBX4D8E08610566449B819091E4D9C2670E">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<bool name="Disabled">false</bool>
+			<string name="LinkedSource"></string>
+			<string name="Name">Animate</string>
+			<string name="OriginalScriptGuid"></string>
+			<token name="RunContext">0</token>
+			<string name="ScriptGuid">{672E2F36-53A4-49D6-BCFC-3FB81849ECCA}</string>
+			<string name="Source">local Character = script.Parent
+local Humanoid = Character:WaitForChild(&quot;Humanoid&quot;)
+local pose = &quot;Standing&quot;
+
+local UserGameSettings = UserSettings():GetService(&quot;UserGameSettings&quot;)
+
+local userNoUpdateOnLoopSuccess, userNoUpdateOnLoopValue = pcall(function() return UserSettings():IsUserFeatureEnabled(&quot;UserNoUpdateOnLoop&quot;) end)
+local userNoUpdateOnLoop = userNoUpdateOnLoopSuccess and userNoUpdateOnLoopValue
+
+local userEmoteToRunThresholdChange do
+&#9;local success, value = pcall(function()
+&#9;&#9;return UserSettings():IsUserFeatureEnabled(&quot;UserEmoteToRunThresholdChange&quot;)
+&#9;end)
+&#9;userEmoteToRunThresholdChange = success and value
+end
+
+local userPlayEmoteByIdAnimTrackReturn do
+&#9;local success, value = pcall(function()
+&#9;&#9;return UserSettings():IsUserFeatureEnabled(&quot;UserPlayEmoteByIdAnimTrackReturn2&quot;)
+&#9;end)
+&#9;userPlayEmoteByIdAnimTrackReturn = success and value
+end
+
+local AnimationSpeedDampeningObject = script:FindFirstChild(&quot;ScaleDampeningPercent&quot;)
+local HumanoidHipHeight = 2
+
+local cachedRunningSpeed = 0 -- The most recent speed passed to onRunning().  Tiny variations from cachedRunningSpeed will not cause animation updates.
+local cachedLocalDirection = Vector2.zero -- unit 2D object space direction of motion
+local smallButNotZero = 0.0001 -- We want weights to be small but not so small the animation stops
+local strafingDisabled = nil
+local runBlendtime = 0.2
+local lastLookVector = Vector3.new(0.0, 0.0, 0.0) -- used to track whether rootPart orientation is changing.
+
+local function strafeMode()
+&#9;local result = not strafingDisabled and (Humanoid.AutoRotate == (UserGameSettings.RotationType == Enum.RotationType.CameraRelative))
+&#9;return result
+end
+
+local EMOTE_TRANSITION_TIME = 0.1
+
+local currentAnim = &quot;&quot;
+local currentAnimInstance = nil
+local currentAnimTrack = nil
+local currentAnimKeyframeHandler = nil
+local currentAnimSpeed = 1.0
+
+local runAnimTrack = nil
+local runAnimKeyframeHandler = nil
+
+local PreloadedAnims = {}
+
+local animTable = {}
+local animNames = {
+&#9;idle = &#9;{
+&#9;&#9;{ id = &quot;rbxassetid://507766666&quot;, weight = 1 },
+&#9;&#9;{ id = &quot;rbxassetid://507766951&quot;, weight = 1 },
+&#9;&#9;{ id = &quot;rbxassetid://507766388&quot;, weight = 9 }
+&#9;},
+&#9;walk = &#9;{
+&#9;&#9;{ id = &quot;rbxassetid://507777826&quot;, weight = 10 }
+&#9;},
+&#9;run = &#9;{
+&#9;&#9;{ id = &quot;rbxassetid://507767714&quot;, weight = 10 }
+&#9;},
+
+&#9;swim = &#9;{
+&#9;&#9;{ id = &quot;rbxassetid://507784897&quot;, weight = 10 }
+&#9;},
+&#9;swimidle = &#9;{
+&#9;&#9;{ id = &quot;rbxassetid://507785072&quot;, weight = 10 }
+&#9;},
+&#9;jump = &#9;{
+&#9;&#9;{ id = &quot;rbxassetid://507765000&quot;, weight = 10 }
+&#9;},
+&#9;fall = &#9;{
+&#9;&#9;{ id = &quot;rbxassetid://507767968&quot;, weight = 10 }
+&#9;},
+&#9;climb = {
+&#9;&#9;{ id = &quot;rbxassetid://507765644&quot;, weight = 10 }
+&#9;},
+&#9;sit = &#9;{
+&#9;&#9;{ id = &quot;rbxassetid://2506281703&quot;, weight = 10 }
+&#9;},
+&#9;toolnone = {
+&#9;&#9;{ id = &quot;rbxassetid://507768375&quot;, weight = 10 }
+&#9;},
+&#9;toolslash = {
+&#9;&#9;{ id = &quot;rbxassetid://522635514&quot;, weight = 10 }
+&#9;},
+&#9;toollunge = {
+&#9;&#9;{ id = &quot;rbxassetid://522638767&quot;, weight = 10 }
+&#9;},
+&#9;wave = {
+&#9;&#9;{ id = &quot;rbxassetid://507770239&quot;, weight = 10 }
+&#9;},
+&#9;point = {
+&#9;&#9;{ id = &quot;rbxassetid://507770453&quot;, weight = 10 }
+&#9;},
+&#9;dance = {
+&#9;&#9;{ id = &quot;rbxassetid://507771019&quot;, weight = 10 },
+&#9;&#9;{ id = &quot;rbxassetid://507771955&quot;, weight = 10 },
+&#9;&#9;{ id = &quot;rbxassetid://507772104&quot;, weight = 10 }
+&#9;},
+&#9;dance2 = {
+&#9;&#9;{ id = &quot;rbxassetid://507776043&quot;, weight = 10 },
+&#9;&#9;{ id = &quot;rbxassetid://507776720&quot;, weight = 10 },
+&#9;&#9;{ id = &quot;rbxassetid://507776879&quot;, weight = 10 }
+&#9;},
+&#9;dance3 = {
+&#9;&#9;{ id = &quot;rbxassetid://507777268&quot;, weight = 10 },
+&#9;&#9;{ id = &quot;rbxassetid://507777451&quot;, weight = 10 },
+&#9;&#9;{ id = &quot;rbxassetid://507777623&quot;, weight = 10 }
+&#9;},
+&#9;laugh = {
+&#9;&#9;{ id = &quot;rbxassetid://507770818&quot;, weight = 10 }
+&#9;},
+&#9;cheer = {
+&#9;&#9;{ id = &quot;rbxassetid://507770677&quot;, weight = 10 }
+&#9;},
+}
+
+local locomotionMap = {}
+
+-- Existance in this list signifies that it is an emote, the value indicates if it is a looping emote
+local emoteNames = { wave = false, point = false, dance = true, dance2 = true, dance3 = true, laugh = false, cheer = false}
+
+math.randomseed(tick())
+
+function findExistingAnimationInSet(set, anim)
+&#9;if set == nil or anim == nil then
+&#9;&#9;return 0
+&#9;end
+
+&#9;for idx = 1, set.count, 1 do
+&#9;&#9;if set[idx].anim.AnimationId == anim.AnimationId then
+&#9;&#9;&#9;return idx
+&#9;&#9;end
+&#9;end
+
+&#9;return 0
+end
+
+function configureAnimationSet(name, fileList)
+&#9;if (animTable[name] ~= nil) then
+&#9;&#9;for _, connection in pairs(animTable[name].connections) do
+&#9;&#9;&#9;connection:disconnect()
+&#9;&#9;end
+&#9;end
+&#9;animTable[name] = {}
+&#9;animTable[name].count = 0
+&#9;animTable[name].totalWeight = 0
+&#9;animTable[name].connections = {}
+
+&#9;local allowCustomAnimations = true
+
+&#9;local success, msg = pcall(function() allowCustomAnimations = game:GetService(&quot;StarterPlayer&quot;).AllowCustomAnimations end)
+&#9;if not success then
+&#9;&#9;allowCustomAnimations = true
+&#9;end
+
+&#9;-- check for config values
+&#9;local config = script:FindFirstChild(name)
+&#9;if (allowCustomAnimations and config ~= nil) then
+&#9;&#9;table.insert(animTable[name].connections, config.ChildAdded:connect(function(child) configureAnimationSet(name, fileList) end))
+&#9;&#9;table.insert(animTable[name].connections, config.ChildRemoved:connect(function(child) configureAnimationSet(name, fileList) end))
+
+&#9;&#9;local idx = 0
+
+&#9;&#9;for _, childPart in pairs(config:GetChildren()) do
+&#9;&#9;&#9;if (childPart:IsA(&quot;Animation&quot;)) then
+&#9;&#9;&#9;&#9;local newWeight = 1
+&#9;&#9;&#9;&#9;local weightObject = childPart:FindFirstChild(&quot;Weight&quot;)
+&#9;&#9;&#9;&#9;if (weightObject ~= nil) then
+&#9;&#9;&#9;&#9;&#9;newWeight = weightObject.Value
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;animTable[name].count = animTable[name].count + 1
+&#9;&#9;&#9;&#9;idx = animTable[name].count
+&#9;&#9;&#9;&#9;animTable[name][idx] = {}
+&#9;&#9;&#9;&#9;animTable[name][idx].anim = childPart
+&#9;&#9;&#9;&#9;animTable[name][idx].weight = newWeight
+&#9;&#9;&#9;&#9;animTable[name].totalWeight = animTable[name].totalWeight + animTable[name][idx].weight
+&#9;&#9;&#9;&#9;table.insert(animTable[name].connections, childPart.Changed:connect(function(property) configureAnimationSet(name, fileList) end))
+&#9;&#9;&#9;&#9;table.insert(animTable[name].connections, childPart.ChildAdded:connect(function(property) configureAnimationSet(name, fileList) end))
+&#9;&#9;&#9;&#9;table.insert(animTable[name].connections, childPart.ChildRemoved:connect(function(property) configureAnimationSet(name, fileList) end))
+&#9;&#9;&#9;&#9;local lv = childPart:GetAttribute(&quot;LinearVelocity&quot;)
+&#9;&#9;&#9;&#9;if lv then
+&#9;&#9;&#9;&#9;&#9;locomotionMap[name] = {lv=lv, speed = math.sqrt(lv:Dot(lv))}
+&#9;&#9;&#9;&#9;elseif name == &quot;run&quot; or name == &quot;walk&quot; then
+&#9;&#9;&#9;&#9;&#9;-- If you don&apos;t have a linear velocity with your run or walk, you can&apos;t blend/strafe
+&#9;&#9;&#9;&#9;&#9;locomotionMap[name] = {}
+&#9;&#9;&#9;&#9;&#9;warn(&quot;Strafe blending disabled. No linear velocity information for &quot;..&apos;&quot;&apos;..&quot;walk&quot;..&apos;&quot;&apos;..&quot; and &quot;..&apos;&quot;&apos;..&quot;run&quot;..&apos;&quot;&apos;..&quot;.&quot;)
+&#9;&#9;&#9;&#9;&#9;strafingDisabled = true
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+
+&#9;-- fallback to defaults
+&#9;if (animTable[name].count &lt;= 0) then
+&#9;&#9;for idx, anim in pairs(fileList) do
+&#9;&#9;&#9;animTable[name][idx] = {}
+&#9;&#9;&#9;animTable[name][idx].anim = Instance.new(&quot;Animation&quot;)
+&#9;&#9;&#9;animTable[name][idx].anim.Name = name
+&#9;&#9;&#9;animTable[name][idx].anim.AnimationId = anim.id
+&#9;&#9;&#9;animTable[name][idx].weight = anim.weight
+&#9;&#9;&#9;animTable[name].count = animTable[name].count + 1
+&#9;&#9;&#9;animTable[name].totalWeight = animTable[name].totalWeight + anim.weight
+&#9;&#9;end
+&#9;end
+
+&#9;-- preload anims
+&#9;for i, animType in pairs(animTable) do
+&#9;&#9;for idx = 1, animType.count, 1 do
+&#9;&#9;&#9;if PreloadedAnims[animType[idx].anim.AnimationId] == nil then
+&#9;&#9;&#9;&#9;Humanoid:LoadAnimation(animType[idx].anim)
+&#9;&#9;&#9;&#9;PreloadedAnims[animType[idx].anim.AnimationId] = true
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+end
+
+------------------------------------------------------------------------------------------------------------
+
+function configureAnimationSetOld(name, fileList)
+&#9;if (animTable[name] ~= nil) then
+&#9;&#9;for _, connection in pairs(animTable[name].connections) do
+&#9;&#9;&#9;connection:disconnect()
+&#9;&#9;end
+&#9;end
+&#9;animTable[name] = {}
+&#9;animTable[name].count = 0
+&#9;animTable[name].totalWeight = 0
+&#9;animTable[name].connections = {}
+
+&#9;local allowCustomAnimations = true
+
+&#9;local success, msg = pcall(function() allowCustomAnimations = game:GetService(&quot;StarterPlayer&quot;).AllowCustomAnimations end)
+&#9;if not success then
+&#9;&#9;allowCustomAnimations = true
+&#9;end
+
+&#9;-- check for config values
+&#9;local config = script:FindFirstChild(name)
+&#9;if (allowCustomAnimations and config ~= nil) then
+&#9;&#9;table.insert(animTable[name].connections, config.ChildAdded:connect(function(child) configureAnimationSet(name, fileList) end))
+&#9;&#9;table.insert(animTable[name].connections, config.ChildRemoved:connect(function(child) configureAnimationSet(name, fileList) end))
+&#9;&#9;local idx = 1
+&#9;&#9;for _, childPart in pairs(config:GetChildren()) do
+&#9;&#9;&#9;if (childPart:IsA(&quot;Animation&quot;)) then
+&#9;&#9;&#9;&#9;table.insert(animTable[name].connections, childPart.Changed:connect(function(property) configureAnimationSet(name, fileList) end))
+&#9;&#9;&#9;&#9;animTable[name][idx] = {}
+&#9;&#9;&#9;&#9;animTable[name][idx].anim = childPart
+&#9;&#9;&#9;&#9;local weightObject = childPart:FindFirstChild(&quot;Weight&quot;)
+&#9;&#9;&#9;&#9;if (weightObject == nil) then
+&#9;&#9;&#9;&#9;&#9;animTable[name][idx].weight = 1
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;animTable[name][idx].weight = weightObject.Value
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;animTable[name].count = animTable[name].count + 1
+&#9;&#9;&#9;&#9;animTable[name].totalWeight = animTable[name].totalWeight + animTable[name][idx].weight
+&#9;&#9;&#9;&#9;idx = idx + 1
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+
+&#9;-- fallback to defaults
+&#9;if (animTable[name].count &lt;= 0) then
+&#9;&#9;for idx, anim in pairs(fileList) do
+&#9;&#9;&#9;animTable[name][idx] = {}
+&#9;&#9;&#9;animTable[name][idx].anim = Instance.new(&quot;Animation&quot;)
+&#9;&#9;&#9;animTable[name][idx].anim.Name = name
+&#9;&#9;&#9;animTable[name][idx].anim.AnimationId = anim.id
+&#9;&#9;&#9;animTable[name][idx].weight = anim.weight
+&#9;&#9;&#9;animTable[name].count = animTable[name].count + 1
+&#9;&#9;&#9;animTable[name].totalWeight = animTable[name].totalWeight + anim.weight
+&#9;&#9;end
+&#9;end
+
+&#9;-- preload anims
+&#9;for i, animType in pairs(animTable) do
+&#9;&#9;for idx = 1, animType.count, 1 do
+&#9;&#9;&#9;Humanoid:LoadAnimation(animType[idx].anim)
+&#9;&#9;end
+&#9;end
+end
+
+-- Setup animation objects
+function scriptChildModified(child)return
+&#9;local fileList = animNames[child.Name]
+&#9;if (fileList ~= nil) then
+&#9;&#9;configureAnimationSet(child.Name, fileList)
+&#9;else
+&#9;&#9;if child:isA(&quot;StringValue&quot;) then
+&#9;&#9;&#9;animNames[child.Name] = {}
+&#9;&#9;&#9;configureAnimationSet(child.Name, animNames[child.Name])
+&#9;&#9;end
+&#9;end&#9;
+end
+
+script.ChildAdded:connect(scriptChildModified)
+script.ChildRemoved:connect(scriptChildModified)
+
+-- Clear any existing animation tracks
+-- Fixes issue with characters that are moved in and out of the Workspace accumulating tracks
+local animator = if Humanoid then Humanoid:FindFirstChildOfClass(&quot;Animator&quot;) else nil
+if animator then
+&#9;local animTracks = animator:GetPlayingAnimationTracks()
+&#9;for i,track in ipairs(animTracks) do
+&#9;&#9;track:Stop(0)
+&#9;&#9;track:Destroy()
+&#9;end
+end
+
+for name, fileList in pairs(animNames) do
+&#9;configureAnimationSet(name, fileList)
+end
+for child in script:GetChildren() do
+&#9;if child.isA(&quot;StringValue&quot;) and not animNames[child.name] then
+&#9;&#9;animNames[child.Name] = {}
+&#9;&#9;configureAnimationSet(child.Name, animNames[child.Name])
+&#9;end
+end
+
+-- ANIMATION
+
+-- declarations
+local toolAnim = &quot;None&quot;
+local toolAnimTime = 0
+
+local jumpAnimTime = 0
+local jumpAnimDuration = 0.31
+
+local toolTransitionTime = 0.1
+local fallTransitionTime = 0.2
+
+local currentlyPlayingEmote = false
+
+-- functions
+
+function stopAllAnimations()
+&#9;local oldAnim = currentAnim
+
+&#9;-- return to idle if finishing an emote
+&#9;if (emoteNames[oldAnim] ~= nil and emoteNames[oldAnim] == false) then
+&#9;&#9;oldAnim = &quot;idle&quot;
+&#9;end
+
+&#9;if currentlyPlayingEmote then
+&#9;&#9;oldAnim = &quot;idle&quot;
+&#9;&#9;currentlyPlayingEmote = false
+&#9;end
+
+&#9;currentAnim = &quot;&quot;
+&#9;currentAnimInstance = nil
+&#9;if (currentAnimKeyframeHandler ~= nil) then
+&#9;&#9;currentAnimKeyframeHandler:disconnect()
+&#9;end
+
+&#9;if (currentAnimTrack ~= nil) then
+&#9;&#9;currentAnimTrack:Stop()
+&#9;&#9;currentAnimTrack:Destroy()
+&#9;&#9;currentAnimTrack = nil
+&#9;end
+
+&#9;for _,v in pairs(locomotionMap) do
+&#9;&#9;if v.track then
+&#9;&#9;&#9;v.track:Stop()
+&#9;&#9;&#9;v.track:Destroy()
+&#9;&#9;&#9;v.track = nil
+&#9;&#9;end
+&#9;end
+&#9;if not strafeMode() then
+
+&#9;&#9;if (runAnimKeyframeHandler ~= nil) then
+&#9;&#9;&#9;runAnimKeyframeHandler:disconnect()
+&#9;&#9;end
+
+&#9;end
+
+&#9;return oldAnim
+end
+
+function getHeightScale()
+&#9;if Humanoid then
+&#9;&#9;if not Humanoid.AutomaticScalingEnabled then
+&#9;&#9;&#9;return 1
+&#9;&#9;end
+
+&#9;&#9;local scale = Humanoid.HipHeight / HumanoidHipHeight
+&#9;&#9;if AnimationSpeedDampeningObject == nil then
+&#9;&#9;&#9;AnimationSpeedDampeningObject = script:FindFirstChild(&quot;ScaleDampeningPercent&quot;)
+&#9;&#9;end
+&#9;&#9;if AnimationSpeedDampeningObject ~= nil then
+&#9;&#9;&#9;scale = 1 + (Humanoid.HipHeight - HumanoidHipHeight) * AnimationSpeedDampeningObject.Value / HumanoidHipHeight
+&#9;&#9;end
+&#9;&#9;return scale
+&#9;end
+&#9;return 1
+end
+
+
+local function signedAngle(a, b)
+&#9;return -math.atan2(a.x * b.y - a.y * b.x, a.x * b.x + a.y * b.y)
+end
+
+local angleWeight = 2.0
+local function get2DWeight(px, p1, p2, sx, s1, s2)
+&#9;local avgLength = 0.5 * (s1 + s2)
+
+&#9;local p_1 = Vector2.new((sx - s1)/avgLength, (angleWeight * signedAngle(p1, px)))
+&#9;local p12 = Vector2.new((s2 - s1)/avgLength, (angleWeight * signedAngle(p1, p2)))&#9;
+&#9;local denom = smallButNotZero + (p12.x*p12.x + p12.y*p12.y)
+&#9;local numer = p_1.x * p12.x + p_1.y * p12.y
+&#9;local r = math.clamp(1.0 - numer/denom, 0.0, 1.0)
+&#9;return r
+end
+
+local function blend2D(targetVelo, targetSpeed)
+&#9;local h = {}
+&#9;local sum = 0.0
+&#9;for n,v1 in pairs(locomotionMap) do
+&#9;&#9;if targetVelo.x * v1.lv.x &lt; 0.0 or targetVelo.y * v1.lv.y &lt; 0 then
+&#9;&#9;&#9;-- Require same quadrant as target
+&#9;&#9;&#9;h[n] = 0.0
+&#9;&#9;&#9;continue
+&#9;&#9;end
+&#9;&#9;h[n] = math.huge
+&#9;&#9;for j,v2 in pairs(locomotionMap) do
+&#9;&#9;&#9;if targetVelo.x * v2.lv.x &lt; 0.0 or targetVelo.y * v2.lv.y &lt; 0 then
+&#9;&#9;&#9;&#9;-- Require same quadrant as target
+&#9;&#9;&#9;&#9;continue
+&#9;&#9;&#9;end
+&#9;&#9;&#9;h[n] = math.min(h[n], get2DWeight(targetVelo, v1.lv, v2.lv, targetSpeed, v1.speed, v2.speed))
+&#9;&#9;end
+&#9;&#9;sum += h[n]
+&#9;end
+
+&#9;--truncates below 10% contribution
+&#9;local sum2 = 0.0
+&#9;local weightedVeloX = 0
+&#9;local weightedVeloY = 0
+&#9;for n,v in pairs(locomotionMap) do
+
+&#9;&#9;if (h[n] / sum &gt; 0.1) then
+&#9;&#9;&#9;sum2 += h[n]
+&#9;&#9;&#9;weightedVeloX += h[n] * v.lv.x
+&#9;&#9;&#9;weightedVeloY += h[n] * v.lv.y
+&#9;&#9;else
+&#9;&#9;&#9;h[n] = 0.0
+&#9;&#9;end
+&#9;end
+&#9;local animSpeed
+&#9;local weightedSpeedSquared = weightedVeloX * weightedVeloX + weightedVeloY * weightedVeloY
+&#9;if weightedSpeedSquared &gt; smallButNotZero then
+&#9;&#9;animSpeed = math.sqrt(targetSpeed * targetSpeed / weightedSpeedSquared)
+&#9;else
+&#9;&#9;animSpeed = 0
+&#9;end
+
+&#9;animSpeed = animSpeed / getHeightScale()
+&#9;local groupTimePosition = 0
+&#9;for n,v in pairs(locomotionMap) do
+&#9;&#9;if v.track.IsPlaying then
+&#9;&#9;&#9;groupTimePosition = v.track.TimePosition
+&#9;&#9;&#9;break
+&#9;&#9;end
+&#9;end
+&#9;for n,v in pairs(locomotionMap) do
+&#9;&#9;-- if not loco
+&#9;&#9;if h[n] &gt; 0.0 then
+&#9;&#9;&#9;if not v.track.IsPlaying then
+&#9;&#9;&#9;&#9;v.track:Play(runBlendtime)
+&#9;&#9;&#9;&#9;v.track.TimePosition = groupTimePosition
+&#9;&#9;&#9;end
+
+&#9;&#9;&#9;local weight = math.max(smallButNotZero, h[n] / sum2)
+&#9;&#9;&#9;v.track:AdjustWeight(weight, runBlendtime)
+&#9;&#9;&#9;v.track:AdjustSpeed(animSpeed)
+&#9;&#9;else
+&#9;&#9;&#9;v.track:Stop(runBlendtime)
+&#9;&#9;end
+&#9;end
+
+end
+
+local function getWalkDirection()
+&#9;local walkToPoint = Humanoid.WalkToPoint
+&#9;local walkToPart = Humanoid.WalkToPart
+&#9;if Humanoid.MoveDirection ~= Vector3.zero then
+&#9;&#9;return Humanoid.MoveDirection
+&#9;elseif walkToPart or walkToPoint ~= Vector3.zero then
+&#9;&#9;local destination
+&#9;&#9;if walkToPart then
+&#9;&#9;&#9;destination = walkToPart.CFrame:PointToWorldSpace(walkToPoint)
+&#9;&#9;else
+&#9;&#9;&#9;destination = walkToPoint
+&#9;&#9;end
+&#9;&#9;local moveVector = Vector3.zero
+&#9;&#9;if Humanoid.RootPart then
+&#9;&#9;&#9;moveVector = destination - Humanoid.RootPart.CFrame.Position
+&#9;&#9;&#9;moveVector = Vector3.new(moveVector.x, 0.0, moveVector.z)
+&#9;&#9;&#9;local mag = moveVector.Magnitude
+&#9;&#9;&#9;if mag &gt; 0.01 then
+&#9;&#9;&#9;&#9;moveVector /= mag
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;return moveVector
+&#9;else
+&#9;&#9;return Humanoid.MoveDirection
+&#9;end
+end
+
+local function onVelocityChanged(speed)
+&#9;if not strafeMode() then
+&#9;&#9;return
+&#9;end
+&#9;if not speed then
+&#9;&#9;-- If speed wasn&apos;t passed in, assume it hasn&apos;t changed
+&#9;&#9;speed = cachedRunningSpeed
+&#9;end
+&#9;local moveDirection = getWalkDirection()
+
+&#9;if not Humanoid.RootPart then
+&#9;&#9;return
+&#9;end
+
+&#9;local cframe = Humanoid.RootPart.CFrame
+&#9;if math.abs(cframe.UpVector.Y) &lt; smallButNotZero or pose ~= &quot;Running&quot; or speed &lt;0.001 then
+&#9;&#9;-- We are horizontal!  Do something  (turn off locomotion)
+&#9;&#9;for n,v in pairs(locomotionMap) do
+&#9;&#9;&#9;if v.track then
+&#9;&#9;&#9;&#9;v.track:AdjustWeight(smallButNotZero, runBlendtime)
+&#9;&#9;&#9;&#9;cachedRunningSpeed = 0
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;return
+&#9;end
+&#9;local lookat = cframe.LookVector
+&#9;local direction = Vector3.new(lookat.X, 0.0, lookat.Z)
+&#9;direction = direction / direction.Magnitude --sensible upVector means this is non-zero.
+&#9;local ly = moveDirection:Dot(direction)
+&#9;if ly &lt;= 0.0 and ly &gt; -0.05 then
+&#9;&#9;ly = smallButNotZero -- break quadrant ties in favor of forward-friendly strafes
+&#9;end
+&#9;local lx = direction.X*moveDirection.Z - direction.Z*moveDirection.X
+&#9;local tempDir = Vector2.new(lx, ly) -- root space moveDirection
+&#9;local delta = Vector2.new(tempDir.x-cachedLocalDirection.x, tempDir.y-cachedLocalDirection.y)
+&#9;if delta.x*delta.x + delta.y*delta.y &gt; 0.001 or math.abs(speed - cachedRunningSpeed) &gt; 0.01 then
+&#9;&#9;cachedLocalDirection = tempDir
+&#9;&#9;cachedRunningSpeed = speed
+&#9;&#9;blend2D(cachedLocalDirection, cachedRunningSpeed)
+&#9;end
+
+end
+
+local function rootMotionCompensation(speed)
+&#9;local speedScaled = speed * 1.25
+&#9;local heightScale = getHeightScale()
+&#9;local runSpeed = speedScaled / heightScale
+&#9;return runSpeed
+end
+
+local function setRunSpeed(speed)
+&#9;local normalizedWalkSpeed = 0.5 -- established empirically using current `913402848` walk animation
+&#9;local normalizedRunSpeed  = 1
+&#9;local runSpeed = rootMotionCompensation(speed)
+&#9;local walkAnimationWeight = smallButNotZero
+&#9;local runAnimationWeight = smallButNotZero
+&#9;local walkAnimationTimewarp = runSpeed/normalizedWalkSpeed
+&#9;local runAnimationTimerwarp = runSpeed/normalizedRunSpeed
+
+&#9;if runSpeed &lt;= normalizedWalkSpeed then
+&#9;&#9;walkAnimationWeight = 1
+&#9;elseif runSpeed &lt; normalizedRunSpeed then
+&#9;&#9;local fadeInRun = (runSpeed - normalizedWalkSpeed)/(normalizedRunSpeed - normalizedWalkSpeed)
+&#9;&#9;walkAnimationWeight = 1 - fadeInRun
+&#9;&#9;runAnimationWeight  = fadeInRun
+&#9;&#9;walkAnimationTimewarp = 1
+&#9;&#9;runAnimationTimerwarp = 1
+&#9;else
+&#9;&#9;runAnimationWeight = 1
+&#9;end
+&#9;currentAnimTrack:AdjustWeight(walkAnimationWeight)
+&#9;runAnimTrack:AdjustWeight(runAnimationWeight)
+&#9;currentAnimTrack:AdjustSpeed(walkAnimationTimewarp)
+&#9;runAnimTrack:AdjustSpeed(runAnimationTimerwarp)
+end
+
+function setAnimationSpeed(speed)
+&#9;if currentAnim == &quot;walk&quot; then
+&#9;&#9;if not strafeMode() then
+&#9;&#9;&#9;setRunSpeed(speed)
+&#9;&#9;end
+&#9;else
+&#9;&#9;if speed ~= currentAnimSpeed then
+&#9;&#9;&#9;currentAnimSpeed = speed
+&#9;&#9;&#9;currentAnimTrack:AdjustSpeed(currentAnimSpeed)
+&#9;&#9;end
+&#9;end
+end
+
+function keyFrameReachedFunc(frameName)
+&#9;if (frameName == &quot;End&quot;) then
+&#9;&#9;if currentAnim == &quot;walk&quot; then
+&#9;&#9;&#9;if strafeMode() then
+&#9;&#9;&#9;&#9;for n,v in pairs(locomotionMap) do
+&#9;&#9;&#9;&#9;&#9;local track = v.track
+&#9;&#9;&#9;&#9;&#9;if not userNoUpdateOnLoop or track.Looped ~= true then
+&#9;&#9;&#9;&#9;&#9;&#9;track.timePosition = 0.0
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;if userNoUpdateOnLoop == true then
+&#9;&#9;&#9;&#9;&#9;if runAnimTrack.Looped ~= true then
+&#9;&#9;&#9;&#9;&#9;&#9;runAnimTrack.TimePosition = 0.0
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;if currentAnimTrack.Looped ~= true then
+&#9;&#9;&#9;&#9;&#9;&#9;currentAnimTrack.TimePosition = 0.0
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;runAnimTrack.TimePosition = 0.0
+&#9;&#9;&#9;&#9;&#9;currentAnimTrack.TimePosition = 0.0
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;else
+&#9;&#9;&#9;local repeatAnim = currentAnim
+&#9;&#9;&#9;-- return to idle if finishing an emote
+&#9;&#9;&#9;if (emoteNames[repeatAnim] ~= nil and emoteNames[repeatAnim] == false) then
+&#9;&#9;&#9;&#9;repeatAnim = &quot;idle&quot;
+&#9;&#9;&#9;end
+
+&#9;&#9;&#9;if currentlyPlayingEmote then
+&#9;&#9;&#9;&#9;if currentAnimTrack.Looped then
+&#9;&#9;&#9;&#9;&#9;-- Allow the emote to loop
+&#9;&#9;&#9;&#9;&#9;return
+&#9;&#9;&#9;&#9;end
+
+&#9;&#9;&#9;&#9;repeatAnim = &quot;idle&quot;
+&#9;&#9;&#9;&#9;currentlyPlayingEmote = false
+&#9;&#9;&#9;end
+
+&#9;&#9;&#9;local animSpeed = currentAnimSpeed
+&#9;&#9;&#9;playAnimation(repeatAnim, 0.15, Humanoid)
+&#9;&#9;&#9;setAnimationSpeed(animSpeed)
+&#9;&#9;end
+&#9;end
+end
+
+function rollAnimation(animName)
+&#9;local roll = math.random(1, animTable[animName].totalWeight)
+&#9;local origRoll = roll
+&#9;local idx = 1
+&#9;while (roll &gt; animTable[animName][idx].weight) do
+&#9;&#9;roll = roll - animTable[animName][idx].weight
+&#9;&#9;idx = idx + 1
+&#9;end
+&#9;return idx
+end
+
+local maxVeloX, minVeloX, maxVeloY, minVeloY
+
+local function destroyRunAnimations()
+&#9;for _,v in pairs(locomotionMap) do
+&#9;&#9;if v.track then
+&#9;&#9;&#9;v.track:Stop()
+&#9;&#9;&#9;v.track:Destroy()
+&#9;&#9;&#9;v.track = nil
+&#9;&#9;end
+&#9;end
+end
+
+local function resetVelocityBounds(velo)
+&#9;minVeloX = 0
+&#9;maxVeloX = 0
+&#9;minVeloY = 0
+&#9;maxVeloY = 0
+end
+
+local function updateVelocityBounds(velo)
+&#9;if velo then
+&#9;&#9;if velo.x &gt; maxVeloX then maxVeloX = velo.x end
+&#9;&#9;if velo.y &gt; maxVeloY then maxVeloY = velo.y end
+&#9;&#9;if velo.x &lt; minVeloX then minVeloX = velo.x end
+&#9;&#9;if velo.y &lt; minVeloY then minVeloY = velo.y end
+&#9;end
+end
+
+local function checkVelocityBounds(velo)
+&#9;if not strafingDisabled and (maxVeloX == 0 or minVeloX == 0 or maxVeloY == 0 or minVeloY == 0) then
+&#9;&#9;warn(&quot;Strafe blending disabled.  Not all quandrants of motion represented.&quot;)
+&#9;&#9;strafingDisabled = true
+&#9;end
+end
+
+local function setupWalkAnimation(anim, animName, transitionTime, humanoid)
+&#9;resetVelocityBounds()
+&#9;-- check to see if we need to blend a walk/run animation
+&#9;for n,v in pairs(locomotionMap) do
+&#9;&#9;v.track = humanoid:LoadAnimation(animTable[n][1].anim)
+&#9;&#9;v.track.Priority = Enum.AnimationPriority.Core
+&#9;&#9;updateVelocityBounds(v.lv)
+&#9;end
+&#9;checkVelocityBounds()
+&#9;currentAnimTrack = locomotionMap[&quot;walk&quot;].track
+&#9;runAnimTrack = locomotionMap[&quot;run&quot;].track
+&#9;if strafeMode() then
+&#9;&#9;onVelocityChanged()
+&#9;else
+&#9;&#9;currentAnimTrack:Play(0.2)
+&#9;&#9;currentAnimTrack:AdjustWeight(smallButNotZero)
+&#9;&#9;runAnimTrack:Play(0.2)
+&#9;&#9;runAnimTrack:AdjustWeight(smallButNotZero)
+&#9;&#9;if (runAnimKeyframeHandler ~= nil) then
+&#9;&#9;&#9;runAnimKeyframeHandler:disconnect()
+&#9;&#9;end
+
+&#9;&#9;runAnimKeyframeHandler = runAnimTrack.KeyframeReached:connect(keyFrameReachedFunc)
+
+&#9;end
+end
+
+local function switchToAnim(anim, animName, transitionTime, humanoid)
+&#9;-- switch animation&#9;&#9;
+&#9;if (anim ~= currentAnimInstance) then
+
+&#9;&#9;if (currentAnimTrack ~= nil) then
+&#9;&#9;&#9;currentAnimTrack:Stop(transitionTime)
+&#9;&#9;&#9;currentAnimTrack:Destroy()
+&#9;&#9;end
+&#9;&#9;if (currentAnimKeyframeHandler ~= nil) then
+&#9;&#9;&#9;currentAnimKeyframeHandler:disconnect()
+&#9;&#9;end
+
+&#9;&#9;destroyRunAnimations()
+
+&#9;&#9;if userNoUpdateOnLoop == true then
+&#9;&#9;&#9;runAnimTrack = nil
+&#9;&#9;end
+
+&#9;&#9;currentAnimSpeed = 1.0
+
+&#9;&#9;currentAnim = animName
+&#9;&#9;currentAnimInstance = anim&#9;
+
+&#9;&#9;if animName == &quot;walk&quot; then
+&#9;&#9;&#9;setupWalkAnimation(anim, animName, transitionTime, humanoid)
+&#9;&#9;else
+&#9;&#9;&#9;-- load it to the humanoid; get AnimationTrack
+&#9;&#9;&#9;currentAnimTrack = humanoid:LoadAnimation(anim)
+&#9;&#9;&#9;currentAnimTrack.Priority = Enum.AnimationPriority.Core
+
+&#9;&#9;&#9;currentAnimTrack:Play(transitionTime)&#9;&#9;
+&#9;&#9;end
+
+&#9;&#9;-- set up keyframe name triggers
+&#9;&#9;currentAnimKeyframeHandler = currentAnimTrack.KeyframeReached:connect(keyFrameReachedFunc)
+
+&#9;end
+end
+
+function playAnimation(animName, transitionTime, humanoid)
+&#9;local idx = rollAnimation(animName)
+&#9;local anim = animTable[animName][idx].anim
+
+&#9;switchToAnim(anim, animName, transitionTime, humanoid)
+&#9;currentlyPlayingEmote = false
+end
+
+function playEmote(emoteAnim, transitionTime, humanoid)
+&#9;switchToAnim(emoteAnim, emoteAnim.Name, transitionTime, humanoid)
+&#9;currentlyPlayingEmote = true
+end
+
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+
+local toolAnimName = &quot;&quot;
+local toolAnimTrack = nil
+local toolAnimInstance = nil
+local currentToolAnimKeyframeHandler = nil
+
+function toolKeyFrameReachedFunc(frameName)
+&#9;if (frameName == &quot;End&quot;) then
+&#9;&#9;playToolAnimation(toolAnimName, 0.0, Humanoid)
+&#9;end
+end
+
+
+function playToolAnimation(animName, transitionTime, humanoid, priority)
+&#9;local idx = rollAnimation(animName)
+&#9;local anim = animTable[animName][idx].anim
+
+&#9;if (toolAnimInstance ~= anim) then
+
+&#9;&#9;if (toolAnimTrack ~= nil) then
+&#9;&#9;&#9;toolAnimTrack:Stop()
+&#9;&#9;&#9;toolAnimTrack:Destroy()
+&#9;&#9;&#9;transitionTime = 0
+&#9;&#9;end
+
+&#9;&#9;-- load it to the humanoid; get AnimationTrack
+&#9;&#9;toolAnimTrack = humanoid:LoadAnimation(anim)
+&#9;&#9;if priority then
+&#9;&#9;&#9;toolAnimTrack.Priority = priority
+&#9;&#9;end
+
+&#9;&#9;-- play the animation
+&#9;&#9;toolAnimTrack:Play(transitionTime)
+&#9;&#9;toolAnimName = animName
+&#9;&#9;toolAnimInstance = anim
+
+&#9;&#9;currentToolAnimKeyframeHandler = toolAnimTrack.KeyframeReached:connect(toolKeyFrameReachedFunc)
+&#9;end
+end
+
+function stopToolAnimations()
+&#9;local oldAnim = toolAnimName
+
+&#9;if (currentToolAnimKeyframeHandler ~= nil) then
+&#9;&#9;currentToolAnimKeyframeHandler:disconnect()
+&#9;end
+
+&#9;toolAnimName = &quot;&quot;
+&#9;toolAnimInstance = nil
+&#9;if (toolAnimTrack ~= nil) then
+&#9;&#9;toolAnimTrack:Stop()
+&#9;&#9;toolAnimTrack:Destroy()
+&#9;&#9;toolAnimTrack = nil
+&#9;end
+
+&#9;return oldAnim
+end
+
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+-- STATE CHANGE HANDLERS
+
+function onRunning(speed)
+&#9;local movedDuringEmote =
+&#9;&#9;userEmoteToRunThresholdChange and currentlyPlayingEmote and Humanoid.MoveDirection == Vector3.new(0, 0, 0)
+&#9;local speedThreshold = movedDuringEmote and Humanoid.WalkSpeed or 0.75
+&#9;if speed &gt; speedThreshold then
+&#9;&#9;local scale = 16.0
+&#9;&#9;playAnimation(&quot;walk&quot;, 0.2, Humanoid)
+&#9;&#9;setAnimationSpeed(speed / scale)
+&#9;&#9;pose = &quot;Running&quot;
+&#9;else
+&#9;&#9;if emoteNames[currentAnim] == nil and not currentlyPlayingEmote then
+&#9;&#9;&#9;playAnimation(&quot;idle&quot;, 0.2, Humanoid)
+&#9;&#9;&#9;pose = &quot;Standing&quot;
+&#9;&#9;end
+&#9;end
+&#9;if strafeMode() then
+&#9;&#9;onVelocityChanged(speed)
+&#9;else
+&#9;&#9;cachedRunningSpeed = speed
+&#9;end
+end
+
+function onDied()
+&#9;pose = &quot;Dead&quot;
+end
+
+function onJumping()
+&#9;playAnimation(&quot;jump&quot;, 0.1, Humanoid)
+&#9;jumpAnimTime = jumpAnimDuration
+&#9;pose = &quot;Jumping&quot;
+end
+
+function onClimbing(speed)
+&#9;local scale = 5.0
+&#9;playAnimation(&quot;climb&quot;, 0.1, Humanoid)
+&#9;setAnimationSpeed(speed / scale)
+&#9;pose = &quot;Climbing&quot;
+end
+
+function onGettingUp()
+&#9;pose = &quot;GettingUp&quot;
+end
+
+function onFreeFall()
+&#9;if (jumpAnimTime &lt;= 0) then
+&#9;&#9;playAnimation(&quot;fall&quot;, fallTransitionTime, Humanoid)
+&#9;end
+&#9;pose = &quot;FreeFall&quot;
+end
+
+function onFallingDown()
+&#9;pose = &quot;FallingDown&quot;
+end
+
+function onSeated()
+&#9;pose = &quot;Seated&quot;
+end
+
+function onPlatformStanding()
+&#9;pose = &quot;PlatformStanding&quot;
+end
+
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+
+function onSwimming(speed)
+&#9;if speed &gt; 1.00 then
+&#9;&#9;local scale = 10.0
+&#9;&#9;playAnimation(&quot;swim&quot;, 0.4, Humanoid)
+&#9;&#9;setAnimationSpeed(speed / scale)
+&#9;&#9;pose = &quot;Swimming&quot;
+&#9;else
+&#9;&#9;playAnimation(&quot;swimidle&quot;, 0.4, Humanoid)
+&#9;&#9;pose = &quot;Standing&quot;
+&#9;end
+end
+
+function animateTool()
+&#9;if (toolAnim == &quot;None&quot;) then
+&#9;&#9;playToolAnimation(&quot;toolnone&quot;, toolTransitionTime, Humanoid, Enum.AnimationPriority.Idle)
+&#9;&#9;return
+&#9;end
+
+&#9;if (toolAnim == &quot;Slash&quot;) then
+&#9;&#9;playToolAnimation(&quot;toolslash&quot;, 0, Humanoid, Enum.AnimationPriority.Action)
+&#9;&#9;return
+&#9;end
+
+&#9;if (toolAnim == &quot;Lunge&quot;) then
+&#9;&#9;playToolAnimation(&quot;toollunge&quot;, 0, Humanoid, Enum.AnimationPriority.Action)
+&#9;&#9;return
+&#9;end
+end
+
+function getToolAnim(tool)
+&#9;for _, c in ipairs(tool:GetChildren()) do
+&#9;&#9;if c.Name == &quot;toolanim&quot; and c.className == &quot;StringValue&quot; then
+&#9;&#9;&#9;return c
+&#9;&#9;end
+&#9;end
+&#9;return nil
+end
+
+local lastTick = 0
+
+function stepAnimate(currentTime)
+&#9;local amplitude = 1
+&#9;local frequency = 1
+&#9;local deltaTime = currentTime - lastTick
+&#9;lastTick = currentTime
+
+&#9;local climbFudge = 0
+&#9;local setAngles = false
+
+&#9;if (jumpAnimTime &gt; 0) then
+&#9;&#9;jumpAnimTime = jumpAnimTime - deltaTime
+&#9;end
+
+&#9;if (pose == &quot;FreeFall&quot; and jumpAnimTime &lt;= 0) then
+&#9;&#9;playAnimation(&quot;fall&quot;, fallTransitionTime, Humanoid)
+&#9;elseif (pose == &quot;Seated&quot;) then
+&#9;&#9;playAnimation(&quot;sit&quot;, 0.5, Humanoid)
+&#9;&#9;return
+&#9;elseif (pose == &quot;Running&quot;) then
+&#9;&#9;playAnimation(&quot;walk&quot;, 0.2, Humanoid)
+&#9;elseif (pose == &quot;Dead&quot; or pose == &quot;GettingUp&quot; or pose == &quot;FallingDown&quot; or pose == &quot;Seated&quot; or pose == &quot;PlatformStanding&quot;) then
+&#9;&#9;stopAllAnimations()
+&#9;&#9;amplitude = 0.1
+&#9;&#9;frequency = 1
+&#9;&#9;setAngles = true
+&#9;end
+
+&#9;-- Tool Animation handling
+&#9;local tool = Character:FindFirstChildOfClass(&quot;Tool&quot;)
+&#9;if tool and tool:FindFirstChild(&quot;Handle&quot;) then
+&#9;&#9;local animStringValueObject = getToolAnim(tool)
+
+&#9;&#9;if animStringValueObject then
+&#9;&#9;&#9;toolAnim = animStringValueObject.Value
+&#9;&#9;&#9;-- message recieved, delete StringValue
+&#9;&#9;&#9;animStringValueObject.Parent = nil
+&#9;&#9;&#9;toolAnimTime = currentTime + .3
+&#9;&#9;end
+
+&#9;&#9;if currentTime &gt; toolAnimTime then
+&#9;&#9;&#9;toolAnimTime = 0
+&#9;&#9;&#9;toolAnim = &quot;None&quot;
+&#9;&#9;end
+
+&#9;&#9;animateTool()
+&#9;else
+&#9;&#9;stopToolAnimations()
+&#9;&#9;toolAnim = &quot;None&quot;
+&#9;&#9;toolAnimInstance = nil
+&#9;&#9;toolAnimTime = 0
+&#9;end
+end
+
+
+local function onModeChange()
+&#9;if pose == &quot;Running&quot; then
+&#9;&#9;local savedSpeed = cachedRunningSpeed
+
+&#9;&#9;playAnimation(&quot;idle&quot;, 0.2, Humanoid)
+&#9;&#9;destroyRunAnimations()
+&#9;&#9;playAnimation(&quot;walk&quot;, 0.2, Humanoid)
+
+&#9;&#9;if strafeMode() then
+&#9;&#9;&#9;cachedRunningSpeed = 0
+&#9;&#9;&#9;onVelocityChanged(savedSpeed)
+&#9;&#9;else
+&#9;&#9;&#9;onRunning(savedSpeed)
+&#9;&#9;end
+&#9;end
+end
+
+-- connect events
+Humanoid.Died:connect(onDied)
+Humanoid.Running:connect(onRunning)
+Humanoid.Jumping:connect(onJumping)
+Humanoid.Climbing:connect(onClimbing)
+Humanoid.GettingUp:connect(onGettingUp)
+Humanoid.FreeFalling:connect(onFreeFall)
+Humanoid.FallingDown:connect(onFallingDown)
+Humanoid.Seated:connect(onSeated)
+Humanoid.PlatformStanding:connect(onPlatformStanding)
+Humanoid.Swimming:connect(onSwimming)
+
+Humanoid:GetPropertyChangedSignal(&quot;MoveDirection&quot;):Connect(onVelocityChanged)
+Humanoid:GetPropertyChangedSignal(&quot;AutoRotate&quot;):Connect(onModeChange)
+Humanoid:GetPropertyChangedSignal(&quot;WalkToPoint&quot;):Connect(onVelocityChanged)
+Humanoid:GetPropertyChangedSignal(&quot;WalkToPart&quot;):Connect(onVelocityChanged)
+UserGameSettings:GetPropertyChangedSignal(&quot;RotationType&quot;):Connect(onModeChange)
+
+-- setup emote chat hook
+game:GetService(&quot;Players&quot;).LocalPlayer.Chatted:connect(function(msg)
+&#9;local emote = &quot;&quot;
+&#9;if (string.sub(msg, 1, 3) == &quot;/e &quot;) then
+&#9;&#9;emote = string.sub(msg, 4)
+&#9;elseif (string.sub(msg, 1, 7) == &quot;/emote &quot;) then
+&#9;&#9;emote = string.sub(msg, 8)
+&#9;end
+
+&#9;if (pose == &quot;Standing&quot; and emoteNames[emote] ~= nil) then
+&#9;&#9;playAnimation(emote, EMOTE_TRANSITION_TIME, Humanoid)
+&#9;end
+end)
+
+-- emote bindable hook
+script:WaitForChild(&quot;PlayEmote&quot;).OnInvoke = function(emote)
+&#9;-- Only play emotes when idling
+&#9;if pose ~= &quot;Standing&quot; then
+&#9;&#9;return
+&#9;end
+
+&#9;if emoteNames[emote] ~= nil then
+&#9;&#9;-- Default emotes
+&#9;&#9;playAnimation(emote, EMOTE_TRANSITION_TIME, Humanoid)
+
+&#9;&#9;if userPlayEmoteByIdAnimTrackReturn then
+&#9;&#9;&#9;return true, currentAnimTrack
+&#9;&#9;else
+&#9;&#9;&#9;return true
+&#9;&#9;end
+&#9;elseif typeof(emote) == &quot;Instance&quot; and emote:IsA(&quot;Animation&quot;) then
+&#9;&#9;-- Non-default emotes
+&#9;&#9;playEmote(emote, EMOTE_TRANSITION_TIME, Humanoid)
+
+&#9;&#9;if userPlayEmoteByIdAnimTrackReturn then
+&#9;&#9;&#9;return true, currentAnimTrack
+&#9;&#9;else
+&#9;&#9;&#9;return true
+&#9;&#9;end
+&#9;end
+
+&#9;-- Return false to indicate that the emote could not be played
+&#9;return false
+end
+
+if Character.Parent ~= nil then
+&#9;-- initialize to idle
+&#9;playAnimation(&quot;idle&quot;, 0.1, Humanoid)
+&#9;pose = &quot;Standing&quot;
+end
+
+-- loop to handle timed state transitions and tool animations
+while Character.Parent ~= nil do
+&#9;local _, currentGameTime = wait(0.1)
+&#9;stepAnimate(currentGameTime)
+
+&#9;-- Catch the unlikely case where the character orientation is being perturbed without subsequent change to its MoveDirection
+&#9;if Humanoid.RootPart then
+&#9;&#9;local lookVector = Humanoid.RootPart.CFrame.LookVector
+&#9;&#9;if 1.0 - lookVector:Dot(lastLookVector) &gt; 0.1 then
+&#9;&#9;&#9;lastLookVector = lookVector
+&#9;&#9;&#9;onVelocityChanged()
+&#9;&#9;end
+&#9;end
+end</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+		</Properties>
+		<Item class="NumberValue" referent="RBX5B3016F22C1A4CEA895FF7122FB581FB">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">ScaleDampeningPercent</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<double name="Value">1</double>
+			</Properties>
+		</Item>
+		<Item class="StringValue" referent="RBX5D329148BC7C4BA3A318D99AC554D6CD">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">cheer</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBX9172896C56F541B186CA0764A0222285">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507770677</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">CheerAnim</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBXB4512A6CEB854B6B9332475AA1F79732">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">climb</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBXA27F434A0BA14E2EAB5ECE121A42E305">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507765644</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">ClimbAnim</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBXC54A4107D2234C9491994774C5F65247">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">dance</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBXD45F116E8D5A4ABD9A77C8D0FF8DCD0F">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507771019</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Animation1</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+				<Item class="NumberValue" referent="RBXB92E2FE8BD7F4FB9B7CE4F86AD4499B6">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">Weight</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+						<double name="Value">10</double>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Animation" referent="RBX5D00D75C8A3A4FC8A187A47240B4D83F">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507771955</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Animation2</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+				<Item class="NumberValue" referent="RBX738039D00A574CA0A0F07FB5763E5F0F">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">Weight</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+						<double name="Value">10</double>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Animation" referent="RBX22101BEBC912430E8D03B7346A8CAC63">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507772104</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Animation3</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+				<Item class="NumberValue" referent="RBX044B33105BEA40FE9AE3230877151BB1">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">Weight</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+						<double name="Value">10</double>
+					</Properties>
+				</Item>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBX6303482241354DB49C5AEC7C618C731D">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">dance2</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBXCCECC9DEFCC940CFA98167964E217310">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507776043</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Animation1</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+				<Item class="NumberValue" referent="RBXE460469A6B5948B7A2B33C1835BCC127">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">Weight</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+						<double name="Value">10</double>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Animation" referent="RBXB2B9FD0D12174BC28757FD3A9680B105">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507776720</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Animation2</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+				<Item class="NumberValue" referent="RBXDB3AEE020A844A5FB2F5D6E94C915D15">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">Weight</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+						<double name="Value">10</double>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Animation" referent="RBXD3A5CBD099F34AFBB7F397242583278B">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507776879</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Animation3</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+				<Item class="NumberValue" referent="RBX339B8ADF833E42FEB41280856E603943">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">Weight</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+						<double name="Value">10</double>
+					</Properties>
+				</Item>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBX06305FC8949442BE94FCF563C2894374">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">dance3</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBXFBC29C3D06EA423DBF41C043A15D5B3A">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507777268</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Animation1</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+				<Item class="NumberValue" referent="RBX3AB8C23A8EAB491A90325CBB94D9E055">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">Weight</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+						<double name="Value">10</double>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Animation" referent="RBX4FC2BB7D318D42E191FB8946DCF49304">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507777451</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Animation2</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+				<Item class="NumberValue" referent="RBX6C016E1BEF9E4065851AA76A3188E241">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">Weight</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+						<double name="Value">10</double>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Animation" referent="RBXAC0844EB3AAA4F3D868353FA1D6E4367">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507777623</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Animation3</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+				<Item class="NumberValue" referent="RBXB9753E8BCA75401BBF6574D0D1C55F59">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">Weight</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+						<double name="Value">10</double>
+					</Properties>
+				</Item>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBX36197E41A48D43FCADF9DB48988C070A">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">fall</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBX1B2331ECB4AE4DD9B3F97EEE29044F1D">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507767968</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">FallAnim</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBX9B5658DF00374215919A6E6A702C63BE">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">idle</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBXEB6A09D3BA264BFAB2A548A5F200B814">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507766388</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Animation1</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+				<Item class="NumberValue" referent="RBXA8F395D0EAB849F4B620BFC63B93FA1E">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">Weight</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+						<double name="Value">9</double>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Animation" referent="RBXE155D9F45C8C4F1CA2B40C0D49CC0F10">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507766666</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Animation2</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+				<Item class="NumberValue" referent="RBXF9B32295DDEC49A09F99813F45AC83F7">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">Weight</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<string name="Tags"></string>
+						<double name="Value">1</double>
+					</Properties>
+				</Item>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBXD251AD928E0247AEAC899E8CD70E650B">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">jump</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBXC593A93A838B495A992F0EC9498A0FE5">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507765000</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">JumpAnim</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBXBC157A5673D6429586A1C3AFD49BE201">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">laugh</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBX38BB2F9BE7BE4F07A747C28D8F02AA33">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507770818</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">LaughAnim</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBX1E6956A2914F4F828426A9842CEB4A37">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">point</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBX709F94055C0547CCB5F2F64BF286EB60">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507770453</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">PointAnim</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBX95A3AAE5BB5943F8904E3A6126271699">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">run</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBX80C0099CF78244D6839F29731ADC5483">
+				<Properties>
+					<string name="AnimationId">rbxassetid://913376220</string>
+					<string name="AttributesSerialize">&#1;&#0;&#0;&#0;&#14;&#0;&#0;&#0;LinearVelocity&#16;&#0;&#0;&#0;&#0;&#205;&#204;LA</string>
+					<string name="Name">RunAnim</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBXC177CD46D047401E98233DE3057B27A5">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">sit</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBX83221479E6AD47B181406C11F3DE2EFA">
+				<Properties>
+					<string name="AnimationId">rbxassetid://2506281703</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">SitAnim</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBX4E661A3B69BE463C99A5DCA8E5433AC5">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">swim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBX0FCBAFE5B11D49D59352DCF111CB892D">
+				<Properties>
+					<string name="AnimationId">rbxassetid://2510199791</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">Swim</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBX75B829942F7F466FB4074FEE6D142A71">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">swimidle</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBX12B12B27D3F44CADA88655CE53F96C4A">
+				<Properties>
+					<string name="AnimationId">rbxassetid://2510201162</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">SwimIdle</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBX9DE82DF86F804BC5B94A57BC5291263B">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">toollunge</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBX019E195FA1744FC38F766F55C4A48C46">
+				<Properties>
+					<string name="AnimationId">rbxassetid://522638767</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">ToolLungeAnim</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBXC5E36BF591DF4D7FB1031E2A2DF18387">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">toolnone</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBXF3DC31EE21174B52A1B29C4C99A1F481">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507768375</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">ToolNoneAnim</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBX4FC73FE025404140906927BEA8BCB309">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">toolslash</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBXE0EFEA4C3BD54E2D82406D876462464E">
+				<Properties>
+					<string name="AnimationId">rbxassetid://522635514</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">ToolSlashAnim</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBXB66DFC1B90054A4E9CF3CE3681B28178">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">walk</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBX635207E20EE54E77BCFFC665C6CA5D1A">
+				<Properties>
+					<string name="AnimationId">rbxassetid://913402848</string>
+					<string name="AttributesSerialize">&#1;&#0;&#0;&#0;&#14;&#0;&#0;&#0;LinearVelocity&#16;&#0;&#0;&#0;&#0;&#205;&#204;&#204;@</string>
+					<string name="Name">WalkAnim</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="StringValue" referent="RBXB94778886B6C4CA183A21D3ECBB8AAAC">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">wave</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+				<string name="Value"></string>
+			</Properties>
+			<Item class="Animation" referent="RBXC38D2D01BFC741DEA4FE52E21771CA2A">
+				<Properties>
+					<string name="AnimationId">rbxassetid://507770239</string>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">WaveAnim</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="BindableFunction" referent="RBX7CFAD4029FA24D59B5876D0FF4ED919D">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<string name="Name">PlayEmote</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>

@@ -1,0 +1,56 @@
+# Standard library imports
+import argparse
+
+# Local application imports
+import launcher.subparsers._logic as sub_logic
+from routines import serialiser
+from routines import _logic as logic
+import assets.serialisers
+
+
+@sub_logic.add_args(sub_logic.launch_mode.SERIALISE_FILE)
+def _(
+    parser: argparse.ArgumentParser,
+    subparser: argparse.ArgumentParser,
+) -> None:
+
+    subparser.add_argument(
+        '--load',
+        '--read',
+        '-r',
+        type=str,
+        nargs='+',
+        default=[],
+        help='Path to the file(s) to be loaded.',
+    )
+    subparser.add_argument(
+        '--save',
+        '--write',
+        '-w',
+        type=str,
+        nargs='+',
+        default=[],
+        help='Path to the file(s) to be saved.',
+    )
+    method_choices = [m.name for m in assets.serialisers.ALL_METHODS]
+    subparser.add_argument(
+        '--method',
+        '-m',
+        choices=method_choices,
+        help='Serialisers to use on the file(s) provided.',
+        nargs='+',
+        default=method_choices,
+    )
+
+
+@sub_logic.serialise_args(sub_logic.launch_mode.SERIALISE_FILE)
+def _(
+    parser: argparse.ArgumentParser,
+    args_ns: argparse.Namespace,
+) -> list[logic.base_entry]:
+    return [
+        serialiser.obj_type(
+            files=list(zip(args_ns.load, args_ns.save)),
+            methods=set(assets.serialisers.method[m] for m in args_ns.method),
+        ),
+    ]

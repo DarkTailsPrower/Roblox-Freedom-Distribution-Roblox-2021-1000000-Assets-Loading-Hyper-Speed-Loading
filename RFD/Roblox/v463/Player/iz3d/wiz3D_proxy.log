@@ -1,0 +1,874 @@
+=== wiz3D 0.3.1 (552bef4) - d3d9 proxy loaded ===
+Game exe: C:\RFD\Roblox\v463\Player\RobloxPlayerBeta.exe
+Proxy DLL: C:\RFD\Roblox\v463\Player\d3d9.dll
+Direct3DCreate9(SDKVersion=32) called
+OK: Real d3d9.dll loaded from C:\Windows\system32\d3d9.dll
+Loading wrapper: C:\RFD\Roblox\v463\Player\S3DWrapperD3D9.dll
+OK: Wrapper PE is loadable (DONT_RESOLVE_DLL_REFERENCES)
+--- Checking local dependencies ---
+  Probing S3DAPI.dll...
+    S3DAPI.dll: OK (loaded)
+  Probing S3DUtils.dll...
+    S3DUtils.dll: OK (loaded)
+  Probing ZLOg.dll...
+    ZLOg.dll: FILE NOT FOUND
+--- Checking system dependencies ---
+  PSAPI.DLL: OK
+  d3dx9_43.dll: OK
+  WINMM.dll: OK
+--- End dependency check ---
+SetDllDirectory: C:\RFD\Roblox\v463\Player
+OK: Wrapper loaded
+Calling InitializeExchangeServer...
+InitializeExchangeServer returned routerType=0
+Wrapper exports: Direct3DCreate9=6EC6EE40, Direct3DCreate9Ex=6EC6F0A0
+ProfileLoad: ProfileName='RobloxPlayerBeta' base=0 community=0 user=1
+--- Post-load file check ---
+  wiz3D_Config.xml: FOUND
+  Config.xml (legacy): missing
+  OutputMethods/: FOUND
+  OutputMethods/SideBySideOutput.dll: FOUND
+--- End post-load check ---
+Routing through WRAPPER Direct3DCreate9...
+
+--- DX9 wrapper diagnostic stream ---
+  ProxyDirect9::vtable [DoInitialize EXMODE_NONE] exMode=1 methodCount=17 nullSlots=5
+    slot[17] IDirect3D9::GetAdapterModeCountEx = NULL
+    slot[18] IDirect3D9::EnumAdapterModesEx = NULL
+    slot[19] IDirect3D9::GetAdapterDisplayModeEx = NULL
+    slot[20] IDirect3D9::CreateDeviceEx = NULL
+    slot[21] IDirect3D9::GetAdapterLUID = NULL
+WDirect3DCreate9 #1: real=0DD164E0 -> CDirect3D9=0DD1FEF8 (sameRealRefs=1)
+Wrapper Direct3DCreate9 returned 0DD1FEF8
+Direct3DCreate9(SDKVersion=32) called
+Routing through WRAPPER Direct3DCreate9...
+  ProxyDirect9::vtable [DoInitialize EXMODE_NONE] exMode=1 methodCount=17 nullSlots=5
+    slot[17] IDirect3D9::GetAdapterModeCountEx = NULL
+    slot[18] IDirect3D9::EnumAdapterModesEx = NULL
+    slot[19] IDirect3D9::GetAdapterDisplayModeEx = NULL
+    slot[20] IDirect3D9::CreateDeviceEx = NULL
+    slot[21] IDirect3D9::GetAdapterLUID = NULL
+WDirect3DCreate9 #2: real=18626820 -> CDirect3D9=0DD20178 (sameRealRefs=1)
+Wrapper Direct3DCreate9 returned 0DD20178
+~CDirect3D9: wrapper=0DD20178 real=18626820
+
+!!! FATAL EXCEPTION (VEH) !!!
+Exception code: 0xC0000005
+Crash address:  6ECB7D46
+Faulting module: C:\RFD\Roblox\v463\Player\S3DWrapperD3D9.dll + 0x77D46
+Access violation: WRITE of address 00000004
+EAX=00000000 EBX=14DE89A0 ECX=00000000 EDX=14DE8B70
+ESI=14DEA234 EDI=00000000 EBP=0019F184 ESP=0019F184
+EIP=6ECB7D46
+--- Stack trace ---
+  [ 0] 6F201364  d3d9.dll+0x1364
+  [ 1] 77C4CDC8  ntdll.dll+0x6CDC8
+  [ 2] 77C4904B  ntdll.dll+0x6904B
+  [ 3] 77C54EE6  ntdll.dll+0x74EE6
+  [ 4] 6ECB6451  S3DWrapperD3D9.dll+0x76451
+  [ 5] 6EC7D231  S3DWrapperD3D9.dll+0x3D231
+  [ 6] 6EC88842  S3DWrapperD3D9.dll+0x48842
+  [ 7] 6EC7D51E  S3DWrapperD3D9.dll+0x3D51E
+  [ 8] 6ECA0E2F  S3DWrapperD3D9.dll+0x60E2F
+  [ 9] 01AE857E  RobloxPlayerBeta.exe+0x16E857E
+  [10] 0196EC84  RobloxPlayerBeta.exe+0x156EC84
+  [11] 0196E3B9  RobloxPlayerBeta.exe+0x156E3B9
+  [12] 00FA8834  RobloxPlayerBeta.exe+0xBA8834
+  [13] 00FA8488  RobloxPlayerBeta.exe+0xBA8488
+  [14] 00F8C581  RobloxPlayerBeta.exe+0xB8C581
+  [15] 005DFBFC  RobloxPlayerBeta.exe+0x1DFBFC
+  [16] 74901836  atlthunk.dll+0x1836
+  [17] 75BC348B  USER32.dll+0x4348B
+  [18] 75BBA42A  USER32.dll+0x3A42A
+  [19] 75BB819A  USER32.dll+0x3819A
+  [20] 75BB7F60  USER32.dll+0x37F60
+  [21] 005FEC83  RobloxPlayerBeta.exe+0x1FEC83
+  [22] 018FBFA2  RobloxPlayerBeta.exe+0x14FBFA2
+  [23] 75E3FA29  KERNEL32.DLL+0x1FA29
+  [24] 77C47A9E  ntdll.dll+0x67A9E
+  [25] 77C47A6E  ntdll.dll+0x67A6E
+--- End stack trace ---
+--- Stack memory (potential return addresses) ---
+  RSP+0x004: 6ECB6451  S3DWrapperD3D9.dll+0x76451
+  RSP+0x01C: 6EC7D231  S3DWrapperD3D9.dll+0x3D231
+  RSP+0x040: 6F0D32A0  d3d9.dll+0x632A0
+  RSP+0x048: 6F0D30A2  d3d9.dll+0x630A2
+  RSP+0x04C: 6F0D3117  d3d9.dll+0x63117
+--- End stack memory ---
+--- Loaded modules ---
+  00400000-033D8000  C:\RFD\Roblox\v463\Player\RobloxPlayerBeta.exe
+  77BE0000-77D83000  C:\Windows\SYSTEM32\ntdll.dll
+  75E20000-75F10000  C:\Windows\System32\KERNEL32.DLL
+  766D0000-768E5000  C:\Windows\System32\KERNELBASE.dll
+  75B50000-75B75000  C:\Windows\System32\IMM32.dll
+  75B80000-75D20000  C:\Windows\System32\USER32.dll
+  760A0000-760B8000  C:\Windows\System32\win32u.dll
+  76160000-76184000  C:\Windows\System32\GDI32.dll
+  76960000-76A3C000  C:\Windows\System32\gdi32full.dll
+  76A50000-76ACB000  C:\Windows\System32\msvcp_win.dll
+  76190000-762B0000  C:\Windows\System32\ucrtbase.dll
+  76B10000-76B57000  C:\Windows\System32\WINTRUST.dll
+  75F60000-7601F000  C:\Windows\System32\msvcrt.dll
+  74950000-74958000  C:\Windows\SYSTEM32\SensApi.dll
+  700B0000-70258000  C:\Windows\SYSTEM32\urlmon.dll
+  77B00000-77BBF000  C:\Windows\System32\RPCRT4.dll
+  74EB0000-74EC9000  C:\Windows\SYSTEM32\MSACM32.dll
+  76D70000-76DEA000  C:\Windows\System32\advapi32.dll
+  768F0000-76953000  C:\Windows\System32\WS2_32.dll
+  756A0000-75768000  C:\Windows\SYSTEM32\WINHTTP.dll
+  764E0000-76555000  C:\Windows\System32\sechost.dll
+  76C50000-76D4A000  C:\Windows\System32\CRYPT32.dll
+  6FE80000-700AB000  C:\Windows\SYSTEM32\iertutil.dll
+  772B0000-77863000  C:\Windows\System32\SHELL32.dll
+  77870000-77AF1000  C:\Windows\System32\combase.dll
+  74930000-7494D000  C:\Windows\SYSTEM32\srvcli.dll
+  76B60000-76C43000  C:\Windows\System32\ole32.dll
+  75D90000-75E17000  C:\Windows\System32\shcore.dll
+  75660000-7566B000  C:\Windows\SYSTEM32\netutils.dll
+  760C0000-76156000  C:\Windows\System32\OLEAUT32.dll
+  74E90000-74EAD000  C:\Windows\SYSTEM32\winmmbase.dll
+  75F10000-75F55000  C:\Windows\System32\SHLWAPI.dll
+  74920000-74929000  C:\Windows\SYSTEM32\msdmo.dll
+  76E70000-772AC000  C:\Windows\System32\SETUPAPI.dll
+  74730000-74758000  C:\Windows\SYSTEM32\WINMM.dll
+  73F60000-73F6A000  C:\Windows\SYSTEM32\Secur32.dll
+  76AD0000-76B0B000  C:\Windows\System32\cfgmgr32.dll
+  76D50000-76D69000  C:\Windows\System32\bcrypt.dll
+  75A50000-75A58000  C:\Windows\SYSTEM32\VERSION.dll
+  74A10000-74B98000  C:\Windows\SYSTEM32\dbghelp.dll
+  74910000-7491A000  C:\Windows\SYSTEM32\HID.DLL
+  75A10000-75A42000  C:\Windows\SYSTEM32\IPHLPAPI.DLL
+  6FDF0000-6FE7D000  C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.1110_none_c0da534e38c01f4d\COMCTL32.dll
+  746E0000-74724000  C:\Windows\SYSTEM32\POWRPROF.dll
+  75A90000-75A9F000  C:\Windows\SYSTEM32\WTSAPI32.dll
+  74D80000-74E83000  C:\Windows\SYSTEM32\OPENGL32.dll
+  74C50000-74C8F000  C:\Windows\SYSTEM32\GLU32.dll
+  6F9A0000-6FDF0000  C:\Windows\SYSTEM32\WININET.dll
+  745D0000-745F1000  C:\Windows\SYSTEM32\SSPICLI.DLL
+  75690000-7569A000  C:\Windows\SYSTEM32\CRYPTBASE.DLL
+  74D50000-74D76000  C:\Windows\SYSTEM32\dbgcore.DLL
+  75650000-7565E000  C:\Windows\SYSTEM32\MSASN1.dll
+  74D20000-74D2D000  C:\Windows\SYSTEM32\UMPDC.dll
+  74680000-746D2000  C:\Windows\system32\mswsock.dll
+  75D30000-75D8F000  C:\Windows\System32\bcryptPrimitives.dll
+  74F00000-74F13000  C:\Windows\SYSTEM32\CRYPTSP.dll
+  74650000-7467F000  C:\Windows\system32\rsaenh.dll
+  74D10000-74D1F000  C:\Windows\SYSTEM32\kernel.appcore.dll
+  74C90000-74D04000  C:\Windows\system32\uxtheme.dll
+  75040000-75648000  C:\Windows\SYSTEM32\windows.storage.dll
+  74F30000-74F54000  C:\Windows\SYSTEM32\Wldp.dll
+  74BA0000-74BB8000  C:\Windows\SYSTEM32\profapi.dll
+  762B0000-76383000  C:\Windows\System32\MSCTF.dll
+  74530000-745C1000  C:\Windows\SYSTEM32\DNSAPI.dll
+  77BC0000-77BC7000  C:\Windows\System32\NSI.dll
+  74F20000-74F28000  C:\Windows\System32\rasadhlp.dll
+  74BF0000-74C48000  C:\Windows\System32\fwpuclnt.dll
+  76E50000-76E69000  C:\Windows\System32\imagehlp.dll
+  74900000-7490D000  C:\Windows\SYSTEM32\atlthunk.dll
+  6F8E0000-6F999000  C:\Windows\SYSTEM32\textinputframework.dll
+  6F5C0000-6F65B000  C:\Windows\SYSTEM32\CoreMessaging.dll
+  6F660000-6F8DE000  C:\Windows\SYSTEM32\CoreUIComponents.dll
+  748D0000-748F9000  C:\Windows\SYSTEM32\ntmarta.dll
+  6F4E0000-6F5BB000  C:\Windows\SYSTEM32\wintypes.dll
+  76020000-7609E000  C:\Windows\System32\clbcatq.dll
+  749A0000-74A0B000  C:\Windows\System32\MMDevApi.dll
+  73F90000-73FBB000  C:\Windows\System32\DEVOBJ.dll
+  74960000-7499A000  C:\Windows\SYSTEM32\wdmaud.drv
+  74EF0000-74EF8000  C:\Windows\SYSTEM32\AVRT.dll
+  74BE0000-74BE7000  C:\Windows\SYSTEM32\ksuser.dll
+  70260000-70396000  C:\Windows\SYSTEM32\AUDIOSES.DLL
+  74BD0000-74BDA000  C:\Windows\SYSTEM32\msacm32.drv
+  74BC0000-74BC8000  C:\Windows\SYSTEM32\midimap.dll
+  748C0000-748CF000  C:\Windows\SYSTEM32\resourcepolicyclient.dll
+  6F300000-6F4E0000  C:\Windows\SYSTEM32\d3d11.dll
+  6F230000-6F2F3000  C:\Windows\SYSTEM32\dxgi.dll
+  6AF40000-6AF6C000  C:\Windows\SYSTEM32\dxcore.dll
+  6F200000-6F227000  C:\RFD\Roblox\v463\Player\d3d9.dll
+  6F070000-6F1FF000  C:\Windows\system32\d3d9.dll
+  6F040000-6F066000  C:\Windows\SYSTEM32\dwmapi.dll
+  6EC40000-6F039000  C:\RFD\Roblox\v463\Player\S3DWrapperD3D9.dll
+  76A40000-76A46000  C:\Windows\System32\PSAPI.DLL
+  6EA40000-6EC3F000  C:\Windows\SYSTEM32\d3dx9_43.dll
+  6E990000-6EA39000  C:\RFD\Roblox\v463\Player\S3DAPI.dll
+  6E860000-6E990000  C:\RFD\Roblox\v463\Player\OutputMethods\AnaglyphOutput.dll
+  6E7C0000-6E853000  C:\Windows\SYSTEM32\mscms.dll
+  75A60000-75A85000  C:\Windows\SYSTEM32\USERENV.dll
+  748B0000-748BC000  C:\Windows\SYSTEM32\ColorAdapterClient.dll
+  6E780000-6E7B2000  C:\Windows\System32\Windows.Internal.Graphics.Display.DisplayColorManagement.dll
+  6E640000-6E77A000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igdumdim32.dll
+  602A0000-63D87000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igd9dxva32.dll
+  6E350000-6E63D000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igdgmm32.dll
+  6E330000-6E34E000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igdinfo32.dll
+  6AF70000-6D9E4000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igc32.dll
+  74630000-74644000  C:\Windows\SYSTEM32\dhcpcsvc6.DLL
+  6E320000-6E32D000  C:\Windows\SYSTEM32\XInput1_4.dll
+  74610000-74626000  C:\Windows\SYSTEM32\dhcpcsvc.DLL
+  6E230000-6E31D000  C:\Windows\SYSTEM32\inputhost.dll
+  703A0000-70462000  C:\Windows\SYSTEM32\PROPSYS.dll
+  70530000-7054E000  C:\Windows\SYSTEM32\gpapi.dll
+  70500000-70526000  C:\Windows\SYSTEM32\cryptnet.dll
+  74600000-74608000  C:\Windows\SYSTEM32\WINNSI.DLL
+  74510000-74521000  C:\Windows\system32\napinsp.dll
+  744F0000-74506000  C:\Windows\system32\pnrpnsp.dll
+  744E0000-744F0000  C:\Windows\system32\wshbth.dll
+  744C0000-744D6000  C:\Windows\system32\NLAapi.dll
+  744B0000-744BE000  C:\Windows\System32\winrnr.dll
+  6E210000-6E227000  C:\Windows\SYSTEM32\usp10.dll
+  6E170000-6E204000  C:\Windows\SYSTEM32\TextShaping.dll
+--- End modules ---
+Minidump written to: C:\RFD\Roblox\v463\Player\wiz3D_crash.dmp
+=== CRASH END ===
+=== wiz3D 0.3.1 (552bef4) - d3d9 proxy loaded ===
+Game exe: C:\RFD\Roblox\v463\Player\RobloxPlayerBeta.exe
+Proxy DLL: C:\RFD\Roblox\v463\Player\d3d9.dll
+Direct3DCreate9(SDKVersion=32) called
+OK: Real d3d9.dll loaded from C:\Windows\system32\d3d9.dll
+Loading wrapper: C:\RFD\Roblox\v463\Player\S3DWrapperD3D9.dll
+OK: Wrapper PE is loadable (DONT_RESOLVE_DLL_REFERENCES)
+--- Checking local dependencies ---
+  Probing S3DAPI.dll...
+    S3DAPI.dll: OK (loaded)
+  Probing S3DUtils.dll...
+    S3DUtils.dll: OK (loaded)
+  Probing ZLOg.dll...
+    ZLOg.dll: FILE NOT FOUND
+--- Checking system dependencies ---
+  PSAPI.DLL: OK
+  d3dx9_43.dll: OK
+  WINMM.dll: OK
+--- End dependency check ---
+SetDllDirectory: C:\RFD\Roblox\v463\Player
+OK: Wrapper loaded
+Calling InitializeExchangeServer...
+InitializeExchangeServer returned routerType=0
+Wrapper exports: Direct3DCreate9=6EC6EE40, Direct3DCreate9Ex=6EC6F0A0
+ProfileLoad: ProfileName='RobloxPlayerBeta' base=0 community=0 user=1
+--- Post-load file check ---
+  wiz3D_Config.xml: FOUND
+  Config.xml (legacy): missing
+  OutputMethods/: FOUND
+  OutputMethods/SideBySideOutput.dll: FOUND
+--- End post-load check ---
+Routing through WRAPPER Direct3DCreate9...
+
+--- DX9 wrapper diagnostic stream ---
+  ProxyDirect9::vtable [DoInitialize EXMODE_NONE] exMode=1 methodCount=17 nullSlots=5
+    slot[17] IDirect3D9::GetAdapterModeCountEx = NULL
+    slot[18] IDirect3D9::EnumAdapterModesEx = NULL
+    slot[19] IDirect3D9::GetAdapterDisplayModeEx = NULL
+    slot[20] IDirect3D9::CreateDeviceEx = NULL
+    slot[21] IDirect3D9::GetAdapterLUID = NULL
+WDirect3DCreate9 #1: real=0D8859C0 -> CDirect3D9=0D2BC1B8 (sameRealRefs=1)
+Wrapper Direct3DCreate9 returned 0D2BC1B8
+Direct3DCreate9(SDKVersion=32) called
+Routing through WRAPPER Direct3DCreate9...
+  ProxyDirect9::vtable [DoInitialize EXMODE_NONE] exMode=1 methodCount=17 nullSlots=5
+    slot[17] IDirect3D9::GetAdapterModeCountEx = NULL
+    slot[18] IDirect3D9::EnumAdapterModesEx = NULL
+    slot[19] IDirect3D9::GetAdapterDisplayModeEx = NULL
+    slot[20] IDirect3D9::CreateDeviceEx = NULL
+    slot[21] IDirect3D9::GetAdapterLUID = NULL
+WDirect3DCreate9 #2: real=0DA43000 -> CDirect3D9=0D8FA5A8 (sameRealRefs=1)
+Wrapper Direct3DCreate9 returned 0D8FA5A8
+~CDirect3D9: wrapper=0D8FA5A8 real=0DA43000
+
+!!! FATAL EXCEPTION (VEH) !!!
+Exception code: 0xC0000005
+Crash address:  6ECB7D46
+Faulting module: C:\RFD\Roblox\v463\Player\S3DWrapperD3D9.dll + 0x77D46
+Access violation: WRITE of address 00000004
+EAX=00000000 EBX=0D8A3218 ECX=00000000 EDX=0D8A33E8
+ESI=0D8A4AAC EDI=00000000 EBP=0019F184 ESP=0019F184
+EIP=6ECB7D46
+--- Stack trace ---
+  [ 0] 6F201364  d3d9.dll+0x1364
+  [ 1] 77C4CDC8  ntdll.dll+0x6CDC8
+  [ 2] 77C4904B  ntdll.dll+0x6904B
+  [ 3] 77C54EE6  ntdll.dll+0x74EE6
+  [ 4] 6ECB6451  S3DWrapperD3D9.dll+0x76451
+  [ 5] 6EC7D231  S3DWrapperD3D9.dll+0x3D231
+  [ 6] 6EC88842  S3DWrapperD3D9.dll+0x48842
+  [ 7] 6EC7D51E  S3DWrapperD3D9.dll+0x3D51E
+  [ 8] 6ECA0E2F  S3DWrapperD3D9.dll+0x60E2F
+  [ 9] 01AE857E  RobloxPlayerBeta.exe+0x16E857E
+  [10] 0196EC84  RobloxPlayerBeta.exe+0x156EC84
+  [11] 0196E3B9  RobloxPlayerBeta.exe+0x156E3B9
+  [12] 00FA8834  RobloxPlayerBeta.exe+0xBA8834
+  [13] 00FA8488  RobloxPlayerBeta.exe+0xBA8488
+  [14] 00F8C581  RobloxPlayerBeta.exe+0xB8C581
+  [15] 005DFBFC  RobloxPlayerBeta.exe+0x1DFBFC
+  [16] 74901836  atlthunk.dll+0x1836
+  [17] 75BC348B  USER32.dll+0x4348B
+  [18] 75BBA42A  USER32.dll+0x3A42A
+  [19] 75BB819A  USER32.dll+0x3819A
+  [20] 75BB7F60  USER32.dll+0x37F60
+  [21] 005FEC83  RobloxPlayerBeta.exe+0x1FEC83
+  [22] 018FBFA2  RobloxPlayerBeta.exe+0x14FBFA2
+  [23] 75E3FA29  KERNEL32.DLL+0x1FA29
+  [24] 77C47A9E  ntdll.dll+0x67A9E
+  [25] 77C47A6E  ntdll.dll+0x67A6E
+--- End stack trace ---
+--- Stack memory (potential return addresses) ---
+  RSP+0x004: 6ECB6451  S3DWrapperD3D9.dll+0x76451
+  RSP+0x01C: 6EC7D231  S3DWrapperD3D9.dll+0x3D231
+  RSP+0x040: 6F0D32A0  d3d9.dll+0x632A0
+  RSP+0x048: 6F0D30A2  d3d9.dll+0x630A2
+  RSP+0x04C: 6F0D3117  d3d9.dll+0x63117
+--- End stack memory ---
+--- Loaded modules ---
+  00400000-033D8000  C:\RFD\Roblox\v463\Player\RobloxPlayerBeta.exe
+  77BE0000-77D83000  C:\Windows\SYSTEM32\ntdll.dll
+  75E20000-75F10000  C:\Windows\System32\KERNEL32.DLL
+  766D0000-768E5000  C:\Windows\System32\KERNELBASE.dll
+  75B50000-75B75000  C:\Windows\System32\IMM32.dll
+  75B80000-75D20000  C:\Windows\System32\USER32.dll
+  760A0000-760B8000  C:\Windows\System32\win32u.dll
+  76160000-76184000  C:\Windows\System32\GDI32.dll
+  76960000-76A3C000  C:\Windows\System32\gdi32full.dll
+  76A50000-76ACB000  C:\Windows\System32\msvcp_win.dll
+  76190000-762B0000  C:\Windows\System32\ucrtbase.dll
+  74950000-74958000  C:\Windows\SYSTEM32\SensApi.dll
+  700B0000-70258000  C:\Windows\SYSTEM32\urlmon.dll
+  74EB0000-74EC9000  C:\Windows\SYSTEM32\MSACM32.dll
+  75F60000-7601F000  C:\Windows\System32\msvcrt.dll
+  76B10000-76B57000  C:\Windows\System32\WINTRUST.dll
+  76D70000-76DEA000  C:\Windows\System32\advapi32.dll
+  77B00000-77BBF000  C:\Windows\System32\RPCRT4.dll
+  764E0000-76555000  C:\Windows\System32\sechost.dll
+  756A0000-75768000  C:\Windows\SYSTEM32\WINHTTP.dll
+  768F0000-76953000  C:\Windows\System32\WS2_32.dll
+  6FE80000-700AB000  C:\Windows\SYSTEM32\iertutil.dll
+  74930000-7494D000  C:\Windows\SYSTEM32\srvcli.dll
+  77870000-77AF1000  C:\Windows\System32\combase.dll
+  76C50000-76D4A000  C:\Windows\System32\CRYPT32.dll
+  75660000-7566B000  C:\Windows\SYSTEM32\netutils.dll
+  75D90000-75E17000  C:\Windows\System32\shcore.dll
+  74E90000-74EAD000  C:\Windows\SYSTEM32\winmmbase.dll
+  74920000-74929000  C:\Windows\SYSTEM32\msdmo.dll
+  74730000-74758000  C:\Windows\SYSTEM32\WINMM.dll
+  772B0000-77863000  C:\Windows\System32\SHELL32.dll
+  73F60000-73F6A000  C:\Windows\SYSTEM32\Secur32.dll
+  76B60000-76C43000  C:\Windows\System32\ole32.dll
+  760C0000-76156000  C:\Windows\System32\OLEAUT32.dll
+  75F10000-75F55000  C:\Windows\System32\SHLWAPI.dll
+  74A10000-74B98000  C:\Windows\SYSTEM32\dbghelp.dll
+  75A50000-75A58000  C:\Windows\SYSTEM32\VERSION.dll
+  76E70000-772AC000  C:\Windows\System32\SETUPAPI.dll
+  74910000-7491A000  C:\Windows\SYSTEM32\HID.DLL
+  76AD0000-76B0B000  C:\Windows\System32\cfgmgr32.dll
+  76D50000-76D69000  C:\Windows\System32\bcrypt.dll
+  75A10000-75A42000  C:\Windows\SYSTEM32\IPHLPAPI.DLL
+  746E0000-74724000  C:\Windows\SYSTEM32\POWRPROF.dll
+  6F9A0000-6FA2D000  C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.1110_none_c0da534e38c01f4d\COMCTL32.dll
+  6FA30000-6FE80000  C:\Windows\SYSTEM32\WININET.dll
+  74D80000-74E83000  C:\Windows\SYSTEM32\OPENGL32.dll
+  75A90000-75A9F000  C:\Windows\SYSTEM32\WTSAPI32.dll
+  74C50000-74C8F000  C:\Windows\SYSTEM32\GLU32.dll
+  745D0000-745F1000  C:\Windows\SYSTEM32\SSPICLI.DLL
+  75690000-7569A000  C:\Windows\SYSTEM32\CRYPTBASE.DLL
+  74D50000-74D76000  C:\Windows\SYSTEM32\dbgcore.DLL
+  75650000-7565E000  C:\Windows\SYSTEM32\MSASN1.dll
+  74D20000-74D2D000  C:\Windows\SYSTEM32\UMPDC.dll
+  74680000-746D2000  C:\Windows\system32\mswsock.dll
+  75D30000-75D8F000  C:\Windows\System32\bcryptPrimitives.dll
+  74F00000-74F13000  C:\Windows\SYSTEM32\CRYPTSP.dll
+  74650000-7467F000  C:\Windows\system32\rsaenh.dll
+  74D10000-74D1F000  C:\Windows\SYSTEM32\kernel.appcore.dll
+  74C90000-74D04000  C:\Windows\system32\uxtheme.dll
+  75040000-75648000  C:\Windows\SYSTEM32\windows.storage.dll
+  74F30000-74F54000  C:\Windows\SYSTEM32\Wldp.dll
+  74BA0000-74BB8000  C:\Windows\SYSTEM32\profapi.dll
+  762B0000-76383000  C:\Windows\System32\MSCTF.dll
+  74530000-745C1000  C:\Windows\SYSTEM32\DNSAPI.dll
+  77BC0000-77BC7000  C:\Windows\System32\NSI.dll
+  74F20000-74F28000  C:\Windows\System32\rasadhlp.dll
+  74BF0000-74C48000  C:\Windows\System32\fwpuclnt.dll
+  76E50000-76E69000  C:\Windows\System32\imagehlp.dll
+  74900000-7490D000  C:\Windows\SYSTEM32\atlthunk.dll
+  6F8E0000-6F999000  C:\Windows\SYSTEM32\textinputframework.dll
+  6F840000-6F8DB000  C:\Windows\SYSTEM32\CoreMessaging.dll
+  6F5C0000-6F83E000  C:\Windows\SYSTEM32\CoreUIComponents.dll
+  748D0000-748F9000  C:\Windows\SYSTEM32\ntmarta.dll
+  6F4E0000-6F5BB000  C:\Windows\SYSTEM32\wintypes.dll
+  76020000-7609E000  C:\Windows\System32\clbcatq.dll
+  749A0000-74A0B000  C:\Windows\System32\MMDevApi.dll
+  73F90000-73FBB000  C:\Windows\System32\DEVOBJ.dll
+  74960000-7499A000  C:\Windows\SYSTEM32\wdmaud.drv
+  74EF0000-74EF7000  C:\Windows\SYSTEM32\ksuser.dll
+  74BE0000-74BE8000  C:\Windows\SYSTEM32\AVRT.dll
+  70260000-70396000  C:\Windows\SYSTEM32\AUDIOSES.DLL
+  74BD0000-74BDA000  C:\Windows\SYSTEM32\msacm32.drv
+  74BC0000-74BC8000  C:\Windows\SYSTEM32\midimap.dll
+  748C0000-748CF000  C:\Windows\SYSTEM32\resourcepolicyclient.dll
+  6F300000-6F4E0000  C:\Windows\SYSTEM32\d3d11.dll
+  6F230000-6F2F3000  C:\Windows\SYSTEM32\dxgi.dll
+  6AF40000-6AF6C000  C:\Windows\SYSTEM32\dxcore.dll
+  6F200000-6F227000  C:\RFD\Roblox\v463\Player\d3d9.dll
+  6F070000-6F1FF000  C:\Windows\system32\d3d9.dll
+  6F040000-6F066000  C:\Windows\SYSTEM32\dwmapi.dll
+  6EC40000-6F039000  C:\RFD\Roblox\v463\Player\S3DWrapperD3D9.dll
+  76A40000-76A46000  C:\Windows\System32\PSAPI.DLL
+  6EA40000-6EC3F000  C:\Windows\SYSTEM32\d3dx9_43.dll
+  6E990000-6EA39000  C:\RFD\Roblox\v463\Player\S3DAPI.dll
+  6E860000-6E990000  C:\RFD\Roblox\v463\Player\OutputMethods\AnaglyphOutput.dll
+  6E7C0000-6E853000  C:\Windows\SYSTEM32\mscms.dll
+  75A60000-75A85000  C:\Windows\SYSTEM32\USERENV.dll
+  748B0000-748BC000  C:\Windows\SYSTEM32\ColorAdapterClient.dll
+  6E780000-6E7B2000  C:\Windows\System32\Windows.Internal.Graphics.Display.DisplayColorManagement.dll
+  6E640000-6E77A000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igdumdim32.dll
+  602A0000-63D87000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igd9dxva32.dll
+  6E350000-6E63D000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igdgmm32.dll
+  6E330000-6E34E000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igdinfo32.dll
+  6AF70000-6D9E4000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igc32.dll
+  74630000-74644000  C:\Windows\SYSTEM32\dhcpcsvc6.DLL
+  6E320000-6E32D000  C:\Windows\SYSTEM32\XInput1_4.dll
+  74610000-74626000  C:\Windows\SYSTEM32\dhcpcsvc.DLL
+  6E230000-6E31D000  C:\Windows\SYSTEM32\inputhost.dll
+  703A0000-70462000  C:\Windows\SYSTEM32\PROPSYS.dll
+  70530000-7054E000  C:\Windows\SYSTEM32\gpapi.dll
+  70500000-70526000  C:\Windows\SYSTEM32\cryptnet.dll
+  74600000-74608000  C:\Windows\SYSTEM32\WINNSI.DLL
+  74510000-74521000  C:\Windows\system32\napinsp.dll
+  744F0000-74506000  C:\Windows\system32\pnrpnsp.dll
+  744E0000-744F0000  C:\Windows\system32\wshbth.dll
+  744C0000-744D6000  C:\Windows\system32\NLAapi.dll
+  744B0000-744BE000  C:\Windows\System32\winrnr.dll
+--- End modules ---
+Minidump written to: C:\RFD\Roblox\v463\Player\wiz3D_crash.dmp
+=== CRASH END ===
+=== wiz3D 0.3.1 (552bef4) - d3d9 proxy loaded ===
+Game exe: C:\RFD\Roblox\v463\Player\RobloxPlayerBeta.exe
+Proxy DLL: C:\RFD\Roblox\v463\Player\d3d9.dll
+Direct3DCreate9(SDKVersion=32) called
+OK: Real d3d9.dll loaded from C:\Windows\system32\d3d9.dll
+Loading wrapper: C:\RFD\Roblox\v463\Player\S3DWrapperD3D9.dll
+OK: Wrapper PE is loadable (DONT_RESOLVE_DLL_REFERENCES)
+--- Checking local dependencies ---
+  Probing S3DAPI.dll...
+    S3DAPI.dll: OK (loaded)
+  Probing S3DUtils.dll...
+    S3DUtils.dll: OK (loaded)
+  Probing ZLOg.dll...
+    ZLOg.dll: FILE NOT FOUND
+--- Checking system dependencies ---
+  PSAPI.DLL: OK
+  d3dx9_43.dll: OK
+  WINMM.dll: OK
+--- End dependency check ---
+SetDllDirectory: C:\RFD\Roblox\v463\Player
+OK: Wrapper loaded
+Calling InitializeExchangeServer...
+InitializeExchangeServer returned routerType=0
+Wrapper exports: Direct3DCreate9=6EC6EE40, Direct3DCreate9Ex=6EC6F0A0
+ProfileLoad: ProfileName='RobloxPlayerBeta' base=0 community=0 user=1
+--- Post-load file check ---
+  wiz3D_Config.xml: FOUND
+  Config.xml (legacy): missing
+  OutputMethods/: FOUND
+  OutputMethods/SideBySideOutput.dll: FOUND
+--- End post-load check ---
+Routing through WRAPPER Direct3DCreate9...
+
+--- DX9 wrapper diagnostic stream ---
+  ProxyDirect9::vtable [DoInitialize EXMODE_NONE] exMode=1 methodCount=17 nullSlots=5
+    slot[17] IDirect3D9::GetAdapterModeCountEx = NULL
+    slot[18] IDirect3D9::EnumAdapterModesEx = NULL
+    slot[19] IDirect3D9::GetAdapterDisplayModeEx = NULL
+    slot[20] IDirect3D9::CreateDeviceEx = NULL
+    slot[21] IDirect3D9::GetAdapterLUID = NULL
+WDirect3DCreate9 #1: real=14E10180 -> CDirect3D9=0D2EA3D8 (sameRealRefs=1)
+Wrapper Direct3DCreate9 returned 0D2EA3D8
+Direct3DCreate9(SDKVersion=32) called
+Routing through WRAPPER Direct3DCreate9...
+  ProxyDirect9::vtable [DoInitialize EXMODE_NONE] exMode=1 methodCount=17 nullSlots=5
+    slot[17] IDirect3D9::GetAdapterModeCountEx = NULL
+    slot[18] IDirect3D9::EnumAdapterModesEx = NULL
+    slot[19] IDirect3D9::GetAdapterDisplayModeEx = NULL
+    slot[20] IDirect3D9::CreateDeviceEx = NULL
+    slot[21] IDirect3D9::GetAdapterLUID = NULL
+WDirect3DCreate9 #2: real=18D57F60 -> CDirect3D9=0D990E88 (sameRealRefs=1)
+Wrapper Direct3DCreate9 returned 0D990E88
+~CDirect3D9: wrapper=0D990E88 real=18D57F60
+
+!!! FATAL EXCEPTION (VEH) !!!
+Exception code: 0xC0000005
+Crash address:  6ECB7D46
+Faulting module: C:\RFD\Roblox\v463\Player\S3DWrapperD3D9.dll + 0x77D46
+Access violation: WRITE of address 00000004
+EAX=00000000 EBX=0D949048 ECX=00000000 EDX=0D949218
+ESI=0D94A8DC EDI=00000000 EBP=0019F184 ESP=0019F184
+EIP=6ECB7D46
+--- Stack trace ---
+  [ 0] 6F201364  d3d9.dll+0x1364
+  [ 1] 77C4CDC8  ntdll.dll+0x6CDC8
+  [ 2] 77C4904B  ntdll.dll+0x6904B
+  [ 3] 77C54EE6  ntdll.dll+0x74EE6
+  [ 4] 6ECB6451  S3DWrapperD3D9.dll+0x76451
+  [ 5] 6EC7D231  S3DWrapperD3D9.dll+0x3D231
+  [ 6] 6EC88842  S3DWrapperD3D9.dll+0x48842
+  [ 7] 6EC7D51E  S3DWrapperD3D9.dll+0x3D51E
+  [ 8] 6ECA0E2F  S3DWrapperD3D9.dll+0x60E2F
+  [ 9] 01AE857E  RobloxPlayerBeta.exe+0x16E857E
+  [10] 0196EC84  RobloxPlayerBeta.exe+0x156EC84
+  [11] 0196E3B9  RobloxPlayerBeta.exe+0x156E3B9
+  [12] 00FA8834  RobloxPlayerBeta.exe+0xBA8834
+  [13] 00FA8488  RobloxPlayerBeta.exe+0xBA8488
+  [14] 00F8C581  RobloxPlayerBeta.exe+0xB8C581
+  [15] 005DFBFC  RobloxPlayerBeta.exe+0x1DFBFC
+  [16] 74901836  atlthunk.dll+0x1836
+  [17] 75BC348B  USER32.dll+0x4348B
+  [18] 75BBA42A  USER32.dll+0x3A42A
+  [19] 75BB819A  USER32.dll+0x3819A
+  [20] 75BB7F60  USER32.dll+0x37F60
+  [21] 005FEC83  RobloxPlayerBeta.exe+0x1FEC83
+  [22] 018FBFA2  RobloxPlayerBeta.exe+0x14FBFA2
+  [23] 75E3FA29  KERNEL32.DLL+0x1FA29
+  [24] 77C47A9E  ntdll.dll+0x67A9E
+  [25] 77C47A6E  ntdll.dll+0x67A6E
+--- End stack trace ---
+--- Stack memory (potential return addresses) ---
+  RSP+0x004: 6ECB6451  S3DWrapperD3D9.dll+0x76451
+  RSP+0x01C: 6EC7D231  S3DWrapperD3D9.dll+0x3D231
+  RSP+0x040: 6F0D32A0  d3d9.dll+0x632A0
+  RSP+0x048: 6F0D30A2  d3d9.dll+0x630A2
+  RSP+0x04C: 6F0D3117  d3d9.dll+0x63117
+--- End stack memory ---
+--- Loaded modules ---
+  00400000-033D8000  C:\RFD\Roblox\v463\Player\RobloxPlayerBeta.exe
+  77BE0000-77D83000  C:\Windows\SYSTEM32\ntdll.dll
+  75E20000-75F10000  C:\Windows\System32\KERNEL32.DLL
+  766D0000-768E5000  C:\Windows\System32\KERNELBASE.dll
+  75B50000-75B75000  C:\Windows\System32\IMM32.dll
+  75B80000-75D20000  C:\Windows\System32\USER32.dll
+  760A0000-760B8000  C:\Windows\System32\win32u.dll
+  76160000-76184000  C:\Windows\System32\GDI32.dll
+  76960000-76A3C000  C:\Windows\System32\gdi32full.dll
+  76A50000-76ACB000  C:\Windows\System32\msvcp_win.dll
+  76190000-762B0000  C:\Windows\System32\ucrtbase.dll
+  76B10000-76B57000  C:\Windows\System32\WINTRUST.dll
+  75F60000-7601F000  C:\Windows\System32\msvcrt.dll
+  74950000-74958000  C:\Windows\SYSTEM32\SensApi.dll
+  74EB0000-74EC9000  C:\Windows\SYSTEM32\MSACM32.dll
+  77B00000-77BBF000  C:\Windows\System32\RPCRT4.dll
+  700B0000-70258000  C:\Windows\SYSTEM32\urlmon.dll
+  76D70000-76DEA000  C:\Windows\System32\advapi32.dll
+  768F0000-76953000  C:\Windows\System32\WS2_32.dll
+  756A0000-75768000  C:\Windows\SYSTEM32\WINHTTP.dll
+  764E0000-76555000  C:\Windows\System32\sechost.dll
+  76C50000-76D4A000  C:\Windows\System32\CRYPT32.dll
+  772B0000-77863000  C:\Windows\System32\SHELL32.dll
+  6FE80000-700AB000  C:\Windows\SYSTEM32\iertutil.dll
+  74930000-7494D000  C:\Windows\SYSTEM32\srvcli.dll
+  75660000-7566B000  C:\Windows\SYSTEM32\netutils.dll
+  77870000-77AF1000  C:\Windows\System32\combase.dll
+  76B60000-76C43000  C:\Windows\System32\ole32.dll
+  760C0000-76156000  C:\Windows\System32\OLEAUT32.dll
+  74920000-74929000  C:\Windows\SYSTEM32\msdmo.dll
+  75F10000-75F55000  C:\Windows\System32\SHLWAPI.dll
+  75D90000-75E17000  C:\Windows\System32\shcore.dll
+  74E90000-74EAD000  C:\Windows\SYSTEM32\winmmbase.dll
+  74730000-74758000  C:\Windows\SYSTEM32\WINMM.dll
+  76E70000-772AC000  C:\Windows\System32\SETUPAPI.dll
+  76AD0000-76B0B000  C:\Windows\System32\cfgmgr32.dll
+  73F60000-73F6A000  C:\Windows\SYSTEM32\Secur32.dll
+  76D50000-76D69000  C:\Windows\System32\bcrypt.dll
+  74910000-7491A000  C:\Windows\SYSTEM32\HID.DLL
+  74A10000-74B98000  C:\Windows\SYSTEM32\dbghelp.dll
+  75A50000-75A58000  C:\Windows\SYSTEM32\VERSION.dll
+  75A10000-75A42000  C:\Windows\SYSTEM32\IPHLPAPI.DLL
+  6FDF0000-6FE7D000  C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.1110_none_c0da534e38c01f4d\COMCTL32.dll
+  746E0000-74724000  C:\Windows\SYSTEM32\POWRPROF.dll
+  74D80000-74E83000  C:\Windows\SYSTEM32\OPENGL32.dll
+  75A90000-75A9F000  C:\Windows\SYSTEM32\WTSAPI32.dll
+  6F9A0000-6FDF0000  C:\Windows\SYSTEM32\WININET.dll
+  74C50000-74C8F000  C:\Windows\SYSTEM32\GLU32.dll
+  745D0000-745F1000  C:\Windows\SYSTEM32\SSPICLI.DLL
+  75690000-7569A000  C:\Windows\SYSTEM32\CRYPTBASE.DLL
+  74D50000-74D76000  C:\Windows\SYSTEM32\dbgcore.DLL
+  75650000-7565E000  C:\Windows\SYSTEM32\MSASN1.dll
+  74D20000-74D2D000  C:\Windows\SYSTEM32\UMPDC.dll
+  74680000-746D2000  C:\Windows\system32\mswsock.dll
+  75D30000-75D8F000  C:\Windows\System32\bcryptPrimitives.dll
+  74F00000-74F13000  C:\Windows\SYSTEM32\CRYPTSP.dll
+  74650000-7467F000  C:\Windows\system32\rsaenh.dll
+  74D10000-74D1F000  C:\Windows\SYSTEM32\kernel.appcore.dll
+  74C90000-74D04000  C:\Windows\system32\uxtheme.dll
+  75040000-75648000  C:\Windows\SYSTEM32\windows.storage.dll
+  74F30000-74F54000  C:\Windows\SYSTEM32\Wldp.dll
+  74BA0000-74BB8000  C:\Windows\SYSTEM32\profapi.dll
+  762B0000-76383000  C:\Windows\System32\MSCTF.dll
+  74530000-745C1000  C:\Windows\SYSTEM32\DNSAPI.dll
+  77BC0000-77BC7000  C:\Windows\System32\NSI.dll
+  74F20000-74F28000  C:\Windows\System32\rasadhlp.dll
+  74BF0000-74C48000  C:\Windows\System32\fwpuclnt.dll
+  76E50000-76E69000  C:\Windows\System32\imagehlp.dll
+  74900000-7490D000  C:\Windows\SYSTEM32\atlthunk.dll
+  6F8E0000-6F999000  C:\Windows\SYSTEM32\textinputframework.dll
+  6F5C0000-6F65B000  C:\Windows\SYSTEM32\CoreMessaging.dll
+  6F660000-6F8DE000  C:\Windows\SYSTEM32\CoreUIComponents.dll
+  748D0000-748F9000  C:\Windows\SYSTEM32\ntmarta.dll
+  6F4E0000-6F5BB000  C:\Windows\SYSTEM32\wintypes.dll
+  76020000-7609E000  C:\Windows\System32\clbcatq.dll
+  749A0000-74A0B000  C:\Windows\System32\MMDevApi.dll
+  73F90000-73FBB000  C:\Windows\System32\DEVOBJ.dll
+  74960000-7499A000  C:\Windows\SYSTEM32\wdmaud.drv
+  74BE0000-74BE8000  C:\Windows\SYSTEM32\AVRT.dll
+  74EF0000-74EF7000  C:\Windows\SYSTEM32\ksuser.dll
+  70260000-70396000  C:\Windows\SYSTEM32\AUDIOSES.DLL
+  74BD0000-74BDA000  C:\Windows\SYSTEM32\msacm32.drv
+  74BC0000-74BC8000  C:\Windows\SYSTEM32\midimap.dll
+  748C0000-748CF000  C:\Windows\SYSTEM32\resourcepolicyclient.dll
+  6F300000-6F4E0000  C:\Windows\SYSTEM32\d3d11.dll
+  6F230000-6F2F3000  C:\Windows\SYSTEM32\dxgi.dll
+  6AF40000-6AF6C000  C:\Windows\SYSTEM32\dxcore.dll
+  6F200000-6F227000  C:\RFD\Roblox\v463\Player\d3d9.dll
+  6F070000-6F1FF000  C:\Windows\system32\d3d9.dll
+  6F040000-6F066000  C:\Windows\SYSTEM32\dwmapi.dll
+  6EC40000-6F039000  C:\RFD\Roblox\v463\Player\S3DWrapperD3D9.dll
+  76A40000-76A46000  C:\Windows\System32\PSAPI.DLL
+  6EA40000-6EC3F000  C:\Windows\SYSTEM32\d3dx9_43.dll
+  6E990000-6EA39000  C:\RFD\Roblox\v463\Player\S3DAPI.dll
+  6E860000-6E990000  C:\RFD\Roblox\v463\Player\OutputMethods\AnaglyphOutput.dll
+  6E7C0000-6E853000  C:\Windows\SYSTEM32\mscms.dll
+  75A60000-75A85000  C:\Windows\SYSTEM32\USERENV.dll
+  748B0000-748BC000  C:\Windows\SYSTEM32\ColorAdapterClient.dll
+  6E780000-6E7B2000  C:\Windows\System32\Windows.Internal.Graphics.Display.DisplayColorManagement.dll
+  6E640000-6E77A000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igdumdim32.dll
+  602A0000-63D87000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igd9dxva32.dll
+  6E350000-6E63D000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igdgmm32.dll
+  6E330000-6E34E000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igdinfo32.dll
+  6AF70000-6D9E4000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igc32.dll
+  74630000-74644000  C:\Windows\SYSTEM32\dhcpcsvc6.DLL
+  74610000-74626000  C:\Windows\SYSTEM32\dhcpcsvc.DLL
+  6E320000-6E32D000  C:\Windows\SYSTEM32\XInput1_4.dll
+  6E230000-6E31D000  C:\Windows\SYSTEM32\inputhost.dll
+  703A0000-70462000  C:\Windows\SYSTEM32\PROPSYS.dll
+  70530000-7054E000  C:\Windows\SYSTEM32\gpapi.dll
+  70500000-70526000  C:\Windows\SYSTEM32\cryptnet.dll
+  74600000-74608000  C:\Windows\SYSTEM32\WINNSI.DLL
+  74510000-74521000  C:\Windows\system32\napinsp.dll
+  744F0000-74506000  C:\Windows\system32\pnrpnsp.dll
+  744E0000-744F0000  C:\Windows\system32\wshbth.dll
+  744C0000-744D6000  C:\Windows\system32\NLAapi.dll
+  744B0000-744BE000  C:\Windows\System32\winrnr.dll
+--- End modules ---
+Minidump written to: C:\RFD\Roblox\v463\Player\wiz3D_crash.dmp
+=== CRASH END ===
+=== wiz3D 0.3.1 (552bef4) - d3d9 proxy loaded ===
+Game exe: C:\RFD\Roblox\v463\Player\RobloxPlayerBeta.exe
+Proxy DLL: C:\RFD\Roblox\v463\Player\d3d9.dll
+Direct3DCreate9(SDKVersion=32) called
+OK: Real d3d9.dll loaded from C:\Windows\system32\d3d9.dll
+Loading wrapper: C:\RFD\Roblox\v463\Player\S3DWrapperD3D9.dll
+OK: Wrapper PE is loadable (DONT_RESOLVE_DLL_REFERENCES)
+--- Checking local dependencies ---
+  Probing S3DAPI.dll...
+    S3DAPI.dll: OK (loaded)
+  Probing S3DUtils.dll...
+    S3DUtils.dll: OK (loaded)
+  Probing ZLOg.dll...
+    ZLOg.dll: FILE NOT FOUND
+--- Checking system dependencies ---
+  PSAPI.DLL: OK
+  d3dx9_43.dll: OK
+  WINMM.dll: OK
+--- End dependency check ---
+SetDllDirectory: C:\RFD\Roblox\v463\Player
+OK: Wrapper loaded
+Calling InitializeExchangeServer...
+InitializeExchangeServer returned routerType=0
+Wrapper exports: Direct3DCreate9=6EC6EE40, Direct3DCreate9Ex=6EC6F0A0
+ProfileLoad: ProfileName='RobloxPlayerBeta' base=0 community=0 user=1
+--- Post-load file check ---
+  wiz3D_Config.xml: FOUND
+  Config.xml (legacy): missing
+  OutputMethods/: FOUND
+  OutputMethods/SideBySideOutput.dll: FOUND
+--- End post-load check ---
+Routing through WRAPPER Direct3DCreate9...
+
+--- DX9 wrapper diagnostic stream ---
+  ProxyDirect9::vtable [DoInitialize EXMODE_NONE] exMode=1 methodCount=17 nullSlots=5
+    slot[17] IDirect3D9::GetAdapterModeCountEx = NULL
+    slot[18] IDirect3D9::EnumAdapterModesEx = NULL
+    slot[19] IDirect3D9::GetAdapterDisplayModeEx = NULL
+    slot[20] IDirect3D9::CreateDeviceEx = NULL
+    slot[21] IDirect3D9::GetAdapterLUID = NULL
+WDirect3DCreate9 #1: real=0DB255C0 -> CDirect3D9=05BD0668 (sameRealRefs=1)
+Wrapper Direct3DCreate9 returned 05BD0668
+Direct3DCreate9(SDKVersion=32) called
+Routing through WRAPPER Direct3DCreate9...
+  ProxyDirect9::vtable [DoInitialize EXMODE_NONE] exMode=1 methodCount=17 nullSlots=5
+    slot[17] IDirect3D9::GetAdapterModeCountEx = NULL
+    slot[18] IDirect3D9::EnumAdapterModesEx = NULL
+    slot[19] IDirect3D9::GetAdapterDisplayModeEx = NULL
+    slot[20] IDirect3D9::CreateDeviceEx = NULL
+    slot[21] IDirect3D9::GetAdapterLUID = NULL
+WDirect3DCreate9 #2: real=14F9B400 -> CDirect3D9=0E0BC120 (sameRealRefs=1)
+Wrapper Direct3DCreate9 returned 0E0BC120
+~CDirect3D9: wrapper=0E0BC120 real=14F9B400
+
+!!! FATAL EXCEPTION (VEH) !!!
+Exception code: 0xC0000005
+Crash address:  6ECB7D46
+Faulting module: C:\RFD\Roblox\v463\Player\S3DWrapperD3D9.dll + 0x77D46
+Access violation: WRITE of address 00000004
+EAX=00000000 EBX=0DB30908 ECX=00000000 EDX=0DB30AD8
+ESI=0DB3219C EDI=00000000 EBP=0019F184 ESP=0019F184
+EIP=6ECB7D46
+--- Stack trace ---
+  [ 0] 6F201364  d3d9.dll+0x1364
+  [ 1] 77C4CDC8  ntdll.dll+0x6CDC8
+  [ 2] 77C4904B  ntdll.dll+0x6904B
+  [ 3] 77C54EE6  ntdll.dll+0x74EE6
+  [ 4] 6ECB6451  S3DWrapperD3D9.dll+0x76451
+  [ 5] 6EC7D231  S3DWrapperD3D9.dll+0x3D231
+  [ 6] 6EC88842  S3DWrapperD3D9.dll+0x48842
+  [ 7] 6EC7D51E  S3DWrapperD3D9.dll+0x3D51E
+  [ 8] 6ECA0E2F  S3DWrapperD3D9.dll+0x60E2F
+  [ 9] 01AE857E  RobloxPlayerBeta.exe+0x16E857E
+  [10] 0196EC84  RobloxPlayerBeta.exe+0x156EC84
+  [11] 0196E3B9  RobloxPlayerBeta.exe+0x156E3B9
+  [12] 00FA8834  RobloxPlayerBeta.exe+0xBA8834
+  [13] 00FA8488  RobloxPlayerBeta.exe+0xBA8488
+  [14] 00F8C581  RobloxPlayerBeta.exe+0xB8C581
+  [15] 005DFBFC  RobloxPlayerBeta.exe+0x1DFBFC
+  [16] 74901836  atlthunk.dll+0x1836
+  [17] 75BC348B  USER32.dll+0x4348B
+  [18] 75BBA42A  USER32.dll+0x3A42A
+  [19] 75BB819A  USER32.dll+0x3819A
+  [20] 75BB7F60  USER32.dll+0x37F60
+  [21] 005FEC83  RobloxPlayerBeta.exe+0x1FEC83
+  [22] 018FBFA2  RobloxPlayerBeta.exe+0x14FBFA2
+  [23] 75E3FA29  KERNEL32.DLL+0x1FA29
+  [24] 77C47A9E  ntdll.dll+0x67A9E
+  [25] 77C47A6E  ntdll.dll+0x67A6E
+--- End stack trace ---
+--- Stack memory (potential return addresses) ---
+  RSP+0x004: 6ECB6451  S3DWrapperD3D9.dll+0x76451
+  RSP+0x01C: 6EC7D231  S3DWrapperD3D9.dll+0x3D231
+  RSP+0x040: 6F0D32A0  d3d9.dll+0x632A0
+  RSP+0x048: 6F0D30A2  d3d9.dll+0x630A2
+  RSP+0x04C: 6F0D3117  d3d9.dll+0x63117
+--- End stack memory ---
+--- Loaded modules ---
+  00400000-033D8000  C:\RFD\Roblox\v463\Player\RobloxPlayerBeta.exe
+  77BE0000-77D83000  C:\Windows\SYSTEM32\ntdll.dll
+  75E20000-75F10000  C:\Windows\System32\KERNEL32.DLL
+  766D0000-768E5000  C:\Windows\System32\KERNELBASE.dll
+  75B50000-75B75000  C:\Windows\System32\IMM32.dll
+  75B80000-75D20000  C:\Windows\System32\USER32.dll
+  760A0000-760B8000  C:\Windows\System32\win32u.dll
+  76160000-76184000  C:\Windows\System32\GDI32.dll
+  76960000-76A3C000  C:\Windows\System32\gdi32full.dll
+  76A50000-76ACB000  C:\Windows\System32\msvcp_win.dll
+  76190000-762B0000  C:\Windows\System32\ucrtbase.dll
+  76B10000-76B57000  C:\Windows\System32\WINTRUST.dll
+  75F60000-7601F000  C:\Windows\System32\msvcrt.dll
+  77B00000-77BBF000  C:\Windows\System32\RPCRT4.dll
+  74950000-74958000  C:\Windows\SYSTEM32\SensApi.dll
+  700B0000-70258000  C:\Windows\SYSTEM32\urlmon.dll
+  768F0000-76953000  C:\Windows\System32\WS2_32.dll
+  74EB0000-74EC9000  C:\Windows\SYSTEM32\MSACM32.dll
+  756A0000-75768000  C:\Windows\SYSTEM32\WINHTTP.dll
+  76C50000-76D4A000  C:\Windows\System32\CRYPT32.dll
+  76D70000-76DEA000  C:\Windows\System32\advapi32.dll
+  764E0000-76555000  C:\Windows\System32\sechost.dll
+  772B0000-77863000  C:\Windows\System32\SHELL32.dll
+  6FE80000-700AB000  C:\Windows\SYSTEM32\iertutil.dll
+  76B60000-76C43000  C:\Windows\System32\ole32.dll
+  77870000-77AF1000  C:\Windows\System32\combase.dll
+  74930000-7494D000  C:\Windows\SYSTEM32\srvcli.dll
+  75660000-7566B000  C:\Windows\SYSTEM32\netutils.dll
+  760C0000-76156000  C:\Windows\System32\OLEAUT32.dll
+  75D90000-75E17000  C:\Windows\System32\shcore.dll
+  74920000-74929000  C:\Windows\SYSTEM32\msdmo.dll
+  74730000-74758000  C:\Windows\SYSTEM32\WINMM.dll
+  75F10000-75F55000  C:\Windows\System32\SHLWAPI.dll
+  74E90000-74EAD000  C:\Windows\SYSTEM32\winmmbase.dll
+  73F60000-73F6A000  C:\Windows\SYSTEM32\Secur32.dll
+  76E70000-772AC000  C:\Windows\System32\SETUPAPI.dll
+  76AD0000-76B0B000  C:\Windows\System32\cfgmgr32.dll
+  74A10000-74B98000  C:\Windows\SYSTEM32\dbghelp.dll
+  75A50000-75A58000  C:\Windows\SYSTEM32\VERSION.dll
+  76D50000-76D69000  C:\Windows\System32\bcrypt.dll
+  74910000-7491A000  C:\Windows\SYSTEM32\HID.DLL
+  75A10000-75A42000  C:\Windows\SYSTEM32\IPHLPAPI.DLL
+  746E0000-74724000  C:\Windows\SYSTEM32\POWRPROF.dll
+  6FA30000-6FE80000  C:\Windows\SYSTEM32\WININET.dll
+  6F9A0000-6FA2D000  C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.1110_none_c0da534e38c01f4d\COMCTL32.dll
+  74D80000-74E83000  C:\Windows\SYSTEM32\OPENGL32.dll
+  75A90000-75A9F000  C:\Windows\SYSTEM32\WTSAPI32.dll
+  74C50000-74C8F000  C:\Windows\SYSTEM32\GLU32.dll
+  745D0000-745F1000  C:\Windows\SYSTEM32\SSPICLI.DLL
+  75690000-7569A000  C:\Windows\SYSTEM32\CRYPTBASE.DLL
+  74D50000-74D76000  C:\Windows\SYSTEM32\dbgcore.DLL
+  75650000-7565E000  C:\Windows\SYSTEM32\MSASN1.dll
+  74D20000-74D2D000  C:\Windows\SYSTEM32\UMPDC.dll
+  74680000-746D2000  C:\Windows\system32\mswsock.dll
+  75D30000-75D8F000  C:\Windows\System32\bcryptPrimitives.dll
+  74F00000-74F13000  C:\Windows\SYSTEM32\CRYPTSP.dll
+  74650000-7467F000  C:\Windows\system32\rsaenh.dll
+  74D10000-74D1F000  C:\Windows\SYSTEM32\kernel.appcore.dll
+  74C90000-74D04000  C:\Windows\system32\uxtheme.dll
+  75040000-75648000  C:\Windows\SYSTEM32\windows.storage.dll
+  74F30000-74F54000  C:\Windows\SYSTEM32\Wldp.dll
+  74BA0000-74BB8000  C:\Windows\SYSTEM32\profapi.dll
+  762B0000-76383000  C:\Windows\System32\MSCTF.dll
+  74530000-745C1000  C:\Windows\SYSTEM32\DNSAPI.dll
+  77BC0000-77BC7000  C:\Windows\System32\NSI.dll
+  74F20000-74F28000  C:\Windows\System32\rasadhlp.dll
+  74BF0000-74C48000  C:\Windows\System32\fwpuclnt.dll
+  76E50000-76E69000  C:\Windows\System32\imagehlp.dll
+  74900000-7490D000  C:\Windows\SYSTEM32\atlthunk.dll
+  6F8E0000-6F999000  C:\Windows\SYSTEM32\textinputframework.dll
+  6F5C0000-6F65B000  C:\Windows\SYSTEM32\CoreMessaging.dll
+  6F660000-6F8DE000  C:\Windows\SYSTEM32\CoreUIComponents.dll
+  748D0000-748F9000  C:\Windows\SYSTEM32\ntmarta.dll
+  6F4E0000-6F5BB000  C:\Windows\SYSTEM32\wintypes.dll
+  76020000-7609E000  C:\Windows\System32\clbcatq.dll
+  749A0000-74A0B000  C:\Windows\System32\MMDevApi.dll
+  73F90000-73FBB000  C:\Windows\System32\DEVOBJ.dll
+  74960000-7499A000  C:\Windows\SYSTEM32\wdmaud.drv
+  74EF0000-74EF8000  C:\Windows\SYSTEM32\AVRT.dll
+  74BE0000-74BE7000  C:\Windows\SYSTEM32\ksuser.dll
+  70260000-70396000  C:\Windows\SYSTEM32\AUDIOSES.DLL
+  74BD0000-74BDA000  C:\Windows\SYSTEM32\msacm32.drv
+  74BC0000-74BC8000  C:\Windows\SYSTEM32\midimap.dll
+  748C0000-748CF000  C:\Windows\SYSTEM32\resourcepolicyclient.dll
+  6F300000-6F4E0000  C:\Windows\SYSTEM32\d3d11.dll
+  6F230000-6F2F3000  C:\Windows\SYSTEM32\dxgi.dll
+  6AF40000-6AF6C000  C:\Windows\SYSTEM32\dxcore.dll
+  6F200000-6F227000  C:\RFD\Roblox\v463\Player\d3d9.dll
+  6F070000-6F1FF000  C:\Windows\system32\d3d9.dll
+  6F040000-6F066000  C:\Windows\SYSTEM32\dwmapi.dll
+  6EC40000-6F039000  C:\RFD\Roblox\v463\Player\S3DWrapperD3D9.dll
+  76A40000-76A46000  C:\Windows\System32\PSAPI.DLL
+  6EA40000-6EC3F000  C:\Windows\SYSTEM32\d3dx9_43.dll
+  6E990000-6EA39000  C:\RFD\Roblox\v463\Player\S3DAPI.dll
+  6E860000-6E990000  C:\RFD\Roblox\v463\Player\OutputMethods\AnaglyphOutput.dll
+  6E7C0000-6E853000  C:\Windows\SYSTEM32\mscms.dll
+  748B0000-748BC000  C:\Windows\SYSTEM32\ColorAdapterClient.dll
+  75A60000-75A85000  C:\Windows\SYSTEM32\USERENV.dll
+  6E780000-6E7B2000  C:\Windows\System32\Windows.Internal.Graphics.Display.DisplayColorManagement.dll
+  6E640000-6E77A000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igdumdim32.dll
+  602A0000-63D87000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igd9dxva32.dll
+  6E350000-6E63D000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igdgmm32.dll
+  6E330000-6E34E000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igdinfo32.dll
+  6AF70000-6D9E4000  C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_bb614eb89871cffc\igc32.dll
+  74630000-74644000  C:\Windows\SYSTEM32\dhcpcsvc6.DLL
+  6E320000-6E32D000  C:\Windows\SYSTEM32\XInput1_4.dll
+  6E230000-6E31D000  C:\Windows\SYSTEM32\inputhost.dll
+  703A0000-70462000  C:\Windows\SYSTEM32\PROPSYS.dll
+  74610000-74626000  C:\Windows\SYSTEM32\dhcpcsvc.DLL
+  70530000-7054E000  C:\Windows\SYSTEM32\gpapi.dll
+  70500000-70526000  C:\Windows\SYSTEM32\cryptnet.dll
+  74600000-74608000  C:\Windows\SYSTEM32\WINNSI.DLL
+  74510000-74521000  C:\Windows\system32\napinsp.dll
+  744F0000-74506000  C:\Windows\system32\pnrpnsp.dll
+  744E0000-744F0000  C:\Windows\system32\wshbth.dll
+  744C0000-744D6000  C:\Windows\system32\NLAapi.dll
+  744B0000-744BE000  C:\Windows\System32\winrnr.dll
+--- End modules ---
+Minidump written to: C:\RFD\Roblox\v463\Player\wiz3D_crash.dmp
+=== CRASH END ===

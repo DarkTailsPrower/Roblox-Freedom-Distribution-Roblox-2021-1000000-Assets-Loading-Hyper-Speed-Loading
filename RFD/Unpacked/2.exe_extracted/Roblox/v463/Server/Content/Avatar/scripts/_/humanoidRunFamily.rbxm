@@ -1,0 +1,167 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="StringValue" referent="RBXCB254DA732D44A1EB02118396F4CBF16">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">runBack</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX134174710BAF43BA95142E1031DC027A">
+			<Properties>
+				<string name="AnimationId">rbxassetid://10358526981</string>
+				<string name="AttributesSerialize">&#1;&#0;&#0;&#0;&#14;&#0;&#0;&#0;LinearVelocity&#16;&#0;&#0;&#0;&#0;&#205;&#204;L&#193;</string>
+				<string name="Name">RunBackAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBXFE31FBDC3EB54010B9D446673182C257">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">runBackwardLeft</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX6D8D87121B2B49049DF47008728DCE76">
+			<Properties>
+				<string name="AnimationId">rbxassetid://10382960556</string>
+				<string name="AttributesSerialize">&#1;&#0;&#0;&#0;&#14;&#0;&#0;&#0;LinearVelocity&#16;&#254;&#212;&#16;&#193;&#254;&#212;&#16;&#193;</string>
+				<string name="Name">RunBackwardLeftAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX068F61D11DC34DF9B590B30A8388B3C5">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">runBackwardRight</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX4DF56EFAAB134B4EB243F67B696DED58">
+			<Properties>
+				<string name="AnimationId">rbxassetid://10382949241</string>
+				<string name="AttributesSerialize">&#1;&#0;&#0;&#0;&#14;&#0;&#0;&#0;LinearVelocity&#16;&#254;&#212;&#16;A&#254;&#212;&#16;&#193;</string>
+				<string name="Name">RunBackwardRightAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBXA919C71462A0423D936F493DF0F61CA7">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">runForwardLeft</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX1C2E420DD9A147E2B737DF40F7ACC905">
+			<Properties>
+				<string name="AnimationId">rbxassetid://10319903622</string>
+				<string name="AttributesSerialize">&#1;&#0;&#0;&#0;&#14;&#0;&#0;&#0;LinearVelocity&#16;&#254;&#212;&#16;&#193;&#254;&#212;&#16;A</string>
+				<string name="Name">RunForwardLeftAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX73FC91A960FB46AAA0D1E922C64E1D0E">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">runForwardRight</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX0200B70EE9C44F10893296552759BC89">
+			<Properties>
+				<string name="AnimationId">rbxassetid://10319882993</string>
+				<string name="AttributesSerialize">&#1;&#0;&#0;&#0;&#14;&#0;&#0;&#0;LinearVelocity&#16;&#254;&#212;&#16;A&#254;&#212;&#16;A</string>
+				<string name="Name">RunForwardRightAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX94164348DF0C4C62867DB6E44F8AD8B2">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">runLeft</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX884DDB1908F84AD2A6D202975F03511A">
+			<Properties>
+				<string name="AnimationId">rbxassetid://10404604071</string>
+				<string name="AttributesSerialize">&#1;&#0;&#0;&#0;&#14;&#0;&#0;&#0;LinearVelocity&#16;&#205;&#204;L&#193;&#23;&#183;&#209;8</string>
+				<string name="Name">RunLeftAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBXD025FC06578E45B286DB3B49A38E24F3">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">runLeft2</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX211672ADB9C242B8882AC0006CF354BF">
+			<Properties>
+				<string name="AnimationId">rbxassetid://10847298457</string>
+				<string name="AttributesSerialize">&#1;&#0;&#0;&#0;&#14;&#0;&#0;&#0;LinearVelocity&#16;&#205;&#204;L&#193;&#23;&#183;&#209;&#184;</string>
+				<string name="Name">RunLeft2Anim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBXBAB0A4D8189D4081AA6C61E3F44B4BF1">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">runRight</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBXE9E3340AD07F4F71B30CF66866CD5EE9">
+			<Properties>
+				<string name="AnimationId">rbxassetid://10404627994</string>
+				<string name="AttributesSerialize">&#1;&#0;&#0;&#0;&#14;&#0;&#0;&#0;LinearVelocity&#16;&#205;&#204;LA&#23;&#183;&#209;8</string>
+				<string name="Name">RunRightAnim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StringValue" referent="RBX9A453BB27F594E2791B5D6B19A0ECA05">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<string name="Name">runRight2</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+			<string name="Value"></string>
+		</Properties>
+		<Item class="Animation" referent="RBX4DF861AF58A64430A8C7D40A5F275AB7">
+			<Properties>
+				<string name="AnimationId">rbxassetid://10847291554</string>
+				<string name="AttributesSerialize">&#1;&#0;&#0;&#0;&#14;&#0;&#0;&#0;LinearVelocity&#16;&#205;&#204;LA&#23;&#183;&#209;&#184;</string>
+				<string name="Name">RunRight2Anim</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<string name="Tags"></string>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>

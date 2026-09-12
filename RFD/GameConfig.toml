@@ -1,0 +1,118 @@
+metadata.config_version_wildcard = "*"
+
+[game_setup]
+roblox_version = '2021'
+
+enable_saveplace = false
+
+[game_setup.persistence]
+sqlite_path = '_.sqlite'
+clear_on_start = false
+
+[server_core.place_file]
+rbxl_uri = './Crossroads.rbxl'
+
+[server_core.metadata]
+title = 'Crossroads'
+description = 'The classic Rōblox map.'
+creator_name = 'David Baszucki, Erik Cassel'
+icon_uri = 'https://ia600506.us.archive.org/34/items/soundcloud-1509042007/1509042007.jpg'
+
+
+[server_core]
+startup_script = 'game.workspace.FilteringEnabled = true'
+
+check_user_allowed = '''
+def f(user_code) -> bool:
+    return True
+'''
+
+retrieve_default_user_code = '''
+import time
+def f(tick=None) -> str:
+    return 'Player%d' % time.time()
+'''
+
+retrieve_avatar = '''
+def f(user_iden, user_code) -> dict:
+    return {
+        'type': 'R15',
+        'items': {
+            10726856854,
+            9482991343,
+            9481782649,
+            9120251003,
+            4381817635,
+            6969309778,
+            5731052645,
+            2846257298,
+            121390054,
+            261826995,
+            154386348,
+            201733574,
+            48474294,
+            6340101,
+            192483960,
+            190245296,
+            183808364,
+            34247191,
+        },
+        'colors': {
+            'head': 315,
+            'left_arm': 315,
+            'left_leg': 315,
+            'right_arm': 315,
+            'right_leg': 315,
+            'torso': 315,
+        },
+        'scales': {
+            'height': 1,
+            'width': 1,
+            'head': 1,
+            'depth': 1,
+            'proportion': 0,
+            'body_type': 0,
+        },
+    }
+'''
+
+retrieve_username = '''
+def f(user_id_num, user_code):
+    return user_code
+'''
+
+filter_text = '''
+def f(text, user_id_num, user_code):
+    return (
+        text
+        .replace('oo','òó')
+        .replace('OO','ÒÓ')
+        .replace('ee','èé')
+        .replace('EE','ÈÉ')
+        .replace('Roblox','Rōblox')
+        .replace('ROBLOX','RŌBLOX')
+    )
+'''
+
+retrieve_groups = '''
+def f(user_iden, user_code):
+    return {
+        '1200769': 255,
+        '2868472': 255,
+        '4199740': 255,
+        '4265462': 255,
+        '4265456': 255,
+        '4265443': 255,
+        '4265449': 255,
+    }
+'''
+
+retrieve_default_funds = '''
+def f(*a):
+    return 6767
+'''
+
+chat_style = 'ClassicAndBubble'
+
+# ... ваши старые настройки (title, startup_script) ...
+preferred_port = 2005

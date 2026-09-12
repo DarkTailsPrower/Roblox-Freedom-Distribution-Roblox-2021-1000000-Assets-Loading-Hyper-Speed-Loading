@@ -1,0 +1,3928 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Model" referent="RBX75E49AF5A4DE4B1BBE4842988EDE332C">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<token name="LevelOfDetail">0</token>
+			<CoordinateFrame name="ModelInPrimary">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<CoordinateFrame name="ModelMeshCFrame">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<SharedString name="ModelMeshData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+			<Vector3 name="ModelMeshSize">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+			</Vector3>
+			<string name="Name">Player</string>
+			<Ref name="PrimaryPart">RBXC01CD6F25A9B4D859CD95B2E7D213392</Ref>
+			<string name="Tags"></string>
+		</Properties>
+		<Item class="Part" referent="RBXC01CD6F25A9B4D859CD95B2E7D213392">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">4</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>22.8300152</Y>
+					<Z>22.0100021</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">HumanoidRootPart</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">3</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">1</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>2</X>
+					<Y>2</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBXE9903BEE4DC848D49211695D2B89231D">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>0</X>
+						<Y>-1</Y>
+						<Z>0</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RootRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX8AA01E12944048B1AC6AAB1559062891">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>0</X>
+							<Y>-0.349999994</Y>
+							<Z>0</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Vector3Value" referent="RBXC0595983B0F0400EAACC2947F82236C6">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>2</X>
+						<Y>2</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="MeshPart" referent="RBXA24B39B505AC4B65A5788E5DEC0798DE">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>-1.5</X>
+					<Y>21.979969</Y>
+					<Z>22.0100021</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>0.999999762</X>
+					<Y>0.300030679</Y>
+					<Z>0.999999881</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxassetid://1699715537</string>
+				<string name="MeshId">rbxassetid://1699715537</string>
+				<string name="Name">LeftHand</string>
+				<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>0.999999762</X>
+					<Y>0.300030679</Y>
+					<Z>0.999999881</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBX044B9B8081A54ADB8A0F4A4ACF1E21DF">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>0.000478982925</X>
+						<Y>0.125045404</Y>
+						<Z>5.96046448e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftWristRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX143417D3207C40369CD4607E16104E97">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>0.000478982925</X>
+							<Y>0.125045404</Y>
+							<Z>5.96046448e-008</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX078D75E7B5E5487EACE572DEB749AA5D">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>0</X>
+						<Y>-0.149954513</Y>
+						<Z>-1.46306121e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>-0</R02>
+						<R10>0</R10>
+						<R11>6.12323426e-017</R11>
+						<R12>1</R12>
+						<R20>0</R20>
+						<R21>-1</R21>
+						<R22>6.12323426e-017</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftGripAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX153058D9542A482BB33AA3EECDBBBDD2">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>0</X>
+							<Y>-0.149954513</Y>
+							<Z>-1.46306121e-007</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Motor6D" referent="RBX399C4147A84F4FAD8AFE3430F55CD640">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>0.000478625298</X>
+						<Y>-0.5009287</Y>
+						<Z>7.64462551e-020</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>0.000478982925</X>
+						<Y>0.125045404</Y>
+						<Z>5.96046448e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">LeftWrist</string>
+					<Ref name="Part0">RBXDB7AC69256704CFCA923F3132A4981C2</Ref>
+					<Ref name="Part1">RBXA24B39B505AC4B65A5788E5DEC0798DE</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBXF9AC015BFB784639A573CE2F98AFC360">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>0.999999762</X>
+						<Y>0.300030679</Y>
+						<Z>0.999999881</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="MeshPart" referent="RBXDB7AC69256704CFCA923F3132A4981C2">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>-1.49999964</X>
+					<Y>22.6059437</Y>
+					<Z>22.0100021</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>0.999999642</X>
+					<Y>1.05191803</Y>
+					<Z>1</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxassetid://1699715541</string>
+				<string name="MeshId">rbxassetid://1699715541</string>
+				<string name="Name">LeftLowerArm</string>
+				<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>0.999999642</X>
+					<Y>1.05191803</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBXAAAA9DA712144A5FAE04B996F71C7429">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>0.000478625298</X>
+						<Y>0.258688211</Y>
+						<Z>7.64462551e-020</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftElbowRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXB6DE6E346BA145EC87B2F27281DE89C2">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>0.000478625298</X>
+							<Y>0.258688211</Y>
+							<Z>7.64462551e-020</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX770AEB2CBF584B81AFA78F648CB6E726">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>0.000478625298</X>
+						<Y>-0.5009287</Y>
+						<Z>7.64462551e-020</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftWristRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX77FB016733E146FEBAC8A00B45F65FAE">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>0.000478625298</X>
+							<Y>-0.5009287</Y>
+							<Z>7.64462551e-020</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Motor6D" referent="RBXE0738725955641F9A3AF04A1D54CD965">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>0.000479221344</X>
+						<Y>-0.334056377</Y>
+						<Z>8.94069672e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>0.000478625298</X>
+						<Y>0.258688211</Y>
+						<Z>7.64462551e-020</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">LeftElbow</string>
+					<Ref name="Part0">RBX3F80324A8ED04D909E5660842AC43721</Ref>
+					<Ref name="Part1">RBXDB7AC69256704CFCA923F3132A4981C2</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBX26A3B34ABBE0457E9BF47A95F16738FD">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>0.999999642</X>
+						<Y>1.05191803</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="MeshPart" referent="RBX3F80324A8ED04D909E5660842AC43721">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>-1.50000024</X>
+					<Y>23.1986885</Y>
+					<Z>22.0100021</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>0.999999762</X>
+					<Y>1.16867065</Y>
+					<Z>0.99999994</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxassetid://1699715550</string>
+				<string name="MeshId">rbxassetid://1699715550</string>
+				<string name="Name">LeftUpperArm</string>
+				<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>0.999999762</X>
+					<Y>1.16867065</Y>
+					<Z>0.99999994</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBX080AE6B656C84683A27074E061661C06">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>0.500000358</X>
+						<Y>0.394326687</Y>
+						<Z>8.94069672e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftShoulderRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX1D97E72695DF4A538ADAD5212A602EB6">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>0.500000358</X>
+							<Y>0.394326687</Y>
+							<Z>8.94069672e-008</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX0DBACD753DAF467780B98BB1F8FBC1B9">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>0.000479221344</X>
+						<Y>-0.334056377</Y>
+						<Z>8.94069672e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftElbowRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXC85A2CD8B5AF41E589469E9F0B57D5AB">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>0.000479221344</X>
+							<Y>-0.334056377</Y>
+							<Z>8.94069672e-008</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX6E57E8058A1F4031A410F6F23EBB79CB">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>2.38418579e-007</X>
+						<Y>0.584326625</Y>
+						<Z>-2.70968314e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftShoulderAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXC13C9E93A215456AB92B185D5BF6E4F3">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>2.38418579e-007</X>
+							<Y>0.584326625</Y>
+							<Z>-2.70968314e-008</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Motor6D" referent="RBX9B3FCD5ECC554CA59297E9A9F5A58C44">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>-1</X>
+						<Y>0.56301713</Y>
+						<Z>1.1920929e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>0.500000358</X>
+						<Y>0.394326687</Y>
+						<Z>8.94069672e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">LeftShoulder</string>
+					<Ref name="Part0">RBX426039D169C844A2AA8BC51D4D8AE83C</Ref>
+					<Ref name="Part1">RBX3F80324A8ED04D909E5660842AC43721</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBX648F55F281C548D59C625D3723764A2E">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>0.999999762</X>
+						<Y>1.16867065</Y>
+						<Z>0.99999994</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="MeshPart" referent="RBXEE66C934E80349BD893085FBFFE94B9A">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>1.49999976</X>
+					<Y>21.979969</Y>
+					<Z>22.0100021</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>0.999999881</X>
+					<Y>0.300030679</Y>
+					<Z>0.999999881</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxassetid://1699715557</string>
+				<string name="MeshId">rbxassetid://1699715557</string>
+				<string name="Name">RightHand</string>
+				<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>0.999999881</X>
+					<Y>0.300030679</Y>
+					<Z>0.999999881</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBX47F10DEE08B14286A76C1881AC648428">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>3.57627869e-007</X>
+						<Y>0.125045404</Y>
+						<Z>5.96046448e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RightWristRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX495324F723294C6F9AC5D7E0A1E9D42C">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>3.57627869e-007</X>
+							<Y>0.125045404</Y>
+							<Z>5.96046448e-008</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX4B312F7658CC4379839EBB084C8F32DF">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>0</X>
+						<Y>-0.149954513</Y>
+						<Z>-1.46306121e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>-0</R02>
+						<R10>0</R10>
+						<R11>6.12323426e-017</R11>
+						<R12>1</R12>
+						<R20>0</R20>
+						<R21>-1</R21>
+						<R22>6.12323426e-017</R22>
+					</CoordinateFrame>
+					<string name="Name">RightGripAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX9E9B42DA9ADC482A8110DC7834642597">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>0</X>
+							<Y>-0.149954513</Y>
+							<Z>-1.46306121e-007</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Motor6D" referent="RBXE9D7FD8295594C979AB1FFC44BB66DD7">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>1.1920929e-007</X>
+						<Y>-0.5009287</Y>
+						<Z>-6.86244753e-018</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>3.57627869e-007</X>
+						<Y>0.125045404</Y>
+						<Z>5.96046448e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">RightWrist</string>
+					<Ref name="Part0">RBXB8EBDE8DC3F1471980DC414DBDD38D06</Ref>
+					<Ref name="Part1">RBXEE66C934E80349BD893085FBFFE94B9A</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBX4BAF80EB838748E1945753A235E472FE">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>0.999999881</X>
+						<Y>0.300030679</Y>
+						<Z>0.999999881</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="MeshPart" referent="RBXB8EBDE8DC3F1471980DC414DBDD38D06">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>1.5</X>
+					<Y>22.6059437</Y>
+					<Z>22.0100021</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>0.999999762</X>
+					<Y>1.05191803</Y>
+					<Z>1</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxassetid://1699715562</string>
+				<string name="MeshId">rbxassetid://1699715562</string>
+				<string name="Name">RightLowerArm</string>
+				<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>0.999999762</X>
+					<Y>1.05191803</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBX8DAB7DCB66DE42D5A41C0B60BAA77EC8">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>1.1920929e-007</X>
+						<Y>0.258579493</Y>
+						<Z>7.64462551e-020</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RightElbowRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX604BABF54EB342D2B3EE63B7F942B3FA">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>1.1920929e-007</X>
+							<Y>0.258579493</Y>
+							<Z>7.64462551e-020</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBXE10D86052D8442E3B1FC5A8A517CC3CD">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>1.1920929e-007</X>
+						<Y>-0.5009287</Y>
+						<Z>-6.86244753e-018</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RightWristRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX62B92AA40D0A46508D88BF1074A27DCD">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>1.1920929e-007</X>
+							<Y>-0.5009287</Y>
+							<Z>-6.86244753e-018</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Motor6D" referent="RBX980C25EDC7964BDC8C6DE3E61A318466">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>-5.96046448e-007</X>
+						<Y>-0.334165096</Y>
+						<Z>8.94069672e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>1.1920929e-007</X>
+						<Y>0.258579493</Y>
+						<Z>7.64462551e-020</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">RightElbow</string>
+					<Ref name="Part0">RBXA993409495C745C09F154D3C65D219B3</Ref>
+					<Ref name="Part1">RBXB8EBDE8DC3F1471980DC414DBDD38D06</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBX884601AB06FF43C0922F8DC5EDEF1B90">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>0.999999762</X>
+						<Y>1.05191803</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="MeshPart" referent="RBXA993409495C745C09F154D3C65D219B3">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>1.50000072</X>
+					<Y>23.1986885</Y>
+					<Z>22.0100021</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>0.999999642</X>
+					<Y>1.16867065</Y>
+					<Z>0.99999994</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxassetid://1699715576</string>
+				<string name="MeshId">rbxassetid://1699715576</string>
+				<string name="Name">RightUpperArm</string>
+				<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>0.999999642</X>
+					<Y>1.16867065</Y>
+					<Z>0.99999994</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBX5488962306FB4AA098A130CAFC65AED4">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-0.500000715</X>
+						<Y>0.394326687</Y>
+						<Z>8.94069672e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RightShoulderRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXA4081FE5D8644E588F17D85CBAB61E75">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-0.500000715</X>
+							<Y>0.394326687</Y>
+							<Z>8.94069672e-008</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBXAA23FD9BF74C4B5484A61CB5EAFC4F5D">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-5.96046448e-007</X>
+						<Y>-0.334165096</Y>
+						<Z>8.94069672e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RightElbowRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX15EB9D522ADF4BBBB9A5455F070EEDF7">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-5.96046448e-007</X>
+							<Y>-0.334165096</Y>
+							<Z>8.94069672e-008</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX503795B896FF45D18CCDAD45C1314D2D">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-8.34465027e-007</X>
+						<Y>0.584326625</Y>
+						<Z>-2.70968314e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RightShoulderAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXCAA4E95F00A443FEBB27A66CD379B0BC">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-8.34465027e-007</X>
+							<Y>0.584326625</Y>
+							<Z>-2.70968314e-008</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Motor6D" referent="RBX49CE5040D5894798AEB272D06537CDDA">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>0.99999994</X>
+						<Y>0.56301713</Y>
+						<Z>1.1920929e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>-0.500000715</X>
+						<Y>0.394326687</Y>
+						<Z>8.94069672e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">RightShoulder</string>
+					<Ref name="Part0">RBX426039D169C844A2AA8BC51D4D8AE83C</Ref>
+					<Ref name="Part1">RBXA993409495C745C09F154D3C65D219B3</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBX29EDD6A09E354AB6BF6588A4C9DA207C">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>0.999999642</X>
+						<Y>1.16867065</Y>
+						<Z>0.99999994</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="MeshPart" referent="RBX426039D169C844A2AA8BC51D4D8AE83C">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>5.96046448e-008</X>
+					<Y>23.0299988</Y>
+					<Z>22.0100021</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>2</X>
+					<Y>1.60003424</Y>
+					<Z>1.00000036</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxassetid://1699715593</string>
+				<string name="MeshId">rbxassetid://1699715593</string>
+				<string name="Name">UpperTorso</string>
+				<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>2</X>
+					<Y>1.60003424</Y>
+					<Z>1.00000036</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBX11E2A2F1613E4F2C9ABD1B01AA8A9281">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-5.96046448e-008</X>
+						<Y>-0.799985707</Y>
+						<Z>1.1920929e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">WaistRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXA98579C11AFF49EAB6169A476894AC4A">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-5.96046448e-008</X>
+							<Y>-0.799985707</Y>
+							<Z>1.1920929e-007</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX3B9943A8A302407EB9768A4A1B0A5DEA">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-5.96046448e-008</X>
+						<Y>0.800017118</Y>
+						<Z>1.1920929e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">NeckRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX1F3DC19D074042909D765832B6EF07CC">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-5.96046448e-008</X>
+							<Y>0.800017118</Y>
+							<Z>1.1920929e-007</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBXC8BB18C5914C4CA6A4BF2EAAF5C551DE">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-1</X>
+						<Y>0.56301713</Y>
+						<Z>1.1920929e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftShoulderRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX80C494F1D063488FB244BCE70B607958">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-1</X>
+							<Y>0.56301713</Y>
+							<Z>1.1920929e-007</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBXBB2E94C353544062B0F2425747237A56">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>0.99999994</X>
+						<Y>0.56301713</Y>
+						<Z>1.1920929e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RightShoulderRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX9ED7832EF65C414C9200A1198C737F42">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>0.99999994</X>
+							<Y>0.56301713</Y>
+							<Z>1.1920929e-007</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX2B947E189F2A4C20A3AC4CE86DEB5DEA">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-5.96046448e-008</X>
+						<Y>-0.199985683</Y>
+						<Z>-0.499999881</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">BodyFrontAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXA81AC2122FCB4BB9AED0872936626B61">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-5.96046448e-008</X>
+							<Y>-0.199985683</Y>
+							<Z>-0.499999881</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX8BEEA9D97C874BE39613CD826DB82806">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-5.96046448e-008</X>
+						<Y>-0.199985683</Y>
+						<Z>0.5</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">BodyBackAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX9999F4CF20354409AD61B7ADB57A43B2">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-5.96046448e-008</X>
+							<Y>-0.199985683</Y>
+							<Z>0.5</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX6A96D9E9647948B0B5B907D496F1E524">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-0.999999881</X>
+						<Y>0.800016999</Y>
+						<Z>-7.27397378e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftCollarAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX45DD4A4F15A5437684DC57CDCB5846BE">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-0.999999881</X>
+							<Y>0.800016999</Y>
+							<Z>-7.27397378e-008</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBXAC6D49A5683F4EA495E2AD05CEB3F5E5">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>0.99999994</X>
+						<Y>0.800016761</Y>
+						<Z>4.61295997e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RightCollarAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX5EB7684D52FB4E17A64461E78AA5FF55">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>0.99999994</X>
+							<Y>0.800016761</Y>
+							<Z>4.61295997e-008</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBXE27EAA9738AF4C0FA03F20A67947A276">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-5.05859497e-008</X>
+						<Y>0.800017118</Y>
+						<Z>7.11172419e-008</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">NeckAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXB9C5A63D55D345BBA6BC38D40E887E2A">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-5.05859497e-008</X>
+							<Y>0.800017118</Y>
+							<Z>7.11172419e-008</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Motor6D" referent="RBXA1C6E2E3093F4F81AE57061688478927">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>-1.1920929e-007</X>
+						<Y>0.200024918</Y>
+						<Z>7.64462551e-020</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>-5.96046448e-008</X>
+						<Y>-0.799985707</Y>
+						<Z>1.1920929e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">Waist</string>
+					<Ref name="Part0">RBX0CF311574C06483C88A840213D2DA5DF</Ref>
+					<Ref name="Part1">RBX426039D169C844A2AA8BC51D4D8AE83C</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBXE236FC8FC1B745F2A2782FBB232E3DC3">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>2</X>
+						<Y>1.60003424</Y>
+						<Z>1.00000036</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="MeshPart" referent="RBXBB0E60D5271F4CA4890DB91A48FF1A55">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>-0.49999994</X>
+					<Y>19.9800148</Y>
+					<Z>22.0100021</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>1</X>
+					<Y>0.300000191</Y>
+					<Z>1</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxassetid://1699715602</string>
+				<string name="MeshId">rbxassetid://1699715602</string>
+				<string name="Name">LeftFoot</string>
+				<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>0.300000221</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBXA2A9C3AEA1B54B06AEA12808EC4C5BDD">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-1.78813934e-007</X>
+						<Y>0.101939693</Y>
+						<Z>-1.7222776e-006</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftAnkleRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX584D76BA7ADA47A0BE2694D5CDE1F205">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-1.78813934e-007</X>
+							<Y>0.101939678</Y>
+							<Z>-1.7222776e-006</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Motor6D" referent="RBX4423621F2C0C4771B97DB222C1DEC248">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>-1.1920929e-007</X>
+						<Y>-0.547157228</Y>
+						<Z>-2.21401592e-006</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>-1.78813934e-007</X>
+						<Y>0.101939693</Y>
+						<Z>-1.7222776e-006</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">LeftAnkle</string>
+					<Ref name="Part0">RBXCA618B86B21247DA89B5A70CCA8EE2D1</Ref>
+					<Ref name="Part1">RBXBB0E60D5271F4CA4890DB91A48FF1A55</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBX40278257A02E4952A0AD585895815953">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>1</X>
+						<Y>0.300000191</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="MeshPart" referent="RBXCA618B86B21247DA89B5A70CCA8EE2D1">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>-0.5</X>
+					<Y>20.6291122</Y>
+					<Z>22.0100021</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>0.99999994</X>
+					<Y>1.1930927</Y>
+					<Z>0.999999523</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxassetid://1699715610</string>
+				<string name="MeshId">rbxassetid://1699715610</string>
+				<string name="Name">LeftLowerLeg</string>
+				<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>0.99999994</X>
+					<Y>1.19309282</Y>
+					<Z>0.999999523</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBXCB3DDEB007AB40D081A7982146831085">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>2.98023224e-008</X>
+						<Y>0.379018486</Y>
+						<Z>-1.60860594e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftKneeRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX1A8B0B4F90A34F0B9889968CECE8ED60">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>2.98023224e-008</X>
+							<Y>0.379018426</Y>
+							<Z>-1.60860594e-007</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX57FC892D0FB9453F8504252019A80BA6">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-1.1920929e-007</X>
+						<Y>-0.547157228</Y>
+						<Z>-2.21401592e-006</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftAnkleRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXE916EA07D5444BE5B54B91513A2C1F44">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-1.1920929e-007</X>
+							<Y>-0.547157168</Y>
+							<Z>-2.21401592e-006</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Motor6D" referent="RBXA24339E084DF45C18C91D3E8D2DC88A9">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>8.94069672e-008</X>
+						<Y>-0.401102424</Y>
+						<Z>-4.29081496e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>2.98023224e-008</X>
+						<Y>0.379018486</Y>
+						<Z>-1.60860594e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">LeftKnee</string>
+					<Ref name="Part0">RBX6649E476EDBF47BE928DB6117DB9E5F3</Ref>
+					<Ref name="Part1">RBXCA618B86B21247DA89B5A70CCA8EE2D1</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBX5786344F15A14088A21EEEE059FA985D">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>0.99999994</X>
+						<Y>1.1930927</Y>
+						<Z>0.999999523</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="MeshPart" referent="RBX6649E476EDBF47BE928DB6117DB9E5F3">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>-0.50000006</X>
+					<Y>21.4092331</Y>
+					<Z>22.0100021</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>1.00000036</X>
+					<Y>1.21656859</Y>
+					<Z>0.999999881</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxassetid://1699715616</string>
+				<string name="MeshId">rbxassetid://1699715616</string>
+				<string name="Name">LeftUpperLeg</string>
+				<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>1.00000036</X>
+					<Y>1.21656871</Y>
+					<Z>0.999999881</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBX874CFA8FD8E54EAAAF5C6FFD921B3B60">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>5.96046448e-008</X>
+						<Y>0.420782208</Y>
+						<Z>-1.63912773e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftHipRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXCE1A08BFC9DA4B7591CA8F17548ED8A4">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>5.96046448e-008</X>
+							<Y>0.420782149</Y>
+							<Z>-1.63912773e-007</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX5C4491A8359649B7B65A8DA81CE39E02">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>8.94069672e-008</X>
+						<Y>-0.401102424</Y>
+						<Z>-4.29081496e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftKneeRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX2029290899BF417EB7D6B755DAA2E849">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>8.94069672e-008</X>
+							<Y>-0.401102364</Y>
+							<Z>-4.29081496e-007</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Motor6D" referent="RBX058C23BD3B54486FB010A49CB4F7BAE4">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>-0.500000119</X>
+						<Y>-0.199972257</Y>
+						<Z>-0</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>5.96046448e-008</X>
+						<Y>0.420782208</Y>
+						<Z>-1.63912773e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">LeftHip</string>
+					<Ref name="Part0">RBX0CF311574C06483C88A840213D2DA5DF</Ref>
+					<Ref name="Part1">RBX6649E476EDBF47BE928DB6117DB9E5F3</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBXF55E887F728C477F9417ED619EE1B242">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>1.00000036</X>
+						<Y>1.21656859</Y>
+						<Z>0.999999881</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="MeshPart" referent="RBX0F592CA68A964D0DA214587E97CBF92A">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0.5</X>
+					<Y>19.9800148</Y>
+					<Z>22.0100021</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>0.99999994</X>
+					<Y>0.300000191</Y>
+					<Z>1</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxassetid://1699715627</string>
+				<string name="MeshId">rbxassetid://1699715627</string>
+				<string name="Name">RightFoot</string>
+				<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>0.99999994</X>
+					<Y>0.300000191</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBX6F99ED7FC71F42D195662BA5AC365BD4">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-0</X>
+						<Y>0.101939559</Y>
+						<Z>7.64477954e-005</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RightAnkleRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXC6AC5F7B5B8845A48221D558108C648C">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-0</X>
+							<Y>0.101939559</Y>
+							<Z>7.64477954e-005</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Motor6D" referent="RBX4812734D0B544A9DBC7BA695CF11EB74">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>-0</X>
+						<Y>-0.547157168</Y>
+						<Z>7.62689815e-005</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>-0</X>
+						<Y>0.101939559</Y>
+						<Z>7.64477954e-005</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">RightAnkle</string>
+					<Ref name="Part0">RBXC9F5A4F76E664F90B41EF538244041E1</Ref>
+					<Ref name="Part1">RBX0F592CA68A964D0DA214587E97CBF92A</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBX8F188B3D469049A187A29181FB229B39">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>0.99999994</X>
+						<Y>0.300000191</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="MeshPart" referent="RBXC9F5A4F76E664F90B41EF538244041E1">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0.5</X>
+					<Y>20.6291122</Y>
+					<Z>22.0100021</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>0.99999994</X>
+					<Y>1.19309282</Y>
+					<Z>1.00000012</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxassetid://1699715632</string>
+				<string name="MeshId">rbxassetid://1699715632</string>
+				<string name="Name">RightLowerLeg</string>
+				<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>0.99999994</X>
+					<Y>1.19309282</Y>
+					<Z>1.00000012</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBXB6629BDE777C4BCDA2F97D9CF60942B0">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-0</X>
+						<Y>0.379174292</Y>
+						<Z>2.5553607e-005</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RightKneeRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXF08E38EB0D9244879AD5F427AD27BB67">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-0</X>
+							<Y>0.379174292</Y>
+							<Z>2.5553607e-005</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX45689FD927C1496EAF7FB6C19AFB98FB">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-0</X>
+						<Y>-0.547157168</Y>
+						<Z>7.62689815e-005</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RightAnkleRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXEA0AAF7060C341D9BDCB8E915EDEC4B6">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-0</X>
+							<Y>-0.547157168</Y>
+							<Z>7.62689815e-005</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Motor6D" referent="RBX64F9D4E2A65A4AB1B691DAD1E1D8FE59">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>-0</X>
+						<Y>-0.400946498</Y>
+						<Z>-2.18767891e-005</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>-0</X>
+						<Y>0.379174292</Y>
+						<Z>2.5553607e-005</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">RightKnee</string>
+					<Ref name="Part0">RBX4E7A6E0D30BC48548C8AAA78DC8F64B1</Ref>
+					<Ref name="Part1">RBXC9F5A4F76E664F90B41EF538244041E1</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBXCF228EC33CCC4419B8E68C5BDA6DF4E0">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>0.99999994</X>
+						<Y>1.19309282</Y>
+						<Z>1.00000012</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="MeshPart" referent="RBX4E7A6E0D30BC48548C8AAA78DC8F64B1">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0.5</X>
+					<Y>21.4092331</Y>
+					<Z>22.0100498</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>1.00000048</X>
+					<Y>1.21656859</Y>
+					<Z>0.99996686</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxassetid://1699715641</string>
+				<string name="MeshId">rbxassetid://1699715641</string>
+				<string name="Name">RightUpperLeg</string>
+				<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>1.00000048</X>
+					<Y>1.21656859</Y>
+					<Z>0.99996686</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBXC6F4B8E9690D4F458E8F009BCB4D2C0C">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-0</X>
+						<Y>0.420782268</Y>
+						<Z>-6.67300628e-005</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RightHipRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXCBFA2FA3A4EE4502AAB5048EC712898D">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-0</X>
+							<Y>0.420782268</Y>
+							<Z>-6.67300628e-005</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBXA2C4FDE87982450C82A03949ED0D7584">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-0</X>
+						<Y>-0.400946498</Y>
+						<Z>-2.18767891e-005</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RightKneeRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX78428C7227684C8CBF196D8FD7FFA101">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-0</X>
+							<Y>-0.400946498</Y>
+							<Z>-2.18767891e-005</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Motor6D" referent="RBX7E9023004C2D4A9186C8BF5EA738D804">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>0.499999881</X>
+						<Y>-0.199972257</Y>
+						<Z>-1.91208565e-005</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>-0</X>
+						<Y>0.420782268</Y>
+						<Z>-6.67300628e-005</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">RightHip</string>
+					<Ref name="Part0">RBX0CF311574C06483C88A840213D2DA5DF</Ref>
+					<Ref name="Part1">RBX4E7A6E0D30BC48548C8AAA78DC8F64B1</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBX52F476B4F135470A9B33ECD1D8725579">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>1.00000048</X>
+						<Y>1.21656859</Y>
+						<Z>0.99996686</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="MeshPart" referent="RBX0CF311574C06483C88A840213D2DA5DF">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>1.1920929e-007</X>
+					<Y>22.0299873</Y>
+					<Z>22.0100021</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>1.99999976</X>
+					<Y>0.400055438</Y>
+					<Z>1.00000012</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxassetid://1699715652</string>
+				<string name="MeshId">rbxassetid://1699715652</string>
+				<string name="Name">LowerTorso</string>
+				<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>1.99999976</X>
+					<Y>0.400055438</Y>
+					<Z>1.00000012</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBX11E27070B4014DBD99D1EDE38CFB4915">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-1.1920929e-007</X>
+						<Y>-0.199972257</Y>
+						<Z>-0</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RootRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXEC40250FD8AA44FE92C14901944E5E61">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-1.1920929e-007</X>
+							<Y>-0.199972257</Y>
+							<Z>-0</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX1B534F74D4B0448F98AA60AF8FE4E375">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-1.1920929e-007</X>
+						<Y>0.200024918</Y>
+						<Z>7.64462551e-020</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">WaistRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX1C8738EFFC9B4CE3BB6BD16028972924">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-1.1920929e-007</X>
+							<Y>0.200024918</Y>
+							<Z>7.64462551e-020</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX292FF4E010754D9AAE1C8E45D6B21006">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-0.500000119</X>
+						<Y>-0.199972257</Y>
+						<Z>-0</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">LeftHipRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXAC6B9694A64446E28E3C3991CCF7D3B2">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-0.500000119</X>
+							<Y>-0.199972257</Y>
+							<Z>-0</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBXE4BFE00E0EF94595A5708419188F9F27">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>0.499999881</X>
+						<Y>-0.199972257</Y>
+						<Z>-1.91208565e-005</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">RightHipRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX49FF7142D62F49F0A68E2A2517EBE54F">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>0.499999881</X>
+							<Y>-0.199972257</Y>
+							<Z>-1.91208565e-005</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBXC7659553237B4E80928F3BEFD86BAD68">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-4.2200088e-007</X>
+						<Y>-0.199972257</Y>
+						<Z>-1.65436123e-024</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">WaistCenterAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX052129E6D15F4EC5BBF126BB429EBC55">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-4.2200088e-007</X>
+							<Y>-0.199972257</Y>
+							<Z>-1.65436123e-024</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBXCD8A439766F74B02A2CAC5BF9820A9C2">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-1.32219867e-007</X>
+						<Y>-0.199972257</Y>
+						<Z>-0.50000006</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">WaistFrontAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX9E4A4362FACA4FAFA284E0A4ED1DD982">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-1.32219867e-007</X>
+							<Y>-0.199972257</Y>
+							<Z>-0.50000006</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX1E7595AE746F4673AA00E7F9B1BA8B6B">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-1.46413214e-007</X>
+						<Y>-0.199972257</Y>
+						<Z>0.50000006</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">WaistBackAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXA5477BBF5FE14B719F066C9ACA98CBF9">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-1.46413214e-007</X>
+							<Y>-0.199972257</Y>
+							<Z>0.50000006</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Motor6D" referent="RBX54568E1AB0A14CB78339660017F848D9">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>0</X>
+						<Y>-1</Y>
+						<Z>0</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>-1.1920929e-007</X>
+						<Y>-0.199972257</Y>
+						<Z>-0</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">Root</string>
+					<Ref name="Part0">RBXC01CD6F25A9B4D859CD95B2E7D213392</Ref>
+					<Ref name="Part1">RBX0CF311574C06483C88A840213D2DA5DF</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBX416236CF4C3C402A96368AAFE3B60A00">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>1.99999976</X>
+						<Y>0.400055438</Y>
+						<Z>1.00000012</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Humanoid" referent="RBXC2A8C2A7F8324499BFBF8DE511D989BF">
+			<Properties>
+				<string name="AttributesSerialize"></string>
+				<bool name="AutoJumpEnabled">true</bool>
+				<bool name="AutoRotate">true</bool>
+				<bool name="AutomaticScalingEnabled">true</bool>
+				<bool name="BreakJointsOnDeath">true</bool>
+				<token name="CollisionType">0</token>
+				<token name="DisplayDistanceType">0</token>
+				<string name="DisplayName"></string>
+				<float name="HealthDisplayDistance">100</float>
+				<token name="HealthDisplayType">0</token>
+				<float name="Health_XML">100</float>
+				<float name="HipHeight">2</float>
+				<Vector3 name="InternalBodyScale">
+					<X>1</X>
+					<Y>1</Y>
+					<Z>1</Z>
+				</Vector3>
+				<float name="InternalHeadScale">1</float>
+				<float name="JumpHeight">7.19999981</float>
+				<float name="JumpPower">50</float>
+				<float name="MaxHealth">100</float>
+				<float name="MaxSlopeAngle">89</float>
+				<string name="Name">Humanoid</string>
+				<float name="NameDisplayDistance">100</float>
+				<token name="NameOcclusion">2</token>
+				<bool name="RequiresNeck">true</bool>
+				<token name="RigType">1</token>
+				<string name="Tags"></string>
+				<bool name="UseJumpPower">true</bool>
+				<float name="WalkSpeed">16</float>
+			</Properties>
+		</Item>
+		<Item class="MeshPart" referent="RBXE8937ED88D3345BB91B396173BA1B482">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<string name="AttributesSerialize"></string>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>24.3300152</Y>
+					<Z>22.0102749</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>1.19784904</X>
+					<Y>1.20242465</Y>
+					<Z>1.19784904</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="LODData"></string>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MeshID">rbxasset://avatar/heads/head.mesh</string>
+				<string name="MeshId">rbxasset://avatar/heads/head.mesh</string>
+				<string name="Name">Head</string>
+				<SharedString name="PhysicalConfigData">+tSg1YKJIqAoms7IKVLjLw==</SharedString>
+				<string name="PhysicsData"></string>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<string name="Tags"></string>
+				<string name="TextureID"></string>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>1.19784904</X>
+					<Y>1.20242465</Y>
+					<Z>1.19784904</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Attachment" referent="RBX79DED8FE20094AC08EC44B85927CCACB">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>3.93568822e-009</X>
+						<Y>0</Y>
+						<Z>-0.000272244215</Z>
+						<R00>1</R00>
+						<R01>7.87137555e-009</R01>
+						<R02>3.02998127e-015</R02>
+						<R10>-7.87137555e-009</R10>
+						<R11>1</R11>
+						<R12>-4.1444258e-016</R12>
+						<R20>-3.02998127e-015</R20>
+						<R21>4.14442554e-016</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">FaceCenterAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXEDDAE0265408442585285FCF9E604850">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>3.93568822e-009</X>
+							<Y>0</Y>
+							<Z>-0.000272244215</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBXD8AE2ADC03D94BA0A6B685DED5DC2AD2">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>3.93568866e-009</X>
+						<Y>0</Y>
+						<Z>-0.600272298</Z>
+						<R00>1</R00>
+						<R01>7.87137555e-009</R01>
+						<R02>3.02998127e-015</R02>
+						<R10>-7.87137555e-009</R10>
+						<R11>1</R11>
+						<R12>-4.1444258e-016</R12>
+						<R20>-3.02998127e-015</R20>
+						<R21>4.14442554e-016</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">FaceFrontAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX6AE2801EEE3148CA9CBCFA4AE1093DCA">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>3.93568866e-009</X>
+							<Y>0</Y>
+							<Z>-0.600272298</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX19D360A6EA444103B3236AE872988F1A">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>8.65851391e-009</X>
+						<Y>0.599999905</Y>
+						<Z>-0.000272244215</Z>
+						<R00>1</R00>
+						<R01>7.87137555e-009</R01>
+						<R02>3.02998127e-015</R02>
+						<R10>-7.87137555e-009</R10>
+						<R11>1</R11>
+						<R12>-4.1444258e-016</R12>
+						<R20>-3.02998127e-015</R20>
+						<R21>4.14442554e-016</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">HairAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBX84137698278543E7912FA0B3DCD0848F">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>8.65851391e-009</X>
+							<Y>0.599999905</Y>
+							<Z>-0.000272244215</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBX262D0FCF50504FC19E6C329AE80226BF">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>8.65851391e-009</X>
+						<Y>0.599999905</Y>
+						<Z>-0.000272244215</Z>
+						<R00>1</R00>
+						<R01>7.87137555e-009</R01>
+						<R02>3.02998127e-015</R02>
+						<R10>-7.87137555e-009</R10>
+						<R11>1</R11>
+						<R12>-4.1444258e-016</R12>
+						<R20>-3.02998127e-015</R20>
+						<R21>4.14442554e-016</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">HatAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXC71A31889EC642199C4B62549CE0007B">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>8.65851391e-009</X>
+							<Y>0.599999905</Y>
+							<Z>-0.000272244215</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Attachment" referent="RBXB18CC8D7578048C6B3BA3B552CDB42E0">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="CFrame">
+						<X>-0</X>
+						<Y>-0.500000119</Y>
+						<Z>-0.000272244215</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">NeckRigAttachment</string>
+					<string name="Tags"></string>
+					<bool name="Visible">false</bool>
+				</Properties>
+				<Item class="Vector3Value" referent="RBXA82A6FF653DE403F9549FBEF12FF54F9">
+					<Properties>
+						<string name="AttributesSerialize"></string>
+						<string name="Name">OriginalPosition</string>
+						<string name="Tags"></string>
+						<Vector3 name="Value">
+							<X>-0</X>
+							<Y>-0.500000119</Y>
+							<Z>-0.000272244215</Z>
+						</Vector3>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Decal" referent="RBX80FD68F95DC140CEA313C63426EF491A">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<Color3 name="Color3">
+						<R>1</R>
+						<G>1</G>
+						<B>1</B>
+					</Color3>
+					<token name="Face">5</token>
+					<string name="Name">face</string>
+					<string name="Tags"></string>
+					<string name="Texture">rbxasset://textures/face.png</string>
+					<float name="Transparency">0</float>
+				</Properties>
+			</Item>
+			<Item class="Motor6D" referent="RBX8D4034FEA7964744A3551A22A6267FE3">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<CoordinateFrame name="C0">
+						<X>-5.96046448e-008</X>
+						<Y>0.800017118</Y>
+						<Z>1.1920929e-007</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<CoordinateFrame name="C1">
+						<X>-0</X>
+						<Y>-0.500000119</Y>
+						<Z>-0.000272244215</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<float name="DesiredAngle">0</float>
+					<bool name="Enabled">true</bool>
+					<float name="MaxVelocity">0</float>
+					<string name="Name">Neck</string>
+					<Ref name="Part0">RBX426039D169C844A2AA8BC51D4D8AE83C</Ref>
+					<Ref name="Part1">RBXE8937ED88D3345BB91B396173BA1B482</Ref>
+					<string name="Tags"></string>
+				</Properties>
+			</Item>
+			<Item class="Vector3Value" referent="RBX71603BC8F50545E4AE7C66EBB1E58A0B">
+				<Properties>
+					<string name="AttributesSerialize"></string>
+					<string name="Name">OriginalSize</string>
+					<string name="Tags"></string>
+					<Vector3 name="Value">
+						<X>1.19784904</X>
+						<Y>1.20242465</Y>
+						<Z>1.19784904</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+	<SharedStrings>
+		<SharedString md5="DldRwCblQ7Loqy6wYJnaoQ=="></SharedString>
+		<SharedString md5="+tSg1YKJIqAoms7IKVLjLw==">Q1NHUEhTAAAAAEJMT0NL</SharedString>
+	</SharedStrings>
+</roblox>

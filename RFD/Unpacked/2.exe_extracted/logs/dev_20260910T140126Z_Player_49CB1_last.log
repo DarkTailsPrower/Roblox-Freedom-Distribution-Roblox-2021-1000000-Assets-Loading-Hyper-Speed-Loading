@@ -1,0 +1,189 @@
+1789048886.14655,08ec,6 [FLog::Output] The channel is NULL
+1789048886.16955,08ec,6 [FLog::Output] LoadClientSettingsFromLocal: "{
+	"DFFlagCheckCSGSharedStringProp": true,
+	"FFlagWrapDeformer": true,
+	"DFFlagEnableMessagingService": true,
+	"FFlagDevConsoleIsVeryStickyWhyWillItNotLetGo": true,
+	"FFlagRespectDisplayOrderForOnTopOfCoreBlur": true,
+	"FFlagReportDevConsoleOpenClose": false,
+	"FFlagDevConsoleLogNewLineFix": true,
+	"FFlagGroupEditDevConsoleButton": true,
+	"DFFlagEnableRemoteProfilingForDevConsole": true,
+	"DFFlagThrottleDeveloperConsoleEvents": true,
+	"DFFlagAdminServerLogs": true,
+	"DFFlagAdminRemoteMicroProfiler": false,
+	"FFlagDevConsoleAnalyticsIncludeOwner": true,
+	"FFlagFixScriptRateDevConsole": true,
+	"FFlagPlayAudioVideoInPlugins": true,
+	"DFFlagAllowSoundsToBePlayableInPlugins": true,
+	"FFlagFutureIsBrightPhase3": true,
+	"FFlagFutureIsBrightPhase3Vulkan": true,
+	"FFlagFutureIsBrightPhase3iOS": true,
+	"DFFlagServerCopiesPlayerGui3": true,
+	"FFlagFixCGECursor": true,
+	"FFlagFixGamepadCursorIdlePosition": true,
+	"FFlagClickDetectorCursorIconEnabled":
+1789048886.18455,08ec,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 0 active: 0>
+1789048886.18755,08ec,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 4 active: 4>
+1789048886.22655,08ec,104 [FLog::Output] Loading AppSettings.xml from C:\RFD\Unpacked\2.exe_extracted\Roblox\v463\Player\AppSettings.xml
+1789048886.22655,08ec,104 [FLog::Output] setAssetFolder Content
+1789048886.22955,08ec,104 [FLog::Output] setExtraAssetFolder 
+1789048886.57094,08ec,104 [FLog::Output] CrashReporter Start
+1789048886.57094,3434,104 [FLog::Output] WatcherThread Started
+1789048886.57599,08ec,106 [FLog::Error] Error: Important !Loading shader files
+1789048886.58912,08ec,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 4 active: 4>
+1789048886.59013,08ec,104 [FLog::Output] Info: Initializing new game
+1789048886.60225,08ec,104 [FLog::Output] account = UA-43420590-13, schedule = 500
+1789048886.60225,08ec,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 4 active: 4>
+1789048886.60528,08ec,101 [FLog::LocalStorage] LocalStorage loading from path: ../../../LocalStorage\27.0.0.1:2005_appStorage.json
+1789048886.61942,2b60,101 [FLog::LocalStorage] LocalStorage loading data: {"AppConfiguration":"{\"GUAC:12318140:app-policy\":\"{\\\"ChatConversationHeaderGroupDetails\\\": true, \\\"ChatHeaderSearch\\\": true, \\\"ChatHeaderCreateChatGroup\\\": true, \\\"ChatHeaderHomeButton\\\": false, \\\"ChatHeaderNotifications\\\": true, \\\"ChatPlayTogether\\\": true, \\\"ChatShareGameToChatFromChat\\\": true, \\\"ChatTapConversationThumbnail\\\": true, \\\"ChatViewProfileOption\\\": true, \\\"GamesDropDownList\\\": true, \\\"UseNewDropDown\\\": false, \\\"GameDetailsMorePage\\\": true, \\\"GameDetailsShowGlobalCounters\\\": true, \\\"GameDetailsPlayWithFriends\\\": true, \\\"GameDetailsSubtitle\\\": true, \\\"GameInfoList\\\": true, \\\"GameInfoListDeveloper\\\": true, \\\"GamePlaysAndRatings\\\": true, \\\"GameInfoShowBadges\\\": true, \\\"GameInfoShowCreated\\\": true, \\\"GameInfoShowGamepasses\\\": true, \\\"GameInfoShowGenre\\\": true, \\\"GameInfoShowMaxPlayers\\\": true, \\\"GameInfoShowServers\\\": true, \\\"G
+1789048887.45754,3ac4,101 [FLog::LocalStorage] LocalStorage loading from path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789048887.49754,08ec,104 [FLog::Output] Studio D3D9 GPU: Intel(R) Iris(R) Xe Graphics
+1789048887.49754,08ec,104 [FLog::Output] Studio D3D9 GPU: Vendor 8086 Device 9a49
+1789048887.49754,08ec,104 [FLog::Output] Studio D3D9 Driver: igdumdim32.dll 30.0.100.9955
+1789048887.49954,08ec,104 [FLog::Output] ESGamePerfMonitor GPU: Vendor 00008086 Device 00009a49
+1789048887.49954,08ec,104 [FLog::Output] ESGamePerfMonitor GPU: SubSys 87fe103c Revision 00000001
+1789048887.49954,08ec,104 [FLog::Output] ESGamePerfMonitor GPU: DedicatedVidMem 134217728 DedicatedSysMem 4107571200 SharedSystemMemory 176297189046222848
+1789048887.50454,2728,104 [FLog::Output] PlaceLauncher URL : https://127.0.0.1:2005/game/PlaceLauncher.ashx?MachineAddress=127.0.0.1&ServerPort=2005&UserCode=Player1789048885&rcc-host-addr=127.0.0.1&rcc-port=2005&user-code=Player1789048885
+1789048887.54356,3d1c,101 [FLog::LocalStorage] LocalStorage loading data: {"CpuMem":"197561204","GpuMem":"422669260","SyncTime":"1789047580"}
+1789048887.55757,1ca8,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789048887.56357,333c,101 [FLog::LocalStorage] LocalStorage will flush (size:66): {"CpuMem":"105859800","GpuMem":"52212868","SyncTime":"1789048887"}
+1789048887.56357,333c,101 [FLog::LocalStorage] LocalStorage: Wrote 66 bytes to disk
+1789048887.75264,3ac4,104 [FLog::Output] ! Joining game '1818' place 1818 at 127.0.0.1
+1789048887.77465,3ac4,104 [FLog::Output] Connecting to 127.0.0.1:2005
+1789048887.78466,3e80,104 [FLog::Output] Connection accepted from 127.0.0.1|2005
+1789048888.47563,1cc8,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_appStorage.json
+1789048888.48263,1cc8,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_appStorage.json
+1789048888.54862,11b4,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_appStorage.json
+1789048888.54962,333c,101 [FLog::LocalStorage] LocalStorage will flush (size:8308): {"AppConfiguration":"{\"GUAC:12318140:app-policy\":\"{\\\"ChatConversationHeaderGroupDetails\\\": true, \\\"ChatHeaderSearch\\\": true, \\\"ChatHeaderCreateChatGroup\\\": true, \\\"ChatHeaderHomeButton\\\": false, \\\"ChatHeaderNotifications\\\": true, \\\"ChatPlayTogether\\\": true, \\\"ChatShareGameToChatFromChat\\\": true, \\\"ChatTapConversationThumbnail\\\": true, \\\"ChatViewProfileOption\\\": true, \\\"GamesDropDownList\\\": true, \\\"UseNewDropDown\\\": false, \\\"GameDetailsMorePage\\\": true, \\\"GameDetailsShowGlobalCounters\\\": true, \\\"GameDetailsPlayWithFriends\\\": true, \\\"GameDetailsSubtitle\\\": true, \\\"GameInfoList\\\": true, \\\"GameInfoListDeveloper\\\": true, \\\"GamePlaysAndRatings\\\": true, \\\"GameInfoShowBadges\\\": true, \\\"GameInfoShowCreated\\\": true, \\\"GameInfoShowGamepasses\\\": true, \\\"GameInfoShowGenre\\\": true, \\\"GameInfoShowMaxPlayers\\\": true, \\\"GameInfoShowServers\\\": t
+1789048888.54962,333c,101 [FLog::LocalStorage] LocalStorage: Wrote 8308 bytes to disk
+1789048888.55062,333c,101 [FLog::LocalStorage] LocalStorage will flush (size:8430): {"AppConfiguration":"{\"GUAC:12318140:app-policy\":\"{\\\"ChatConversationHeaderGroupDetails\\\": true, \\\"ChatHeaderSearch\\\": true, \\\"ChatHeaderCreateChatGroup\\\": true, \\\"ChatHeaderHomeButton\\\": false, \\\"ChatHeaderNotifications\\\": true, \\\"ChatPlayTogether\\\": true, \\\"ChatShareGameToChatFromChat\\\": true, \\\"ChatTapConversationThumbnail\\\": true, \\\"ChatViewProfileOption\\\": true, \\\"GamesDropDownList\\\": true, \\\"UseNewDropDown\\\": false, \\\"GameDetailsMorePage\\\": true, \\\"GameDetailsShowGlobalCounters\\\": true, \\\"GameDetailsPlayWithFriends\\\": true, \\\"GameDetailsSubtitle\\\": true, \\\"GameInfoList\\\": true, \\\"GameInfoListDeveloper\\\": true, \\\"GamePlaysAndRatings\\\": true, \\\"GameInfoShowBadges\\\": true, \\\"GameInfoShowCreated\\\": true, \\\"GameInfoShowGamepasses\\\": true, \\\"GameInfoShowGenre\\\": true, \\\"GameInfoShowMaxPlayers\\\": true, \\\"GameInfoShowServers\\\": t
+1789048888.55062,333c,101 [FLog::LocalStorage] LocalStorage: Wrote 8430 bytes to disk
+1789048888.55062,333c,101 [FLog::LocalStorage] LocalStorage will flush (size:8430): {"AppConfiguration":"{\"GUAC:12318140:app-policy\":\"{\\\"ChatConversationHeaderGroupDetails\\\": true, \\\"ChatHeaderSearch\\\": true, \\\"ChatHeaderCreateChatGroup\\\": true, \\\"ChatHeaderHomeButton\\\": false, \\\"ChatHeaderNotifications\\\": true, \\\"ChatPlayTogether\\\": true, \\\"ChatShareGameToChatFromChat\\\": true, \\\"ChatTapConversationThumbnail\\\": true, \\\"ChatViewProfileOption\\\": true, \\\"GamesDropDownList\\\": true, \\\"UseNewDropDown\\\": false, \\\"GameDetailsMorePage\\\": true, \\\"GameDetailsShowGlobalCounters\\\": true, \\\"GameDetailsPlayWithFriends\\\": true, \\\"GameDetailsSubtitle\\\": true, \\\"GameInfoList\\\": true, \\\"GameInfoListDeveloper\\\": true, \\\"GamePlaysAndRatings\\\": true, \\\"GameInfoShowBadges\\\": true, \\\"GameInfoShowCreated\\\": true, \\\"GameInfoShowGamepasses\\\": true, \\\"GameInfoShowGenre\\\": true, \\\"GameInfoShowMaxPlayers\\\": true, \\\"GameInfoShowServers\\\": t
+1789048888.55162,333c,101 [FLog::LocalStorage] LocalStorage: Wrote 8430 bytes to disk
+1789048889.19963,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://1053296915: unsupported file format
+1789048889.19963,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.19963,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20063,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20063,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20063,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20063,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20063,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20063,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20063,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20063,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20063,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20063,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20163,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20163,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20163,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20163,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20163,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20163,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20163,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20263,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20263,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20263,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20263,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20263,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20263,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20263,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20263,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048889.20263,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://138931042: unsupported file format
+1789048889.20263,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://138931042: unsupported file format
+1789048889.20363,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://138931042: unsupported file format
+1789048889.20363,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://138931042: unsupported file format
+1789048889.20363,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://138931042: unsupported file format
+1789048889.20363,11b4,106 [FLog::Error] Error: Failed to load sound rbxassetid://138931042: unsupported file format
+1789048889.35864,3d78,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/asset/?id=91458024" load failed in Sky.SkyboxRt: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789048889.38864,3d78,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/asset/?id=91458002" load failed in Sky.SkyboxUp: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789048889.39064,3d78,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/asset/?id=91457980" load failed in Sky.SkyboxDn: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789048889.50962,3d78,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/asset/?id=306380219" load failed in Workspace.Artillery.Cannons.12 lber. Cannon.ElevatedParts.Muzzle.Flame.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789048889.99883,3d78,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/asset/?id=319943163" load failed in Workspace.Decoration.Buildings.Barn.Part.Texture.Texture: Failed to resolve texture format | 3c 48 54 4d 4c 3e 3c 48 45 41 44 3e 0a 3c 54 49 54 4c 45 3e 41 63 63 65 73 73 20 44 65 6e 69 65 64 3c 2f 54 49 54 4c 45 3e 0a 3c 2f 48 45 41 44 3e 3c 42 4f 44 59 3e 0a 3c 48 31 3e 41 63 63 65     <HTML><HEAD>.<TITLE>Access Denied</TITLE>.</HEAD><BODY>.<H1>Acce
+1789048892.50544,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://160608684: unsupported file format
+1789048892.50544,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://160608684: unsupported file format
+1789048892.50644,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://166238161: unsupported file format
+1789048892.50644,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://179650551: unsupported file format
+1789048892.50644,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://132464034: unsupported file format
+1789048892.50644,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://10209834: unsupported file format
+1789048892.50644,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://214064216: unsupported file format
+1789048892.50644,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849486: unsupported file format
+1789048892.50644,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849486: unsupported file format
+1789048892.50644,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849486: unsupported file format
+1789048892.50744,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849486: unsupported file format
+1789048892.50744,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849486: unsupported file format
+1789048892.50744,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048892.50744,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048892.50744,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048892.50744,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://104562155: unsupported file format
+1789048892.50744,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://214063962: unsupported file format
+1789048892.50744,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://178645076: unsupported file format
+1789048892.50744,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://178645076: unsupported file format
+1789048892.50744,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://178645076: unsupported file format
+1789048892.50844,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://178645076: unsupported file format
+1789048892.50844,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://178645076: unsupported file format
+1789048892.50844,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849528: unsupported file format
+1789048892.50844,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849528: unsupported file format
+1789048892.50844,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849528: unsupported file format
+1789048892.50844,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849528: unsupported file format
+1789048892.50944,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849528: unsupported file format
+1789048892.50944,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849611: unsupported file format
+1789048892.50944,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849611: unsupported file format
+1789048892.50944,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849611: unsupported file format
+1789048892.50944,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849611: unsupported file format
+1789048892.50944,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849611: unsupported file format
+1789048892.50944,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://138931042: unsupported file format
+1789048892.50944,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://5153734608: unsupported file format
+1789048892.50944,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://5153734608: unsupported file format
+1789048892.50944,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849666: unsupported file format
+1789048892.50944,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849666: unsupported file format
+1789048892.50944,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849666: unsupported file format
+1789048892.51044,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849666: unsupported file format
+1789048892.51044,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849666: unsupported file format
+1789048892.51044,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://2648563122: unsupported file format
+1789048892.51044,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://2648563122: unsupported file format
+1789048892.51044,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://1517024660: unsupported file format
+1789048892.51044,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://1517024660: unsupported file format
+1789048892.51044,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://4018616850: unsupported file format
+1789048894.12444,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://2770705979: unsupported file format
+1789048894.12444,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://178025646: unsupported file format
+1789048894.12544,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://262562442: unsupported file format
+1789048894.12544,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://262562442: unsupported file format
+1789048894.12544,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://33677366: unsupported file format
+1789048894.12644,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://1053296915: unsupported file format
+1789048894.12644,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://341073874: unsupported file format
+1789048894.12644,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://137304720: unsupported file format
+1789048894.12644,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://1450867977: unsupported file format
+1789048894.12744,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://1450867977: unsupported file format
+1789048894.12744,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849763: unsupported file format
+1789048894.12744,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849763: unsupported file format
+1789048894.12844,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849763: unsupported file format
+1789048894.12844,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849763: unsupported file format
+1789048894.12844,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://362849763: unsupported file format
+1789048894.12844,3d1c,106 [FLog::Error] Error: Failed to load sound rbxassetid://58788101: unsupported file format
+1789048894.13444,3d1c,106 [FLog::Error] Error: HTTP 404 (Not Found)
+    Stack Begin
+    Script 'Players.Player1789048885.PlayerGui.LeaderboardGui.LeaderboardScript', Line 30 - function getPlayerIcon
+    Script 'Players.Player1789048885.PlayerGui.LeaderboardGui.LeaderboardScript', Line 132 - function updatePlayerSlot
+    Script 'Players.Player1789048885.PlayerGui.LeaderboardGui.LeaderboardScript', Line 164
+    Stack End
+1789048894.13444,3d1c,106 [FLog::Error] Error: MarketplaceService:getProductInfo() failed because HTTP 404 (Not Found)
+    Stack Begin
+    Script 'Players.Player1789048885.PlayerGui.HDAdminGUIs.MainFrame.Pages.Home.Banner.LocalScript', Line 5
+    Stack End
+1789048894.21044,3d78,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/asset/?id=6436898783" load failed: Failed to resolve texture format | 3c 72 6f 62 6c 6f 78 3e 0a 20 20 3c 74 65 78 74 75 72 65 70 61 63 6b 5f 76 65 72 73 69 6f 6e 3e 31 3c 2f 74 65 78 74 75 72 65 70 61 63 6b 5f 76 65 72 73 69 6f 6e 3e 0a 20 20 3c 63 6f 6c 6f 72     <roblox>.  <texturepack_version>1</texturepack_version>.  <color
+1789048894.24493,3d78,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/asset/?id=6436898783" load failed: Failed to resolve texture format | 3c 72 6f 62 6c 6f 78 3e 0a 20 20 3c 74 65 78 74 75 72 65 70 61 63 6b 5f 76 65 72 73 69 6f 6e 3e 31 3c 2f 74 65 78 74 75 72 65 70 61 63 6b 5f 76 65 72 73 69 6f 6e 3e 0a 20 20 3c 63 6f 6c 6f 72     <roblox>.  <texturepack_version>1</texturepack_version>.  <color
+1789048894.26883,3d78,106 [FLog::Error] Asset (Image) "https://127.0.0.1:2005/asset/?id=6436898783" load failed: Failed to resolve texture format | 3c 72 6f 62 6c 6f 78 3e 0a 20 20 3c 74 65 78 74 75 72 65 70 61 63 6b 5f 76 65 72 73 69 6f 6e 3e 31 3c 2f 74 65 78 74 75 72 65 70 61 63 6b 5f 76 65 72 73 69 6f 6e 3e 0a 20 20 3c 63 6f 6c 6f 72     <roblox>.  <texturepack_version>1</texturepack_version>.  <color
+1789048895.03049,2e98,106 [FLog::Error] Error: Failed to load sound rbxassetid://1355880382: unsupported file format
+1789048895.07792,2e98,106 [FLog::Error] Error: Failed to load sound rbxassetid://2865228021: unsupported file format
+1789048895.18375,2b60,106 [FLog::Error] Error: Failed to load sound rbxassetid://2865227271: unsupported file format
+1789048895.18375,2b60,106 [FLog::Error] Error: Failed to load sound rbxassetid://130826746: unsupported file format
+1789048895.31808,2b60,106 [FLog::Error] Error: Failed to load sound rbxassetid://280564489: unsupported file format
+1789048895.67704,2e98,106 [FLog::Error] Error: Failed to load sound rbxassetid://1611430326: unsupported file format
+1789048896.88914,3d1c,104 [FLog::Output] Info: Stack Begin
+1789048896.88914,3d1c,104 [FLog::Output] Info: Script 'Players.Player1789048885.PlayerScripts.HDAdminStarterPlayer', Line 2
+1789048896.88914,3d1c,104 [FLog::Output] Info: Stack End
+1789048896.93938,2e98,104 [FLog::Output] Info: Stack Begin
+1789048896.94039,2e98,104 [FLog::Output] Info: Script 'Workspace.Player1789048885.HDAdminStarterCharacter', Line 2
+1789048896.94039,2e98,104 [FLog::Output] Info: Stack End
+1789048902.95200,1cc8,106 [FLog::Error] Error: ContentProvider callback exception: SerializerPugi::deserializeImpl ill-formed XML.

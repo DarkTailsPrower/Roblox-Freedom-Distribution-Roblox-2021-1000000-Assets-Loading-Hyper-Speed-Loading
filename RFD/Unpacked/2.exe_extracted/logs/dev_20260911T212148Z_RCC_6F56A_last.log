@@ -1,0 +1,22 @@
+1789161708.02317,3cdc,6 [FLog::Output] Loading AppSettings.xml, current path: C:\RFD\Unpacked\2.exe_extracted\Roblox\v463\Server
+1789161708.02317,3cdc,6 [FLog::RCCServiceInit] Got Base url: https://localhost:2005/
+1789161708.02417,3cdc,6 [FLog::Output] CrashReporter Start
+1789161708.02417,3cdc,6 [FLog::Output] Service starting
+1789161708.02517,3a58,6 [FLog::Output] WatcherThread Started
+1789161708.02517,3cdc,6 [FLog::Output] setAssetFolder C:\RFD\Unpacked\2.exe_extracted\Roblox\v463\Server\Content\
+1789161708.02617,3cdc,6 [FLog::Output] setExtraAssetFolder 
+1789161708.03217,3cdc,6 [DFLog::RCCExecuteInfo] Initializing Roblox Web Service
+1789161708.03517,3cdc,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 0 active: 0>
+1789161708.03817,3cdc,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 3 ) <req: 4 active: 4>
+1789161708.04217,334c,6 [DFLog::RCCExecuteInfo] SecurityDataUpdater failed to fetch data from , HttpError: InvalidUrl
+1789161708.04617,3cdc,104 [FLog::Output] Service started on port 0
+1789161708.07117,3cdc,101 [FLog::LocalStorage] LocalStorage loading from path: ../../../LocalStorage\ocalhost:2005_appStorage.json
+1789161708.07117,3cdc,102 [FLog::RCCServiceJobs] Opened JobItem Test
+1789161708.07117,3cdc,102 [FLog::RCCServiceJobs] DataModel: 04836F00
+1789161708.07117,3e0c,101 [FLog::LocalStorage] LocalStorage failed to load: ../../../LocalStorage\ocalhost:2005_appStorage.json
+1789161708.07117,3cdc,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] RCC Executing: [{"Mode": "GameServer", "GameId": 13058, "Settings": {"Type": "Avatar", "PlaceId": 1818, "GameId": "Test", "MachineAddress": "https://localhost:2005", "PlaceFetchUrl": "https://localhost:2005/asset/?id=1818", "MaxPlayers": 1000000000, "PreferredPlayerCapacity": 1000000000, "CharacterAppearance": "https://localhost:2005/v1.1/avatar-fetch", "MaxGameInstances": 1, "GsmInterval": 5, "ApiKey": "", "DataCenterId": "69420", "PlaceVisitAccessKey": "", "UniverseId": 13058, "MatchmakingContextId": 1, "CreatorId": 0, "CreatorType": "Group", "PlaceVersion": 1, "BaseUrl": "https://localhost:2005/.127.0.0.1", "JobId": "Test", "PreferredPort": 2005}, "Arguments": {}}]
+1789161708.07117,3cdc,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] Executing job with mode GameServer
+1789161708.07117,42f8,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] Fetching place 1818
+1789161708.07317,2e24,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789161708.27617,2e24,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789161708.28717,2e24,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::bc74:7bc5:64bb:b23f|2005 after 0.214000

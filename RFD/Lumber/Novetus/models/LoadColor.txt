@@ -1,0 +1,12 @@
+
+function saveColorStats(object)
+coroutine.resume(coroutine.create(function()
+if object:IsA("BasePart") and object:FindFirstChild("FixBrickColorValue") then
+object.BrickColor = object.FixBrickColorValue.Value
+object.FixBrickColorValue:Destroy()
+end
+for _, child in ipairs(object:GetChildren()) do
+saveColorStats(child)
+end end)) end
+ 
+saveColorStats(game)

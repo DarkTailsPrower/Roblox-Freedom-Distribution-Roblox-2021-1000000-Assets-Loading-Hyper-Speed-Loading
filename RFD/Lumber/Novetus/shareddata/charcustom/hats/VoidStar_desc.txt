@@ -1,0 +1,3 @@
+Void Star to zer0,
+Foolishly dereferenced.
+No call stack. All g0ne.

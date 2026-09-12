@@ -1,0 +1,1233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Tool" referent="RBX0">
+		<Properties>
+			<bool name="Enabled">true</bool>
+			<CoordinateFrame name="Grip">
+				<X>0.400000006</X>
+				<Y>-0.300000012</Y>
+				<Z>0.100000001</Z>
+				<R00>0</R00>
+				<R01>0</R01>
+				<R02>-1</R02>
+				<R10>-1</R10>
+				<R11>0</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>1</R21>
+				<R22>0</R22>
+			</CoordinateFrame>
+			<string name="Name">AnimatronTool</string>
+			<Content name="TextureId"><url>rbxasset://../../../shareddata/textures/15960433.png</url></Content>
+			<bool name="archivable">true</bool>
+		</Properties>
+		<Item class="LocalScript" referent="RBX1">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">AnimatronLocal</string>
+				<ProtectedString name="Source">local Tool = script.Parent
+
+enabled = true
+
+local selectionBox
+local arcHandles
+local moveHandles
+local arcHandlesPart
+local moveHandlesPart
+
+local selectedPose
+local previousCFrame
+local previousDistance
+
+local valueConnections = {}
+local guiMain
+local Controls
+
+local CurrentFigure = {}
+local Figures = {}
+local FigureAnimations = {}
+local width = UDim.new(0.25, 0)
+local height = 20
+local transparency = 0.5
+local buttonColor = BrickColor.new("New Yeller")
+local selectedButtonColor = BrickColor.new("Deep orange")
+local frameColor = BrickColor.new("Pastel yellow")
+
+function sharedProcess(name, parentFrame)
+	local subFrame = Instance.new("Frame")
+	subFrame.Name = name
+	subFrame.Size = UDim2.new(1.0, 0, 0, height)
+	subFrame.BackgroundTransparency = 1.0
+	subFrame.BorderSizePixel = 0
+	
+	local label = Instance.new("TextLabel")
+	label.Position = UDim2.new(0.0, 0, 0.0, 0)
+	label.Size = UDim2.new(0.5, 0, 1.0, 0)
+	label.TextColor = BrickColor.Black()
+	label.Text = name
+	label.Parent = subFrame
+	label.BackgroundTransparency = 1.0
+	label.BorderSizePixel = 0
+
+	return subFrame
+end
+
+function createTextBox(size, text)
+	local textBox = Instance.new("TextBox")
+	textBox.Position = UDim2.new(0.5, 1, 0.0, 1)
+	textBox.Size = size
+	textBox.BackgroundColor = BrickColor.White()
+	textBox.TextColor = BrickColor.Black()
+	textBox.Text = text	
+	return textBox;
+end
+
+function setCheckBoxValue(checkBox, value)
+	if value then
+		checkBox.Text = "X"
+	else
+		checkBox.Text = ""
+	end
+end
+function createCheckBox(value)
+	local checkBox = Instance.new("TextButton")
+	checkBox.Position = UDim2.new(0.75, -(height-4)/2, 0.0, 2)
+	checkBox.Size = UDim2.new(0.0, height-4, 0.0, height-4)
+	checkBox.BackgroundColor = BrickColor.White()
+	checkBox.TextColor = BrickColor.Black()
+	setCheckBoxValue(checkBox, value)
+	return checkBox
+end
+
+function createComboBox(valueToString, size, getValue, changeValue)
+	local textButton = Instance.new("TextButton")
+	textButton.Position = UDim2.new(0.5, 1, 0.0, 1)
+	textButton.Size = size
+	textButton.BackgroundColor = BrickColor.White()
+	textButton.TextColor = BrickColor.Black()
+	textButton.Text = valueToString[getValue()]
+
+	local comboFrame = Instance.new("Frame")
+	comboFrame.Position = UDim2.new(0.0, 0, 0.0, 0)
+	comboFrame.Size = UDim2.new(1.0, 0, 1.0 * #valueToString, 0)
+	comboFrame.Transparency = 1.0
+	comboFrame.ZIndex = 1
+	comboFrame.Visible = false
+	comboFrame.Parent = textButton
+	local pos = 0
+	for value, string in pairs(valueToString) do
+		local choiceButton = Instance.new("TextButton")
+		choiceButton.Position = UDim2.new(0.0, 0, 0.0, height *pos)
+		choiceButton.Size = UDim2.new(1.0, 0, 0.0, height)
+		choiceButton.BackgroundColor = BrickColor.White()
+		choiceButton.TextColor = BrickColor.Black()
+		choiceButton.Text = string
+		choiceButton.MouseButton1Up:connect(function() changeValue(value) comboFrame.Visible = false end)
+		choiceButton.ZIndex = 2
+		choiceButton.Parent = comboFrame
+		
+
+		pos = pos + 1
+	end
+
+	textButton.MouseButton1Down:connect(function() comboFrame.Visible = true end)
+	
+	return textButton
+end
+
+
+
+function processBoolValue(value, guiFrame)
+	local subFrame = sharedProcess(value.Name, guiFrame)
+	local checkBox = createCheckBox(value.Value)
+	
+	--Tie the two values together... we'll need to break these connections later
+	checkBox.MouseButton1Down:connect(function() value.Value = not(value.Value) end)
+	valueConnections[#valueConnections+1] = value.Changed:connect(function(newValue) setCheckBoxValue(checkBox, newValue) end)	
+	checkBox.Parent = subFrame
+	return subFrame
+end
+
+function processIntValue(value, guiFrame)
+	local subFrame = sharedProcess(value.Name, guiFrame)
+	local textBox = createTextBox(UDim2.new(0.5,-2, 1.0, -2), value.Value, function(textBox) value.Value = textBox.Text end)
+	textBox.Name = value.Name
+
+	--Tie the two values together... we'll need to break these connections later
+	textBox.Changed:connect(function(prop) if prop == 'Text' then if textBox.Text ~= '' then pcall(function() value.Value = textBox.Text end) end textBox.Text = value.Value end end)
+	valueConnections[#valueConnections+1] = value.Changed:connect(function(newValue) textBox.Text = newValue end)
+	
+	textBox.Parent = subFrame
+	return subFrame;
+end
+
+--function processEnumValue(name, valueToStringTable, getValue, changeValue, guiFrame)
+--	local subFrame = sharedProcess(name, guiFrame)
+--	local comboBox = createComboBox(valueToStringTable, UDim2.new(0.5,-2, 1.0, -2), getValue, changeValue)
+--	comboBox.Name = name
+--end
+
+function processPropertyValue(object, name, field, type, guiFrame)
+	local subFrame = sharedProcess(name, guiFrame)
+	
+	if type == "String" then
+		local textBox = createTextBox(UDim2.new(0.5,-2, 1.0, -2), object[field], function(textBox) object[field] = textBox.Text end)
+		textBox.Name = name
+
+		--Tie the two values together... we'll need to break these connections later
+		textBox.Changed:connect(function(prop) if prop == 'Text' then if textBox.Text ~= '' then pcall(function() object[field] = textBox.Text end) end textBox.Text = object[field] end end)
+		valueConnections[#valueConnections+1] = object.Changed:connect(function(property) if property == field then textBox.Text = object[field] end end)
+	
+		textBox.Parent = subFrame
+	elseif type == "Bool" then
+		local checkBox = createCheckBox(object[field])
+	
+		--Tie the two values together... we'll need to break these connections later
+		checkBox.MouseButton1Down:connect(function() object[field] = not(object[field]) end)
+		valueConnections[#valueConnections+1] = object.Changed:connect(function(property) if property == field then setCheckBoxValue(checkBox, object[field]) end end)	
+		checkBox.Parent = subFrame
+	elseif type == "Priority" then
+		local values = {}
+		values[Enum.AnimationPriority.Idle] = "Idle"
+		values[Enum.AnimationPriority.Movement] = "Movement"
+		values[Enum.AnimationPriority.Action] = "Action"
+		local comboBox = createComboBox(values, UDim2.new(0.5,-2, 1.0, -2), function() return object[field] end, function(value) object[field] = value end)
+		valueConnections[#valueConnections+1] = object.Changed:connect(function(property) if property == field then comboBox.Text = values[object[field]] end end)
+		comboBox.Parent = subFrame
+	end
+
+	return subFrame;
+end
+
+function sharedMain(name)
+	local parentFrame = Instance.new("Frame")
+	parentFrame.Name = "MainFrame"
+	parentFrame.BackgroundColor = frameColor
+	parentFrame.BackgroundTransparency = transparency
+
+	local titleLabel = Instance.new("TextLabel")
+	titleLabel.Size = UDim2.new(1.0, 0.0, 0.0, height)
+	titleLabel.BackgroundColor = BrickColor.new("Cool yellow")
+	titleLabel.BackgroundTransparency = 0.75
+	titleLabel.Text = name
+	titleLabel.Parent = parentFrame
+	titleLabel:clone().Parent = parentFrame
+
+	return parentFrame
+end
+function sharedButtons(parentFrame, onSave, onCancel, valueChildren)
+	if onSave or onCancel then
+		local buttonFrame = Instance.new("Frame")
+		buttonFrame.Name = "Buttons"
+		buttonFrame.BackgroundTransparency = 1.0
+		buttonFrame.Size = UDim2.new(1.0, 0.0, 0.0, height)
+		buttonFrame.Position = UDim2.new(0.0, 0, 0.0, valueChildren*height)
+		buttonFrame.Parent = parentFrame
+		valueChildren = valueChildren + 1
+
+		if onSave then
+			local okButton = Instance.new("TextButton")
+			okButton.Text = "Save"
+			okButton.Size = UDim2.new(.5, -4, 0.0, height-4)
+			okButton.Position = UDim2.new(0.0, 2, 0.0, 2)
+			okButton.BackgroundColor = buttonColor
+			okButton.MouseButton1Click:connect(function() onSave() removeSelectionGui() end)
+			okButton.Parent = buttonFrame
+		end
+
+		if onCancel then
+			local cancelButton = Instance.new("TextButton")
+			cancelButton.Text = "Cancel"
+			cancelButton.Size = UDim2.new(.5, -4, 0.0, height-4)
+			cancelButton.Position = UDim2.new(0.5, 2, 0.0, 2)
+			cancelButton.BackgroundColor = buttonColor
+			cancelButton.MouseButton1Click:connect(function() onCancel() removeSelectionGui() end)
+			cancelButton.Parent = buttonFrame
+		end	
+	end
+
+	parentFrame.Size = UDim2.new(width.Scale, width.Offset, 0.0, valueChildren*height)
+	parentFrame.Position = UDim2.new(0.0, 0, 1.0, -valueChildren*height)
+end
+function buildPropertyGui(object, name, fields, types, onSave, onCancel)
+	local parentFrame = sharedMain(name)
+
+	local valueChildren = 1
+	for pos, field in pairs(fields) do
+		local newFrame = processPropertyValue(object, field, field, types[pos], guiFrame)
+		if newFrame then
+			newFrame.Position = UDim2.new(0.0, 0, 0.0, valueChildren*height)
+			newFrame.Parent = parentFrame
+			valueChildren = valueChildren + 1
+		end
+	end
+
+	sharedButtons(parentFrame, onSave, onCancel, valueChildren)
+	return parentFrame
+end
+
+function processPose(pose, valueChildren)
+	return buildPropertyGui(pose, "Pose: " .. pose.Name, {"Weight", "MaskWeight"}, {"String", "String"})
+end
+
+function processKeyframe(keyframe, valueChildren)
+	local result =  buildPropertyGui(keyframe, "Keyframe: " .. keyframe.Name, {"Name", "Time"}, {"String", "String"})
+	result.Position = UDim2.new(0.0, 0, 0.0, 0)
+	return result
+end
+
+function processKeyframeSequence(keyframeSequence, onSave, onCancel, valueChildren)
+	result = buildPropertyGui(keyframeSequence, "KeyframeSequence: " .. keyframeSequence.Name, {"Name", "Priority", "Loop"},  {"String", "Priority", "Bool"}, onSave, onCancel)
+	result.Position = UDim2.new(0.0, 0, 0.0, 0)
+	return result
+end
+
+
+
+function syncArcPartToPose(proxypart, pose)
+	local targetPart = CurrentFigure.Model:FindFirstChild(pose.Name, true)
+	local targetJoint = Figures[CurrentFigure.Model].JointForPart[targetPart]
+	if targetJoint then
+		local parentPart = targetJoint.Part0
+		proxypart.CFrame = targetPart.CFrame * targetJoint.C1
+	else
+		proxypart.CFrame = targetPart.CFrame
+	end
+end
+
+function syncMovePartToPose(proxypart, pose)
+	local targetPart = CurrentFigure.Model:FindFirstChild(pose.Name, true)
+	local targetJoint = Figures[CurrentFigure.Model].JointForPart[targetPart]
+	if targetJoint then
+		local parentPart = targetJoint.Part0
+		local parentFrame = parentPart.CFrame * targetJoint.C0
+		local reltransform = parentFrame:inverse() * targetPart.CFrame * targetJoint.C1
+		
+		proxypart.CFrame = parentFrame * CFrame.new(reltransform.p) -- only take relative translation.
+	else
+		proxypart.CFrame = CFrame.new(targetPart.CFrame.p)
+	end
+end
+
+function syncHandlesToPose(pose)
+	print("Syncing Handles to pose: " .. pose.Name)
+	syncArcPartToPose(arcHandlesPart, pose)
+	syncMovePartToPose(moveHandlesPart, pose)
+	local targetPart = CurrentFigure.Model:FindFirstChild(pose.Name, true)
+	local targetJoint = Figures[CurrentFigure.Model].JointForPart[targetPart]
+	if targetJoint then
+		arcHandles.Axes = Axes.new(Enum.Axis.X, Enum.Axis.Y, Enum.Axis.Z)
+	else
+		arcHandles.Axes = Axes.new(Enum.Axis.X, Enum.Axis.Y, Enum.Axis.Z)
+	end
+end
+
+function playKeyframeSequence(model, keyframeSequence)
+	if Figures[model].PoseTrack then
+		Figures[model].PoseTrack:Stop(0)
+		Figures[model].PoseTrack = nil
+	end
+
+	local realAnimation = Instance.new("Animation")
+	realAnimation.AnimationId = game:GetService("KeyframeSequenceProvider"):RegisterActiveKeyframeSequence(keyframeSequence)
+
+	Figures[model].PoseTrack = Figures[model].Animator:LoadAnimation(realAnimation)
+	Figures[model].PoseTrack:Play()
+end
+
+function updateKeyframePose(keyframe, model)
+	Figures[model].PoseKeyframeSequence = createPoseKeyframeSequenceFromKeyframe(model, Figures[model].Animator, keyframe)
+	playKeyframeSequence(model, Figures[model].PoseKeyframeSequence)
+
+	if CurrentFigure.SelectedPoseName then
+		print("Getting SelectedPose: ".. CurrentFigure.SelectedPoseName)
+		selectedPose = keyframe:FindFirstChild(CurrentFigure.SelectedPoseName, true)
+		syncHandlesToPose(selectedPose)
+
+		if Controls.SelectedPoseGui then
+			Controls.SelectedPoseGui:Remove()
+			Controls.SelectedPoseGui = nil
+		end
+
+		print("CREATE pose Gui")
+		Controls.SelectedPoseGui = processPose(selectedPose)
+		Controls.SelectedPoseGui.Parent = guiMain.Main
+	end
+end
+
+function selectKeyframe(button)
+	clearKeyframe()
+
+	setSelectionText(button.Keyframe.Value.Name .. ": " .. button.Keyframe.Value.Time)
+	
+	Controls.SelectedButton = button
+	button.BackgroundColor = selectedButtonColor
+	button.AutoButtonColor = false
+
+	Controls.SelectedGui = processKeyframe(button.Keyframe.Value)
+	Controls.SelectedGui.Parent = guiMain.Main
+
+	if CurrentFigure.Model then
+		Figures[CurrentFigure.Model].CurrentKeyframe = button
+		updateKeyframePose(button.Keyframe.Value, CurrentFigure.Model)
+	end
+end
+
+
+function onArcHandlesDown(normal)
+	print("handlesDown")
+	if selectedPose then
+		previousCFrame = selectedPose.CFrame
+	end
+end
+
+function onArcHandlesDrag(axis, relativeAngle, deltaRadius)
+	if selectedPose then
+		print(relativeAngle)
+		local axisangle = Vector3.FromAxis(axis)
+		axisangle = axisangle * relativeAngle
+		selectedPose.CFrame = previousCFrame * CFrame.Angles(axisangle.X, axisangle.Y, axisangle.Z)
+		print(selectedPose.CFrame)
+		syncArcPartToPose(arcHandlesPart, selectedPose)
+      end
+end
+
+function onMoveHandlesDown(normal)
+	print("handlesDown")
+	if selectedPose then
+		previousDistance = 0
+	end
+end
+
+function onMoveHandlesDrag(normal, distance)
+	if selectedPose then
+		local delta = distance - previousDistance
+		translation = CFrame.new(Vector3.FromNormalId(normal) * delta)
+		selectedPose.CFrame = translation * selectedPose.CFrame
+		previousDistance = distance
+
+		print(selectedPose.CFrame.p)
+		syncArcPartToPose(arcHandlesPart, selectedPose)
+		syncMovePartToPose(moveHandlesPart, selectedPose)
+	end
+end
+
+function findModel(target)
+	if target.Parent ~= nil and target.Parent:IsA("Model") then
+		return target.Parent
+	else
+		return nil
+	end
+end
+
+function findAnimator(target)
+	local model = findModel(target)
+	if model == nil then
+		return nil
+	end
+  
+	local animator = model:FindFirstChild("Humanoid")
+	if animator ~= nil and animator:IsA("Humanoid") then
+		return animator
+	else
+		return nil
+	end
+end
+
+function findAllChildrenOfType(obj, typename, t)
+	for i,value in ipairs(obj:getChildren()) do
+		if value:IsA(typename) then
+			table.insert(t,value)
+		end
+	end
+
+end
+function findAllChildrenOfTypeRec(obj, typename, t)
+	if obj:IsA(typename) then
+		table.insert(t, obj)
+	end
+	for i,value in ipairs(obj:getChildren()) do
+		findAllChildrenOfTypeRec(value, typename, t)
+	end
+end
+
+function getOrCreatePose( namedPoses, obj )
+	if namedPoses[obj] ~= nil then
+		return namedPoses[obj]
+	else
+		local p = Instance.new("Pose")
+		namedPoses[obj] = p
+		p.Name = obj.Name
+		return p
+	end
+end
+
+function createPoseKeyframeSequenceFromKeyframe(model, animator, keyframe)
+	local animatronPos = model:FindFirstChild("AnimatronPose")
+	if animatronPos ~= nil then
+		animatronPos.Parent = nil
+	end
+
+	-- go through model finding joints. create Poses off of that
+	print("creating animatronPos from Keyframe")
+	animatronPos = Instance.new("KeyframeSequence")
+	animatronPos.Name = "AnimatronPose"
+	--animatronPos.Parent = model
+
+	keyframe.Parent = animatronPos
+
+	local joints = {}
+	findAllChildrenOfTypeRec(model, "JointInstance", joints)
+	-- create the poses, and link them in a tree
+	local namedPoses = {}
+	--namedJoints = {}
+	Figures[model].JointForPart = {}
+	for i,joint in ipairs(joints) do
+		if joint.Part1 ~= nil and joint.Part0 ~= nil then
+			--local pose = getOrCreatePose(namedPoses, joint.Part1)
+			--pose.Parent = getOrCreatePose(namedPoses, joint.Part0)
+			--pose.Weight = 1
+			--pose.MaskWeight = 0
+	
+			Figures[model].JointForPart[joint.Part1] = joint
+			--print(joint.Name)
+		end
+	end
+  
+	-- parent all parentless poses to keyframe
+	--for k,v in pairs(namedPoses) do
+	--	if v.Parent == nil then
+	--		v.Parent = keyframe
+	--	end
+	--end
+    
+	return animatronPos
+end
+    
+function generateDefaultKeyframe(model)
+	local keyframe = Instance.new("Keyframe")
+	
+	local joints = {}
+	findAllChildrenOfTypeRec(model, "JointInstance", joints)
+	-- create the poses, and link them in a tree
+	local namedPoses = {}
+	--namedJoints = {}
+	Figures[model].JointForPart = {}
+	for i,joint in ipairs(joints) do
+		if joint.Part1 ~= nil and joint.Part0 ~= nil then
+			local pose = getOrCreatePose(namedPoses, joint.Part1)
+			pose.Parent = getOrCreatePose(namedPoses, joint.Part0)
+			pose.Weight = 1
+			pose.MaskWeight = 0
+	
+			Figures[model].JointForPart[joint.Part1] = joint
+			print(joint.Name)
+		end
+	end
+  
+	-- parent all parentless poses to keyframe
+	for k,v in pairs(namedPoses) do
+		if v.Parent == nil then
+			v.Parent = keyframe
+		end
+	end
+
+	return keyframe
+end
+
+function createPoseKeyframeSequence(model, animator)
+	local animatronPose = model:FindFirstChild("AnimatronPose")
+
+	if animatronPose ~= nil then
+		animatronPose.Parent = nil
+	end
+    
+	-- go through model finding joints. create Poses off of that
+	print("creating animatronPose")
+	animatronPose = Instance.new("KeyframeSequence")
+	animatronPose.Name = "AnimatronPose"
+	--animatronPose.Parent = model
+	
+	local keyframe = generateDefaultKeyframe(model)
+	keyframe.Parent = animatronPose
+	
+	return animatronPose
+end
+
+
+function getPoseProxyPart(model, joint)
+	if poseProxyPart and poseProxyPart.Name == joint.Name then
+		-- already made
+		return poseProxypart
+	end
+
+	-- clear
+	poseProxyPart.Parent = nil
+	poseProxyPart = nil
+  
+	if joint then
+		local parentJoint = joint.Parent
+		if parentJoint:IsA("Keyframe") then
+			local part = model:FindFirstChild(joint.Name, true)
+			if part then    
+				poseProxyPart = part:Clone()
+				poseProxyPart.Transparency = 1
+			end
+		else
+			local parentPart = model:FindFirstChild(parentJoint.Name, true)
+			local part = Instance.new("Part")
+			part.Size = Vector3.new(2,2,2)
+		end
+	end
+	return poseProxyPart  
+end
+
+
+function onButton1Down(mouse)
+	print("3DButtonDown")
+  
+	--local previousModel = model
+	--model = nil
+	--animator = nil
+	selectionBox.Adornee = nil
+	arcHandles.Adornee = nil
+	moveHandles.Adornee = nil
+
+	if mouse.Target ~= nil then
+		local model = findModel(mouse.Target)
+		if model == nil then
+			print("This object is not animatable. It must be a child of a model.")
+			CurrentFigure.Model = nil
+			CurrentFigure.Animator = nil
+			CurrentFigure.SelectedPoseName = nil
+			if CurrentFigure.SelectedPoseGui then
+				CurrentFigure.SelectedPoseGui:Remove()
+				CurrentFigure.SelectedPoseGui = nil
+			end
+			return
+		end
+		
+		local animator = findAnimator(mouse.Target)
+		if animator == nil then
+			print("This object is not animatable. It must contain an Animator object called Animator as a child of the model.")
+			CurrentFigure.Model = nil
+			CurrentFigure.Animator = nil
+			CurrentFigure.SelectedPoseName = nil
+			if CurrentFigure.SelectedPoseGui then
+				CurrentFigure.SelectedPoseGui:Remove()
+				CurrentFigure.SelectedPoseGui = nil
+			end
+			return
+		end
+
+		CurrentFigure.Model = model
+		CurrentFigure.Animator = animator
+		CurrentFigure.SelectedPoseName = mouse.Target.Name
+
+		selectionBox.Adornee = mouse.Target
+		arcHandles.Adornee = arcHandlesPart
+		moveHandles.Adornee = moveHandlesPart
+    
+		if Figures[model] == nil then
+			--We don't have a keyframe associated with this figure yet
+			Figures[model] = {}
+			Figures[model].Animator = animator
+			
+
+			if Controls.SelectedButton then
+				updateKeyframePose(Controls.SelectedButton.Keyframe.Value, model)
+			else
+				Figures[model].PoseKeyframeSequence = createPoseKeyframeSequence(model, animator)
+				playKeyframeSequence(model, Figures[model].PoseKeyframeSequence)
+			end
+		
+			--CurrentFigure.PoseKeyframeSequence = Figures[model].PoseKeyframeSequence
+		else
+			--CurrentFigure.PoseKeyframeSequence = Figures[model].PoseKeyframeSequence
+			
+			--We've already used this figure, check if its keyframe is set
+			if Figures[model].CurrentKeyframe then
+				print("Selecting an existing keyframe" .. Figures[model].CurrentKeyframe.Name)
+				--It's already tied to a specific keyframe, so change our selection to match the figure
+				selectKeyframe(Figures[model].CurrentKeyframe)
+			else
+				clearKeyframe()
+			end
+		end
+
+	else
+		CurrentFigure.Model = nil
+		CurrentFigure.Animator = nil
+		CurrentFigure.PoseKeyframeSequence = nil
+		CurrentFigure.SelectedPoseName = nil
+	end
+
+	-- selection box just flashes on to indicate successful selection
+	wait(0.5) 
+	selectionBox.Adornee = nil
+
+end
+
+function setSelectionText(text)
+	Controls.SelectedText = text
+	Controls.Rollover.Text = text
+end
+function clearSelectionText()
+	Controls.SelectedText = ""
+	if Controls.RolloverObject == nil then
+		Controls.Rollover.Text = ""
+	end
+end
+
+function removeSelectionGui()
+	if Controls.SelectedGui then
+		Controls.SelectedGui:Remove()
+		Controls.SelectedGui = nil
+	end
+		
+	if Controls.SelectedPoseGui then
+		print("REMOVE pose Gui")
+		Controls.SelectedPoseGui:Remove()
+		Controls.SelectedPoseGui = nil
+	end
+
+	for pos, connection in pairs(valueConnections) do
+		connection:disconnect()
+	end
+	valueConnections = {}
+end
+
+function clearKeyframe()
+	clearSelectionText()
+	if Controls.SelectedButton then
+		Controls.SelectedButton.AutoButtonColor = true
+		Controls.SelectedButton.BackgroundColor = buttonColor
+
+		Controls.SelectedButton.Keyframe.Value.Parent = nil
+
+		Controls.SelectedButton = nil
+	end
+	removeSelectionGui()
+end
+
+function setRollover(button, text)
+	Controls.RolloverObject = button
+	Controls.Rollover.Text = text	
+end
+
+function clearRollover(button)
+	if Controls.RolloverObject == button then
+		if Controls.SelectedText then
+			Controls.Rollover.Text = Controls.SelectedText 
+		else
+			Controls.Rollover.Text = ""
+		end
+	end
+end
+
+function removeKeyframeButton(deadButton)
+	for pos, button in pairs(Controls.KeyframeTable) do
+		if button == deadButton then
+			button.Parent = nil
+			table.remove(Controls.KeyframeTable, pos)
+			return
+		end
+	end
+
+	print("FAILED TO DELETE BUTTON")
+	
+end
+
+function insertKeyframeButton(newButton)
+	newButton.Parent = Controls.Track
+	local size = #Controls.KeyframeTable
+	local insertPos = size + 1
+
+	for pos, button in pairs(Controls.KeyframeTable) do
+		if button.Keyframe.Value.Time &gt; newButton.Keyframe.Value.Time then
+			table.insert(Controls.KeyframeTable, pos, newButton)
+			return 
+		end
+	end
+	table.insert(Controls.KeyframeTable, #Controls.KeyframeTable+1, newButton)
+end
+
+function reorderButton(button)
+	removeKeyframeButton(button)
+	insertKeyframeButton(button)
+	layoutKeyframeButtons()
+end
+
+function buildKeyframeButton(keyframe)
+	local button = Instance.new("TextButton")
+	button.Size = UDim2.new(0.0, height-2, 0.0, height-2)
+	button.Position = UDim2.new(0.0, 1, 0.0, 1)
+	button.Text = ""
+	button.BackgroundColor = buttonColor
+	button.MouseButton1Click:connect(function() print("Keyframe Button Pushed") selectKeyframe(button) end)
+	button.MouseEnter:connect(function() setRollover(button, keyframe.Name .. ": " .. keyframe.Time) end)
+	button.MouseLeave:connect(function() clearRollover(button) end)
+	
+	local objectValue = Instance.new("ObjectValue")
+	objectValue.Name = "Keyframe"
+	objectValue.Value = keyframe
+	objectValue.Parent = button
+
+	keyframe.Changed:connect(function(prop) if prop == "Time" then reorderButton(button) end end)
+
+	insertKeyframeButton(button)
+
+	layoutKeyframeButtons()
+
+	return button
+end
+function CloneKeyframe(guiMain) 
+	if Controls.SelectedButton == nil then
+		print("You must select a Keyframe to clone")
+		return
+	end
+	
+	LoadNewKeyframe(guiMain, Controls.SelectedButton.Keyframe.Value:Clone())
+end
+
+function DeleteButton(button)
+	print("Deleting button")
+	for model, t in pairs(Figures) do
+		if t.CurrentKeyframe == button then
+			t.CurrentKeyframe = nil
+		end
+	end
+
+	removeKeyframeButton(button)
+	layoutKeyframeButtons()
+end
+
+function DeleteKeyframe(guiMain)
+	if Controls.SelectedButton == nil then
+		print("You must select a Keyframe to delete")
+		return
+	end
+
+	local buttonToDelete = Controls.SelectedButton
+	clearKeyframe()
+	DeleteButton(buttonToDelete)
+end
+
+function LoadNewKeyframe(guiMain, newKeyframe)
+	if newKeyframe == nil then
+		if CurrentFigure.Model == nil then
+			print("Please select a model before pushing 'New Key'")
+			return
+		end
+		newKeyframe = generateDefaultKeyframe(CurrentFigure.Model)
+	end
+	if #Controls.KeyframeTable &gt; 0 then
+		newKeyframe.Time = Controls.KeyframeTable[#Controls.KeyframeTable].Keyframe.Value.Time + 1
+	else
+		newKeyframe.Time = 0
+	end
+	selectKeyframe(buildKeyframeButton(newKeyframe))
+end
+
+function layoutKeyframeButtons()
+	for index, button in pairs(Controls.KeyframeTable) do
+		button.Position = UDim2.new(0.0, (height * (index-1))+1, 0.0, 1)
+	end
+end
+
+function createNewKeyframeSequence()
+	local keyframeSequence = Instance.new("KeyframeSequence")
+	if Controls.KeyframeSequence then
+		keyframeSequence.Loop = Controls.KeyframeSequence.Loop
+		keyframeSequence.Priority = Controls.KeyframeSequence.Priority
+	end
+	return keyframeSequence
+end
+
+function PreviewAnimation(guiMain)
+	clearKeyframe()
+
+	keyframeSequence = createNewKeyframeSequence()
+
+	--animation.Parent = game.Workspace
+	for pos, button in pairs(Controls.KeyframeTable) do
+		button.Keyframe.Value:Clone().Parent = keyframeSequence
+	end
+
+	Controls.SelectedGui = processKeyframeSequence(keyframeSequence)
+	Controls.SelectedGui.Parent = guiMain.Main
+
+	--local animation = Instance.new("Animation")
+	if CurrentFigure.Model then
+		playKeyframeSequence(CurrentFigure.Model, keyframeSequence)
+	end
+end
+
+function ClearKeyframeSequence()
+	clearKeyframe()
+	local buttonsToDelete = {}
+	for pos, button in pairs(Controls.KeyframeTable) do
+		table.insert(buttonsToDelete,button)
+	end
+	for pos, button in pairs(buttonsToDelete) do
+		DeleteButton(button)
+	end
+	Controls.KeyframeSequence = nil
+	Controls.KeyframeTable = {}
+	layoutKeyframeButtons()
+end
+
+function LoadKeyframeSequence(keyframeSequence)
+	ClearKeyframeSequence()
+
+	Controls.KeyframeSequence = keyframeSequence
+	for pos, child in pairs(keyframeSequence:GetChildren()) do
+		if child:IsA("Keyframe") then
+			buildKeyframeButton(child)
+		end
+	end
+	Controls.KeyframeSequence = createNewKeyframeSequence()
+end
+
+function NewAnimation(guiMain)
+	local keyframeSequence = Instance.new("KeyframeSequence")
+	LoadKeyframeSequence(keyframeSequence)
+end
+
+function LoadAnimation(parentFrame, animation) 
+	parentFrame.Parent = nil
+	print("Loading:" ..  animation.AnimationId)
+	local keyframeSequence = game:GetService("KeyframeSequenceProvider"):GetKeyframeSequence(animation.AnimationId)
+	LoadKeyframeSequence(keyframeSequence)
+end
+
+function sharedAnimationChooser(parentFrame, func, valueChildren)
+	--Now find all animations under workspace
+	local animations = {}
+	findAllChildrenOfType(game.workspace, "Animation", animations)
+
+	for pos, animation in pairs(animations) do
+		local textButton = Instance.new("TextButton")
+		
+		textButton.Size = UDim2.new(1.0, 0, 0.0, height)
+		textButton.Position = UDim2.new(0.0, 0, 0.0, valueChildren*height)
+		textButton.Text = animation.Name
+		textButton.MouseButton1Click:connect(function() func(animation) end)
+
+		textButton.Parent = parentFrame
+		valueChildren = valueChildren + 1
+	end
+
+	return valueChildren
+end
+
+
+function SaveAnimation(guiMain, animation, newAnimation)
+	clearKeyframe()
+	for pos, button in pairs(animation:GetChildren()) do
+		if button:IsA("Keyframe") then
+			button:Remove()
+		end
+	end
+
+	local keyframeSequence = createNewKeyframeSequence()
+
+	for pos, button in pairs(Controls.KeyframeTable) do
+		button.Keyframe.Value:Clone().Parent = keyframeSequence
+	end
+	
+	Controls.SelectedGui = processKeyframeSequence(keyframeSequence, 
+		function()
+			animation.Name = keyframeSequence.Name
+			animation.AnimationId = game:GetService("KeyframeSequenceProvider"):RegisterKeyframeSequence(keyframeSequence)
+		end,
+		function()
+			animation:Remove()
+		end)
+
+	Controls.SelectedGui.Parent = guiMain.Main
+end
+
+
+function SaveAnimationChooser(guiMain)
+	clearKeyframe()
+
+	local parentFrame = sharedMain("Save Animation to Workspace", guiMain)
+	local valueChildren = 1
+
+	valueChildren = sharedAnimationChooser(parentFrame, function(animation) parentFrame:Remove() SaveAnimation(guiMain, animation, false) end, valueChildren)
+
+	local textButton = Instance.new("TextButton")
+	textButton.Size = UDim2.new(1.0, 0, 0.0, height)
+	textButton.Position = UDim2.new(0.0, 0, 0.0, valueChildren*height)
+	textButton.Text = "::New Animation::"
+	textButton.MouseButton1Click:connect(function() 	
+		parentFrame:Remove() 
+		local animation = Instance.new("Animation")
+		animation.Parent = game.Workspace
+		SaveAnimation(guiMain,animation, true) end)
+	textButton.Parent = parentFrame
+	valueChildren = valueChildren + 1
+
+	sharedButtons(parentFrame, nil, function() parentFrame.Parent = nil end, valueChildren)
+	parentFrame.Parent = guiMain.Main
+end
+
+function LoadAnimationChooser(guiMain)
+	clearKeyframe()
+
+	local parentFrame = sharedMain("Load Animation from Workspace", guiMain)
+	local valueChildren = 1
+
+	valueChildren = sharedAnimationChooser(parentFrame, function(animation) LoadAnimation(parentFrame, animation) end, valueChildren)
+
+	sharedButtons(parentFrame, nil, function() parentFrame.Parent = nil end, valueChildren)
+	parentFrame.Parent = guiMain.Main
+end
+
+
+function buildAnimationTrack(guiMain)
+	Controls = {}
+	Controls.KeyframeTable = {}
+	
+	local mainFrame = Instance.new("Frame")
+	mainFrame.Name = "Main"
+	mainFrame.Position = UDim2.new(0.0, 0, 0.0, height)
+	mainFrame.Size = UDim2.new(1.0, 0, 1.0, -3*height)
+	mainFrame.Transparency = 1.0
+	mainFrame.Parent = guiMain
+
+	local parentFrame = Instance.new("Frame")
+	parentFrame.Name = "Toolbar"
+	parentFrame.Position = UDim2.new(0.0, 0, 1.0, -2*height)
+	parentFrame.Size = UDim2.new(1.0, 0, 0.0, 2*height)
+	parentFrame.Transparency = 1.0
+	parentFrame.Parent = guiMain
+	
+	local controls = Instance.new("Frame")
+	controls.Name = "Controls"
+	controls.Position = UDim2.new(0.0, 0, 0.0, 0)
+	controls.Size = UDim2.new(1.0, 0, 0.0, height)
+	controls.Transparency = 1.0
+	controls.Parent = parentFrame
+
+	local track = Instance.new("Frame")
+	track.Name = "Track"
+	track.Position = UDim2.new(0.0, 0, 0.0, height)
+	track.Size = UDim2.new(1.0, 0, 0.0, height)
+	track.Transparency = 1.0
+	track.Parent = parentFrame
+	Controls.Track = track
+	
+	local rolloverText = Instance.new("TextLabel")
+	rolloverText.Name = "Rollover"
+	rolloverText.Size = UDim2.new(0.25, 0, 0.0, height)
+	rolloverText.Position = UDim2.new(0.0, 0, 0.0, 0)
+	rolloverText.Text = ""
+	rolloverText.Parent = controls
+	
+	Controls.Rollover = rolloverText
+
+	local newKeyframeButton = Instance.new("TextButton")
+	newKeyframeButton.Name = "NewKeyframe"
+	newKeyframeButton.Size = UDim2.new(0.0, 75, 0.0, height-2)
+	newKeyframeButton.Position = UDim2.new(0.25, 1, 0.0, 1)
+	newKeyframeButton.Text = "New Key"
+	newKeyframeButton.MouseButton1Click:connect(function() LoadNewKeyframe(guiMain) end)
+	newKeyframeButton.Parent = controls	
+
+	local cloneKeyframeButton = Instance.new("TextButton")
+	cloneKeyframeButton.Name = "CloneKeyframe"
+	cloneKeyframeButton.Size = UDim2.new(0.0, 75, 0.0, height-2)
+	cloneKeyframeButton.Position = UDim2.new(0.25, 75 + 1, 0.0, 1)
+	cloneKeyframeButton.Text = "Clone Key"
+	cloneKeyframeButton.MouseButton1Click:connect(function() CloneKeyframe(guiMain) end)
+	cloneKeyframeButton.Parent = controls	
+
+	local deleteKeyframeButton = Instance.new("TextButton")
+	deleteKeyframeButton.Name = "DeleteKeyframe"
+	deleteKeyframeButton.Size = UDim2.new(0.0, 75, 0.0, height-2)
+	deleteKeyframeButton.Position = UDim2.new(0.25, 2*75 + 1, 0.0, 1)
+	deleteKeyframeButton.Text = "Delete Key"
+	deleteKeyframeButton.MouseButton1Click:connect(function() DeleteKeyframe(guiMain) end)
+	deleteKeyframeButton.Parent = controls
+
+
+	local topToolbar = Instance.new("Frame")
+	topToolbar.Name = "TopControls"
+	topToolbar.Position = UDim2.new(0.0, 0, 0.0, 0)
+	topToolbar.Size = UDim2.new(1.0, 0, 0.0, height)
+	topToolbar.Transparency = 1.0
+	topToolbar.Parent = guiMain
+
+	local newAnimationButton = Instance.new("TextButton")
+	newAnimationButton.Name = "NewAnimation"
+	newAnimationButton.Size = UDim2.new(0.0, 75, 0.0, height-2)
+	newAnimationButton.Position = UDim2.new(0.0, 1, 0.0, 1)
+	newAnimationButton.Text = "New Anim"
+	newAnimationButton.MouseButton1Click:connect(function() NewAnimation(guiMain) end)
+	newAnimationButton.Parent = topToolbar 
+
+	local saveAnimationButton = Instance.new("TextButton")
+	saveAnimationButton.Name = "SaveAnimation"
+	saveAnimationButton.Size = UDim2.new(0.0, 75, 0.0, height-2)
+	saveAnimationButton.Position = UDim2.new(0.0, 1*75+1, 0.0, 1)
+	saveAnimationButton.Text = "Save Anim"
+	saveAnimationButton.MouseButton1Click:connect(function() SaveAnimationChooser(guiMain) end)
+	saveAnimationButton.Parent = topToolbar 
+
+	local loadAnimationButton = Instance.new("TextButton")
+	loadAnimationButton.Name = "LoadAnimation"
+	loadAnimationButton.Size = UDim2.new(0.0, 75, 0.0, height-2)
+	loadAnimationButton.Position = UDim2.new(0.0, 2*75+1, 0.0, 1)
+	loadAnimationButton.Text = "Load Anim"
+	loadAnimationButton.MouseButton1Click:connect(function() LoadAnimationChooser(guiMain) end)
+	loadAnimationButton.Parent = topToolbar
+
+	local previewAnimationButton = Instance.new("TextButton")
+	previewAnimationButton.Name = "PreviewAnimation"
+	previewAnimationButton.Size = UDim2.new(0.0, 75, 0.0, height-2)
+	previewAnimationButton.Position = UDim2.new(0.0, 3*75+1, 0.0, 1)
+	previewAnimationButton.Text = "Preview Anim"
+	previewAnimationButton.MouseButton1Click:connect(function() PreviewAnimation(guiMain) end)
+	previewAnimationButton.Parent = topToolbar
+end
+
+
+function onEquippedLocal(mouse)
+	local character = script.Parent.Parent
+	local player = game.Players:GetPlayerFromCharacter(character)
+
+	mouse.Icon ="rbxasset://textures\\DragCursor.png"
+	mouse.Button1Down:connect(function() onButton1Down(mouse) end)
+
+	guiMain = Instance.new("ScreenGui")
+	guiMain.Parent = player.PlayerGui
+	buildAnimationTrack(guiMain)
+	--LoadNewKeyframe(guiMain)
+
+	selectionBox = Instance.new("SelectionBox")
+	selectionBox.Color = BrickColor.Blue()
+	selectionBox.Adornee = nil
+	selectionBox.Parent = player.PlayerGui
+
+	arcHandlesPart = Instance.new("Part")
+	arcHandlesPart.Name = "ArcHandlesProxyPart"
+	arcHandlesPart.Size = Vector3.new(2,2,2)
+	arcHandlesPart.Parent = player.PlayerGui
+
+	moveHandlesPart = Instance.new("Part")
+	moveHandlesPart.Name = "MoveHandlesProxyPart"
+	moveHandlesPart.Size = Vector3.new(2,2,2)
+	moveHandlesPart.Parent = player.PlayerGui
+  
+	arcHandles = Instance.new("ArcHandles")
+	arcHandles.Color = BrickColor.Blue()
+	arcHandles.Adornee = nil
+	arcHandles.Axes = Axes.new(Enum.Axis.Z)
+	arcHandles.MouseDrag:connect(onArcHandlesDrag)
+	arcHandles.MouseButton1Down:connect(onArcHandlesDown)
+	arcHandles.Parent = player.PlayerGui
+
+	moveHandles = Instance.new("Handles")
+	moveHandles.Style = Enum.HandlesStyle.Movement
+	moveHandles.Color = BrickColor.Red()
+	moveHandles.Adornee = nil
+	moveHandles.MouseDrag:connect(onMoveHandlesDrag)
+	moveHandles.MouseButton1Down:connect(onMoveHandlesDown)
+	moveHandles.Parent = player.PlayerGui
+end
+
+function onUnequippedLocal()
+	guiMain:Remove()
+	selectionBox:Remove()
+	arcHandles:Remove()
+end
+
+
+Tool.Equipped:connect(onEquippedLocal)
+Tool.Unequipped:connect(onUnequippedLocal)</ProtectedString>
+				<bool name="archivable">true</bool>
+			</Properties>
+		</Item>
+		<Item class="TrussPart" referent="RBX2">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">5</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">5</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">1003</int>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>7.5999999</Y>
+					<Z>3</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">5</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">5</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Handle</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">5</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">5</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<bool name="archivable">true</bool>
+				<Vector3 name="size">
+					<X>2</X>
+					<Y>2</Y>
+					<Z>2</Z>
+				</Vector3>
+				<token name="style">0</token>
+			</Properties>
+			<Item class="TouchTransmitter" referent="RBX3">
+				<Properties>
+					<string name="Name">TouchInterest</string>
+					<Ref name="Target">null</Ref>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+</roblox>

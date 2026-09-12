@@ -1,0 +1,366 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Script" referent="RBXf11428b7b777457c8d872c64386aa070">
+		<Properties>
+			<bool name="Disabled">false</bool>
+			<Content name="LinkedSource"><null></null></Content>
+			<string name="Name">Sound</string>
+			<string name="ScriptGuid"></string>
+			<ProtectedString name="Source">--[[
+&#9;Author: @spotco
+&#9;This script creates sounds which are placed under the character head.
+&#9;These sounds are used by the &quot;LocalSound&quot; script.
+&#9;
+&#9;To modify this script, copy it to your &quot;StarterPlayer/StarterCharacterScripts&quot; folder keeping the same script name (&quot;Sound&quot;).
+&#9;The default Sound script loaded for every character will then be replaced with your copy of the script.
+]]--
+
+function CreateNewSound(name, id, looped, pitch, parent)
+&#9;local sound = Instance.new(&quot;Sound&quot;)
+&#9;sound.SoundId = id
+&#9;sound.Name = name
+&#9;sound.archivable = false
+&#9;sound.Parent = parent
+&#9;sound.Pitch = pitch
+&#9;sound.Looped = looped
+&#9;
+&#9;sound.MinDistance = 5
+&#9;sound.MaxDistance = 150
+&#9;sound.Volume = 0.65
+&#9;
+&#9;return sound
+end
+
+local head = script.Parent:FindFirstChild(&quot;Head&quot;)
+if head == nil then
+&#9;error(&quot;Sound script parent has no child Head.&quot;)
+&#9;return
+end
+
+
+CreateNewSound(&quot;GettingUp&quot;, &#9;&quot;rbxasset://sounds/action_get_up.mp3&quot;,&#9;&#9;&#9;&#9;&#9;false, &#9;1,&#9;&#9;head)
+CreateNewSound(&quot;Died&quot;, &#9;&#9;&quot;rbxasset://sounds/uuhhh.mp3&quot;,&#9;&#9;&#9;&#9;&#9;&#9;&#9;false, &#9;1,&#9;&#9;head) 
+CreateNewSound(&quot;FreeFalling&quot;, &#9;&quot;rbxasset://sounds/action_falling.mp3&quot;,&#9;&#9;&#9;&#9;true,&#9;1,&#9;&#9;head)
+CreateNewSound(&quot;Jumping&quot;, &#9;&#9;&quot;rbxasset://sounds/action_jump.mp3&quot;,&#9;&#9;&#9;&#9;&#9;false,&#9;1,&#9;&#9;head)
+CreateNewSound(&quot;Landing&quot;, &#9;&#9;&quot;rbxasset://sounds/action_jump_land.mp3&quot;,&#9;&#9;&#9;&#9;false,&#9;1,&#9;&#9;head)
+CreateNewSound(&quot;Splash&quot;, &#9;&#9;&quot;rbxasset://sounds/impact_water.mp3&quot;,&#9;&#9;&#9;&#9;&#9;false, &#9;1,&#9;&#9;head)
+CreateNewSound(&quot;Running&quot;, &#9;&#9;&quot;rbxasset://sounds/action_footsteps_plastic.mp3&quot;,&#9;&#9;true, &#9;1.85,&#9;head)
+CreateNewSound(&quot;Swimming&quot;, &#9;&quot;rbxasset://sounds/action_swim.mp3&quot;,&#9;&#9;&#9;&#9;&#9;true,&#9;1.6,&#9;head)
+CreateNewSound(&quot;Climbing&quot;, &#9;&quot;rbxasset://sounds/action_footsteps_plastic.mp3&quot;,&#9;&#9;true,&#9;1,&#9;&#9;head)</ProtectedString>
+		</Properties>
+		<Item class="LocalScript" referent="RBXcf674087fdd94888aaa89ff050d72c40">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">LocalSound</string>
+				<string name="ScriptGuid"></string>
+				<ProtectedString name="Source">--[[
+&#9;Author: @spotco
+&#9;This script runs locally for the player of the given humanoid.
+&#9;This script triggers humanoid sound play/pause actions locally.
+&#9;
+&#9;The Playing/TimePosition properties of Sound objects bypass FilteringEnabled, so this triggers the sound
+&#9;immediately for the player and is replicated to all other players.
+&#9;
+&#9;This script is optimized to reduce network traffic through minimizing the amount of property replication.
+]]--
+
+--All sounds are referenced by this ID
+local SFX = {
+&#9;Died = 0;
+&#9;Running = 1;
+&#9;Swimming = 2;
+&#9;Climbing = 3,
+&#9;Jumping = 4;
+&#9;GettingUp = 5;
+&#9;FreeFalling = 6;
+&#9;FallingDown = 7;
+&#9;Landing = 8;
+&#9;Splash = 9;
+}
+
+local Humanoid = nil
+local Head = nil
+
+--SFX ID to Sound object
+local Sounds = {}
+
+do
+&#9;local Figure = script.Parent.Parent
+&#9;Head = Figure:WaitForChild(&quot;Head&quot;)
+&#9;while not Humanoid do
+&#9;&#9;for _,NewHumanoid in pairs(Figure:GetChildren()) do
+&#9;&#9;&#9;if NewHumanoid:IsA(&quot;Humanoid&quot;) then
+&#9;&#9;&#9;&#9;Humanoid = NewHumanoid
+&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;Figure.ChildAdded:wait()
+&#9;end
+&#9;
+&#9;Sounds[SFX.Died] = &#9;&#9;&#9;Head:WaitForChild(&quot;Died&quot;)
+&#9;Sounds[SFX.Running] = &#9;&#9;Head:WaitForChild(&quot;Running&quot;)
+&#9;Sounds[SFX.Swimming] = &#9;Head:WaitForChild(&quot;Swimming&quot;)
+&#9;Sounds[SFX.Climbing] = &#9;Head:WaitForChild(&quot;Climbing&quot;)
+&#9;Sounds[SFX.Jumping] = &#9;&#9;Head:WaitForChild(&quot;Jumping&quot;)
+&#9;Sounds[SFX.GettingUp] = &#9;Head:WaitForChild(&quot;GettingUp&quot;)
+&#9;Sounds[SFX.FreeFalling] = &#9;Head:WaitForChild(&quot;FreeFalling&quot;)
+&#9;Sounds[SFX.Landing] = &#9;&#9;Head:WaitForChild(&quot;Landing&quot;)
+&#9;Sounds[SFX.Splash] = &#9;&#9;Head:WaitForChild(&quot;Splash&quot;)
+end
+
+local Util
+Util = {
+&#9;
+&#9;--Define linear relationship between (pt1x,pt2x) and (pt2x,pt2y). Evaluate this at x.
+&#9;YForLineGivenXAndTwoPts = function(x,pt1x,pt1y,pt2x,pt2y)
+&#9;&#9;--(y - y1)/(x - x1) = m
+&#9;&#9;local m = (pt1y - pt2y) / (pt1x - pt2x)
+&#9;&#9;--float b = pt1.y - m * pt1.x;
+&#9;&#9;local b = (pt1y - m * pt1x)
+&#9;&#9;return m * x + b
+&#9;end;
+&#9;
+&#9;--Clamps the value of &quot;val&quot; between the &quot;min&quot; and &quot;max&quot;
+&#9;Clamp = function(val,min,max)
+&#9;&#9;return math.min(max,math.max(min,val))&#9;
+&#9;end;
+&#9;
+&#9;--Gets the horizontal (x,z) velocity magnitude of the given part
+&#9;HorizontalSpeed = function(Head)
+&#9;&#9;local hVel = Head.Velocity + Vector3.new(0,-Head.Velocity.Y,0)
+&#9;&#9;return hVel.magnitude&#9;
+&#9;end;
+&#9;
+&#9;--Gets the vertical (y) velocity magnitude of the given part
+&#9;VerticalSpeed = function(Head)
+&#9;&#9;return math.abs(Head.Velocity.Y)
+&#9;end;
+&#9;
+&#9;--Setting Playing/TimePosition values directly result in less network traffic than Play/Pause/Resume/Stop
+&#9;--If these properties are enabled, use them.
+&#9;Play = function(sound)&#9;&#9;
+&#9;&#9;if sound.TimePosition ~= 0 then
+&#9;&#9;&#9;sound.TimePosition = 0
+&#9;&#9;end
+&#9;&#9;if not sound.IsPlaying then
+&#9;&#9;&#9;sound.Playing = true
+&#9;&#9;end
+&#9;end;
+&#9;Pause = function(sound)
+&#9;&#9;if sound.IsPlaying then
+&#9;&#9;&#9;sound.Playing = false
+&#9;&#9;end
+&#9;end;
+&#9;Resume = function(sound)
+&#9;&#9;if not sound.IsPlaying then
+&#9;&#9;&#9;sound.Playing = true
+&#9;&#9;end
+&#9;end;
+&#9;Stop = function(sound)
+&#9;&#9;if sound.IsPlaying then
+&#9;&#9;&#9;sound.Playing = false
+&#9;&#9;end
+&#9;&#9;if sound.TimePosition ~= 0 then
+&#9;&#9;&#9;sound.TimePosition = 0
+&#9;&#9;end
+&#9;end;
+}
+
+do
+&#9;-- List of all active Looped sounds
+&#9;local playingLoopedSounds = {}
+&#9;
+&#9;-- Last seen Enum.HumanoidStateType
+&#9;local activeState = nil
+&#9;
+&#9;-- Verify and set that &quot;sound&quot; is in &quot;playingLoopedSounds&quot;.
+&#9;function setSoundInPlayingLoopedSounds(sound)
+&#9;&#9;for i=1, #playingLoopedSounds do
+&#9;&#9;&#9;if playingLoopedSounds[i] == sound then
+&#9;&#9;&#9;&#9;return
+&#9;&#9;&#9;end
+&#9;&#9;end&#9;
+&#9;&#9;table.insert(playingLoopedSounds,sound)
+&#9;end
+&#9;
+&#9;-- Stop all active looped sounds except parameter &quot;except&quot;. If &quot;except&quot; is not passed, all looped sounds will be stopped.
+&#9;function stopPlayingLoopedSoundsExcept(except)
+&#9;&#9;for i=#playingLoopedSounds,1,-1 do
+&#9;&#9;&#9;if playingLoopedSounds[i] ~= except then
+&#9;&#9;&#9;&#9;Util.Pause(playingLoopedSounds[i])&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;table.remove(playingLoopedSounds,i)&#9;
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;-- Table of Enum.HumanoidStateType to handling function
+&#9;local stateUpdateHandler = {
+&#9;&#9;[Enum.HumanoidStateType.Dead] = function()
+&#9;&#9;&#9;stopPlayingLoopedSoundsExcept()
+&#9;&#9;&#9;local sound = Sounds[SFX.Died]
+&#9;&#9;&#9;Util.Play(sound)
+&#9;&#9;end;
+&#9;&#9;
+&#9;&#9;[Enum.HumanoidStateType.RunningNoPhysics] = function()
+&#9;&#9;&#9;stateUpdated(Enum.HumanoidStateType.Running)
+&#9;&#9;end;
+&#9;&#9;
+&#9;&#9;[Enum.HumanoidStateType.Running] = function()&#9;
+&#9;&#9;&#9;local sound = Sounds[SFX.Running]
+&#9;&#9;&#9;stopPlayingLoopedSoundsExcept(sound)
+&#9;&#9;&#9;
+&#9;&#9;&#9;if Util.HorizontalSpeed(Head) &gt; 0.5 then
+&#9;&#9;&#9;&#9;Util.Resume(sound)
+&#9;&#9;&#9;&#9;setSoundInPlayingLoopedSounds(sound)
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;stopPlayingLoopedSoundsExcept()
+&#9;&#9;&#9;end
+&#9;&#9;end;
+&#9;&#9;
+&#9;&#9;[Enum.HumanoidStateType.Swimming] = function()
+&#9;&#9;&#9;if activeState ~= Enum.HumanoidStateType.Swimming and Util.VerticalSpeed(Head) &gt; 0.1 then
+&#9;&#9;&#9;&#9;local splashSound = Sounds[SFX.Splash]
+&#9;&#9;&#9;&#9;splashSound.Volume = Util.Clamp(
+&#9;&#9;&#9;&#9;&#9;Util.YForLineGivenXAndTwoPts(
+&#9;&#9;&#9;&#9;&#9;&#9;Util.VerticalSpeed(Head), 
+&#9;&#9;&#9;&#9;&#9;&#9;100, 0.28, 
+&#9;&#9;&#9;&#9;&#9;&#9;350, 1),
+&#9;&#9;&#9;&#9;&#9;0,1)
+&#9;&#9;&#9;&#9;Util.Play(splashSound)
+&#9;&#9;&#9;end
+&#9;&#9;&#9;
+&#9;&#9;&#9;do
+&#9;&#9;&#9;&#9;local sound = Sounds[SFX.Swimming]
+&#9;&#9;&#9;&#9;stopPlayingLoopedSoundsExcept(sound)
+&#9;&#9;&#9;&#9;Util.Resume(sound)
+&#9;&#9;&#9;&#9;setSoundInPlayingLoopedSounds(sound)
+&#9;&#9;&#9;end
+&#9;&#9;end;
+&#9;&#9;
+&#9;&#9;[Enum.HumanoidStateType.Climbing] = function()
+&#9;&#9;&#9;local sound = Sounds[SFX.Climbing]
+&#9;&#9;&#9;if Util.VerticalSpeed(Head) &gt; 0.1 then
+&#9;&#9;&#9;&#9;Util.Resume(sound)
+&#9;&#9;&#9;&#9;stopPlayingLoopedSoundsExcept(sound)
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;stopPlayingLoopedSoundsExcept()
+&#9;&#9;&#9;end&#9;&#9;
+&#9;&#9;&#9;setSoundInPlayingLoopedSounds(sound)
+&#9;&#9;end;
+&#9;&#9;
+&#9;&#9;[Enum.HumanoidStateType.Jumping] = function()
+&#9;&#9;&#9;if activeState == Enum.HumanoidStateType.Jumping then
+&#9;&#9;&#9;&#9;return
+&#9;&#9;&#9;end&#9;&#9;
+&#9;&#9;&#9;stopPlayingLoopedSoundsExcept()
+&#9;&#9;&#9;local sound = Sounds[SFX.Jumping]
+&#9;&#9;&#9;Util.Play(sound)
+&#9;&#9;end;
+&#9;&#9;
+&#9;&#9;[Enum.HumanoidStateType.GettingUp] = function()
+&#9;&#9;&#9;stopPlayingLoopedSoundsExcept()
+&#9;&#9;&#9;local sound = Sounds[SFX.GettingUp]
+&#9;&#9;&#9;Util.Play(sound)
+&#9;&#9;end;
+&#9;&#9;
+&#9;&#9;[Enum.HumanoidStateType.Freefall] = function()
+&#9;&#9;&#9;if activeState == Enum.HumanoidStateType.Freefall then
+&#9;&#9;&#9;&#9;return
+&#9;&#9;&#9;end
+&#9;&#9;&#9;local sound = Sounds[SFX.FreeFalling]
+&#9;&#9;&#9;sound.Volume = 0
+&#9;&#9;&#9;stopPlayingLoopedSoundsExcept()
+&#9;&#9;end;
+&#9;&#9;
+&#9;&#9;[Enum.HumanoidStateType.FallingDown] = function()
+&#9;&#9;&#9;stopPlayingLoopedSoundsExcept()
+&#9;&#9;end;
+&#9;&#9;
+&#9;&#9;[Enum.HumanoidStateType.Landed] = function()
+&#9;&#9;&#9;stopPlayingLoopedSoundsExcept()
+&#9;&#9;&#9;if Util.VerticalSpeed(Head) &gt; 75 then
+&#9;&#9;&#9;&#9;local landingSound = Sounds[SFX.Landing]
+&#9;&#9;&#9;&#9;landingSound.Volume = Util.Clamp(
+&#9;&#9;&#9;&#9;&#9;Util.YForLineGivenXAndTwoPts(
+&#9;&#9;&#9;&#9;&#9;&#9;Util.VerticalSpeed(Head), 
+&#9;&#9;&#9;&#9;&#9;&#9;50, 0, 
+&#9;&#9;&#9;&#9;&#9;&#9;100, 1),
+&#9;&#9;&#9;&#9;&#9;0,1)
+&#9;&#9;&#9;&#9;Util.Play(landingSound)&#9;&#9;&#9;
+&#9;&#9;&#9;end
+&#9;&#9;end;
+&#9;&#9;
+&#9;&#9;[Enum.HumanoidStateType.Seated] = function()
+&#9;&#9;&#9;stopPlayingLoopedSoundsExcept()
+&#9;&#9;end;&#9;
+&#9;}
+&#9;
+&#9;-- Handle state event fired or OnChange fired
+&#9;function stateUpdated(state)
+&#9;&#9;if stateUpdateHandler[state] ~= nil then
+&#9;&#9;&#9;stateUpdateHandler[state]()
+&#9;&#9;end
+&#9;&#9;activeState = state
+&#9;end
+&#9;
+&#9;Humanoid.Died:connect(&#9;&#9;&#9;function() stateUpdated(Enum.HumanoidStateType.Dead) &#9;&#9;&#9;end)
+&#9;Humanoid.Running:connect(&#9;&#9;function() stateUpdated(Enum.HumanoidStateType.Running) &#9;&#9;end)
+&#9;Humanoid.Swimming:connect(&#9;&#9;function() stateUpdated(Enum.HumanoidStateType.Swimming) &#9;&#9;end)
+&#9;Humanoid.Climbing:connect(&#9;&#9;function() stateUpdated(Enum.HumanoidStateType.Climbing) &#9;&#9;end)
+&#9;Humanoid.Jumping:connect(&#9;&#9;function() stateUpdated(Enum.HumanoidStateType.Jumping) &#9;&#9;end)
+&#9;Humanoid.GettingUp:connect(&#9;&#9;function() stateUpdated(Enum.HumanoidStateType.GettingUp) &#9;&#9;end)
+&#9;Humanoid.FreeFalling:connect(&#9;&#9;function() stateUpdated(Enum.HumanoidStateType.Freefall) &#9;&#9;end)
+&#9;Humanoid.FallingDown:connect(&#9;&#9;function() stateUpdated(Enum.HumanoidStateType.FallingDown) &#9;end)
+&#9;
+&#9;-- required for proper handling of Landed event
+&#9;Humanoid.StateChanged:connect(function(old, new)
+&#9;&#9;stateUpdated(new)
+&#9;end)
+&#9;
+&#9;
+&#9;function onUpdate(stepDeltaSeconds, tickSpeedSeconds)
+&#9;&#9;local stepScale = stepDeltaSeconds / tickSpeedSeconds
+&#9;&#9;do
+&#9;&#9;&#9;local sound = Sounds[SFX.FreeFalling]
+&#9;&#9;&#9;if activeState == Enum.HumanoidStateType.Freefall then
+&#9;&#9;&#9;&#9;if Head.Velocity.Y &lt; 0 and Util.VerticalSpeed(Head) &gt; 75 then
+&#9;&#9;&#9;&#9;&#9;Util.Resume(sound)
+&#9;&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;&#9;--Volume takes 1.1 seconds to go from volume 0 to 1
+&#9;&#9;&#9;&#9;&#9;local ANIMATION_LENGTH_SECONDS = 1.1
+&#9;&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;&#9;local normalizedIncrement = tickSpeedSeconds / ANIMATION_LENGTH_SECONDS&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;&#9;sound.Volume = Util.Clamp(sound.Volume + normalizedIncrement * stepScale, 0, 1)
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;sound.Volume = 0
+&#9;&#9;&#9;&#9;end&#9;&#9;&#9;
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;Util.Pause(sound)
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;do
+&#9;&#9;&#9;local sound = Sounds[SFX.Running]
+&#9;&#9;&#9;if activeState == Enum.HumanoidStateType.Running then
+&#9;&#9;&#9;&#9;if Util.HorizontalSpeed(Head) &lt; 0.5 then
+&#9;&#9;&#9;&#9;&#9;Util.Pause(sound)
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end&#9;&#9;
+&#9;end
+&#9;
+&#9;local lastTick = tick()
+&#9;local TICK_SPEED_SECONDS = 0.25
+&#9;while true do
+&#9;&#9;onUpdate(tick() - lastTick,TICK_SPEED_SECONDS)
+&#9;&#9;lastTick = tick()
+&#9;&#9;wait(TICK_SPEED_SECONDS)
+&#9;end
+end
+</ProtectedString>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>

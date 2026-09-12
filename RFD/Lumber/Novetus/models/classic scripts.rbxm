@@ -1,0 +1,491 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.rblxdev.pw/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Model" referent="RBX0">
+		<Properties>
+			<token name="Controller">0</token>
+			<bool name="ControllerFlagShown">true</bool>
+			<CoordinateFrame name="ModelInPrimary">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<string name="Name">Classic ROBLOX scripts and team stuff </string>
+			<Ref name="PrimaryPart">RBX1</Ref>
+			<bool name="archivable">true</bool>
+		</Properties>
+		<Item class="Script" referent="RBX2">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">VoteKicker</string>
+				<string name="Source">print(&quot;Vote Kicker 1.0 Loaded&quot;)
+---------------------------------------------------
+-- This script adds the &quot;kick&quot; command to your game.
+-- Players can type &quot;kick [player name]&quot; to vote to kick an abusive player.
+-- If enough people vote to kick the same person, that person contracts a deadly case of NoTorsoItis
+-- There is no cure for NoTorsoItis, even rejoining the game doesn&apos;t stop it.
+-- The number of votes required to kick a player depends on the number of people in the game.
+-- 
+-- One cool thing - you don&apos;t need to type the player&apos;s full name, just enough letters to be sure of who you
+-- want to kick.
+--
+-- For example: if Builderman and Builderdude are in-game, &quot;kick builderm&quot; is enough
+-- if Builderman and Telamon are the only people in the game, you can vote to kick both
+-- by typing &quot;kick b t&quot;
+--
+-- Multiple votes from the same person are ignored. As are ambigious votes:
+-- Example: Builderman and Builderdude are in-game. &quot;kick bu&quot; is ambigious.
+---------------------------------------------------
+
+
+-- This hack brought to you by Telamon. 
+
+-- If you find bugs in this script, post them to the scripting forum.
+-- If you find a bug and change the script to fix it, post your solution in the scripting forum. There is a 500 R$ bonus for each fix.
+
+kickedlist = {}
+
+voteMatrix = {}
+
+
+function onPlayerEntered(newPlayer)
+
+
+	local stats = Instance.new(&quot;IntValue&quot;)
+	stats.Name = &quot;punkstats&quot;
+
+	local votes = Instance.new(&quot;IntValue&quot;)
+	votes.Name = &quot;votes&quot;
+	votes.Value = 0
+
+	
+
+
+	votes.Parent = stats
+
+
+	-- VERY UGLY HACK
+	-- Will this leak threads?
+	-- Is the problem even what I think it is (player arrived before character)?
+	while true do
+		if newPlayer.Character ~= nil then break end
+		wait(5)
+	end
+
+	-- start to listen for new humanoid
+	newPlayer.Changed:connect(function(property) onPlayerRespawn(property, newPlayer) end )
+
+	stats.Parent = newPlayer
+
+	newPlayer.Chatted:connect(function(msg, recipient) onChatted(msg, recipient, newPlayer) end) 
+
+	-- make sure this isn&apos;t a previously banned player re-entering the game
+
+	for i = 1, #kickedlist do
+		if (string.lower(newPlayer.Name) == kickedlist[i]) then
+			banish(newPlayer)
+		end
+	end
+
+end
+
+function getVotesNeeded()
+	local np = game.Players.NumPlayers
+	
+	if np &gt; 10 then return 4 end
+	if np &gt; 4   then return 3 end
+	return 2
+	
+end
+
+function onPlayerRespawn(property, player)
+	if property == &quot;Character&quot; and player.Character ~= nil then
+		local stats = player:findFirstChild(&quot;punkstats&quot;)
+		if (stats ~= nil) then
+			if (stats:findFirstChild(&quot;banned&quot;) ~= nil) then
+				punish(player)
+			end
+		end
+	end
+end
+
+function banish(player)
+	
+	local stats = player:findFirstChild(&quot;punkstats&quot;)
+	local votes = stats:findFirstChild(&quot;votes&quot;)
+
+	if (stats ~= nil and votes ~= nil) then
+		
+		votes.Value = votes.Value + 1
+		if (votes.Value &gt;= getVotesNeeded()) then
+			local banned = Instance.new(&quot;IntValue&quot;)
+			banned.Name  = &quot;banned&quot;
+			banned.Parent = stats
+			local message = Instance.new(&quot;Message&quot;)
+			message.Text = &quot;You caught NoTorsoItis!&quot;
+			message.Parent = player
+			table.insert(kickedlist, string.lower(player.Name))
+			punish(player)
+		end
+	end
+
+	
+end
+
+function punish(player)
+	-- called when we think the player has respawned
+	while true do
+			if player.Character ~= nil then break end
+			wait(5)
+	end
+
+	player.Character.Torso.Parent = nil
+end
+
+function matchPlayer(str)
+	-- find all players that start with the str
+	-- if there is only one, match it
+	-- 0 or 2+, don&apos;t match it
+	local result = nil
+
+	local players = game.Players:GetPlayers()
+
+	for i = 1,#players do
+		if (string.find(string.lower(players[i].Name), str) == 1) then
+			if (result ~= nil) then return nil end
+			result = players[i]
+		end
+	end
+
+	return result
+end
+
+function voteAgainst(voter, victim)
+	-- consult the voteMatrix to see if this guy has voted against that guy before
+
+	-- voter is a string - all lowers
+	-- victim is a player
+
+	local votesList = voteMatrix[voter]
+
+	if (votesList ~= nil) then
+		local prior = votesList[string.lower(victim.Name)]
+		if (prior ~= nil) then
+			-- this dude voted against that dude before
+			return
+		end
+	else
+		voteMatrix[voter] = {}
+	end
+
+	-- insert the record
+	voteMatrix[voter][string.lower(victim.Name)] = 1
+	
+	banish(victim)
+
+end
+
+function onChatted(msg, recipient, speaker)
+
+	-- convert to all lower case
+
+	local source = string.lower(speaker.Name)
+	msg = string.lower(msg)
+
+	
+	-- vote to kick the following players
+	-- &quot;kick telamon buildman wookong&quot;
+	if (string.find(msg, &quot;kick&quot;) == 1) then --- msg starts with &quot;kick&quot;
+		-- words and numbers
+		for word in msg:gmatch(&quot;%w+&quot;) do 
+			if word ~= &quot;kick&quot; then
+				local p = matchPlayer(word)
+				if p ~= nil then
+					voteAgainst(source, p)
+				end
+			end
+		end
+	end
+	
+
+end
+
+
+game.Players.ChildAdded:connect(onPlayerEntered)</string>
+				<bool name="archivable">true</bool>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX3">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">LinkedLeaderboard</string>
+				<string name="Source">print(&quot;LinkedLeaderboard script version 5.00 loaded&quot;)
+
+stands = {}
+CTF_mode = false
+
+
+function onHumanoidDied(humanoid, player)
+	local stats = player:findFirstChild(&quot;leaderstats&quot;)
+	if stats ~= nil then
+		local deaths = stats:findFirstChild(&quot;Wipeouts&quot;)
+		deaths.Value = deaths.Value + 1
+
+		-- do short dance to try and find the killer
+
+		local killer = getKillerOfHumanoidIfStillInGame(humanoid)
+
+		handleKillCount(humanoid, player)
+	end
+end
+
+function onPlayerRespawn(property, player)
+	-- need to connect to new humanoid
+	
+	if property == &quot;Character&quot; and player.Character ~= nil then
+		local humanoid = player.Character.Humanoid
+			local p = player
+			local h = humanoid
+			humanoid.Died:connect(function() onHumanoidDied(h, p) end )
+	end
+end
+
+function getKillerOfHumanoidIfStillInGame(humanoid)
+	-- returns the player object that killed this humanoid
+	-- returns nil if the killer is no longer in the game
+
+	-- check for kill tag on humanoid - may be more than one - todo: deal with this
+	local tag = humanoid:findFirstChild(&quot;creator&quot;)
+
+	-- find player with name on tag
+	if tag ~= nil then
+		
+		local killer = tag.Value
+		if killer.Parent ~= nil then -- killer still in game
+			return killer
+		end
+	end
+
+	return nil
+end
+
+function handleKillCount(humanoid, player)
+	local killer = getKillerOfHumanoidIfStillInGame(humanoid)
+	if killer ~= nil then
+		local stats = killer:findFirstChild(&quot;leaderstats&quot;)
+		if stats ~= nil then
+			local kills = stats:findFirstChild(&quot;KOs&quot;)
+			if killer ~= player then
+				kills.Value = kills.Value + 1
+				
+			else
+				kills.Value = kills.Value - 1
+				
+			end
+		end
+	end
+end
+
+
+-----------------------------------------------
+
+
+
+function findAllFlagStands(root)
+	local c = root:children()
+	for i=1,#c do
+		if (c[i].className == &quot;Model&quot; or c[i].className == &quot;Part&quot;) then
+			findAllFlagStands(c[i])
+		end
+		if (c[i].className == &quot;FlagStand&quot;) then
+			table.insert(stands, c[i])
+		end
+	end
+end
+
+function hookUpListeners()
+	for i=1,#stands do
+		stands[i].FlagCaptured:connect(onCaptureScored)
+	end
+end
+
+function onPlayerEntered(newPlayer)
+
+	if CTF_mode == true then
+
+		local stats = Instance.new(&quot;IntValue&quot;)
+		stats.Name = &quot;leaderstats&quot;
+
+		local captures = Instance.new(&quot;IntValue&quot;)
+		captures.Name = &quot;Captures&quot;
+		captures.Value = 0
+
+
+		captures.Parent = stats
+
+		-- VERY UGLY HACK
+		-- Will this leak threads?
+		-- Is the problem even what I think it is (player arrived before character)?
+		while true do
+			if newPlayer.Character ~= nil then break end
+			wait(5)
+		end
+
+		stats.Parent = newPlayer
+
+	else
+
+		local stats = Instance.new(&quot;IntValue&quot;)
+		stats.Name = &quot;leaderstats&quot;
+
+		local kills = Instance.new(&quot;IntValue&quot;)
+		kills.Name = &quot;KOs&quot;
+		kills.Value = 0
+
+		local deaths = Instance.new(&quot;IntValue&quot;)
+		deaths.Name = &quot;Wipeouts&quot;
+		deaths.Value = 0
+
+		kills.Parent = stats
+		deaths.Parent = stats
+
+		-- VERY UGLY HACK
+		-- Will this leak threads?
+		-- Is the problem even what I think it is (player arrived before character)?
+		while true do
+			if newPlayer.Character ~= nil then break end
+			wait(5)
+		end
+
+		local humanoid = newPlayer.Character.Humanoid
+
+		humanoid.Died:connect(function() onHumanoidDied(humanoid, newPlayer) end )
+
+		-- start to listen for new humanoid
+		newPlayer.Changed:connect(function(property) onPlayerRespawn(property, newPlayer) end )
+
+
+		stats.Parent = newPlayer
+
+	end
+
+end
+
+
+function onCaptureScored(player)
+
+		local ls = player:findFirstChild(&quot;leaderstats&quot;)
+		if ls == nil then return end
+		local caps = ls:findFirstChild(&quot;Captures&quot;)
+		if caps == nil then return end
+		caps.Value = caps.Value + 1
+
+end
+
+
+findAllFlagStands(game.Workspace)
+hookUpListeners()
+if (#stands &gt; 0) then CTF_mode = true end
+game.Players.ChildAdded:connect(onPlayerEntered)</string>
+				<bool name="archivable">true</bool>
+			</Properties>
+		</Item>
+		<Item class="SpawnLocation" referent="RBX1">
+			<Properties>
+				<bool name="AllowTeamChangeOnTouch">false</bool>
+				<bool name="Anchored">true</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">2</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">2</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">194</int>
+				<CoordinateFrame name="CFrame">
+					<X>27</X>
+					<Y>1.80000007</Y>
+					<Z>-124</Z>
+					<R00>-1</R00>
+					<R01>0</R01>
+					<R02>-0</R02>
+					<R10>-0</R10>
+					<R11>1</R11>
+					<R12>-0</R12>
+					<R20>-0</R20>
+					<R21>0</R21>
+					<R22>-1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<token name="Controller">0</token>
+				<bool name="ControllerFlagShown">true</bool>
+				<bool name="DraggingV1">false</bool>
+				<int name="Duration">10</int>
+				<float name="Elasticity">0.5</float>
+				<token name="FormFactor">1</token>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">2</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">2</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<string name="Name">SpawnLocation</string>
+				<bool name="Neutral">true</bool>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">2</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int name="TeamColor">194</int>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<bool name="archivable">true</bool>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>6</X>
+					<Y>1.20000005</Y>
+					<Z>6</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Decal" referent="RBX4">
+				<Properties>
+					<token name="Face">1</token>
+					<string name="Name">Decal</string>
+					<float name="Shiny">20</float>
+					<float name="Specular">0</float>
+					<Content name="Texture"><url>rbxasset://Textures\SpawnLocation.png</url></Content>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+</roblox>

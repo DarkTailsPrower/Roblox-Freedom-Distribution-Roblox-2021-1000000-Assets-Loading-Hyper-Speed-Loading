@@ -1,0 +1,33 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="null" referent="RBX111">
+		<Properties>
+			<float name="Bevel">null</float>
+			<float name="Bevel Roundness">null</float>
+			<float name="Bulge">null</float>
+			<token name="LODX">null</token>
+			<token name="LODY">null</token>
+			<Content name="MeshId"><null></null></Content>
+			<token name="MeshType">null</token>
+			<string name="Name">Mesh</string>
+			<Vector3 name="Offset">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+			</Vector3>
+			<Vector3 name="Scale">
+				<X>null</X>
+				<Y>null</Y>
+				<Z>null</Z>
+			</Vector3>
+			<Content name="TextureId"><null></null></Content>
+			<Vector3 name="VertexColor">
+				<X>1</X>
+				<Y>1</Y>
+				<Z>1</Z>
+			</Vector3>
+			<bool name="archivable">true</bool>
+		</Properties>
+	</Item>
+</roblox>

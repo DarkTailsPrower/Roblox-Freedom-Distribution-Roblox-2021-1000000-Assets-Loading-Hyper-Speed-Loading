@@ -1,0 +1,39 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="LocalScript" referent="RBX0B895C3094D44DFF866E877B08298AF5">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<bool name="Disabled">false</bool>
+			<string name="LinkedSource"></string>
+			<string name="Name">CharacterStateMachineLoader</string>
+			<token name="RunContext">0</token>
+			<string name="ScriptGuid">{6F39A6DC-F8C7-47DD-9D1C-DCFAC953A61A}</string>
+			<string name="Source">--!strict
+local character : Model = script.Parent
+local players : Players = game:GetService(&quot;Players&quot;)
+local localHumanoidStateMachineEventInstance : Instance = nil
+local localHumanoidStateMachineEvent : BindableEvent = nil
+local localPlayerOrNil : Player? = players.LocalPlayer
+
+if localPlayerOrNil ~= nil then
+&#9;localHumanoidStateMachineEventInstance = localPlayerOrNil:WaitForChild(&quot;PlayerScripts&quot;):WaitForChild(&quot;CharacterStateMachineLocalMonitor&quot;):WaitForChild(&quot;LocalHumanoidStateMachineEvent&quot;)
+&#9;if localHumanoidStateMachineEventInstance:IsA(&quot;BindableEvent&quot;) then
+&#9;&#9;localHumanoidStateMachineEvent = localHumanoidStateMachineEventInstance
+&#9;end
+end
+
+-- Tell the monitor process that we have a new character starting up and it needs a SM
+if localHumanoidStateMachineEvent then
+&#9;local humanoidOrNil : Humanoid? = character:FindFirstChildOfClass(&quot;Humanoid&quot;)
+&#9;if humanoidOrNil ~= nil then
+&#9;&#9;localHumanoidStateMachineEvent:Fire(character, humanoidOrNil::Humanoid, &quot;RegisterHumanoidSM&quot;)
+&#9;end
+end
+</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+		</Properties>
+	</Item>
+</roblox>

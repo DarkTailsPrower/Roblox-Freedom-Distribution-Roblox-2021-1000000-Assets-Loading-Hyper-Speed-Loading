@@ -1,0 +1,231 @@
+15:58:51:787 [14888] | INFO  | Initializing crosire's ReShade version '4.7.0.846' (32-bit) built on '2020-06-25 10:19:33' loaded from "C:\RFD\Roblox\v463\Player\OPENGL32.dll" into "C:\RFD\Roblox\v463\Player\RobloxPlayerBeta.exe" ...
+15:58:51:920 [14888] | INFO  | Registering hooks for "user32.dll" ...
+15:58:51:920 [14888] | INFO  | > Libraries loaded.
+15:58:51:920 [14888] | INFO  | > Found 14 match(es). Installing ...
+15:58:51:947 [14888] | INFO  | Registering hooks for "ws2_32.dll" ...
+15:58:51:947 [14888] | INFO  | > Libraries loaded.
+15:58:51:947 [14888] | INFO  | > Found 8 match(es). Installing ...
+15:58:51:972 [14888] | INFO  | Registering hooks for "C:\Windows\system32\d2d1.dll" ...
+15:58:51:972 [14888] | INFO  | > Delayed.
+15:58:51:972 [14888] | INFO  | Registering hooks for "C:\Windows\system32\d3d9.dll" ...
+15:58:51:972 [14888] | INFO  | > Delayed.
+15:58:51:972 [14888] | INFO  | Registering hooks for "C:\Windows\system32\d3d10.dll" ...
+15:58:51:972 [14888] | INFO  | > Delayed.
+15:58:51:972 [14888] | INFO  | Registering hooks for "C:\Windows\system32\d3d10_1.dll" ...
+15:58:51:972 [14888] | INFO  | > Delayed.
+15:58:51:972 [14888] | INFO  | Registering hooks for "C:\Windows\system32\d3d11.dll" ...
+15:58:51:972 [14888] | INFO  | > Delayed.
+15:58:51:972 [14888] | INFO  | Registering hooks for "C:\Windows\system32\d3d12.dll" ...
+15:58:51:972 [14888] | INFO  | > Delayed.
+15:58:51:973 [14888] | INFO  | Registering hooks for "C:\Windows\system32\dxgi.dll" ...
+15:58:51:973 [14888] | INFO  | > Delayed.
+15:58:51:973 [14888] | INFO  | Registering hooks for "C:\Windows\system32\opengl32.dll" ...
+15:58:51:973 [14888] | INFO  | > Delayed until first call to an exported function.
+15:58:51:973 [14888] | INFO  | Initialized.
+15:58:53:345 [14888] | WARN  | Ignoring LoadLibrary("kernel32.dll") call to avoid possible deadlock.
+15:58:53:352 [14888] | INFO  | Redirecting RegisterClassExW(lpWndClassEx = 0019FDE8 { WINDOWSCLIENT }) ...
+15:58:53:353 [14888] | INFO  | > Adding 'CS_OWNDC' window class style flag to 'WINDOWSCLIENT'.
+15:58:53:626 [14888] | INFO  | Redirecting RegisterClassExW(lpWndClassEx = 02548B80 { ATL:02548B80 }) ...
+15:58:53:626 [14888] | INFO  | > Adding 'CS_OWNDC' window class style flag to 'ATL:02548B80'.
+15:58:53:847 [14888] | INFO  | Installing delayed hooks for "C:\Windows\system32\d3d11.dll" (Just loaded via LoadLibrary("d3d11.dll")) ...
+15:58:53:847 [14888] | INFO  | > Found 2 match(es). Installing ...
+15:58:53:885 [14888] | INFO  | Installing delayed hooks for "C:\Windows\system32\dxgi.dll" (Just loaded via LoadLibrary("d3d11.dll")) ...
+15:58:53:885 [14888] | INFO  | > Found 8 match(es). Installing ...
+15:58:53:919 [14888] | INFO  | Redirecting CreateDXGIFactory1(riid = {770AAE78-F26F-4DBA-A829-253C83D1B387}, ppFactory = 0019EA40) ...
+15:58:53:928 [14888] | INFO  | Redirecting D3D11CreateDevice(pAdapter = 0D4DF5A8, DriverType = 0, Software = 00000000, Flags = 0, pFeatureLevels = 0019EA10, FeatureLevels = 3, SDKVersion = 7, ppDevice = 0D77D6E4, pFeatureLevel = 00000000, ppImmediateContext = 0D77D6E8) ...
+15:58:53:928 [14888] | INFO  | > Passing on to D3D11CreateDeviceAndSwapChain:
+15:58:53:928 [14888] | INFO  | Redirecting D3D11CreateDeviceAndSwapChain(pAdapter = 0D4DF5A8, DriverType = 0, Software = 00000000, Flags = 0, pFeatureLevels = 0019EA10, FeatureLevels = 3, SDKVersion = 7, pSwapChainDesc = 00000000, ppSwapChain = 00000000, ppDevice = 0D77D6E4, pFeatureLevel = 00000000, ppImmediateContext = 0D77D6E8) ...
+15:58:54:311 [14888] | INFO  | > Using feature level 0xb000.
+15:58:54:311 [14888] | INFO  | Redirecting IDXGIFactory::CreateSwapChain(this = 0D9F7458, pDevice = 157C8A88, pDesc = 0019E9CC, ppSwapChain = 0019EA48) ...
+15:58:54:311 [14888] | INFO  | > Dumping swap chain description:
+15:58:54:311 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+15:58:54:311 [14888] | INFO  |   | Parameter                               | Value                                   |
+15:58:54:311 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+15:58:54:311 [14888] | INFO  |   | Width                                   | 800                                     |
+15:58:54:311 [14888] | INFO  |   | Height                                  | 599                                     |
+15:58:54:311 [14888] | INFO  |   | RefreshRate                             | 0                   1                   |
+15:58:54:311 [14888] | INFO  |   | Format                                  | 28                                      |
+15:58:54:311 [14888] | INFO  |   | ScanlineOrdering                        | 0                                       |
+15:58:54:311 [14888] | INFO  |   | Scaling                                 | 0                                       |
+15:58:54:311 [14888] | INFO  |   | SampleCount                             | 1                                       |
+15:58:54:311 [14888] | INFO  |   | SampleQuality                           | 0                                       |
+15:58:54:311 [14888] | INFO  |   | BufferUsage                             | 32                                      |
+15:58:54:311 [14888] | INFO  |   | BufferCount                             | 1                                       |
+15:58:54:311 [14888] | INFO  |   | OutputWindow                            | 000C0912                                |
+15:58:54:311 [14888] | INFO  |   | Windowed                                | TRUE                                    |
+15:58:54:311 [14888] | INFO  |   | SwapEffect                              | 0                                       |
+15:58:54:311 [14888] | INFO  |   | Flags                                   | 0                                       |
+15:58:54:311 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+15:58:54:845 [14888] | INFO  | Running on Intel(R) Iris(R) Xe Graphics
+15:58:54:854 [14888] | INFO  | Recreated runtime environment on runtime 157F1F78.
+15:58:54:857 [14888] | INFO  | Destroyed runtime environment on runtime 157F1F78.
+15:58:55:123 [14888] | INFO  | Installing delayed hooks for "C:\Windows\system32\d3d9.dll" (Just loaded via LoadLibrary("C:\Windows\system32\d3d9.dll")) ...
+15:58:55:123 [14888] | INFO  | > Found 9 match(es). Installing ...
+15:58:55:155 [14888] | INFO  | Redirecting Direct3DCreate9(SDKVersion = 32) ...
+15:58:55:189 [14888] | INFO  | Redirecting IDirect3D9::CreateDevice(this = 156E7F20, pAdapter = 0, DeviceType = 1, hFocusWindow = 000C0912, BehaviorFlags = 0x42, pPresentationParameters = 0019E7F0, ppReturnedDeviceInterface = 0019E890) ...
+15:58:55:190 [14888] | INFO  | > Dumping presentation parameters:
+15:58:55:190 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+15:58:55:190 [14888] | INFO  |   | Parameter                               | Value                                   |
+15:58:55:190 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+15:58:55:190 [14888] | INFO  |   | BackBufferWidth                         | 800                                     |
+15:58:55:190 [14888] | INFO  |   | BackBufferHeight                        | 599                                     |
+15:58:55:190 [14888] | INFO  |   | BackBufferFormat                        | 22                                      |
+15:58:55:190 [14888] | INFO  |   | BackBufferCount                         | 1                                       |
+15:58:55:190 [14888] | INFO  |   | MultiSampleType                         | 0                                       |
+15:58:55:190 [14888] | INFO  |   | MultiSampleQuality                      | 0                                       |
+15:58:55:190 [14888] | INFO  |   | SwapEffect                              | 1                                       |
+15:58:55:190 [14888] | INFO  |   | DeviceWindow                            | 000C0912                                |
+15:58:55:190 [14888] | INFO  |   | Windowed                                | TRUE                                    |
+15:58:55:190 [14888] | INFO  |   | EnableAutoDepthStencil                  | FALSE                                   |
+15:58:55:190 [14888] | INFO  |   | AutoDepthStencilFormat                  | 0                                       |
+15:58:55:190 [14888] | INFO  |   | Flags                                   | 0                                       |
+15:58:55:190 [14888] | INFO  |   | FullScreen_RefreshRateInHz              | 0                                       |
+15:58:55:190 [14888] | INFO  |   | PresentationInterval                    | 0x80000000                              |
+15:58:55:190 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+15:58:56:547 [14888] | INFO  | Running on Intel(R) Iris(R) Xe Graphics Driver 99.55
+15:58:56:551 [14888] | INFO  | Recreated runtime environment on runtime 1562F888.
+15:58:57:191 [14888] | INFO  | Redirecting Direct3DCreate9(SDKVersion = 32) ...
+15:58:57:198 [14888] | INFO  | Redirecting CreateDXGIFactory1(riid = {770AAE78-F26F-4DBA-A829-253C83D1B387}, ppFactory = 0019D9C0) ...
+15:58:57:277 [12044] | INFO  | Redirecting RegisterClassExW(lpWndClassEx = 1A56FE00 { Message }) ...
+15:58:57:578 [14888] | INFO  | Loading image files for textures ...
+15:58:57:583 [14888] | INFO  | Redirecting IDirect3DDevice9::Reset(this = 0C11BD58, pPresentationParameters = 0019F68C) ...
+15:58:57:583 [14888] | INFO  | > Dumping presentation parameters:
+15:58:57:583 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+15:58:57:583 [14888] | INFO  |   | Parameter                               | Value                                   |
+15:58:57:583 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+15:58:57:583 [14888] | INFO  |   | BackBufferWidth                         | 1920                                    |
+15:58:57:583 [14888] | INFO  |   | BackBufferHeight                        | 1017                                    |
+15:58:57:583 [14888] | INFO  |   | BackBufferFormat                        | 22                                      |
+15:58:57:583 [14888] | INFO  |   | BackBufferCount                         | 1                                       |
+15:58:57:583 [14888] | INFO  |   | MultiSampleType                         | 0                                       |
+15:58:57:583 [14888] | INFO  |   | MultiSampleQuality                      | 0                                       |
+15:58:57:583 [14888] | INFO  |   | SwapEffect                              | 1                                       |
+15:58:57:583 [14888] | INFO  |   | DeviceWindow                            | 000C0912                                |
+15:58:57:583 [14888] | INFO  |   | Windowed                                | TRUE                                    |
+15:58:57:583 [14888] | INFO  |   | EnableAutoDepthStencil                  | FALSE                                   |
+15:58:57:583 [14888] | INFO  |   | AutoDepthStencilFormat                  | 0                                       |
+15:58:57:583 [14888] | INFO  |   | Flags                                   | 0                                       |
+15:58:57:583 [14888] | INFO  |   | FullScreen_RefreshRateInHz              | 0                                       |
+15:58:57:583 [14888] | INFO  |   | PresentationInterval                    | 0x80000000                              |
+15:58:57:583 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+15:58:57:586 [14888] | INFO  | Destroyed runtime environment on runtime 1562F888.
+15:58:57:618 [14888] | INFO  | Recreated runtime environment on runtime 1562F888.
+15:58:58:003 [14888] | INFO  | Loading image files for textures ...
+15:59:16:777 [14888] | INFO  | Redirecting IDirect3DDevice9::Reset(this = 0C11BD58, pPresentationParameters = 0019F68C) ...
+15:59:16:777 [14888] | INFO  | > Dumping presentation parameters:
+15:59:16:777 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+15:59:16:777 [14888] | INFO  |   | Parameter                               | Value                                   |
+15:59:16:777 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+15:59:16:777 [14888] | INFO  |   | BackBufferWidth                         | 1                                       |
+15:59:16:777 [14888] | INFO  |   | BackBufferHeight                        | 1                                       |
+15:59:16:778 [14888] | INFO  |   | BackBufferFormat                        | 22                                      |
+15:59:16:778 [14888] | INFO  |   | BackBufferCount                         | 1                                       |
+15:59:16:778 [14888] | INFO  |   | MultiSampleType                         | 0                                       |
+15:59:16:778 [14888] | INFO  |   | MultiSampleQuality                      | 0                                       |
+15:59:16:778 [14888] | INFO  |   | SwapEffect                              | 1                                       |
+15:59:16:778 [14888] | INFO  |   | DeviceWindow                            | 000C0912                                |
+15:59:16:778 [14888] | INFO  |   | Windowed                                | TRUE                                    |
+15:59:16:778 [14888] | INFO  |   | EnableAutoDepthStencil                  | FALSE                                   |
+15:59:16:778 [14888] | INFO  |   | AutoDepthStencilFormat                  | 0                                       |
+15:59:16:778 [14888] | INFO  |   | Flags                                   | 0                                       |
+15:59:16:778 [14888] | INFO  |   | FullScreen_RefreshRateInHz              | 0                                       |
+15:59:16:778 [14888] | INFO  |   | PresentationInterval                    | 0x80000000                              |
+15:59:16:778 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+15:59:16:779 [14888] | INFO  | Destroyed runtime environment on runtime 1562F888.
+15:59:16:802 [14888] | INFO  | Recreated runtime environment on runtime 1562F888.
+15:59:17:310 [14888] | INFO  | Loading image files for textures ...
+16:02:35:468 [14888] | INFO  | Redirecting IDirect3DDevice9::Reset(this = 0C11BD58, pPresentationParameters = 0019F68C) ...
+16:02:35:468 [14888] | INFO  | > Dumping presentation parameters:
+16:02:35:468 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+16:02:35:469 [14888] | INFO  |   | Parameter                               | Value                                   |
+16:02:35:469 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+16:02:35:469 [14888] | INFO  |   | BackBufferWidth                         | 1920                                    |
+16:02:35:469 [14888] | INFO  |   | BackBufferHeight                        | 1017                                    |
+16:02:35:469 [14888] | INFO  |   | BackBufferFormat                        | 22                                      |
+16:02:35:469 [14888] | INFO  |   | BackBufferCount                         | 1                                       |
+16:02:35:469 [14888] | INFO  |   | MultiSampleType                         | 0                                       |
+16:02:35:469 [14888] | INFO  |   | MultiSampleQuality                      | 0                                       |
+16:02:35:469 [14888] | INFO  |   | SwapEffect                              | 1                                       |
+16:02:35:469 [14888] | INFO  |   | DeviceWindow                            | 000C0912                                |
+16:02:35:469 [14888] | INFO  |   | Windowed                                | TRUE                                    |
+16:02:35:469 [14888] | INFO  |   | EnableAutoDepthStencil                  | FALSE                                   |
+16:02:35:469 [14888] | INFO  |   | AutoDepthStencilFormat                  | 0                                       |
+16:02:35:469 [14888] | INFO  |   | Flags                                   | 0                                       |
+16:02:35:469 [14888] | INFO  |   | FullScreen_RefreshRateInHz              | 0                                       |
+16:02:35:469 [14888] | INFO  |   | PresentationInterval                    | 0x80000000                              |
+16:02:35:469 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+16:02:35:470 [14888] | INFO  | Destroyed runtime environment on runtime 1562F888.
+16:02:35:557 [14888] | INFO  | Recreated runtime environment on runtime 1562F888.
+16:02:35:935 [14888] | INFO  | Loading image files for textures ...
+16:02:38:264 [14888] | INFO  | Redirecting IDirect3DDevice9::Reset(this = 0C11BD58, pPresentationParameters = 0019F68C) ...
+16:02:38:264 [14888] | INFO  | > Dumping presentation parameters:
+16:02:38:264 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+16:02:38:264 [14888] | INFO  |   | Parameter                               | Value                                   |
+16:02:38:264 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+16:02:38:264 [14888] | INFO  |   | BackBufferWidth                         | 1                                       |
+16:02:38:264 [14888] | INFO  |   | BackBufferHeight                        | 1                                       |
+16:02:38:264 [14888] | INFO  |   | BackBufferFormat                        | 22                                      |
+16:02:38:264 [14888] | INFO  |   | BackBufferCount                         | 1                                       |
+16:02:38:264 [14888] | INFO  |   | MultiSampleType                         | 0                                       |
+16:02:38:264 [14888] | INFO  |   | MultiSampleQuality                      | 0                                       |
+16:02:38:264 [14888] | INFO  |   | SwapEffect                              | 1                                       |
+16:02:38:264 [14888] | INFO  |   | DeviceWindow                            | 000C0912                                |
+16:02:38:264 [14888] | INFO  |   | Windowed                                | TRUE                                    |
+16:02:38:264 [14888] | INFO  |   | EnableAutoDepthStencil                  | FALSE                                   |
+16:02:38:264 [14888] | INFO  |   | AutoDepthStencilFormat                  | 0                                       |
+16:02:38:264 [14888] | INFO  |   | Flags                                   | 0                                       |
+16:02:38:264 [14888] | INFO  |   | FullScreen_RefreshRateInHz              | 0                                       |
+16:02:38:264 [14888] | INFO  |   | PresentationInterval                    | 0x80000000                              |
+16:02:38:264 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+16:02:38:265 [14888] | INFO  | Destroyed runtime environment on runtime 1562F888.
+16:02:38:283 [14888] | INFO  | Recreated runtime environment on runtime 1562F888.
+16:02:38:800 [14888] | INFO  | Loading image files for textures ...
+16:03:52:869 [14888] | INFO  | Redirecting IDirect3DDevice9::Reset(this = 0C11BD58, pPresentationParameters = 0019F68C) ...
+16:03:52:869 [14888] | INFO  | > Dumping presentation parameters:
+16:03:52:869 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+16:03:52:869 [14888] | INFO  |   | Parameter                               | Value                                   |
+16:03:52:869 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+16:03:52:869 [14888] | INFO  |   | BackBufferWidth                         | 1920                                    |
+16:03:52:869 [14888] | INFO  |   | BackBufferHeight                        | 1017                                    |
+16:03:52:869 [14888] | INFO  |   | BackBufferFormat                        | 22                                      |
+16:03:52:869 [14888] | INFO  |   | BackBufferCount                         | 1                                       |
+16:03:52:869 [14888] | INFO  |   | MultiSampleType                         | 0                                       |
+16:03:52:869 [14888] | INFO  |   | MultiSampleQuality                      | 0                                       |
+16:03:52:869 [14888] | INFO  |   | SwapEffect                              | 1                                       |
+16:03:52:869 [14888] | INFO  |   | DeviceWindow                            | 000C0912                                |
+16:03:52:869 [14888] | INFO  |   | Windowed                                | TRUE                                    |
+16:03:52:870 [14888] | INFO  |   | EnableAutoDepthStencil                  | FALSE                                   |
+16:03:52:870 [14888] | INFO  |   | AutoDepthStencilFormat                  | 0                                       |
+16:03:52:870 [14888] | INFO  |   | Flags                                   | 0                                       |
+16:03:52:870 [14888] | INFO  |   | FullScreen_RefreshRateInHz              | 0                                       |
+16:03:52:870 [14888] | INFO  |   | PresentationInterval                    | 0x80000000                              |
+16:03:52:870 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+16:03:52:871 [14888] | INFO  | Destroyed runtime environment on runtime 1562F888.
+16:03:52:900 [14888] | INFO  | Recreated runtime environment on runtime 1562F888.
+16:03:53:297 [14888] | INFO  | Loading image files for textures ...
+16:10:34:443 [14888] | INFO  | Redirecting IDirect3DDevice9::Reset(this = 0C11BD58, pPresentationParameters = 0019F68C) ...
+16:10:34:443 [14888] | INFO  | > Dumping presentation parameters:
+16:10:34:443 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+16:10:34:443 [14888] | INFO  |   | Parameter                               | Value                                   |
+16:10:34:443 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+16:10:34:443 [14888] | INFO  |   | BackBufferWidth                         | 1                                       |
+16:10:34:443 [14888] | INFO  |   | BackBufferHeight                        | 1                                       |
+16:10:34:443 [14888] | INFO  |   | BackBufferFormat                        | 22                                      |
+16:10:34:443 [14888] | INFO  |   | BackBufferCount                         | 1                                       |
+16:10:34:443 [14888] | INFO  |   | MultiSampleType                         | 0                                       |
+16:10:34:443 [14888] | INFO  |   | MultiSampleQuality                      | 0                                       |
+16:10:34:443 [14888] | INFO  |   | SwapEffect                              | 1                                       |
+16:10:34:443 [14888] | INFO  |   | DeviceWindow                            | 000C0912                                |
+16:10:34:443 [14888] | INFO  |   | Windowed                                | TRUE                                    |
+16:10:34:443 [14888] | INFO  |   | EnableAutoDepthStencil                  | FALSE                                   |
+16:10:34:443 [14888] | INFO  |   | AutoDepthStencilFormat                  | 0                                       |
+16:10:34:443 [14888] | INFO  |   | Flags                                   | 0                                       |
+16:10:34:443 [14888] | INFO  |   | FullScreen_RefreshRateInHz              | 0                                       |
+16:10:34:443 [14888] | INFO  |   | PresentationInterval                    | 0x80000000                              |
+16:10:34:443 [14888] | INFO  |   +-----------------------------------------+-----------------------------------------+
+16:10:34:444 [14888] | INFO  | Destroyed runtime environment on runtime 1562F888.
+16:10:34:477 [14888] | INFO  | Recreated runtime environment on runtime 1562F888.
+16:10:35:398 [14888] | INFO  | Destroyed runtime environment on runtime 1562F888.
+16:10:35:450 [14888] | INFO  | Exiting ...
+16:10:35:450 [14888] | INFO  | Uninstalling 51 hook(s) ...
+16:10:35:477 [14888] | INFO  | Finished exiting.

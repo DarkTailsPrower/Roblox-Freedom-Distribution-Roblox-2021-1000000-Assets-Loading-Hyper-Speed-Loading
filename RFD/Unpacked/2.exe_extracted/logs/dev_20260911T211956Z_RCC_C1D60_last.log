@@ -1,0 +1,94 @@
+1789161596.02302,26cc,6 [FLog::Output] Loading AppSettings.xml, current path: C:\RFD\Unpacked\2.exe_extracted\Roblox\v463\Server
+1789161596.02302,26cc,6 [FLog::RCCServiceInit] Got Base url: https://localhost:2005/
+1789161596.02502,26cc,6 [FLog::Output] CrashReporter Start
+1789161596.02502,26cc,6 [FLog::Output] Service starting
+1789161596.02602,2674,6 [FLog::Output] WatcherThread Started
+1789161596.02602,26cc,6 [FLog::Output] setAssetFolder C:\RFD\Unpacked\2.exe_extracted\Roblox\v463\Server\Content\
+1789161596.02702,26cc,6 [FLog::Output] setExtraAssetFolder 
+1789161596.02802,26cc,6 [DFLog::RCCExecuteInfo] Initializing Roblox Web Service
+1789161596.03302,26cc,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 0 active: 0>
+1789161596.03502,26cc,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 3 ) <req: 4 active: 4>
+1789161596.03902,47e4,6 [DFLog::RCCExecuteInfo] SecurityDataUpdater failed to fetch data from , HttpError: InvalidUrl
+1789161596.04302,26cc,104 [FLog::Output] Service started on port 0
+1789161596.06902,26cc,101 [FLog::LocalStorage] LocalStorage loading from path: ../../../LocalStorage\ocalhost:2005_appStorage.json
+1789161596.06902,26cc,102 [FLog::RCCServiceJobs] Opened JobItem Test
+1789161596.06902,26cc,102 [FLog::RCCServiceJobs] DataModel: 047955D0
+1789161596.06902,40a0,101 [FLog::LocalStorage] LocalStorage failed to load: ../../../LocalStorage\ocalhost:2005_appStorage.json
+1789161596.06902,26cc,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] RCC Executing: [{"Mode": "GameServer", "GameId": 13058, "Settings": {"Type": "Avatar", "PlaceId": 1818, "GameId": "Test", "MachineAddress": "https://localhost:2005", "PlaceFetchUrl": "https://localhost:2005/asset/?id=1818", "MaxPlayers": 1000000000, "PreferredPlayerCapacity": 1000000000, "CharacterAppearance": "https://localhost:2005/v1.1/avatar-fetch", "MaxGameInstances": 1, "GsmInterval": 5, "ApiKey": "", "DataCenterId": "69420", "PlaceVisitAccessKey": "", "UniverseId": 13058, "MatchmakingContextId": 1, "CreatorId": 0, "CreatorType": "Group", "PlaceVersion": 1, "BaseUrl": "https://localhost:2005/.127.0.0.1", "JobId": "Test", "PreferredPort": 2005}, "Arguments": {}}]
+1789161596.06902,26cc,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] Executing job with mode GameServer
+1789161596.07002,49b0,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] Fetching place 1818
+1789161596.07102,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789161596.27203,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789161596.28303,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::6ce7:cb1c:812e:b23f|2005 after 0.212004
+1789161602.43327,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 6.161242
+1789161602.45126,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789161602.45226,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789161602.65231,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789161602.66231,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::ac7:a2a0:16ce:1940%7208960|2005 after 0.211051
+1789161602.66231,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789161602.66331,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::9ae1:6d9c:1ccf:1940|2005 after 0.211051
+1789161602.67131,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.018993
+1789161602.67530,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.012995
+1789161605.86456,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789161605.90155,49b0,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Started network server ::1|2005
+1789161606.06759,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789161606.07859,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::71fd:5002:2bbb:2340%1953719552|2005 after 0.213027
+1789161607.13558,49b0,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Workspace.Content.Exterior.VFX.LightningVFX.StormEyeLightning.BeamPart.LightningVFX:49: attempt to call a nil value
+    Stack Begin
+    Script 'Workspace.Content.Exterior.VFX.LightningVFX.StormEyeLightning.BeamPart.LightningVFX', Line 49
+    Stack End
+1789161607.14258,49b0,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Hello world!
+1789161607.17458,49b0,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Destroying is not a valid member of Model "Workspace.TempStorage.Test.RestoredSeal_A"
+    Stack Begin
+    Script 'ServerScriptService.RestorableManager', Line 31 - function InitRestorable
+    Script 'ServerScriptService.RestorableManager', Line 101 - function Init
+    Script 'ServerScriptService.GameStateManager', Line 1115 - function Init
+    Script 'ServerScriptService.GameStateManager', Line 1219
+    Stack End
+1789161607.20058,49b0,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: ServerScriptService.SocialInteractions.Install.DevModuleInstaller.install:24: Expected identifier when parsing method name, got ':'
+1789161607.20058,49b0,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Requested module experienced an error while loading
+    Stack Begin
+    Script 'ServerScriptService.SocialInteractions.Install.DevModuleInstaller', Line 3
+    Stack End
+1789161607.20058,49b0,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Requested module experienced an error while loading
+    Stack Begin
+    Script 'ServerScriptService.SocialInteractions.Install', Line 1
+    Stack End
+1789161607.20158,49b0,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Respawn: volume added Workspace.Content.Global.CorruptedRoom_Skybox_A.Kill_Volume.Kill_Volume
+1789161607.20358,49b0,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] ***
+1789161607.20358,49b0,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] Finished initializing game
+1789161607.20358,49b0,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] ***
+1789161607.20458,40a0,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Script Context.RFDStarterScript:1: Expected identifier when parsing expression, got '\'
+1789161607.22958,40a0,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: GetPivot is not a valid member of MeshPart "Workspace.Content.Interior.Kitchen.Normal.Kitchen.Props.Additions.GrandfatherClock.Pendulum"
+    Stack Begin
+    Script 'Workspace.Content.Interior.Kitchen.Normal.Kitchen.Props.Additions.GrandfatherClock.Pendulum.PendulumSwinging', Line 6
+    Stack End
+1789161607.22958,40a0,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: GetPivot is not a valid member of MeshPart "Workspace.Content.Interior.Dining_Room.Props.GrandfatherClock.Pendulum"
+    Stack Begin
+    Script 'Workspace.Content.Interior.Dining_Room.Props.GrandfatherClock.Pendulum.PendulumSwinging', Line 6
+    Stack End
+1789161607.22958,40a0,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: GetPivot is not a valid member of MeshPart "Workspace.Content.Interior.Livingroom.Props.GrandfatherClock.Pendulum"
+    Stack Begin
+    Script 'Workspace.Content.Interior.Livingroom.Props.GrandfatherClock.Pendulum.PendulumSwinging', Line 6
+    Stack End
+1789161607.68310,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789161607.88912,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789161607.92812,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::c3dd:e86b:425e:2740|2005 after 0.244024
+1789161626.03346,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789161626.23546,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789161626.23546,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::7125:f3d0:9008:3e40%1016003840|2005 after 0.202002
+1789161626.24246,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.007000
+1789161626.24246,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789161626.44247,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789161626.44247,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::8a:58fd:113e:3e40%1015599360|2005 after 0.200005
+1789161626.45047,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.008000
+1789161657.24334,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789161657.44334,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789161657.44334,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::71b1:eede:259f:4e40%1007225088|2005 after 0.199997
+1789161657.45034,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.007000
+1789161664.16494,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789161664.16594,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 58.098350
+1789161664.16594,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 56.275823
+1789161664.36595,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789161664.36595,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::2914:d15b:8e0a:5140%1006632960|2005 after 0.201007
+1789161664.37195,3274,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.006000

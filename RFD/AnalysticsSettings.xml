@@ -1,0 +1,11 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="GoogleAnalyticsConfiguration" referent="RBX9DE5D715E74C404B914684A7AA25C121">
+		<Properties>
+			<string name="Name">GoogleAnalyticsConfiguration</string>
+			<BinaryString name="Tags"></BinaryString>
+			<string name="gaID">18ADA6F5-F56C-48FA-9556-4A185D200E8F</string>
+		</Properties>
+	</Item>
+</roblox>

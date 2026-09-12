@@ -1,0 +1,51 @@
+1789161671.05778,11c0,6 [FLog::Output] The channel is NULL
+1789161671.06878,11c0,6 [FLog::Output] LoadClientSettingsFromLocal: "{
+	"DFFlagCheckCSGSharedStringProp": true,
+	"FFlagWrapDeformer": true,
+	"DFFlagEnableMessagingService": true,
+	"FFlagDevConsoleIsVeryStickyWhyWillItNotLetGo": true,
+	"FFlagRespectDisplayOrderForOnTopOfCoreBlur": true,
+	"FFlagReportDevConsoleOpenClose": false,
+	"FFlagDevConsoleLogNewLineFix": true,
+	"FFlagGroupEditDevConsoleButton": true,
+	"DFFlagEnableRemoteProfilingForDevConsole": true,
+	"DFFlagThrottleDeveloperConsoleEvents": true,
+	"DFFlagAdminServerLogs": true,
+	"DFFlagAdminRemoteMicroProfiler": false,
+	"FFlagDevConsoleAnalyticsIncludeOwner": true,
+	"FFlagFixScriptRateDevConsole": true,
+	"FFlagPlayAudioVideoInPlugins": true,
+	"DFFlagAllowSoundsToBePlayableInPlugins": true,
+	"FFlagFutureIsBrightPhase3": true,
+	"FFlagFutureIsBrightPhase3Vulkan": true,
+	"FFlagFutureIsBrightPhase3iOS": true,
+	"DFFlagServerCopiesPlayerGui3": true,
+	"FFlagFixCGECursor": true,
+	"FFlagFixGamepadCursorIdlePosition": true,
+	"FFlagClickDetectorCursorIconEnabled":
+1789161671.07878,11c0,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 0 active: 0>
+1789161671.08378,11c0,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 4 active: 4>
+1789161671.11278,11c0,104 [FLog::Output] Loading AppSettings.xml from C:\RFD\Unpacked\2.exe_extracted\Roblox\v463\Player\AppSettings.xml
+1789161671.11278,11c0,104 [FLog::Output] setAssetFolder Content
+1789161671.11278,11c0,104 [FLog::Output] setExtraAssetFolder 
+1789161671.32489,11c0,104 [FLog::Output] CrashReporter Start
+1789161671.32489,3dd4,104 [FLog::Output] WatcherThread Started
+1789161671.32489,11c0,106 [FLog::Error] Error: Important !Loading shader files
+1789161671.33380,11c0,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 4 active: 4>
+1789161671.33479,11c0,104 [FLog::Output] Info: Initializing new game
+1789161671.33974,11c0,104 [FLog::Output] account = UA-43420590-13, schedule = 500
+1789161671.34073,11c0,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 4 active: 4>
+1789161671.34172,11c0,101 [FLog::LocalStorage] LocalStorage loading from path: ../../../LocalStorage\27.0.0.1:2005_appStorage.json
+1789161671.34667,38ac,101 [FLog::LocalStorage] LocalStorage loading data: {"AppConfiguration":"{\"GUAC:12318140:app-policy\":\"{\\\"ChatConversationHeaderGroupDetails\\\": true, \\\"ChatHeaderSearch\\\": true, \\\"ChatHeaderCreateChatGroup\\\": true, \\\"ChatHeaderHomeButton\\\": false, \\\"ChatHeaderNotifications\\\": true, \\\"ChatPlayTogether\\\": true, \\\"ChatShareGameToChatFromChat\\\": true, \\\"ChatTapConversationThumbnail\\\": true, \\\"ChatViewProfileOption\\\": true, \\\"GamesDropDownList\\\": true, \\\"UseNewDropDown\\\": false, \\\"GameDetailsMorePage\\\": true, \\\"GameDetailsShowGlobalCounters\\\": true, \\\"GameDetailsPlayWithFriends\\\": true, \\\"GameDetailsSubtitle\\\": true, \\\"GameInfoList\\\": true, \\\"GameInfoListDeveloper\\\": true, \\\"GamePlaysAndRatings\\\": true, \\\"GameInfoShowBadges\\\": true, \\\"GameInfoShowCreated\\\": true, \\\"GameInfoShowGamepasses\\\": true, \\\"GameInfoShowGenre\\\": true, \\\"GameInfoShowMaxPlayers\\\": true, \\\"GameInfoShowServers\\\": true, \\\"G
+1789161671.76963,0754,101 [FLog::LocalStorage] LocalStorage loading from path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789161671.77463,11c0,104 [FLog::Output] Studio D3D9 GPU: Intel(R) Iris(R) Xe Graphics
+1789161671.77463,11c0,104 [FLog::Output] Studio D3D9 GPU: Vendor 8086 Device 9a49
+1789161671.77463,11c0,104 [FLog::Output] Studio D3D9 Driver: igdumdim32.dll 30.0.100.9955
+1789161671.77563,11c0,104 [FLog::Output] ESGamePerfMonitor GPU: Vendor 00008086 Device 00009a49
+1789161671.77563,11c0,104 [FLog::Output] ESGamePerfMonitor GPU: SubSys 87fe103c Revision 00000001
+1789161671.77563,11c0,104 [FLog::Output] ESGamePerfMonitor GPU: DedicatedVidMem 134217728 DedicatedSysMem 4107571200 SharedSystemMemory 176297189046222848
+1789161671.77663,2d50,104 [FLog::Output] PlaceLauncher URL : https://127.0.0.1:2005/game/PlaceLauncher.ashx?MachineAddress=127.0.0.1&ServerPort=2005&UserCode=Player1789161670&rcc-host-addr=127.0.0.1&rcc-port=2005&user-code=Player1789161670
+1789161671.78963,462c,101 [FLog::LocalStorage] LocalStorage loading data: {"CpuMem":"103064360","GpuMem":"52911932","SyncTime":"1789161598"}
+1789161671.80063,4830,101 [FLog::LocalStorage] LocalStorage flushing to path: ../../../LocalStorage\27.0.0.1:2005_memProfStorage.json
+1789161671.80563,0754,101 [FLog::LocalStorage] LocalStorage will flush (size:66): {"CpuMem":"104465584","GpuMem":"53610996","SyncTime":"1789161672"}
+1789161671.80563,0754,101 [FLog::LocalStorage] LocalStorage: Wrote 66 bytes to disk

@@ -1,0 +1,2466 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="LocalScript" referent="RBX07897057CB3E4B75952AC6E3D364A6C2">
+		<Properties>
+			<bool name="Disabled">false</bool>
+			<Content name="LinkedSource"><null></null></Content>
+			<string name="Name">ControlScript</string>
+			<string name="ScriptGuid">{EFAAF843-127B-494C-8C86-A346B5963EA7}</string>
+			<ProtectedString name="Source">--[[
+&#9;// FileName: ControlScript.lua
+&#9;// Version 1.1
+&#9;// Written by: jmargh and jeditkacheff
+&#9;// Description: Manages in game controls for both touch and keyboard/mouse devices.
+&#9;
+&#9;// This script will be inserted into PlayerScripts under each player by default. If you want to
+&#9;// create your own custom controls or modify these controls, you must place a script with this
+&#9;// name, ControlScript, under StarterPlayer -&gt; PlayerScripts.
+&#9;
+&#9;// Required Modules:
+&#9;&#9;ClickToMove
+&#9;&#9;DPad
+&#9;&#9;KeyboardMovement
+&#9;&#9;Thumbpad
+&#9;&#9;Thumbstick
+&#9;&#9;TouchJump
+&#9;&#9;MasterControl
+&#9;&#9;VehicleController
+--]]
+
+--[[ Services ]]--
+local ContextActionService = game:GetService(&apos;ContextActionService&apos;)
+local Players = game:GetService(&apos;Players&apos;)
+local UserInputService = game:GetService(&apos;UserInputService&apos;)
+-- Settings and GameSettings are read only
+local Settings = UserSettings()
+local GameSettings = Settings.GameSettings
+
+-- Issue with play solo? (F6)
+while not UserInputService.KeyboardEnabled and not UserInputService.TouchEnabled and not UserInputService.GamepadEnabled do
+&#9;wait()
+end
+
+--[[ Script Variables ]]--
+while not Players.LocalPlayer do
+&#9;wait()
+end
+
+local lastInputType = nil
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild(&apos;PlayerGui&apos;)
+local IsTouchDevice = UserInputService.TouchEnabled
+local UserMovementMode = IsTouchDevice and GameSettings.TouchMovementMode or GameSettings.ComputerMovementMode
+local DevMovementMode = IsTouchDevice and LocalPlayer.DevTouchMovementMode or LocalPlayer.DevComputerMovementMode
+local IsUserChoice = (IsTouchDevice and DevMovementMode == Enum.DevTouchMovementMode.UserChoice) or (DevMovementMode == Enum.DevComputerMovementMode.UserChoice)
+local TouchGui = nil
+local TouchControlFrame = nil
+local IsModalEnabled = UserInputService.ModalEnabled
+local BindableEvent_OnFailStateChanged = nil
+local isJumpEnabled = false
+
+local DynamicThumbstickAvailable = pcall(function() 
+&#9;return Enum.DevTouchMovementMode.DynamicThumbstick and Enum.TouchMovementMode.DynamicThumbstick
+end)
+
+local ControlState = {}
+ControlState.Current = nil
+function ControlState:SwitchTo(newControl)
+&#9;if ControlState.Current == newControl then return end
+&#9;
+&#9;if ControlState.Current then
+&#9;&#9;ControlState.Current:Disable()
+&#9;end
+&#9;
+&#9;ControlState.Current = newControl
+&#9;
+&#9;if ControlState.Current then
+&#9;&#9;ControlState.Current:Enable()
+&#9;end
+end
+
+function ControlState:IsTouchJumpModuleUsed()
+&#9;return isJumpEnabled
+end
+
+--[[ Modules ]]--
+local ClickToMoveTouchControls = nil
+local ControlModules = {}
+
+local MasterControl = require(script:WaitForChild(&apos;MasterControl&apos;))
+--MasterControl needs access to ControlState in order to be able to fully enable and disable control
+MasterControl.ControlState = ControlState
+
+local DynamicThumbstickModule = require(script.MasterControl:WaitForChild(&apos;DynamicThumbstick&apos;))
+local ThumbstickModule = require(script.MasterControl:WaitForChild(&apos;Thumbstick&apos;))
+local ThumbpadModule = require(script.MasterControl:WaitForChild(&apos;Thumbpad&apos;))
+local DPadModule = require(script.MasterControl:WaitForChild(&apos;DPad&apos;))
+local DefaultModule = ControlModules.Thumbstick
+local TouchJumpModule = require(script.MasterControl:WaitForChild(&apos;TouchJump&apos;))
+MasterControl.TouchJumpModule = TouchJumpModule
+
+local keyboardModule = require(script.MasterControl:WaitForChild(&apos;KeyboardMovement&apos;))
+ControlModules.Gamepad = require(script.MasterControl:WaitForChild(&apos;Gamepad&apos;))
+
+function getTouchModule()
+&#9;local module = nil
+&#9;if not IsUserChoice then
+&#9;&#9;if DynamicThumbstickAvailable and DevMovementMode == Enum.DevTouchMovementMode.DynamicThumbstick then
+&#9;&#9;&#9;module = DynamicThumbstickModule
+&#9;&#9;&#9;isJumpEnabled = false
+&#9;&#9;elseif DevMovementMode == Enum.DevTouchMovementMode.Thumbstick then
+&#9;&#9;&#9;module = ThumbstickModule
+&#9;&#9;&#9;isJumpEnabled = true
+&#9;&#9;elseif DevMovementMode == Enum.DevTouchMovementMode.Thumbpad then
+&#9;&#9;&#9;module = ThumbpadModule
+&#9;&#9;&#9;isJumpEnabled = true
+&#9;&#9;elseif DevMovementMode == Enum.DevTouchMovementMode.DPad then
+&#9;&#9;&#9;module = DPadModule
+&#9;&#9;&#9;isJumpEnabled = false
+&#9;&#9;elseif DevMovementMode == Enum.DevTouchMovementMode.ClickToMove then
+&#9;&#9;&#9;-- Managed by CameraScript
+&#9;&#9;&#9;module = nil
+&#9;&#9;elseif DevMovementMode == Enum.DevTouchMovementMode.Scriptable then
+&#9;&#9;&#9;module = nil
+&#9;&#9;end
+&#9;else
+&#9;&#9;if DynamicThumbstickAvailable and UserMovementMode == Enum.TouchMovementMode.DynamicThumbstick then
+&#9;&#9;&#9;module = DynamicThumbstickModule
+&#9;&#9;&#9;isJumpEnabled = false
+&#9;&#9;elseif UserMovementMode == Enum.TouchMovementMode.Default or UserMovementMode == Enum.TouchMovementMode.Thumbstick then
+&#9;&#9;&#9;module = ThumbstickModule
+&#9;&#9;&#9;isJumpEnabled = true
+&#9;&#9;elseif UserMovementMode == Enum.TouchMovementMode.Thumbpad then
+&#9;&#9;&#9;module = ThumbpadModule
+&#9;&#9;&#9;isJumpEnabled = true
+&#9;&#9;elseif UserMovementMode == Enum.TouchMovementMode.DPad then
+&#9;&#9;&#9;module = DPadModule
+&#9;&#9;&#9;isJumpEnabled = false
+&#9;&#9;elseif UserMovementMode == Enum.TouchMovementMode.ClickToMove then
+&#9;&#9;&#9;-- Managed by CameraScript
+&#9;&#9;&#9;module = nil
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;return module
+end
+
+function setJumpModule(isEnabled)
+&#9;if not isEnabled then
+&#9;&#9;TouchJumpModule:Disable()
+&#9;elseif ControlState.Current == ControlModules.Touch then
+&#9;&#9;TouchJumpModule:Enable()
+&#9;end
+end
+
+function setClickToMove()
+&#9;if DevMovementMode == Enum.DevTouchMovementMode.ClickToMove or DevMovementMode == Enum.DevComputerMovementMode.ClickToMove or
+&#9;&#9;UserMovementMode == Enum.ComputerMovementMode.ClickToMove or UserMovementMode == Enum.TouchMovementMode.ClickToMove then
+&#9;&#9;--
+&#9;&#9;if lastInputType == Enum.UserInputType.Touch then
+&#9;&#9;&#9;ClickToMoveTouchControls = ControlState.Current
+&#9;&#9;end
+&#9;elseif ClickToMoveTouchControls then
+&#9;&#9;ClickToMoveTouchControls:Disable()
+&#9;&#9;ClickToMoveTouchControls = nil
+&#9;end
+end
+
+ControlModules.Touch = {}
+ControlModules.Touch.Current = nil
+ControlModules.Touch.LocalPlayerChangedCon = nil
+ControlModules.Touch.GameSettingsChangedCon = nil
+
+function ControlModules.Touch:RefreshControlStyle()
+&#9;if ControlModules.Touch.Current then
+&#9;&#9;ControlModules.Touch.Current:Disable()
+&#9;end
+&#9;setJumpModule(false)
+&#9;TouchJumpModule:Disable()
+&#9;ControlModules.Touch:Enable()
+end
+function ControlModules.Touch:DisconnectEvents()
+&#9;if ControlModules.Touch.LocalPlayerChangedCon then
+&#9;&#9;ControlModules.Touch.LocalPlayerChangedCon:disconnect()
+&#9;&#9;ControlModules.Touch.LocalPlayerChangedCon = nil
+&#9;end
+&#9;if ControlModules.Touch.GameSettingsChangedCon then
+&#9;&#9;ControlModules.Touch.GameSettingsChangedCon:disconnect()
+&#9;&#9;ControlModules.Touch.GameSettingsChangedCon = nil
+&#9;end
+end
+function ControlModules.Touch:Enable()
+&#9;DevMovementMode = LocalPlayer.DevTouchMovementMode
+&#9;IsUserChoice = DevMovementMode == Enum.DevTouchMovementMode.UserChoice
+&#9;if IsUserChoice then
+&#9;&#9;UserMovementMode = GameSettings.TouchMovementMode
+&#9;end
+&#9;&#9;
+&#9;local newModuleToEnable = getTouchModule()
+&#9;if newModuleToEnable then
+&#9;&#9;setClickToMove()
+&#9;&#9;setJumpModule(isJumpEnabled)
+&#9;&#9;
+&#9;&#9;newModuleToEnable:Enable()
+&#9;&#9;ControlModules.Touch.Current = newModuleToEnable
+&#9;&#9;&#9;&#9;
+&#9;&#9;if isJumpEnabled then TouchJumpModule:Enable() end
+&#9;end
+&#9;
+&#9;-- This being within the above if statement was causing issues with ClickToMove, which isn&apos;t a module within this script.
+&#9;ControlModules.Touch:DisconnectEvents()
+&#9;ControlModules.Touch.LocalPlayerChangedCon = LocalPlayer.Changed:connect(function(property)
+&#9;&#9;if property == &apos;DevTouchMovementMode&apos; then
+&#9;&#9;&#9;ControlModules.Touch:RefreshControlStyle()
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;ControlModules.Touch.GameSettingsChangedCon = GameSettings.Changed:connect(function(property)
+&#9;&#9;if property == &apos;TouchMovementMode&apos; then
+&#9;&#9;&#9;ControlModules.Touch:RefreshControlStyle()
+&#9;&#9;end
+&#9;end)
+end
+function ControlModules.Touch:Disable()
+&#9;ControlModules.Touch:DisconnectEvents()
+&#9;
+&#9;local newModuleToDisable = getTouchModule()
+&#9;
+&#9;if newModuleToDisable == ThumbstickModule or
+&#9;&#9;newModuleToDisable == DPadModule or
+&#9;&#9;newModuleToDisable == ThumbpadModule or
+&#9;&#9;newModuleToDisable == DynamicThumbstickModule then
+&#9;&#9;&#9;newModuleToDisable:Disable()
+&#9;&#9;&#9;setJumpModule(false)
+&#9;&#9;&#9;TouchJumpModule:Disable()
+&#9;end
+end
+
+local function getKeyboardModule()
+&#9;-- NOTE: Click to move still uses keyboard. Leaving cases in case this ever changes.
+&#9;local whichModule = nil
+&#9;if not IsUserChoice then
+&#9;&#9;if DevMovementMode == Enum.DevComputerMovementMode.KeyboardMouse then
+&#9;&#9;&#9;whichModule = keyboardModule
+&#9;&#9;elseif DevMovementMode == Enum.DevComputerMovementMode.ClickToMove then
+&#9;&#9;&#9;-- Managed by CameraScript
+&#9;&#9;&#9;whichModule = keyboardModule
+&#9;&#9;end 
+&#9;else
+&#9;&#9;if UserMovementMode == Enum.ComputerMovementMode.KeyboardMouse or UserMovementMode == Enum.ComputerMovementMode.Default then
+&#9;&#9;&#9;whichModule = keyboardModule
+&#9;&#9;elseif UserMovementMode == Enum.ComputerMovementMode.ClickToMove then
+&#9;&#9;&#9;-- Managed by CameraScript
+&#9;&#9;&#9;whichModule = keyboardModule
+&#9;&#9;end
+&#9;end
+
+&#9;return whichModule
+end
+
+ControlModules.Keyboard = {}
+function ControlModules.Keyboard:RefreshControlStyle()
+&#9;ControlModules.Keyboard:Disable()
+&#9;ControlModules.Keyboard:Enable()
+end
+function ControlModules.Keyboard:Enable()
+&#9;DevMovementMode = LocalPlayer.DevComputerMovementMode
+&#9;IsUserChoice = DevMovementMode == Enum.DevComputerMovementMode.UserChoice
+&#9;if IsUserChoice then
+&#9;&#9;UserMovementMode = GameSettings.ComputerMovementMode
+&#9;end
+&#9;&#9;
+&#9;local newModuleToEnable = getKeyboardModule()
+&#9;if newModuleToEnable then
+&#9;&#9;newModuleToEnable:Enable()
+&#9;end
+&#9;
+&#9;ControlModules.Keyboard:DisconnectEvents()
+&#9;ControlModules.Keyboard.LocalPlayerChangedCon = LocalPlayer.Changed:connect(function(property)
+&#9;&#9;if property == &apos;DevComputerMovementMode&apos; then
+&#9;&#9;&#9;ControlModules.Keyboard:RefreshControlStyle()
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;ControlModules.Keyboard.GameSettingsChangedCon = GameSettings.Changed:connect(function(property)
+&#9;&#9;if property == &apos;ComputerMovementMode&apos; then
+&#9;&#9;&#9;ControlModules.Keyboard:RefreshControlStyle()
+&#9;&#9;end
+&#9;end)
+end
+function ControlModules.Keyboard:DisconnectEvents()
+&#9;if ControlModules.Keyboard.LocalPlayerChangedCon then
+&#9;&#9;ControlModules.Keyboard.LocalPlayerChangedCon:disconnect()
+&#9;&#9;ControlModules.Keyboard.LocalPlayerChangedCon = nil
+&#9;end
+&#9;if ControlModules.Keyboard.GameSettingsChangedCon then
+&#9;&#9;ControlModules.Keyboard.GameSettingsChangedCon:disconnect()
+&#9;&#9;ControlModules.Keyboard.GameSettingsChangedCon = nil
+&#9;end
+end
+function ControlModules.Keyboard:Disable()
+&#9;ControlModules.Keyboard:DisconnectEvents()
+&#9;local newModuleToDisable = getKeyboardModule()
+&#9;if newModuleToDisable then
+&#9;&#9;newModuleToDisable:Disable()
+&#9;end
+end
+
+if IsTouchDevice then
+&#9;BindableEvent_OnFailStateChanged = script.Parent:WaitForChild(&apos;OnClickToMoveFailStateChange&apos;)
+end
+
+-- not used, but needs to be required
+local VehicleController = require(script.MasterControl:WaitForChild(&apos;VehicleController&apos;))
+
+
+--[[ Initialization/Setup ]]--
+local function createTouchGuiContainer()
+&#9;if TouchGui then TouchGui:Destroy() end
+&#9;
+&#9;-- Container for all touch device guis
+&#9;TouchGui = Instance.new(&apos;ScreenGui&apos;)
+&#9;TouchGui.Name = &quot;TouchGui&quot;
+&#9;TouchGui.ResetOnSpawn = false
+&#9;TouchGui.Parent = PlayerGui
+&#9;
+&#9;TouchControlFrame = Instance.new(&apos;Frame&apos;)
+&#9;TouchControlFrame.Name = &quot;TouchControlFrame&quot;
+&#9;TouchControlFrame.Size = UDim2.new(1, 0, 1, 0)
+&#9;TouchControlFrame.BackgroundTransparency = 1
+&#9;TouchControlFrame.Parent = TouchGui
+&#9;
+&#9;ThumbstickModule:Create(TouchControlFrame)
+&#9;DPadModule:Create(TouchControlFrame)
+&#9;ThumbpadModule:Create(TouchControlFrame)
+&#9;TouchJumpModule:Create(TouchControlFrame)
+&#9;DynamicThumbstickModule:Create(TouchControlFrame)
+end
+
+--[[ Settings Changed Connections ]]--
+LocalPlayer.Changed:connect(function(property)
+&#9;if lastInputType == Enum.UserInputType.Touch and property == &apos;DevTouchMovementMode&apos; then
+&#9;&#9;ControlState:SwitchTo(ControlModules.Touch)
+&#9;elseif UserInputService.KeyboardEnabled and property == &apos;DevComputerMovementMode&apos; then
+&#9;&#9;ControlState:SwitchTo(ControlModules.Keyboard)
+&#9;end
+end)
+
+GameSettings.Changed:connect(function(property)
+&#9;if not IsUserChoice then return end
+&#9;if property == &apos;TouchMovementMode&apos; or property == &apos;ComputerMovementMode&apos; then
+&#9;&#9;UserMovementMode = GameSettings[property]
+&#9;&#9;if property == &apos;TouchMovementMode&apos; then
+&#9;&#9;&#9;ControlState:SwitchTo(ControlModules.Touch)
+&#9;&#9;elseif property == &apos;ComputerMovementMode&apos; then
+&#9;&#9;&#9;ControlState:SwitchTo(ControlModules.Keyboard)
+&#9;&#9;end
+&#9;end
+end)
+
+--[[ Touch Events ]]--
+UserInputService.Changed:connect(function(property)
+&#9;if property == &apos;ModalEnabled&apos; then
+&#9;&#9;IsModalEnabled = UserInputService.ModalEnabled
+
+&#9;&#9;if lastInputType == Enum.UserInputType.Touch then
+&#9;&#9;&#9;if ControlState.Current == ControlModules.Touch and IsModalEnabled then
+&#9;&#9;&#9;&#9;ControlState:SwitchTo(nil)
+&#9;&#9;&#9;elseif ControlState.Current == nil and not IsModalEnabled then
+&#9;&#9;&#9;&#9;ControlState:SwitchTo(ControlModules.Touch)
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+end)
+
+if BindableEvent_OnFailStateChanged then
+&#9;BindableEvent_OnFailStateChanged.Event:connect(function(isOn)
+&#9;&#9;if lastInputType == Enum.UserInputType.Touch and ClickToMoveTouchControls then
+&#9;&#9;&#9;if isOn then
+&#9;&#9;&#9;&#9;ControlState:SwitchTo(ClickToMoveTouchControls)
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;ControlState:SwitchTo(nil)
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end)
+end
+
+local switchToInputType = function(newLastInputType)
+&#9;lastInputType = newLastInputType
+&#9;
+&#9;if lastInputType == Enum.UserInputType.Touch then
+&#9;&#9;&#9;&#9;ControlState:SwitchTo(ControlModules.Touch)
+&#9;elseif lastInputType == Enum.UserInputType.Keyboard or
+&#9;&#9;&#9;lastInputType == Enum.UserInputType.MouseButton1 or
+&#9;&#9;&#9;lastInputType == Enum.UserInputType.MouseButton2 or
+&#9;&#9;&#9;lastInputType == Enum.UserInputType.MouseButton3 or
+&#9;&#9;&#9;lastInputType == Enum.UserInputType.MouseWheel or
+&#9;&#9;&#9;lastInputType == Enum.UserInputType.MouseMovement  then
+&#9;&#9;&#9;&#9;ControlState:SwitchTo(ControlModules.Keyboard)
+&#9;elseif lastInputType == Enum.UserInputType.Gamepad1 or
+&#9;&#9;&#9;lastInputType == Enum.UserInputType.Gamepad2 or
+&#9;&#9;&#9;lastInputType == Enum.UserInputType.Gamepad3 or
+&#9;&#9;&#9;lastInputType == Enum.UserInputType.Gamepad4 then
+&#9;&#9;&#9;&#9;ControlState:SwitchTo(ControlModules.Gamepad)
+&#9;end
+end
+
+if IsTouchDevice then
+&#9;createTouchGuiContainer()
+end
+
+MasterControl:Init()
+
+UserInputService.GamepadDisconnected:connect(function(gamepadEnum)
+&#9;local connectedGamepads = UserInputService:GetConnectedGamepads()
+&#9;if #connectedGamepads &gt; 0 then return end
+&#9;
+&#9;if UserInputService.KeyboardEnabled then
+&#9;&#9;ControlState:SwitchTo(ControlModules.Keyboard)
+&#9;elseif IsTouchDevice then
+&#9;&#9;ControlState:SwitchTo(ControlModules.Touch)
+&#9;end
+end)
+
+UserInputService.GamepadConnected:connect(function(gamepadEnum)
+&#9;ControlState:SwitchTo(ControlModules.Gamepad)
+end)
+
+switchToInputType(UserInputService:GetLastInputType())
+UserInputService.LastInputTypeChanged:connect(switchToInputType)</ProtectedString>
+		</Properties>
+		<Item class="ModuleScript" referent="RBX88BC9D73715D42258E60606D2C2EC7ED">
+			<Properties>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">MasterControl</string>
+				<ProtectedString name="Source">--[[
+&#9;// FileName: MasterControl
+&#9;// Version 1.0
+&#9;// Written by: jeditkacheff
+&#9;// Description: All character control scripts go thru this script, this script makes sure all actions are performed
+--]]
+
+-- [[ Constants ]]--
+local ZERO_VECTOR3 = Vector3.new(0, 0, 0)
+local STATE_JUMPING = Enum.HumanoidStateType.Jumping
+local STATE_FREEFALL = Enum.HumanoidStateType.Freefall
+local STATE_LANDED = Enum.HumanoidStateType.Landed
+
+--[[ Local Variables ]]--
+local MasterControl = {}
+
+local Players = game:GetService(&apos;Players&apos;)
+local RunService = game:GetService(&apos;RunService&apos;)
+local VRService = game:GetService(&apos;VRService&apos;)
+local VREnabled = VRService.VREnabled
+
+while not Players.LocalPlayer do
+&#9;Players.PlayerAdded:wait()
+end
+local LocalPlayer = Players.LocalPlayer
+local LocalCharacter = LocalPlayer.Character
+local CachedHumanoid = nil
+
+local isJumping = false
+local moveValue = Vector3.new(0, 0, 0)
+
+local isJumpEnabled = true
+local areControlsEnabled = true
+
+--[[ Local Functions ]]--
+function MasterControl:GetHumanoid()
+&#9;if LocalCharacter then
+&#9;&#9;if CachedHumanoid then
+&#9;&#9;&#9;return CachedHumanoid
+&#9;&#9;else
+&#9;&#9;&#9;CachedHumanoid = LocalCharacter:FindFirstChildOfClass(&quot;Humanoid&quot;)
+&#9;&#9;&#9;return CachedHumanoid
+&#9;&#9;end
+&#9;end
+end
+
+VRService.Changed:connect(function(prop)
+&#9;if prop == &quot;VREnabled&quot; then
+&#9;&#9;VREnabled = VRService.VREnabled
+&#9;end
+end)
+
+local characterAncestryChangedConn = nil
+local characterChildRemovedConn = nil
+local function characterAdded(character)
+&#9;if characterAncestryChangedConn then
+&#9;&#9;characterAncestryChangedConn:disconnect()
+&#9;end
+
+&#9;if characterChildRemovedConn then
+&#9;&#9;characterChildRemovedConn:disconnect()
+&#9;end&#9;
+&#9;
+&#9;LocalCharacter = character
+&#9;CachedHumanoid = LocalCharacter:FindFirstChildOfClass(&quot;Humanoid&quot;)
+&#9;characterAncestryChangedConn = character.AncestryChanged:connect(function()
+&#9;&#9;if character.Parent == nil then
+&#9;&#9;&#9;LocalCharacter = nil
+&#9;&#9;else
+&#9;&#9;&#9;LocalCharacter = character
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;characterChildRemovedConn = character.ChildRemoved:connect(function(child)
+&#9;&#9;if child == CachedHumanoid then
+&#9;&#9;&#9;CachedHumanoid = nil
+&#9;&#9;end
+&#9;end)
+end
+
+if LocalCharacter then
+&#9;characterAdded(LocalCharacter)
+end
+LocalPlayer.CharacterAdded:connect(characterAdded)
+
+
+local getHumanoid = MasterControl.GetHumanoid
+local moveFunc = LocalPlayer.Move
+local getUserCFrame = VRService.GetUserCFrame
+local updateMovement = function()
+&#9;
+&#9;if not areControlsEnabled then return end
+&#9;
+&#9;local humanoid = getHumanoid()
+&#9;if not humanoid then return end
+&#9;
+&#9;if isJumpEnabled and isJumping and not humanoid.PlatformStand then
+&#9;&#9;local state = humanoid:GetState()
+&#9;&#9;if state ~= STATE_JUMPING and state ~= STATE_FREEFALL and state ~= STATE_LANDED then
+&#9;&#9;&#9;humanoid.Jump = isJumping
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;local adjustedMoveValue = moveValue
+&#9;if VREnabled and workspace.CurrentCamera.HeadLocked then
+&#9;&#9;local vrFrame = getUserCFrame(VRService, Enum.UserCFrame.Head)
+&#9;&#9;local lookVector = Vector3.new(vrFrame.lookVector.X, 0, vrFrame.lookVector.Z).unit
+&#9;&#9;local rotation = CFrame.new(ZERO_VECTOR3, lookVector)
+&#9;&#9;adjustedMoveValue = rotation:vectorToWorldSpace(adjustedMoveValue)
+&#9;end
+
+&#9;moveFunc(LocalPlayer, adjustedMoveValue, true)
+end
+
+--[[ Public API ]]--
+function MasterControl:Init()
+&#9;RunService:BindToRenderStep(&quot;MasterControlStep&quot;, Enum.RenderPriority.Input.Value, updateMovement)
+end
+
+function MasterControl:Enable()
+&#9;areControlsEnabled = true
+&#9;isJumpEnabled = true
+&#9;
+&#9;if self.ControlState.Current then
+&#9;&#9;self.ControlState.Current:Enable()
+&#9;end
+end
+
+function MasterControl:Disable()
+&#9;
+&#9;if self.ControlState.Current then
+&#9;&#9;self.ControlState.Current:Disable()
+&#9;end
+&#9;
+&#9;--After current control state is disabled, moveValue has been set to zero,
+&#9;--Call updateMovement one last time to make sure this propagates to the engine -
+&#9;--Otherwise if disabled while humanoid is moving, humanoid won&apos;t stop moving.
+&#9;updateMovement()
+&#9;
+&#9;isJumping = false
+&#9;areControlsEnabled = false
+end
+
+function MasterControl:EnableJump()
+&#9;isJumpEnabled = true
+&#9;if areControlsEnabled and self.ControlState:IsTouchJumpModuleUsed() then
+&#9;&#9;self.TouchJumpModule:Enable()
+&#9;end
+end
+
+function MasterControl:DisableJump()
+&#9;isJumpEnabled = false
+&#9;if self.ControlState:IsTouchJumpModuleUsed() then
+&#9;&#9;self.TouchJumpModule:Disable()
+&#9;end
+end
+
+function MasterControl:AddToPlayerMovement(playerMoveVector)
+&#9;moveValue = Vector3.new(moveValue.X + playerMoveVector.X, moveValue.Y + playerMoveVector.Y, moveValue.Z + playerMoveVector.Z)
+end
+
+function MasterControl:GetMoveVector()
+&#9;return moveValue
+end
+
+function MasterControl:SetIsJumping(jumping)
+&#9;if not isJumpEnabled then return end
+&#9;isJumping = jumping
+&#9;local humanoid = self:GetHumanoid()
+&#9;if humanoid and not humanoid.PlatformStand then
+&#9;&#9;humanoid.Jump = isJumping
+&#9;end
+end
+
+function MasterControl:DoJump()
+&#9;if not isJumpEnabled then return end
+&#9;local humanoid = self:GetHumanoid()
+&#9;if humanoid then
+&#9;&#9;humanoid.Jump = true
+&#9;end
+end
+
+return MasterControl
+
+</ProtectedString>
+			</Properties>
+			<Item class="ModuleScript" referent="RBX54AF403FDF86481C8A957949FBE7F81D">
+				<Properties>
+					<string name="Name">DPad</string>
+					<ProtectedString name="Source">--[[
+&#9;// FileName: DPad
+&#9;// Version 1.0
+&#9;// Written by: jmargh
+&#9;// Description: Implements DPad controls for touch devices
+--]]
+
+local Players = game:GetService(&apos;Players&apos;)
+local GuiService = game:GetService(&apos;GuiService&apos;)
+
+local DPad = {}
+
+local MasterControl = require(script.Parent)
+
+--[[ Script Variables ]]--
+while not Players.LocalPlayer do
+&#9;wait()
+end
+local LocalPlayer = Players.LocalPlayer
+local DPadFrame = nil
+local TouchObject = nil
+local OnInputEnded = nil&#9;&#9;-- defined in Create()
+
+--[[ Constants ]]--
+local DPAD_SHEET = &quot;rbxasset://textures/ui/DPadSheet.png&quot;
+local COMPASS_DIR = {
+&#9;Vector3.new(1, 0, 0),&#9;&#9;&#9;-- E
+&#9;Vector3.new(1, 0, 1).unit,&#9;&#9;-- SE
+&#9;Vector3.new(0, 0, 1),&#9;&#9;&#9;-- S
+&#9;Vector3.new(-1, 0, 1).unit,&#9;&#9;-- SW
+&#9;Vector3.new(-1, 0, 0),&#9;&#9;&#9;-- W
+&#9;Vector3.new(-1, 0, -1).unit,&#9;-- NW
+&#9;Vector3.new(0, 0, -1),&#9;&#9;&#9;-- N
+&#9;Vector3.new(1, 0, -1).unit,&#9;&#9;-- NE
+}
+
+--[[ lua Function Cache ]]--
+local ATAN2 = math.atan2
+local FLOOR = math.floor
+local PI = math.pi
+
+--[[ Local Functions ]]--
+local function createArrowLabel(name, position, size, rectOffset, rectSize)
+&#9;local image = Instance.new(&apos;ImageLabel&apos;)
+&#9;image.Name = name
+&#9;image.Image = DPAD_SHEET
+&#9;image.ImageRectOffset = rectOffset
+&#9;image.ImageRectSize = rectSize
+&#9;image.BackgroundTransparency = 1
+&#9;image.Size = size
+&#9;image.Position = position
+&#9;image.Parent = DPadFrame
+&#9;
+&#9;return image
+end
+
+local function getCenterPosition()
+&#9;return Vector2.new(DPadFrame.AbsolutePosition.x + DPadFrame.AbsoluteSize.x/2, DPadFrame.AbsolutePosition.y + DPadFrame.AbsoluteSize.y/2)
+end
+
+--[[ Public API ]]--
+function DPad:Enable()
+&#9;DPadFrame.Visible = true
+end
+
+function DPad:Disable()
+&#9;DPadFrame.Visible = false
+&#9;OnInputEnded()
+end
+
+function DPad:Create(parentFrame)
+&#9;if DPadFrame then
+&#9;&#9;DPadFrame:Destroy()
+&#9;&#9;DPadFrame = nil
+&#9;end
+&#9;
+&#9;local position = UDim2.new(0, 10, 1, -230)
+&#9;DPadFrame = Instance.new(&apos;Frame&apos;)
+&#9;DPadFrame.Name = &quot;DPadFrame&quot;
+&#9;DPadFrame.Active = true
+&#9;DPadFrame.Visible = false
+&#9;DPadFrame.Size = UDim2.new(0, 192, 0, 192)
+&#9;DPadFrame.Position = position
+&#9;DPadFrame.BackgroundTransparency = 1
+&#9;
+&#9;local smArrowSize = UDim2.new(0, 23, 0, 23)
+&#9;local lgArrowSize = UDim2.new(0, 64, 0, 64)
+&#9;local smImgOffset = Vector2.new(46, 46)
+&#9;local lgImgOffset = Vector2.new(128, 128)
+&#9;
+&#9;local bBtn = createArrowLabel(&quot;BackButton&quot;, UDim2.new(0.5, -32, 1, -64), lgArrowSize, Vector2.new(0, 0), lgImgOffset)
+&#9;local fBtn = createArrowLabel(&quot;ForwardButton&quot;, UDim2.new(0.5, -32, 0, 0), lgArrowSize, Vector2.new(0, 258), lgImgOffset)
+&#9;local lBtn = createArrowLabel(&quot;LeftButton&quot;, UDim2.new(0, 0, 0.5, -32), lgArrowSize, Vector2.new(129, 129), lgImgOffset)
+&#9;local rBtn = createArrowLabel(&quot;RightButton&quot;, UDim2.new(1, -64, 0.5, -32), lgArrowSize, Vector2.new(0, 129), lgImgOffset)
+&#9;local jumpBtn = createArrowLabel(&quot;JumpButton&quot;, UDim2.new(0.5, -32, 0.5, -32), lgArrowSize, Vector2.new(129, 0), lgImgOffset)
+&#9;local flBtn = createArrowLabel(&quot;ForwardLeftButton&quot;, UDim2.new(0, 35, 0, 35), smArrowSize, Vector2.new(129, 258), smImgOffset)
+&#9;local frBtn = createArrowLabel(&quot;ForwardRightButton&quot;, UDim2.new(1, -55, 0, 35), smArrowSize, Vector2.new(176, 258), smImgOffset)
+&#9;flBtn.Visible = false
+&#9;frBtn.Visible = false
+&#9;
+&#9;-- input connections
+&#9;jumpBtn.InputBegan:connect(function(inputObject)
+&#9;&#9;MasterControl:DoJump()
+&#9;end)
+&#9;
+&#9;local movementVector = Vector3.new(0,0,0)
+&#9;local function normalizeDirection(inputPosition)
+&#9;&#9;local jumpRadius = jumpBtn.AbsoluteSize.x/2
+&#9;&#9;local centerPosition = getCenterPosition()
+&#9;&#9;local direction = Vector2.new(inputPosition.x - centerPosition.x, inputPosition.y - centerPosition.y)
+&#9;&#9;
+&#9;&#9;if direction.magnitude &gt; jumpRadius then
+&#9;&#9;&#9;local angle = ATAN2(direction.y, direction.x)
+&#9;&#9;&#9;local octant = (FLOOR(8 * angle / (2 * PI) + 8.5)%8) + 1
+&#9;&#9;&#9;movementVector = COMPASS_DIR[octant]
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;if not flBtn.Visible and movementVector == COMPASS_DIR[7] then
+&#9;&#9;&#9;flBtn.Visible = true
+&#9;&#9;&#9;frBtn.Visible = true
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;DPadFrame.InputBegan:connect(function(inputObject)
+&#9;&#9;if TouchObject or inputObject.UserInputType ~= Enum.UserInputType.Touch then
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;MasterControl:AddToPlayerMovement(-movementVector)
+&#9;&#9;
+&#9;&#9;TouchObject = inputObject
+&#9;&#9;normalizeDirection(TouchObject.Position)
+&#9;&#9;
+&#9;&#9;MasterControl:AddToPlayerMovement(movementVector)
+&#9;end)
+&#9;
+&#9;DPadFrame.InputChanged:connect(function(inputObject)
+&#9;&#9;if inputObject == TouchObject then
+&#9;&#9;&#9;MasterControl:AddToPlayerMovement(-movementVector)
+&#9;&#9;&#9;normalizeDirection(TouchObject.Position)
+&#9;&#9;&#9;MasterControl:AddToPlayerMovement(movementVector)
+&#9;&#9;&#9;MasterControl:SetIsJumping(false)
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;OnInputEnded = function()
+&#9;&#9;TouchObject = nil
+&#9;&#9;flBtn.Visible = false
+&#9;&#9;frBtn.Visible = false
+&#9;&#9;
+&#9;&#9;MasterControl:AddToPlayerMovement(-movementVector)
+&#9;&#9;movementVector = Vector3.new(0, 0, 0)
+&#9;end
+&#9;
+&#9;DPadFrame.InputEnded:connect(function(inputObject)
+&#9;&#9;if inputObject == TouchObject then
+&#9;&#9;&#9;OnInputEnded()
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;GuiService.MenuOpened:connect(function()
+&#9;&#9;if TouchObject then
+&#9;&#9;&#9;OnInputEnded()
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;DPadFrame.Parent = parentFrame
+end
+
+return DPad
+</ProtectedString>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX4B0C8C744A2F4E4DA45785ED1416E208">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">DynamicThumbstick</string>
+					<string name="ScriptGuid">{1A211679-B90E-480E-8DE1-31C18D774A22}</string>
+					<ProtectedString name="Source">--[[
+&#9;// FileName: DynamicThumbstick
+&#9;// Version 0.9
+&#9;// Written by: jhelms
+&#9;// Description: Implements dynamic thumbstick controls for touch devices
+--]]
+local Players = game:GetService(&apos;Players&apos;)
+local UserInputService = game:GetService(&apos;UserInputService&apos;)
+local GuiService = game:GetService(&apos;GuiService&apos;)
+local RunService = game:GetService(&apos;RunService&apos;)
+
+local MasterControl = require(script.Parent)
+
+local Thumbstick = {}
+
+--[[ Script Variables ]]--
+while not Players.LocalPlayer do
+&#9;Players.PlayerAdded:wait()
+end
+local LocalPlayer = Players.LocalPlayer
+
+local Tools = {}
+local IsAToolEquipped = false
+
+local RevertAutoJumpEnabledToFalse = false
+
+local ThumbstickFrame = nil
+local StartImage = nil
+local EndImage = nil
+local MiddleImages = {}
+
+local IsFollowStick = false
+local ThumbstickFrame = nil
+local OnMoveTouchEnded = nil&#9;&#9;-- defined in Create()
+local OnTouchMovedCn = nil
+local OnTouchEndedCn = nil
+local OnRenderSteppedCn = nil
+local currentMoveVector = Vector3.new(0,0,0)
+
+--[[ Constants ]]--
+
+local IMAGE_DISK = &quot;rbxasset://textures/ui/Input/Disk_padded.png&quot;
+local IMAGE_RING = &quot;rbxasset://textures/ui/Input/Ring_padded.png&quot;
+
+local MIDDLE_TRANSPARENCIES = {
+&#9;1 - 0.69,
+&#9;1 - 0.50,
+&#9;1 - 0.40,
+&#9;1 - 0.30,
+&#9;1 - 0.20,
+&#9;1 - 0.10,
+&#9;1 - 0.05
+}
+local NUM_MIDDLE_IMAGES = #MIDDLE_TRANSPARENCIES
+
+local TOUCH_IS_TAP_TIME_THRESHOLD = 0.5
+local TOUCH_IS_TAP_DISTANCE_THRESHOLD = 25
+
+local HasFadedBackgroundInPortrait = false
+local HasFadedBackgroundInLandscape = false
+local FadeInAndOutBackground = true
+local FadeInAndOutMaxAlpha = 0.35
+
+local FADE_IN_OUT_HALF_DURATION_DEFAULT = 0.3
+local FADE_IN_OUT_HALF_DURATION_ORIENTATION_CHANGE = 2
+local FADE_IN_OUT_BALANCE_DEFAULT = 0.5
+local FadeInAndOutHalfDuration = FADE_IN_OUT_HALF_DURATION_DEFAULT
+local FadeInAndOutBalance = FADE_IN_OUT_BALANCE_DEFAULT
+
+--[[ Local functionality ]]--
+
+local function isDynamicThumbstickEnabled()
+&#9;return ThumbstickFrame and ThumbstickFrame.Visible
+end
+
+local function enableAutoJump(humanoid)
+&#9;if humanoid and isDynamicThumbstickEnabled() then
+&#9;&#9;local shouldRevert = humanoid.AutoJumpEnabled == false
+&#9;&#9;shouldRevert = shouldRevert and LocalPlayer.DevTouchMovementMode == Enum.DevTouchMovementMode.UserChoice
+&#9;&#9;RevertAutoJumpEnabledToFalse = shouldRevert
+&#9;&#9;humanoid.AutoJumpEnabled = true
+&#9;end
+end
+
+do
+&#9;local function onCharacterAdded(character)&#9;
+&#9;&#9;
+&#9;&#9;for _, child in ipairs(LocalPlayer.Character:GetChildren()) do
+&#9;&#9;&#9;if child:IsA(&quot;Tool&quot;) then
+&#9;&#9;&#9;&#9;IsAToolEquipped = true
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;character.ChildAdded:Connect(function(child)
+&#9;&#9;&#9;if child:IsA(&quot;Tool&quot;) then
+&#9;&#9;&#9;&#9;IsAToolEquipped = true
+&#9;&#9;&#9;elseif child:IsA(&quot;Humanoid&quot;) then
+&#9;&#9;&#9;&#9;enableAutoJump(child)
+&#9;&#9;&#9;end
+&#9;&#9;end)
+&#9;&#9;character.ChildRemoved:Connect(function(child)
+&#9;&#9;&#9;if child:IsA(&quot;Tool&quot;) then
+&#9;&#9;&#9;&#9;IsAToolEquipped = false
+&#9;&#9;&#9;end
+&#9;&#9;end)
+&#9;&#9;
+&#9;&#9;local humanoid = character:FindFirstChildOfClass(&quot;Humanoid&quot;)
+&#9;&#9;if humanoid then
+&#9;&#9;&#9;enableAutoJump(humanoid)
+&#9;&#9;end
+&#9;end
+&#9;LocalPlayer.CharacterAdded:Connect(onCharacterAdded)
+&#9;if LocalPlayer.Character then
+&#9;&#9;onCharacterAdded(LocalPlayer.Character)
+&#9;end
+end
+
+--[[ Public API ]]--
+function Thumbstick:Enable()
+&#9;ThumbstickFrame.Visible = true
+&#9;local humanoid = MasterControl:GetHumanoid()
+&#9;enableAutoJump(humanoid)
+end
+
+function Thumbstick:Disable()
+&#9;if RevertAutoJumpEnabledToFalse then
+&#9;&#9;local humanoid = MasterControl:GetHumanoid()
+&#9;&#9;if humanoid then
+&#9;&#9;&#9;humanoid.AutoJumpEnabled = false
+&#9;&#9;end
+&#9;end
+&#9;ThumbstickFrame.Visible = false
+&#9;OnMoveTouchEnded()
+end
+
+function Thumbstick:Create(parentFrame)
+&#9;if ThumbstickFrame then
+&#9;&#9;ThumbstickFrame:Destroy()
+&#9;&#9;ThumbstickFrame = nil
+&#9;&#9;if OnTouchMovedCn then
+&#9;&#9;&#9;OnTouchMovedCn:disconnect()
+&#9;&#9;&#9;OnTouchMovedCn = nil
+&#9;&#9;end
+&#9;&#9;if OnTouchEndedCn then
+&#9;&#9;&#9;OnTouchEndedCn:disconnect()
+&#9;&#9;&#9;OnTouchEndedCn = nil
+&#9;&#9;end
+&#9;&#9;if OnRenderSteppedCn then
+&#9;&#9;&#9;OnRenderSteppedCn:disconnect()
+&#9;&#9;&#9;OnRenderSteppedCn = nil
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;local ThumbstickSize = 40
+&#9;local ThumbstickRingSize = 58
+&#9;local MiddleSize = 13
+&#9;local MiddleSpacing = MiddleSize + 5
+&#9;local RadiusOfDeadZone = 2
+&#9;local RadiusOfMaxSpeed = 50&#9;
+&#9;
+&#9;local screenSize = parentFrame.AbsoluteSize
+&#9;local isBigScreen = math.min(screenSize.x, screenSize.y) &gt; 500
+&#9;if isBigScreen then
+&#9;&#9;ThumbstickSize = ThumbstickSize * 2
+&#9;&#9;ThumbstickRingSize = ThumbstickRingSize * 2
+&#9;&#9;MiddleSize = MiddleSize * 2
+&#9;&#9;MiddleSpacing = MiddleSpacing * 2
+&#9;&#9;RadiusOfDeadZone = RadiusOfDeadZone * 2
+&#9;&#9;RadiusOfMaxSpeed = RadiusOfMaxSpeed * 2
+&#9;end
+&#9;
+&#9;local color = Color3.fromRGB(255, 255, 255)
+&#9;
+&#9;local function layoutThumbstickFrame(portraitMode)
+&#9;&#9;if portraitMode then
+&#9;&#9;&#9;ThumbstickFrame.Size = UDim2.new(1, 0, .4, 0)
+&#9;&#9;&#9;ThumbstickFrame.Position = UDim2.new(0, 0, 0.6, 0)
+&#9;&#9;else
+&#9;&#9;&#9;ThumbstickFrame.Size = UDim2.new(1, 0, .5, 18)
+&#9;&#9;&#9;ThumbstickFrame.Position = UDim2.new(0, 0, 0.5, -18)
+&#9;&#9;end
+&#9;end
+&#9;&#9;
+&#9;ThumbstickFrame = Instance.new(&apos;Frame&apos;)
+&#9;ThumbstickFrame.Name = &quot;DynamicThumbstickFrame&quot;
+&#9;ThumbstickFrame.Active = false
+&#9;ThumbstickFrame.Visible = false
+&#9;ThumbstickFrame.BackgroundTransparency = 1.0
+&#9;ThumbstickFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+&#9;layoutThumbstickFrame()
+&#9;
+&#9;StartImage = Instance.new(&quot;ImageLabel&quot;)
+&#9;StartImage.Name = &quot;ThumbstickStart&quot;
+&#9;StartImage.Visible = false
+&#9;StartImage.BackgroundTransparency = 1
+&#9;StartImage.Image = IMAGE_RING
+&#9;StartImage.AnchorPoint = Vector2.new(0.5, 0.5)
+&#9;StartImage.Parent = ThumbstickFrame
+&#9;
+&#9;EndImage = Instance.new(&quot;ImageLabel&quot;)
+&#9;EndImage.Name = &quot;ThumbstickEnd&quot;
+&#9;EndImage.Visible = false
+&#9;EndImage.BackgroundTransparency = 1
+&#9;EndImage.Image = IMAGE_DISK
+&#9;EndImage.ImageTransparency = 0.20
+&#9;EndImage.AnchorPoint = Vector2.new(0.5, 0.5)
+&#9;EndImage.Parent = ThumbstickFrame
+&#9;
+&#9;for i = 1, NUM_MIDDLE_IMAGES do
+&#9;&#9;MiddleImages[i] = Instance.new(&quot;ImageLabel&quot;)
+&#9;&#9;MiddleImages[i].Name = &quot;ThumbstickMiddle&quot;
+&#9;&#9;MiddleImages[i].Visible = false
+&#9;&#9;MiddleImages[i].BackgroundTransparency = 1
+&#9;&#9;MiddleImages[i].Image = IMAGE_DISK
+&#9;&#9;MiddleImages[i].ImageTransparency = MIDDLE_TRANSPARENCIES[i]
+&#9;&#9;MiddleImages[i].AnchorPoint = Vector2.new(0.5, 0.5)
+&#9;&#9;MiddleImages[i].Parent = ThumbstickFrame
+&#9;end
+&#9;
+&#9;local CameraChangedConn = nil
+&#9;local function onWorkspaceChanged(property)
+&#9;&#9;if property == &apos;CurrentCamera&apos; then
+&#9;&#9;&#9;if CameraChangedConn then
+&#9;&#9;&#9;&#9;CameraChangedConn:Disconnect()
+&#9;&#9;&#9;&#9;CameraChangedConn = nil
+&#9;&#9;&#9;end
+&#9;&#9;&#9;local newCamera = workspace.CurrentCamera
+&#9;&#9;&#9;if newCamera then
+&#9;&#9;&#9;&#9;local size = newCamera.ViewportSize
+&#9;&#9;&#9;&#9;local portraitMode = size.X &lt; size.Y
+&#9;&#9;&#9;&#9;layoutThumbstickFrame(portraitMode)
+&#9;&#9;&#9;&#9;CameraChangedConn = newCamera.Changed:Connect(function(property)
+&#9;&#9;&#9;&#9;&#9;if property == &apos;ViewportSize&apos; then
+&#9;&#9;&#9;&#9;&#9;&#9;size = newCamera.ViewportSize
+&#9;&#9;&#9;&#9;&#9;&#9;portraitMode = size.X &lt; size.Y
+&#9;&#9;&#9;&#9;&#9;&#9;layoutThumbstickFrame(portraitMode)
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;end)
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+&#9;workspace.Changed:Connect(onWorkspaceChanged)
+&#9;if workspace.CurrentCamera then
+&#9;&#9;onWorkspaceChanged(&apos;CurrentCamera&apos;)
+&#9;end
+&#9;
+&#9;local JumpTouchObject = nil
+&#9;local JumpTouchStartTime = nil
+&#9;local JumpTouchStartPosition = nil
+&#9;
+&#9;local MoveTouchObject = nil
+&#9;local MoveTouchStartTime = nil
+&#9;local MoveTouchStartPosition = nil
+&#9;
+&#9;local function doMove(direction)
+&#9;&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;&#9;
+&#9;&#9;currentMoveVector = direction
+&#9;&#9;
+&#9;&#9;-- Scaled Radial Dead Zone
+&#9;&#9;local inputAxisMagnitude = currentMoveVector.magnitude
+&#9;&#9;if inputAxisMagnitude &lt; RadiusOfDeadZone then
+&#9;&#9;&#9;currentMoveVector = Vector3.new()
+&#9;&#9;else
+&#9;&#9;&#9;currentMoveVector = currentMoveVector.unit*(1 - math.max(0, (RadiusOfMaxSpeed - currentMoveVector.magnitude)/RadiusOfMaxSpeed))
+&#9;&#9;&#9;currentMoveVector = Vector3.new(currentMoveVector.x, 0, currentMoveVector.y)
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;MasterControl:AddToPlayerMovement(currentMoveVector)
+&#9;end
+&#9;
+&#9;local TweenInAlphaStart = nil
+&#9;local TweenOutAlphaStart = nil
+&#9;OnRenderSteppedCn = RunService.RenderStepped:Connect(function(step)
+&#9;&#9;if TweenInAlphaStart ~= nil then
+&#9;&#9;&#9;local delta = tick() - TweenInAlphaStart
+&#9;&#9;&#9;local fadeInTime = (FadeInAndOutHalfDuration * 2 * FadeInAndOutBalance)
+&#9;&#9;&#9;ThumbstickFrame.BackgroundTransparency = 1 - FadeInAndOutMaxAlpha*math.min(delta/fadeInTime, 1)
+&#9;&#9;&#9;if delta &gt; fadeInTime then
+&#9;&#9;&#9;&#9;TweenOutAlphaStart = tick()
+&#9;&#9;&#9;&#9;TweenInAlphaStart = nil
+&#9;&#9;&#9;end
+&#9;&#9;elseif TweenOutAlphaStart ~= nil then
+&#9;&#9;&#9;local delta = tick() - TweenOutAlphaStart
+&#9;&#9;&#9;local fadeOutTime = (FadeInAndOutHalfDuration * 2) - (FadeInAndOutHalfDuration * 2 * FadeInAndOutBalance)
+&#9;&#9;&#9;ThumbstickFrame.BackgroundTransparency = 1 - FadeInAndOutMaxAlpha + FadeInAndOutMaxAlpha*math.min(delta/fadeOutTime, 1)
+&#9;&#9;&#9;if delta &gt; fadeOutTime  then
+&#9;&#9;&#9;&#9;TweenOutAlphaStart = nil
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;local function layoutMiddleImages(startPos, endPos)
+&#9;&#9;local startDist = (ThumbstickSize / 2) + MiddleSize
+&#9;&#9;local dist = startDist
+&#9;&#9;local vector = endPos - startPos
+&#9;&#9;local totalDist = vector.magnitude - (ThumbstickSize / 2) - (ThumbstickRingSize / 2) - (MiddleSize / 2)
+&#9;&#9;local direction = vector.unit
+
+&#9;&#9;local distNeeded = dist + (MiddleSpacing * NUM_MIDDLE_IMAGES)&#9;&#9;
+&#9;&#9;local spacing = 0
+&#9;&#9;
+&#9;&#9;if distNeeded &gt; totalDist then
+&#9;&#9;&#9;spacing = MiddleSpacing
+&#9;&#9;else
+&#9;&#9;&#9;spacing = totalDist / NUM_MIDDLE_IMAGES
+&#9;&#9;end
+&#9;&#9;&#9;
+&#9;&#9;for i = 1, NUM_MIDDLE_IMAGES do
+&#9;&#9;&#9;local image = MiddleImages[i]
+&#9;&#9;&#9;local currentDist = startDist + (spacing * (i - 1))&#9;
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;if currentDist &lt; totalDist then
+&#9;&#9;&#9;&#9;local pos = endPos - direction * currentDist
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;image.Visible = true
+&#9;&#9;&#9;&#9;image.Position = UDim2.new(0, pos.X, 0, pos.Y)
+&#9;&#9;&#9;&#9;image.Size = UDim2.new(0, MiddleSize, 0, MiddleSize)
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;image.Visible = false
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;local function moveStick(pos)
+&#9;&#9;local startPos = Vector2.new(MoveTouchStartPosition.X, MoveTouchStartPosition.Y) - ThumbstickFrame.AbsolutePosition
+&#9;&#9;local endPos = Vector2.new(pos.X, pos.Y) - ThumbstickFrame.AbsolutePosition
+&#9;&#9;local relativePosition = endPos - startPos
+&#9;&#9;local length = relativePosition.magnitude
+&#9;&#9;local maxLength = ThumbstickFrame.AbsoluteSize.X
+&#9;&#9;
+&#9;&#9;length = math.min(length, maxLength)
+&#9;&#9;relativePosition = relativePosition*length
+&#9;&#9;
+&#9;&#9;EndImage.Position = UDim2.new(0, endPos.X, 0, endPos.Y)
+&#9;&#9;EndImage.Size = UDim2.new(0, ThumbstickSize, 0, ThumbstickSize)
+&#9;&#9;
+&#9;&#9;layoutMiddleImages(startPos, endPos)
+&#9;end
+&#9;
+&#9;-- input connections
+&#9;ThumbstickFrame.InputBegan:connect(function(inputObject)
+&#9;&#9;if inputObject.UserInputType ~= Enum.UserInputType.Touch or inputObject.UserInputState ~= Enum.UserInputState.Begin then
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;&#9;if MoveTouchObject then
+&#9;&#9;&#9;if not JumpTouchObject then
+&#9;&#9;&#9;&#9;JumpTouchObject = inputObject
+&#9;&#9;&#9;&#9;JumpTouchStartTime = tick()
+&#9;&#9;&#9;&#9;JumpTouchStartPosition = inputObject.Position
+&#9;&#9;&#9;end
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;MoveTouchObject = inputObject
+&#9;&#9;MoveTouchStartTime = tick()
+&#9;&#9;MoveTouchStartPosition = inputObject.Position
+&#9;&#9;local startPosVec2 = Vector2.new(inputObject.Position.X - ThumbstickFrame.AbsolutePosition.X, inputObject.Position.Y - ThumbstickFrame.AbsolutePosition.Y)
+
+&#9;&#9;StartImage.Visible = true
+&#9;&#9;StartImage.Position = UDim2.new(0, startPosVec2.X, 0, startPosVec2.Y)
+&#9;&#9;StartImage.Size = UDim2.new(0, ThumbstickRingSize, 0, ThumbstickRingSize)
+&#9;&#9;EndImage.Visible = true
+&#9;&#9;EndImage.Position = StartImage.Position
+&#9;&#9;EndImage.Size = UDim2.new(0, ThumbstickSize, 0, ThumbstickSize)
+&#9;&#9;
+&#9;&#9;if FadeInAndOutBackground then
+&#9;&#9;&#9;local playerGui = LocalPlayer:FindFirstChildOfClass(&quot;PlayerGui&quot;)
+&#9;&#9;&#9;local hasFadedBackgroundInOrientation = false
+
+&#9;&#9;&#9;-- only fade in/out the background once per orientation
+&#9;&#9;&#9;if playerGui then
+&#9;&#9;&#9;&#9;if playerGui.CurrentScreenOrientation == Enum.ScreenOrientation.LandscapeLeft or 
+&#9;&#9;&#9;&#9;&#9;playerGui.CurrentScreenOrientation == Enum.ScreenOrientation.LandscapeRight then
+&#9;&#9;&#9;&#9;&#9;&#9;hasFadedBackgroundInOrientation = HasFadedBackgroundInLandscape
+&#9;&#9;&#9;&#9;&#9;&#9;HasFadedBackgroundInLandscape = true
+&#9;&#9;&#9;&#9;elseif playerGui.CurrentScreenOrientation == Enum.ScreenOrientation.Portrait then
+&#9;&#9;&#9;&#9;&#9;&#9;hasFadedBackgroundInOrientation = HasFadedBackgroundInPortrait
+&#9;&#9;&#9;&#9;&#9;&#9;HasFadedBackgroundInPortrait = true
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+
+&#9;&#9;&#9;if not hasFadedBackgroundInOrientation then
+&#9;&#9;&#9;&#9;FadeInAndOutHalfDuration = FADE_IN_OUT_HALF_DURATION_DEFAULT
+&#9;&#9;&#9;&#9;FadeInAndOutBalance = FADE_IN_OUT_BALANCE_DEFAULT
+&#9;&#9;&#9;&#9;TweenInAlphaStart = tick()
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;OnTouchMovedCn = UserInputService.TouchMoved:connect(function(inputObject, isProcessed)
+&#9;&#9;if inputObject == MoveTouchObject then
+&#9;&#9;&#9;
+&#9;&#9;&#9;local direction = Vector2.new(inputObject.Position.x - MoveTouchStartPosition.x, inputObject.Position.y - MoveTouchStartPosition.y)
+&#9;&#9;&#9;if math.abs(direction.x) &gt; 0 or math.abs(direction.y) &gt; 0 then
+&#9;&#9;&#9;&#9;doMove(direction)
+&#9;&#9;&#9;&#9;moveStick(inputObject.Position)
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;OnMoveTouchEnded = function()
+&#9;&#9;StartImage.Visible = false
+&#9;&#9;EndImage.Visible = false
+&#9;&#9;
+&#9;&#9;for i = 1, NUM_MIDDLE_IMAGES do
+&#9;&#9;&#9;MiddleImages[i].Visible = false
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;MoveTouchObject = nil
+&#9;&#9;
+&#9;&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;&#9;currentMoveVector = Vector3.new(0,0,0)
+&#9;end
+&#9;
+&#9;local function JumpIfTouchIsTap(startTime, startPosition, position)
+&#9;&#9;if (not IsAToolEquipped) and tick() - startTime &lt; TOUCH_IS_TAP_TIME_THRESHOLD then
+&#9;&#9;&#9;if (position - startPosition).magnitude &lt; TOUCH_IS_TAP_DISTANCE_THRESHOLD then
+&#9;&#9;&#9;&#9;MasterControl:DoJump()
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;OnTouchEndedCn = UserInputService.TouchEnded:connect(function(inputObject, isProcessed)
+&#9;&#9;if inputObject == MoveTouchObject then
+&#9;&#9;&#9;JumpIfTouchIsTap(MoveTouchStartTime, MoveTouchStartPosition, inputObject.Position) 
+&#9;&#9;&#9;OnMoveTouchEnded()
+&#9;&#9;elseif inputObject == JumpTouchObject then
+&#9;&#9;&#9;JumpIfTouchIsTap(JumpTouchStartTime, JumpTouchStartPosition, inputObject.Position)
+&#9;&#9;&#9;JumpTouchObject = nil
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;GuiService.MenuOpened:connect(function()
+&#9;&#9;if MoveTouchObject then
+&#9;&#9;&#9;OnMoveTouchEnded()
+&#9;&#9;end
+&#9;&#9;if JumpTouchObject then
+&#9;&#9;&#9;JumpTouchObject = nil
+&#9;&#9;end
+&#9;end)
+
+&#9;local playerGui = LocalPlayer:FindFirstChildOfClass(&quot;PlayerGui&quot;)
+&#9;while not playerGui do
+&#9;&#9;LocalPlayer.ChildAdded:wait()
+&#9;&#9;playerGui = LocalPlayer:FindFirstChildOfClass(&quot;PlayerGui&quot;)
+&#9;end
+
+&#9;local playerGuiChangedConn = nil
+&#9;local originalScreenOrientationWasLandscape = playerGui.CurrentScreenOrientation == Enum.ScreenOrientation.LandscapeLeft or
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;playerGui.CurrentScreenOrientation == Enum.ScreenOrientation.LandscapeRight
+
+&#9;local function longShowBackground()
+&#9;&#9;FadeInAndOutHalfDuration = 2.5
+&#9;&#9;FadeInAndOutBalance = 0.05
+&#9;&#9;TweenInAlphaStart = tick()
+&#9;end
+
+&#9;playerGuiChangedConn = playerGui.Changed:connect(function(prop)
+&#9;&#9;if prop == &quot;CurrentScreenOrientation&quot; then
+&#9;&#9;&#9;if (originalScreenOrientationWasLandscape and playerGui.CurrentScreenOrientation == Enum.ScreenOrientation.Portrait) or
+&#9;&#9;&#9;&#9;(not originalScreenOrientationWasLandscape and playerGui.CurrentScreenOrientation ~= Enum.ScreenOrientation.Portrait) then
+&#9;&#9;&#9;&#9;&#9;playerGuiChangedConn:disconnect()
+&#9;&#9;&#9;&#9;&#9;longShowBackground()
+
+&#9;&#9;&#9;&#9;&#9;if originalScreenOrientationWasLandscape then
+&#9;&#9;&#9;&#9;&#9;&#9;HasFadedBackgroundInPortrait = true
+&#9;&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;&#9;HasFadedBackgroundInLandscape = true
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;ThumbstickFrame.Parent = parentFrame
+
+&#9;spawn(function()
+&#9;&#9;if game:IsLoaded() then
+&#9;&#9;&#9;longShowBackground()
+&#9;&#9;else
+&#9;&#9;&#9;game.Loaded:wait()
+&#9;&#9;&#9;longShowBackground()
+&#9;&#9;end
+&#9;end)
+end
+
+return Thumbstick
+</ProtectedString>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX043A8623622D44E4AE41224E69A829B8">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Gamepad</string>
+					<ProtectedString name="Source">--[[
+&#9;// FileName: Gamepad
+&#9;// Written by: jeditkacheff
+&#9;// Description: Implements movement controls for gamepad devices (XBox, PS4, MFi, etc.)
+--]]
+local Gamepad = {}
+
+local MasterControl = require(script.Parent)
+
+local Players = game:GetService(&apos;Players&apos;)
+local RunService = game:GetService(&apos;RunService&apos;)
+local UserInputService = game:GetService(&apos;UserInputService&apos;)
+local ContextActionService = game:GetService(&apos;ContextActionService&apos;)
+local StarterPlayer = game:GetService(&apos;StarterPlayer&apos;)
+local Settings = UserSettings()
+local GameSettings = Settings.GameSettings
+local currentMoveVector = Vector3.new(0,0,0)
+local activateGamepad = nil
+
+local gamepadConnectedCon = nil
+local gamepadDisconnectedCon = nil
+
+while not Players.LocalPlayer do
+&#9;wait()
+end
+local LocalPlayer = Players.LocalPlayer
+
+--[[ Constants ]]--
+local thumbstickDeadzone = 0.22 --raised from 14% on 3/1/16 to accommodate looser XB360 controllers
+
+function assignActivateGamepad()
+&#9;local connectedGamepads = UserInputService:GetConnectedGamepads()
+&#9;if #connectedGamepads &gt; 0 then
+&#9;&#9;for i = 1, #connectedGamepads do
+&#9;&#9;&#9;if activateGamepad == nil then
+&#9;&#9;&#9;&#9;activateGamepad = connectedGamepads[i]
+&#9;&#9;&#9;elseif connectedGamepads[i].Value &lt; activateGamepad.Value then
+&#9;&#9;&#9;&#9;activateGamepad = connectedGamepads[i]
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;if activateGamepad == nil then -- nothing is connected, at least set up for gamepad1
+&#9;&#9;activateGamepad = Enum.UserInputType.Gamepad1
+&#9;end
+end
+
+--[[ Public API ]]--
+function Gamepad:Enable()
+&#9;local forwardValue  = 0
+&#9;local backwardValue = 0
+&#9;local leftValue = 0
+&#9;local rightValue = 0
+&#9;
+&#9;local moveFunc = LocalPlayer.Move
+&#9;local gamepadSupports = UserInputService.GamepadSupports
+&#9;
+&#9;local controlCharacterGamepad = function(actionName, inputState, inputObject)
+&#9;&#9;if activateGamepad ~= inputObject.UserInputType then return end
+&#9;&#9;if inputObject.KeyCode ~= Enum.KeyCode.Thumbstick1 then return end
+&#9;&#9;
+&#9;&#9;if inputState == Enum.UserInputState.Cancel then
+&#9;&#9;&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;&#9;&#9;currentMoveVector =  Vector3.new(0,0,0)
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;if inputObject.Position.magnitude &gt; thumbstickDeadzone then
+&#9;&#9;&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;&#9;&#9;currentMoveVector =  Vector3.new(inputObject.Position.X, 0, -inputObject.Position.Y)
+&#9;&#9;&#9;MasterControl:AddToPlayerMovement(currentMoveVector)
+&#9;&#9;else
+&#9;&#9;&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;&#9;&#9;currentMoveVector =  Vector3.new(0,0,0)
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;local jumpCharacterGamepad = function(actionName, inputState, inputObject)
+&#9;&#9;if activateGamepad ~= inputObject.UserInputType then return end
+&#9;&#9;if inputObject.KeyCode ~= Enum.KeyCode.ButtonA then return end
+&#9;&#9;
+&#9;&#9;if inputState == Enum.UserInputState.Cancel then
+&#9;&#9;&#9;MasterControl:SetIsJumping(false)
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;MasterControl:SetIsJumping(inputObject.UserInputState == Enum.UserInputState.Begin)
+&#9;end
+&#9;
+&#9;local doDpadMoveUpdate = function(userInputType)
+&#9;&#9;if not gamepadSupports(UserInputService, userInputType, Enum.KeyCode.Thumbstick1) then
+&#9;&#9;&#9;if LocalPlayer and LocalPlayer.Character then
+&#9;&#9;&#9;&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;&#9;&#9;&#9;currentMoveVector = Vector3.new(leftValue + rightValue,0,forwardValue + backwardValue)
+&#9;&#9;&#9;&#9;MasterControl:AddToPlayerMovement(currentMoveVector)
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;local moveForwardFunc = function(actionName, inputState, inputObject)
+&#9;&#9;if inputState == Enum.UserInputState.End then
+&#9;&#9;&#9;forwardValue = -1
+&#9;&#9;elseif inputState == Enum.UserInputState.Begin or inputState == Enum.UserInputState.Cancel then
+&#9;&#9;&#9;forwardValue = 0
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;doDpadMoveUpdate(inputObject.UserInputType)
+&#9;end
+&#9;
+&#9;local moveBackwardFunc = function(actionName, inputState, inputObject)&#9;
+&#9;&#9;if inputState == Enum.UserInputState.End then
+&#9;&#9;&#9;backwardValue = 1
+&#9;&#9;elseif inputState == Enum.UserInputState.Begin or inputState == Enum.UserInputState.Cancel then
+&#9;&#9;&#9;backwardValue = 0
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;doDpadMoveUpdate(inputObject.UserInputType)
+&#9;end
+&#9;
+&#9;local moveLeftFunc = function(actionName, inputState, inputObject)&#9;
+&#9;&#9;if inputState == Enum.UserInputState.End then
+&#9;&#9;&#9;leftValue = -1
+&#9;&#9;elseif inputState == Enum.UserInputState.Begin or inputState == Enum.UserInputState.Cancel then
+&#9;&#9;&#9;leftValue = 0
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;doDpadMoveUpdate(inputObject.UserInputType)
+&#9;end
+&#9;
+&#9;local moveRightFunc = function(actionName, inputState, inputObject)&#9;
+&#9;&#9;if inputState == Enum.UserInputState.End then
+&#9;&#9;&#9;rightValue = 1
+&#9;&#9;elseif inputState == Enum.UserInputState.Begin or inputState == Enum.UserInputState.Cancel then
+&#9;&#9;&#9;rightValue = 0
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;doDpadMoveUpdate(inputObject.UserInputType)
+&#9;end
+&#9;
+&#9;local function setActivateGamepad()
+&#9;&#9;if activateGamepad then
+&#9;&#9;&#9;ContextActionService:UnbindActivate(activateGamepad, Enum.KeyCode.ButtonR2)
+&#9;&#9;end
+&#9;&#9;assignActivateGamepad()
+&#9;&#9;if activateGamepad then
+&#9;&#9;&#9;ContextActionService:BindActivate(activateGamepad, Enum.KeyCode.ButtonR2)
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;ContextActionService:BindAction(&quot;JumpButton&quot;,jumpCharacterGamepad, false, Enum.KeyCode.ButtonA)
+&#9;ContextActionService:BindAction(&quot;MoveThumbstick&quot;,controlCharacterGamepad, false, Enum.KeyCode.Thumbstick1)
+&#9;
+&#9;ContextActionService:BindAction(&quot;forwardDpad&quot;, moveForwardFunc, false, Enum.KeyCode.DPadUp)
+&#9;ContextActionService:BindAction(&quot;backwardDpad&quot;, moveBackwardFunc, false, Enum.KeyCode.DPadDown)
+&#9;ContextActionService:BindAction(&quot;leftDpad&quot;, moveLeftFunc, false, Enum.KeyCode.DPadLeft)
+&#9;ContextActionService:BindAction(&quot;rightDpad&quot;, moveRightFunc, false, Enum.KeyCode.DPadRight)
+&#9;
+&#9;setActivateGamepad()
+&#9;
+&#9;gamepadConnectedCon = UserInputService.GamepadDisconnected:connect(function(gamepadEnum)
+&#9;&#9;if activateGamepad ~= gamepadEnum then return end
+&#9;&#9;
+&#9;&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;&#9;currentMoveVector = Vector3.new(0,0,0)
+&#9;&#9;
+&#9;&#9;activateGamepad = nil
+&#9;&#9;setActivateGamepad()
+&#9;end)
+
+&#9;gamepadDisconnectedCon = UserInputService.GamepadConnected:connect(function(gamepadEnum)
+&#9;&#9;if activateGamepad == nil then 
+&#9;&#9;&#9;setActivateGamepad()
+&#9;&#9;end
+&#9;end)
+end
+
+function Gamepad:Disable()
+&#9;
+&#9;ContextActionService:UnbindAction(&quot;forwardDpad&quot;)
+&#9;ContextActionService:UnbindAction(&quot;backwardDpad&quot;)
+&#9;ContextActionService:UnbindAction(&quot;leftDpad&quot;)
+&#9;ContextActionService:UnbindAction(&quot;rightDpad&quot;)
+&#9;
+&#9;ContextActionService:UnbindAction(&quot;MoveThumbstick&quot;)
+&#9;ContextActionService:UnbindAction(&quot;JumpButton&quot;)
+&#9;ContextActionService:UnbindActivate(activateGamepad, Enum.KeyCode.ButtonR2)
+&#9;
+&#9;if gamepadConnectedCon then gamepadConnectedCon:disconnect() end
+&#9;if gamepadDisconnectedCon then gamepadDisconnectedCon:disconnect() end
+&#9;
+&#9;activateGamepad = nil
+&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;currentMoveVector = Vector3.new(0,0,0)
+&#9;MasterControl:SetIsJumping(false)
+end
+
+return Gamepad
+</ProtectedString>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXB4C4411EA2734CFF9A6656AB6AFB7FDC">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">KeyboardMovement</string>
+					<ProtectedString name="Source">--[[
+&#9;// FileName: ComputerMovementKeyboardMovement
+&#9;// Version 1.2
+&#9;// Written by: jeditkacheff/jmargh
+&#9;// Description: Implements movement controls for keyboard devices
+--]]
+local Players = game:GetService(&apos;Players&apos;)
+local UserInputService = game:GetService(&apos;UserInputService&apos;)
+local ContextActionService = game:GetService(&apos;ContextActionService&apos;)
+local StarterPlayer = game:GetService(&apos;StarterPlayer&apos;)
+local Settings = UserSettings()
+local GameSettings = Settings.GameSettings
+
+local KeyboardMovement = {}
+
+while not Players.LocalPlayer do
+&#9;wait()
+end
+local LocalPlayer = Players.LocalPlayer
+local CachedHumanoid = nil
+local SeatJumpCn = nil
+local TextFocusReleasedCn = nil
+local TextFocusGainedCn = nil
+local WindowFocusReleasedCn = nil
+
+local MasterControl = require(script.Parent)
+local currentMoveVector = Vector3.new(0,0,0)
+
+--[[ Local Functions ]]--
+local function getHumanoid()
+&#9;local character = LocalPlayer and LocalPlayer.Character
+&#9;if character then
+&#9;&#9;if CachedHumanoid and CachedHumanoid.Parent == character then
+&#9;&#9;&#9;return CachedHumanoid
+&#9;&#9;else
+&#9;&#9;&#9;CachedHumanoid = nil
+&#9;&#9;&#9;for _,child in pairs(character:GetChildren()) do
+&#9;&#9;&#9;&#9;if child:IsA(&apos;Humanoid&apos;) then
+&#9;&#9;&#9;&#9;&#9;CachedHumanoid = child
+&#9;&#9;&#9;&#9;&#9;return CachedHumanoid
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+end
+
+--[[ Public API ]]--
+function KeyboardMovement:Enable()
+&#9;if not UserInputService.KeyboardEnabled then
+&#9;&#9;return
+&#9;end
+&#9;
+&#9;local forwardValue  = 0
+&#9;local backwardValue = 0
+&#9;local leftValue = 0
+&#9;local rightValue = 0
+&#9;
+&#9;local updateMovement = function(inputState)
+&#9;&#9;if inputState == Enum.UserInputState.Cancel then
+&#9;&#9;&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;&#9;&#9;currentMoveVector = Vector3.new(0, 0, 0)
+&#9;&#9;else
+&#9;&#9;&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;&#9;&#9;currentMoveVector = Vector3.new(leftValue + rightValue,0,forwardValue + backwardValue)
+&#9;&#9;&#9;MasterControl:AddToPlayerMovement(currentMoveVector)&#9;
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;local moveForwardFunc = function(actionName, inputState, inputObject)&#9;&#9;&#9;
+&#9;&#9;if inputState == Enum.UserInputState.Begin then
+&#9;&#9;&#9;forwardValue = -1
+&#9;&#9;elseif inputState == Enum.UserInputState.End then
+&#9;&#9;&#9;forwardValue = 0
+&#9;&#9;end
+&#9;&#9;updateMovement(inputState)
+&#9;end
+&#9;
+&#9;local moveBackwardFunc = function(actionName, inputState, inputObject)&#9;
+&#9;&#9;if inputState == Enum.UserInputState.Begin then
+&#9;&#9;&#9;backwardValue = 1
+&#9;&#9;elseif inputState == Enum.UserInputState.End then
+&#9;&#9;&#9;backwardValue = 0
+&#9;&#9;end
+&#9;&#9;updateMovement(inputState)
+&#9;end
+&#9;
+&#9;local moveLeftFunc = function(actionName, inputState, inputObject)&#9;
+&#9;&#9;if inputState == Enum.UserInputState.Begin then
+&#9;&#9;&#9;leftValue = -1
+&#9;&#9;elseif inputState == Enum.UserInputState.End then
+&#9;&#9;&#9;leftValue = 0
+&#9;&#9;end
+&#9;&#9;updateMovement(inputState)
+&#9;end
+&#9;
+&#9;local moveRightFunc = function(actionName, inputState, inputObject)&#9;
+&#9;&#9;if inputState == Enum.UserInputState.Begin then
+&#9;&#9;&#9;rightValue = 1
+&#9;&#9;elseif inputState == Enum.UserInputState.End then
+&#9;&#9;&#9;rightValue = 0
+&#9;&#9;end
+&#9;&#9;updateMovement(inputState)
+&#9;end
+&#9;
+&#9;local jumpFunc = function(actionName, inputState, inputObject)
+&#9;&#9;MasterControl:SetIsJumping(inputState == Enum.UserInputState.Begin)
+&#9;end
+&#9;
+&#9;-- TODO: remove up and down arrows, these seem unnecessary
+&#9;ContextActionService:BindActionToInputTypes(&quot;forwardMovement&quot;, moveForwardFunc, false, Enum.PlayerActions.CharacterForward)
+&#9;ContextActionService:BindActionToInputTypes(&quot;backwardMovement&quot;, moveBackwardFunc, false, Enum.PlayerActions.CharacterBackward)
+&#9;ContextActionService:BindActionToInputTypes(&quot;leftMovement&quot;, moveLeftFunc, false, Enum.PlayerActions.CharacterLeft)
+&#9;ContextActionService:BindActionToInputTypes(&quot;rightMovement&quot;, moveRightFunc, false, Enum.PlayerActions.CharacterRight)
+&#9;ContextActionService:BindActionToInputTypes(&quot;jumpAction&quot;, jumpFunc, false, Enum.PlayerActions.CharacterJump)
+&#9;-- TODO: make sure we check key state before binding to check if key is already down
+&#9;
+&#9;local function onFocusReleased()
+&#9;&#9;local humanoid = getHumanoid()
+&#9;&#9;if humanoid then
+&#9;&#9;&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;&#9;&#9;currentMoveVector = Vector3.new(0, 0, 0)
+&#9;&#9;&#9;forwardValue, backwardValue, leftValue, rightValue = 0, 0, 0, 0
+&#9;&#9;&#9;MasterControl:SetIsJumping(false)
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;local function onTextFocusGained(textboxFocused)
+&#9;&#9;MasterControl:SetIsJumping(false)
+&#9;end
+&#9;
+&#9;SeatJumpCn = UserInputService.InputBegan:connect(function(inputObject, isProcessed)
+&#9;&#9;if inputObject.KeyCode == Enum.KeyCode.Backspace and not isProcessed then
+&#9;&#9;&#9;local humanoid = getHumanoid()
+&#9;&#9;&#9;if humanoid and (humanoid.Sit or humanoid.PlatformStand) then
+&#9;&#9;&#9;&#9;MasterControl:DoJump()
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;TextFocusReleasedCn = UserInputService.TextBoxFocusReleased:connect(onFocusReleased)
+&#9;TextFocusGainedCn = UserInputService.TextBoxFocused:connect(onTextFocusGained)
+&#9;-- TODO: remove pcall when API is live
+&#9;WindowFocusReleasedCn = UserInputService.WindowFocused:connect(onFocusReleased)
+end
+
+function KeyboardMovement:Disable()
+&#9;ContextActionService:UnbindAction(&quot;forwardMovement&quot;)
+&#9;ContextActionService:UnbindAction(&quot;backwardMovement&quot;)
+&#9;ContextActionService:UnbindAction(&quot;leftMovement&quot;)
+&#9;ContextActionService:UnbindAction(&quot;rightMovement&quot;)
+&#9;ContextActionService:UnbindAction(&quot;jumpAction&quot;)
+&#9;
+&#9;if SeatJumpCn then
+&#9;&#9;SeatJumpCn:disconnect()
+&#9;&#9;SeatJumpCn = nil
+&#9;end
+&#9;if TextFocusReleasedCn then
+&#9;&#9;TextFocusReleasedCn:disconnect()
+&#9;&#9;TextFocusReleasedCn = nil
+&#9;end
+&#9;if TextFocusGainedCn then
+&#9;&#9;TextFocusGainedCn:disconnect()
+&#9;&#9;TextFocusGainedCn = nil
+&#9;end
+&#9;if WindowFocusReleasedCn then
+&#9;&#9;WindowFocusReleasedCn:disconnect()
+&#9;&#9;WindowFocusReleasedCn = nil
+&#9;end
+&#9;
+&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;currentMoveVector = Vector3.new(0,0,0)
+&#9;MasterControl:SetIsJumping(false)
+end
+
+return KeyboardMovement
+</ProtectedString>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX1E3E090B922241488CF1527B6A17D7C7">
+				<Properties>
+					<string name="Name">Thumbpad</string>
+					<ProtectedString name="Source">--[[
+&#9;// FileName: Thumbpad
+&#9;// Version 1.0
+&#9;// Written by: jmargh
+&#9;// Description: Implements thumbpad controls for touch devices
+--]]
+
+local Players = game:GetService(&apos;Players&apos;)
+local UserInputService = game:GetService(&apos;UserInputService&apos;)
+local GuiService = game:GetService(&apos;GuiService&apos;)
+
+local Thumbpad = {}
+
+local MasterControl = require(script.Parent)
+
+--[[ Script Variables ]]--
+while not Players.LocalPlayer do
+&#9;wait()
+end
+local LocalPlayer = Players.LocalPlayer
+local ThumbpadFrame = nil
+local TouchObject = nil
+local OnInputEnded = nil&#9;-- is defined in Create()
+local OnTouchChangedCn = nil
+local OnTouchEndedCn = nil
+local currentMoveVector = Vector3.new(0,0,0)
+
+--[[ Constants ]]--
+local DPAD_SHEET = &quot;rbxasset://textures/ui/DPadSheet.png&quot;
+local TOUCH_CONTROL_SHEET = &quot;rbxasset://textures/ui/TouchControlsSheet.png&quot;
+
+--[[ Local Functions ]]--
+local function createArrowLabel(name, parent, position, size, rectOffset, rectSize)
+&#9;local image = Instance.new(&apos;ImageLabel&apos;)
+&#9;image.Name = name
+&#9;image.Image = DPAD_SHEET
+&#9;image.ImageRectOffset = rectOffset
+&#9;image.ImageRectSize = rectSize
+&#9;image.BackgroundTransparency = 1
+&#9;image.ImageColor3 = Color3.new(190/255, 190/255, 190/255)
+&#9;image.Size = size
+&#9;image.Position = position
+&#9;image.Parent = parent
+&#9;
+&#9;return image
+end
+
+--[[ Public API ]]--
+function Thumbpad:Enable()
+&#9;ThumbpadFrame.Visible = true
+end
+
+function Thumbpad:Disable()
+&#9;ThumbpadFrame.Visible = false
+&#9;OnInputEnded()
+end
+
+function Thumbpad:Create(parentFrame)
+&#9;if ThumbpadFrame then
+&#9;&#9;ThumbpadFrame:Destroy()
+&#9;&#9;ThumbpadFrame = nil
+&#9;&#9;if OnTouchChangedCn then
+&#9;&#9;&#9;OnTouchChangedCn:disconnect()
+&#9;&#9;&#9;OnTouchChangedCn = nil
+&#9;&#9;end
+&#9;&#9;if OnTouchEndedCn then
+&#9;&#9;&#9;OnTouchEndedCn:disconnect()
+&#9;&#9;&#9;OnTouchEndedCn = nil
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;local minAxis = math.min(parentFrame.AbsoluteSize.x, parentFrame.AbsoluteSize.y)
+&#9;local isSmallScreen = minAxis &lt;= 500
+&#9;local thumbpadSize = isSmallScreen and 70 or 120
+&#9;local position = isSmallScreen and UDim2.new(0, thumbpadSize * 1.25, 1, -thumbpadSize - 20) or
+&#9;&#9;UDim2.new(0, thumbpadSize/2 - 10, 1, -thumbpadSize * 1.75 - 10)
+&#9;
+&#9;ThumbpadFrame = Instance.new(&apos;Frame&apos;)
+&#9;ThumbpadFrame.Name = &quot;ThumbpadFrame&quot;
+&#9;ThumbpadFrame.Visible = false
+&#9;ThumbpadFrame.Active = true
+&#9;ThumbpadFrame.Size = UDim2.new(0, thumbpadSize + 20, 0, thumbpadSize + 20)
+&#9;ThumbpadFrame.Position = position
+&#9;ThumbpadFrame.BackgroundTransparency = 1
+&#9;
+&#9;local outerImage = Instance.new(&apos;ImageLabel&apos;)
+&#9;outerImage.Name = &quot;OuterImage&quot;
+&#9;outerImage.Image = TOUCH_CONTROL_SHEET
+&#9;outerImage.ImageRectOffset = Vector2.new(0, 0)
+&#9;outerImage.ImageRectSize = Vector2.new(220, 220)
+&#9;outerImage.BackgroundTransparency = 1
+&#9;outerImage.Size = UDim2.new(0, thumbpadSize, 0, thumbpadSize)
+&#9;outerImage.Position = UDim2.new(0, 10, 0, 10)
+&#9;outerImage.Parent = ThumbpadFrame
+&#9;
+&#9;local smArrowSize = isSmallScreen and UDim2.new(0, 32, 0, 32) or UDim2.new(0, 64, 0, 64)
+&#9;local lgArrowSize = UDim2.new(0, smArrowSize.X.Offset * 2, 0, smArrowSize.Y.Offset * 2)
+&#9;local imgRectSize = Vector2.new(110, 110)
+&#9;local smImgOffset = isSmallScreen and -4 or -9
+&#9;local lgImgOffset = isSmallScreen and -28 or -55
+&#9;
+&#9;local dArrow = createArrowLabel(&quot;DownArrow&quot;, outerImage, UDim2.new(0.5, -smArrowSize.X.Offset/2, 1, lgImgOffset), smArrowSize, Vector2.new(8, 8), imgRectSize)
+&#9;local uArrow = createArrowLabel(&quot;UpArrow&quot;, outerImage, UDim2.new(0.5, -smArrowSize.X.Offset/2, 0, smImgOffset), smArrowSize, Vector2.new(8, 266), imgRectSize)
+&#9;local lArrow = createArrowLabel(&quot;LeftArrow&quot;, outerImage, UDim2.new(0, smImgOffset, 0.5, -smArrowSize.Y.Offset/2), smArrowSize, Vector2.new(137, 137), imgRectSize)
+&#9;local rArrow = createArrowLabel(&quot;RightArrow&quot;, outerImage, UDim2.new(1, lgImgOffset, 0.5, -smArrowSize.Y.Offset/2), smArrowSize, Vector2.new(8, 137), imgRectSize)
+&#9;
+&#9;local function doTween(guiObject, endSize, endPosition)
+&#9;&#9;guiObject:TweenSizeAndPosition(endSize, endPosition, Enum.EasingDirection.InOut, Enum.EasingStyle.Linear, 0.15, true)
+&#9;end
+&#9;
+&#9;local padOrigin = nil
+&#9;local deadZone = 0.1
+&#9;local isRight, isLeft, isUp, isDown = false, false, false, false
+&#9;local vForward = Vector3.new(0, 0, -1)
+&#9;local vRight = Vector3.new(1, 0, 0)
+&#9;local function doMove(pos)
+&#9;&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;&#9;
+&#9;&#9;local delta = Vector2.new(pos.x, pos.y) - padOrigin
+&#9;&#9;currentMoveVector = delta / (thumbpadSize/2)
+&#9;&#9;
+&#9;&#9;-- Scaled Radial Dead Zone
+&#9;&#9;local inputAxisMagnitude = currentMoveVector.magnitude
+&#9;&#9;if inputAxisMagnitude &lt; deadZone then
+&#9;&#9;&#9;currentMoveVector = Vector3.new(0, 0, 0)
+&#9;&#9;else
+&#9;&#9;&#9;currentMoveVector = currentMoveVector.unit * ((inputAxisMagnitude - deadZone) / (1 - deadZone))
+&#9;&#9;&#9;-- catch possible NAN Vector
+&#9;&#9;&#9;if currentMoveVector.magnitude == 0 then
+&#9;&#9;&#9;&#9;currentMoveVector = Vector3.new(0, 0, 0)
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;currentMoveVector = Vector3.new(currentMoveVector.x, 0, currentMoveVector.y).unit
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;MasterControl:AddToPlayerMovement(currentMoveVector)
+&#9;&#9;
+&#9;&#9;local forwardDot = currentMoveVector:Dot(vForward)
+&#9;&#9;local rightDot = currentMoveVector:Dot(vRight)
+&#9;&#9;if forwardDot &gt; 0.5 then&#9;&#9;-- UP
+&#9;&#9;&#9;if not isUp then
+&#9;&#9;&#9;&#9;isUp, isDown = true, false
+&#9;&#9;&#9;&#9;doTween(uArrow, lgArrowSize, UDim2.new(0.5, -smArrowSize.X.Offset, 0, smImgOffset - smArrowSize.Y.Offset * 1.5))
+&#9;&#9;&#9;&#9;doTween(dArrow, smArrowSize, UDim2.new(0.5, -smArrowSize.X.Offset/2, 1, lgImgOffset))
+&#9;&#9;&#9;end
+&#9;&#9;elseif forwardDot &lt; -0.5 then&#9;-- DOWN
+&#9;&#9;&#9;if not isDown then
+&#9;&#9;&#9;&#9;isDown, isUp = true, false
+&#9;&#9;&#9;&#9;doTween(dArrow, lgArrowSize, UDim2.new(0.5, -smArrowSize.X.Offset, 1, lgImgOffset + smArrowSize.Y.Offset/2))
+&#9;&#9;&#9;&#9;doTween(uArrow, smArrowSize, UDim2.new(0.5, -smArrowSize.X.Offset/2, 0, smImgOffset))
+&#9;&#9;&#9;end
+&#9;&#9;else
+&#9;&#9;&#9;isUp, isDown = false, false
+&#9;&#9;&#9;doTween(dArrow, smArrowSize, UDim2.new(0.5, -smArrowSize.X.Offset/2, 1, lgImgOffset))
+&#9;&#9;&#9;doTween(uArrow, smArrowSize, UDim2.new(0.5, -smArrowSize.X.Offset/2, 0, smImgOffset))
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;if rightDot &gt; 0.5 then
+&#9;&#9;&#9;if not isRight then
+&#9;&#9;&#9;&#9;isRight, isLeft = true, false
+&#9;&#9;&#9;&#9;doTween(rArrow, lgArrowSize, UDim2.new(1, lgImgOffset + smArrowSize.X.Offset/2, 0.5, -smArrowSize.Y.Offset))
+&#9;&#9;&#9;&#9;doTween(lArrow, smArrowSize, UDim2.new(0, smImgOffset, 0.5, -smArrowSize.Y.Offset/2))
+&#9;&#9;&#9;end
+&#9;&#9;elseif rightDot &lt; -0.5 then
+&#9;&#9;&#9;if not isLeft then
+&#9;&#9;&#9;&#9;isLeft, isRight = true, false
+&#9;&#9;&#9;&#9;doTween(lArrow, lgArrowSize, UDim2.new(0, smImgOffset - smArrowSize.X.Offset * 1.5, 0.5, -smArrowSize.Y.Offset))
+&#9;&#9;&#9;&#9;doTween(rArrow, smArrowSize, UDim2.new(1, lgImgOffset, 0.5, -smArrowSize.Y.Offset/2))
+&#9;&#9;&#9;end
+&#9;&#9;else
+&#9;&#9;&#9;isRight, isLeft = false, false
+&#9;&#9;&#9;doTween(lArrow, smArrowSize, UDim2.new(0, smImgOffset, 0.5, -smArrowSize.Y.Offset/2))
+&#9;&#9;&#9;doTween(rArrow, smArrowSize, UDim2.new(1, lgImgOffset, 0.5, -smArrowSize.Y.Offset/2))
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;--input connections
+&#9;ThumbpadFrame.InputBegan:connect(function(inputObject)
+&#9;&#9;--A touch that starts elsewhere on the screen will be sent to a frame&apos;s InputBegan event
+&#9;&#9;--if it moves over the frame. So we check that this is actually a new touch (inputObject.UserInputState ~= Enum.UserInputState.Begin)
+&#9;&#9;if TouchObject or inputObject.UserInputType ~= Enum.UserInputType.Touch
+&#9;&#9;&#9;or inputObject.UserInputState ~= Enum.UserInputState.Begin then
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;ThumbpadFrame.Position = UDim2.new(0, inputObject.Position.x - ThumbpadFrame.AbsoluteSize.x/2, 0, inputObject.Position.y - ThumbpadFrame.Size.Y.Offset/2)
+&#9;&#9;padOrigin = Vector2.new(ThumbpadFrame.AbsolutePosition.x + ThumbpadFrame.AbsoluteSize.x/2,
+&#9;&#9;&#9;ThumbpadFrame.AbsolutePosition.y + ThumbpadFrame.AbsoluteSize.y/2)
+&#9;&#9;doMove(inputObject.Position)
+&#9;&#9;TouchObject = inputObject
+&#9;end)
+&#9;
+&#9;OnTouchChangedCn = UserInputService.TouchMoved:connect(function(inputObject, isProcessed)
+&#9;&#9;if inputObject == TouchObject then
+&#9;&#9;&#9;doMove(TouchObject.Position)
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;OnInputEnded = function()
+&#9;&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;&#9;currentMoveVector = Vector3.new(0,0,0)
+&#9;&#9;MasterControl:SetIsJumping(false)
+
+&#9;&#9;ThumbpadFrame.Position = position
+&#9;&#9;TouchObject = nil
+&#9;&#9;isUp, isDown, isLeft, isRight = false, false, false, false
+&#9;&#9;doTween(dArrow, smArrowSize, UDim2.new(0.5, -smArrowSize.X.Offset/2, 1, lgImgOffset))
+&#9;&#9;doTween(uArrow, smArrowSize, UDim2.new(0.5, -smArrowSize.X.Offset/2, 0, smImgOffset))
+&#9;&#9;doTween(lArrow, smArrowSize, UDim2.new(0, smImgOffset, 0.5, -smArrowSize.Y.Offset/2))
+&#9;&#9;doTween(rArrow, smArrowSize, UDim2.new(1, lgImgOffset, 0.5, -smArrowSize.Y.Offset/2))
+&#9;end
+&#9;
+&#9;OnTouchEndedCn = UserInputService.TouchEnded:connect(function(inputObject)
+&#9;&#9;if inputObject == TouchObject then
+&#9;&#9;&#9;OnInputEnded()
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;GuiService.MenuOpened:connect(function()
+&#9;&#9;if TouchObject then
+&#9;&#9;&#9;OnInputEnded()
+&#9;&#9;end
+&#9;end)&#9;
+&#9;
+&#9;ThumbpadFrame.Parent = parentFrame
+end
+
+return Thumbpad
+</ProtectedString>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX4085E7D84B9F4D049BA1EB9C1D13F5D2">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Thumbstick</string>
+					<ProtectedString name="Source">--[[
+&#9;// FileName: Thumbstick
+&#9;// Version 1.0
+&#9;// Written by: jmargh
+&#9;// Description: Implements thumbstick controls for touch devices
+--]]
+local Players = game:GetService(&apos;Players&apos;)
+local UserInputService = game:GetService(&apos;UserInputService&apos;)
+local GuiService = game:GetService(&apos;GuiService&apos;)
+
+local MasterControl = require(script.Parent)
+
+local Thumbstick = {}
+
+--[[ Script Variables ]]--
+while not Players.LocalPlayer do
+&#9;wait()
+end
+local LocalPlayer = Players.LocalPlayer
+local IsFollowStick = false
+local ThumbstickFrame = nil
+local MoveTouchObject = nil
+local OnTouchEnded = nil&#9;&#9;-- defined in Create()
+local OnTouchMovedCn = nil
+local OnTouchEndedCn = nil
+local currentMoveVector = Vector3.new(0,0,0)
+
+--[[ Constants ]]--
+local TOUCH_CONTROL_SHEET = &quot;rbxasset://textures/ui/TouchControlsSheet.png&quot;
+
+--[[ Public API ]]--
+function Thumbstick:Enable()
+&#9;ThumbstickFrame.Visible = true
+end
+
+function Thumbstick:Disable()
+&#9;ThumbstickFrame.Visible = false
+&#9;OnTouchEnded()
+end
+
+function Thumbstick:Create(parentFrame)
+&#9;if ThumbstickFrame then
+&#9;&#9;ThumbstickFrame:Destroy()
+&#9;&#9;ThumbstickFrame = nil
+&#9;&#9;if OnTouchMovedCn then
+&#9;&#9;&#9;OnTouchMovedCn:disconnect()
+&#9;&#9;&#9;OnTouchMovedCn = nil
+&#9;&#9;end
+&#9;&#9;if OnTouchEndedCn then
+&#9;&#9;&#9;OnTouchEndedCn:disconnect()
+&#9;&#9;&#9;OnTouchEndedCn = nil
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;local minAxis = math.min(parentFrame.AbsoluteSize.x, parentFrame.AbsoluteSize.y)
+&#9;local isSmallScreen = minAxis &lt;= 500
+&#9;local thumbstickSize = isSmallScreen and 70 or 120
+&#9;local position = isSmallScreen and UDim2.new(0, (thumbstickSize/2) - 10, 1, -thumbstickSize - 20) or
+&#9;&#9;UDim2.new(0, thumbstickSize/2, 1, -thumbstickSize * 1.75)
+&#9;&#9;
+&#9;ThumbstickFrame = Instance.new(&apos;Frame&apos;)
+&#9;ThumbstickFrame.Name = &quot;ThumbstickFrame&quot;
+&#9;ThumbstickFrame.Active = true
+&#9;ThumbstickFrame.Visible = false
+&#9;ThumbstickFrame.Size = UDim2.new(0, thumbstickSize, 0, thumbstickSize)
+&#9;ThumbstickFrame.Position = position
+&#9;ThumbstickFrame.BackgroundTransparency = 1
+&#9;
+&#9;local outerImage = Instance.new(&apos;ImageLabel&apos;)
+&#9;outerImage.Name = &quot;OuterImage&quot;
+&#9;outerImage.Image = TOUCH_CONTROL_SHEET
+&#9;outerImage.ImageRectOffset = Vector2.new()
+&#9;outerImage.ImageRectSize = Vector2.new(220, 220)
+&#9;outerImage.BackgroundTransparency = 1
+&#9;outerImage.Size = UDim2.new(0, thumbstickSize, 0, thumbstickSize)
+&#9;outerImage.Position = UDim2.new(0, 0, 0, 0)
+&#9;outerImage.Parent = ThumbstickFrame
+&#9;
+&#9;StickImage = Instance.new(&apos;ImageLabel&apos;)
+&#9;StickImage.Name = &quot;StickImage&quot;
+&#9;StickImage.Image = TOUCH_CONTROL_SHEET
+&#9;StickImage.ImageRectOffset = Vector2.new(220, 0)
+&#9;StickImage.ImageRectSize = Vector2.new(111, 111)
+&#9;StickImage.BackgroundTransparency = 1
+&#9;StickImage.Size = UDim2.new(0, thumbstickSize/2, 0, thumbstickSize/2)
+&#9;StickImage.Position = UDim2.new(0, thumbstickSize/2 - thumbstickSize/4, 0, thumbstickSize/2 - thumbstickSize/4)
+&#9;StickImage.ZIndex = 2
+&#9;StickImage.Parent = ThumbstickFrame
+&#9;
+&#9;local centerPosition = nil
+&#9;local deadZone = 0.05
+&#9;local function doMove(direction)
+&#9;&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;&#9;
+&#9;&#9;currentMoveVector = direction / (thumbstickSize/2)
+&#9;&#9;
+&#9;&#9;-- Scaled Radial Dead Zone
+&#9;&#9;local inputAxisMagnitude = currentMoveVector.magnitude
+&#9;&#9;if inputAxisMagnitude &lt; deadZone then
+&#9;&#9;&#9;currentMoveVector = Vector3.new()
+&#9;&#9;else
+&#9;&#9;&#9;currentMoveVector = currentMoveVector.unit * ((inputAxisMagnitude - deadZone) / (1 - deadZone))
+&#9;&#9;&#9;-- NOTE: Making currentMoveVector a unit vector will cause the player to instantly go max speed
+&#9;&#9;&#9;-- must check for zero length vector is using unit
+&#9;&#9;&#9;currentMoveVector = Vector3.new(currentMoveVector.x, 0, currentMoveVector.y)
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;MasterControl:AddToPlayerMovement(currentMoveVector)
+&#9;end
+&#9;
+&#9;local function moveStick(pos)
+&#9;&#9;local relativePosition = Vector2.new(pos.x - centerPosition.x, pos.y - centerPosition.y)
+&#9;&#9;local length = relativePosition.magnitude
+&#9;&#9;local maxLength = ThumbstickFrame.AbsoluteSize.x/2
+&#9;&#9;if IsFollowStick and length &gt; maxLength then
+&#9;&#9;&#9;local offset = relativePosition.unit * maxLength
+&#9;&#9;&#9;ThumbstickFrame.Position = UDim2.new(
+&#9;&#9;&#9;&#9;0, pos.x - ThumbstickFrame.AbsoluteSize.x/2 - offset.x,
+&#9;&#9;&#9;&#9;0, pos.y - ThumbstickFrame.AbsoluteSize.y/2 - offset.y)
+&#9;&#9;else
+&#9;&#9;&#9;length = math.min(length, maxLength)
+&#9;&#9;&#9;relativePosition = relativePosition.unit * length
+&#9;&#9;end
+&#9;&#9;StickImage.Position = UDim2.new(0, relativePosition.x + StickImage.AbsoluteSize.x/2, 0, relativePosition.y + StickImage.AbsoluteSize.y/2)
+&#9;end
+&#9;
+&#9;-- input connections
+&#9;ThumbstickFrame.InputBegan:connect(function(inputObject)
+&#9;&#9;--A touch that starts elsewhere on the screen will be sent to a frame&apos;s InputBegan event
+&#9;&#9;--if it moves over the frame. So we check that this is actually a new touch (inputObject.UserInputState ~= Enum.UserInputState.Begin)
+&#9;&#9;if MoveTouchObject or inputObject.UserInputType ~= Enum.UserInputType.Touch
+&#9;&#9;&#9;or inputObject.UserInputState ~= Enum.UserInputState.Begin then
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;MoveTouchObject = inputObject
+&#9;&#9;ThumbstickFrame.Position = UDim2.new(0, inputObject.Position.x - ThumbstickFrame.Size.X.Offset/2, 0, inputObject.Position.y - ThumbstickFrame.Size.Y.Offset/2)
+&#9;&#9;centerPosition = Vector2.new(ThumbstickFrame.AbsolutePosition.x + ThumbstickFrame.AbsoluteSize.x/2,
+&#9;&#9;&#9;ThumbstickFrame.AbsolutePosition.y + ThumbstickFrame.AbsoluteSize.y/2)
+&#9;&#9;local direction = Vector2.new(inputObject.Position.x - centerPosition.x, inputObject.Position.y - centerPosition.y)
+&#9;end)
+&#9;
+&#9;OnTouchMovedCn = UserInputService.TouchMoved:connect(function(inputObject, isProcessed)
+&#9;&#9;if inputObject == MoveTouchObject then
+&#9;&#9;&#9;centerPosition = Vector2.new(ThumbstickFrame.AbsolutePosition.x + ThumbstickFrame.AbsoluteSize.x/2,
+&#9;&#9;&#9;&#9;ThumbstickFrame.AbsolutePosition.y + ThumbstickFrame.AbsoluteSize.y/2)
+&#9;&#9;&#9;local direction = Vector2.new(inputObject.Position.x - centerPosition.x, inputObject.Position.y - centerPosition.y)
+&#9;&#9;&#9;doMove(direction)
+&#9;&#9;&#9;moveStick(inputObject.Position)
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;OnTouchEnded = function()
+&#9;&#9;ThumbstickFrame.Position = position
+&#9;&#9;StickImage.Position = UDim2.new(0, ThumbstickFrame.Size.X.Offset/2 - thumbstickSize/4, 0, ThumbstickFrame.Size.Y.Offset/2 - thumbstickSize/4)
+&#9;&#9;MoveTouchObject = nil
+&#9;&#9;
+&#9;&#9;MasterControl:AddToPlayerMovement(-currentMoveVector)
+&#9;&#9;currentMoveVector = Vector3.new(0,0,0)
+&#9;&#9;MasterControl:SetIsJumping(false)
+&#9;end
+&#9;
+&#9;OnTouchEndedCn = UserInputService.TouchEnded:connect(function(inputObject, isProcessed)
+&#9;&#9;if inputObject == MoveTouchObject then
+&#9;&#9;&#9;OnTouchEnded()
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;GuiService.MenuOpened:connect(function()
+&#9;&#9;if MoveTouchObject then
+&#9;&#9;&#9;OnTouchEnded()
+&#9;&#9;end
+&#9;end)&#9;
+&#9;
+&#9;ThumbstickFrame.Parent = parentFrame
+end
+
+return Thumbstick
+</ProtectedString>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX4905BF716A1B45589012BF53D6C53E50">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">TouchJump</string>
+					<string name="ScriptGuid"></string>
+					<ProtectedString name="Source">--[[
+&#9;// FileName: TouchJump
+&#9;// Version 1.0
+&#9;// Written by: jmargh
+&#9;// Description: Implements jump controls for touch devices. Use with Thumbstick and Thumbpad
+--]]
+
+local Players = game:GetService(&apos;Players&apos;)
+local GuiService = game:GetService(&apos;GuiService&apos;)
+
+local TouchJump = {}
+
+local MasterControl = require(script.Parent)
+
+--[[ Script Variables ]]--
+while not Players.LocalPlayer do
+&#9;wait()
+end
+local LocalPlayer = Players.LocalPlayer
+local Humanoid = MasterControl:GetHumanoid()
+local JumpButton = nil
+local OnInputEnded = nil&#9;&#9;-- defined in Create()
+local CharacterAddedConnection = nil
+local HumStateConnection = nil
+local HumChangeConnection = nil
+local ExternallyEnabled = false
+local JumpPower = 0
+local JumpStateEnabled = true
+
+--[[ Constants ]]--
+local TOUCH_CONTROL_SHEET = &quot;rbxasset://textures/ui/TouchControlsSheet.png&quot;
+
+--[[ Private Functions ]]--
+
+local function disableButton()
+&#9;JumpButton.Visible = false
+&#9;OnInputEnded()
+end
+
+local function enableButton()
+&#9;if Humanoid and ExternallyEnabled then
+&#9;&#9;if ExternallyEnabled then
+&#9;&#9;&#9;if Humanoid.JumpPower &gt; 0 then
+&#9;&#9;&#9;&#9;JumpButton.Visible = true
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+end
+
+local function updateEnabled()
+&#9;if JumpPower &gt; 0 and JumpStateEnabled then
+&#9;&#9;enableButton()
+&#9;else
+&#9;&#9;disableButton()
+&#9;end
+end
+
+local function humanoidChanged(prop)
+&#9;if prop == &quot;JumpPower&quot; then
+&#9;&#9;JumpPower =  Humanoid.JumpPower
+&#9;&#9;updateEnabled()
+&#9;elseif prop == &quot;Parent&quot; then
+&#9;&#9;if not Humanoid.Parent then
+&#9;&#9;&#9;HumChangeConnection:disconnect()
+&#9;&#9;end
+&#9;end
+end
+
+local function humandoidStateEnabledChanged(state, isEnabled)
+&#9;if state == Enum.HumanoidStateType.Jumping then
+&#9;&#9;JumpStateEnabled = isEnabled
+&#9;&#9;updateEnabled()
+&#9;end
+end
+
+local function characterAdded(newCharacter)
+&#9;if HumChangeConnection then
+&#9;&#9;HumChangeConnection:disconnect()
+&#9;end
+&#9;-- rebind event to new Humanoid
+&#9;Humanoid = nil
+&#9;repeat
+&#9;&#9;Humanoid = MasterControl:GetHumanoid()
+&#9;&#9;wait()
+&#9;until Humanoid and Humanoid.Parent == newCharacter
+&#9;HumChangeConnection = Humanoid.Changed:connect(humanoidChanged)
+&#9;HumStateConnection = Humanoid.StateEnabledChanged:connect(humandoidStateEnabledChanged)
+&#9;JumpPower = Humanoid.JumpPower
+&#9;JumpStateEnabled = Humanoid:GetStateEnabled(Enum.HumanoidStateType.Jumping)
+&#9;updateEnabled()
+end
+
+local function setupCharacterAddedFunction()
+&#9;CharacterAddedConnection = LocalPlayer.CharacterAdded:connect(characterAdded)
+&#9;if LocalPlayer.Character then
+&#9;&#9;characterAdded(LocalPlayer.Character)
+&#9;end
+end
+
+--[[ Public API ]]--
+function TouchJump:Enable()
+&#9;ExternallyEnabled = true
+&#9;enableButton()
+end
+
+function TouchJump:Disable()
+&#9;ExternallyEnabled = false
+&#9;disableButton()
+end
+
+function TouchJump:Create(parentFrame)
+&#9;if JumpButton then
+&#9;&#9;JumpButton:Destroy()
+&#9;&#9;JumpButton = nil
+&#9;end
+&#9;
+&#9;local minAxis = math.min(parentFrame.AbsoluteSize.x, parentFrame.AbsoluteSize.y)
+&#9;local isSmallScreen = minAxis &lt;= 500
+&#9;local jumpButtonSize = isSmallScreen and 70 or 120
+&#9;
+&#9;JumpButton = Instance.new(&apos;ImageButton&apos;)
+&#9;JumpButton.Name = &quot;JumpButton&quot;
+&#9;JumpButton.Visible = false
+&#9;JumpButton.BackgroundTransparency = 1
+&#9;JumpButton.Image = TOUCH_CONTROL_SHEET
+&#9;JumpButton.ImageRectOffset = Vector2.new(176, 222)
+&#9;JumpButton.ImageRectSize = Vector2.new(174, 174)
+&#9;JumpButton.Size = UDim2.new(0, jumpButtonSize, 0, jumpButtonSize)
+
+    JumpButton.Position = isSmallScreen and UDim2.new(1, -(jumpButtonSize*1.5-10), 1, -jumpButtonSize - 20) or
+        UDim2.new(1, -(jumpButtonSize*1.5-10), 1, -jumpButtonSize * 1.75)
+&#9;
+&#9;local touchObject = nil&#9;
+&#9;JumpButton.InputBegan:connect(function(inputObject)
+&#9;&#9;--A touch that starts elsewhere on the screen will be sent to a frame&apos;s InputBegan event
+&#9;&#9;--if it moves over the frame. So we check that this is actually a new touch (inputObject.UserInputState ~= Enum.UserInputState.Begin)
+&#9;&#9;if touchObject or inputObject.UserInputType ~= Enum.UserInputType.Touch
+&#9;&#9;&#9;or inputObject.UserInputState ~= Enum.UserInputState.Begin then
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;&#9;
+&#9;&#9;touchObject = inputObject
+&#9;&#9;JumpButton.ImageRectOffset = Vector2.new(0, 222)
+&#9;&#9;MasterControl:SetIsJumping(true)
+&#9;end)
+&#9;
+&#9;OnInputEnded = function()
+&#9;&#9;touchObject = nil
+&#9;&#9;MasterControl:SetIsJumping(false)
+&#9;&#9;JumpButton.ImageRectOffset = Vector2.new(176, 222)
+&#9;end
+&#9;
+&#9;JumpButton.InputEnded:connect(function(inputObject)
+&#9;&#9;if inputObject == touchObject then
+&#9;&#9;&#9;OnInputEnded()
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;GuiService.MenuOpened:connect(function()
+&#9;&#9;if touchObject then
+&#9;&#9;&#9;OnInputEnded()
+&#9;&#9;end
+&#9;end)
+&#9;
+&#9;if not CharacterAddedConnection then
+&#9;&#9;setupCharacterAddedFunction()
+&#9;end
+&#9;
+&#9;JumpButton.Parent = parentFrame
+end
+
+return TouchJump
+</ProtectedString>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXB523CD8AA51D47C9AD19485522A7C634">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">VehicleController</string>
+					<ProtectedString name="Source">--[[
+&#9;// FileName: VehicleControl
+&#9;// Version 1.0
+&#9;// Written by: jmargh
+&#9;// Description: Implements in-game vehicle controls for all input devices
+&#9;
+&#9;// NOTE: This works for basic vehicles (single vehicle seat). If you use custom VehicleSeat code,
+&#9;// multiple VehicleSeats or your own implementation of a VehicleSeat this will not work.
+--]]
+
+local VehicleController = {}
+
+local ContextActionService = game:GetService(&apos;ContextActionService&apos;)
+local Players = game:GetService(&apos;Players&apos;)
+local RunService = game:GetService(&apos;RunService&apos;)
+
+local MasterControl = require(script.Parent)
+
+while not Players.LocalPlayer do
+&#9;wait()
+end
+local LocalPlayer = Players.LocalPlayer
+local CurrentVehicleSeat = nil
+local CurrentThrottle = 0
+local CurrentSteer = 0
+local HumanoidSeatedCn = nil
+local RenderSteppedCn = nil
+local Accelerating = false
+local Deccelerating = false
+local TurningRight = false
+local TurningLeft = false
+-- Set this to true if you want to instead use the triggers for the throttle
+local useTriggersForThrottle = true
+-- Also set this to true if you want the thumbstick to not affect throttle, only triggers when a gamepad is conected
+local onlyTriggersForThrottle = false
+
+local function onThrottleAccel(actionName, inputState, inputObject)
+&#9;MasterControl:AddToPlayerMovement(Vector3.new(0, 0, -CurrentThrottle))
+&#9;CurrentThrottle = (inputState == Enum.UserInputState.End or Deccelerating) and 0 or -1
+&#9;MasterControl:AddToPlayerMovement(Vector3.new(0, 0, CurrentThrottle))
+&#9;Accelerating = not (inputState == Enum.UserInputState.End)
+&#9;if (inputState == Enum.UserInputState.End) and Deccelerating then
+&#9;&#9;CurrentThrottle = 1
+&#9;&#9;MasterControl:AddToPlayerMovement(Vector3.new(0, 0, CurrentThrottle))
+&#9;end
+end
+
+local function onThrottleDeccel(actionName, inputState, inputObject)
+&#9;MasterControl:AddToPlayerMovement(Vector3.new(0, 0, -CurrentThrottle))
+&#9;CurrentThrottle = (inputState == Enum.UserInputState.End or Accelerating) and 0 or 1
+&#9;MasterControl:AddToPlayerMovement(Vector3.new(0, 0, CurrentThrottle))
+&#9;Deccelerating = not (inputState == Enum.UserInputState.End)
+&#9;if (inputState == Enum.UserInputState.End) and Accelerating then
+&#9;&#9;CurrentThrottle = -1
+&#9;&#9;MasterControl:AddToPlayerMovement(Vector3.new(0, 0, CurrentThrottle))
+&#9;end
+end
+
+local function onSteerRight(actionName, inputState, inputObject)
+&#9;MasterControl:AddToPlayerMovement(Vector3.new(-CurrentSteer, 0, 0))
+&#9;CurrentSteer = (inputState == Enum.UserInputState.End or TurningLeft) and 0 or 1
+&#9;MasterControl:AddToPlayerMovement(Vector3.new(CurrentSteer, 0, 0))
+&#9;TurningRight = not (inputState == Enum.UserInputState.End)
+&#9;if (inputState == Enum.UserInputState.End) and TurningLeft then
+&#9;&#9;CurrentSteer = -1
+&#9;&#9;MasterControl:AddToPlayerMovement(Vector3.new(CurrentSteer, 0, 0))
+&#9;end
+end
+
+local function onSteerLeft(actionName, inputState, inputObject)
+&#9;MasterControl:AddToPlayerMovement(Vector3.new(-CurrentSteer, 0, 0))
+&#9;CurrentSteer = (inputState == Enum.UserInputState.End or TurningRight) and 0 or -1
+&#9;MasterControl:AddToPlayerMovement(Vector3.new(CurrentSteer, 0, 0))
+&#9;TurningLeft = not (inputState == Enum.UserInputState.End)
+&#9;if (inputState == Enum.UserInputState.End) and TurningRight then
+&#9;&#9;CurrentSteer = 1
+&#9;&#9;MasterControl:AddToPlayerMovement(Vector3.new(CurrentSteer, 0, 0))
+&#9;end
+end
+
+local function getHumanoid()
+&#9;local character = LocalPlayer and LocalPlayer.Character
+&#9;if character then
+&#9;&#9;for _,child in pairs(character:GetChildren()) do
+&#9;&#9;&#9;if child:IsA(&apos;Humanoid&apos;) then
+&#9;&#9;&#9;&#9;return child
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+end
+
+local function getClosestFittingValue(value)
+&#9;if value &gt; 0.5 then
+&#9;&#9;return 1
+&#9;elseif value &lt; -0.5 then
+&#9;&#9;return -1
+&#9;end
+&#9;return 0 
+end
+
+local function onRenderStepped()
+&#9;if CurrentVehicleSeat then
+&#9;&#9;local moveValue = MasterControl:GetMoveVector()
+&#9;&#9;local didSetThrottleSteerFloat = false
+&#9;&#9;didSetThrottleSteerFloat = pcall(function()
+&#9;&#9;&#9;if game:GetService(&quot;UserInputService&quot;):GetGamepadConnected(Enum.UserInputType.Gamepad1) and onlyTriggersForThrottle and useTriggersForThrottle then
+&#9;&#9;&#9;&#9;CurrentVehicleSeat.ThrottleFloat = -CurrentThrottle
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;CurrentVehicleSeat.ThrottleFloat = -moveValue.z
+&#9;&#9;&#9;end
+&#9;&#9;&#9;CurrentVehicleSeat.SteerFloat = moveValue.x
+&#9;&#9;end)&#9;
+&#9;&#9;
+&#9;&#9;if didSetThrottleSteerFloat == false then
+&#9;&#9;&#9;if game:GetService(&quot;UserInputService&quot;):GetGamepadConnected(Enum.UserInputType.Gamepad1) and onlyTriggersForThrottle and useTriggersForThrottle then
+&#9;&#9;&#9;&#9;CurrentVehicleSeat.Throttle = -CurrentThrottle
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;CurrentVehicleSeat.Throttle = getClosestFittingValue(-moveValue.z)
+&#9;&#9;&#9;end
+&#9;&#9;&#9;CurrentVehicleSeat.Steer = getClosestFittingValue(moveValue.x)
+&#9;&#9;end
+&#9;end
+end
+
+local function onSeated(active, currentSeatPart)
+&#9;if active then
+&#9;&#9;if currentSeatPart and currentSeatPart:IsA(&apos;VehicleSeat&apos;) then
+&#9;&#9;&#9;CurrentVehicleSeat = currentSeatPart
+&#9;&#9;&#9;if useTriggersForThrottle then
+&#9;&#9;&#9;&#9;ContextActionService:BindAction(&quot;throttleAccel&quot;, onThrottleAccel, false, Enum.KeyCode.ButtonR2)
+&#9;&#9;&#9;&#9;ContextActionService:BindAction(&quot;throttleDeccel&quot;, onThrottleDeccel, false, Enum.KeyCode.ButtonL2)
+&#9;&#9;&#9;end
+&#9;&#9;&#9;ContextActionService:BindAction(&quot;arrowSteerRight&quot;, onSteerRight, false, Enum.KeyCode.Right)
+&#9;&#9;&#9;ContextActionService:BindAction(&quot;arrowSteerLeft&quot;, onSteerLeft, false, Enum.KeyCode.Left)
+&#9;&#9;&#9;local success = pcall(function() RunService:BindToRenderStep(&quot;VehicleControlStep&quot;, Enum.RenderPriority.Input.Value, onRenderStepped) end)
+
+&#9;&#9;&#9;if not success then
+&#9;&#9;&#9;&#9;if RenderSteppedCn then return end
+&#9;&#9;&#9;&#9;RenderSteppedCn = RunService.RenderStepped:connect(onRenderStepped)
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;else
+&#9;&#9;CurrentVehicleSeat = nil
+&#9;&#9;if useTriggersForThrottle then
+&#9;&#9;&#9;ContextActionService:UnbindAction(&quot;throttleAccel&quot;)
+&#9;&#9;&#9;ContextActionService:UnbindAction(&quot;throttleDeccel&quot;)
+&#9;&#9;end
+&#9;&#9;ContextActionService:UnbindAction(&quot;arrowSteerRight&quot;)
+&#9;&#9;ContextActionService:UnbindAction(&quot;arrowSteerLeft&quot;)
+&#9;&#9;MasterControl:AddToPlayerMovement(Vector3.new(-CurrentSteer, 0, -CurrentThrottle))
+&#9;&#9;CurrentThrottle = 0
+&#9;&#9;CurrentSteer = 0
+&#9;&#9;local success = pcall(function() RunService:UnbindFromRenderStep(&quot;VehicleControlStep&quot;) end)
+&#9;&#9;if not success and RenderSteppedCn then
+&#9;&#9;&#9;RenderSteppedCn:disconnect()
+&#9;&#9;&#9;RenderSteppedCn = nil
+&#9;&#9;end
+&#9;end
+end
+
+local function CharacterAdded(character)
+&#9;local humanoid = getHumanoid()
+&#9;while not humanoid do
+&#9;&#9;wait()
+&#9;&#9;humanoid = getHumanoid()
+&#9;end
+&#9;--
+&#9;if HumanoidSeatedCn then
+&#9;&#9;HumanoidSeatedCn:disconnect()
+&#9;&#9;HumanoidSeatedCn = nil
+&#9;end
+&#9;HumanoidSeatedCn = humanoid.Seated:connect(onSeated)
+end
+
+if LocalPlayer.Character then
+&#9;CharacterAdded(LocalPlayer.Character)
+end
+LocalPlayer.CharacterAdded:connect(CharacterAdded)
+
+return VehicleController
+</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+</roblox>

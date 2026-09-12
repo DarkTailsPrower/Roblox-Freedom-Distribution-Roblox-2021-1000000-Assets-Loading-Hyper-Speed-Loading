@@ -1,0 +1,17 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Pants" referent="RBXD3364BAD1DD44B358553DF26C3951ED0">
+		<Properties>
+			<Color3 name="Color3">
+				<R>1</R>
+				<G>1</G>
+				<B>1</B>
+			</Color3>
+			<string name="Name">Pants</string>
+			<string name="PantsTemplate">rbxassetid://867826313</string>
+			<string name="Tags"></string>
+		</Properties>
+	</Item>
+</roblox>

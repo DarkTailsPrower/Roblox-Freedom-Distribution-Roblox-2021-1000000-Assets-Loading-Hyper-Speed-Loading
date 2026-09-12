@@ -1,0 +1,107 @@
+# Standard library imports
+import enum
+import os
+import shutil
+import subprocess
+import sys
+
+# Local application imports
+import functools
+import util.versions
+
+
+MADE_WITH_PYINSTALLER = hasattr(sys, '_MEIPASS')
+
+
+def convert_to_winepath(path: str) -> str:
+    if shutil.which('winepath') is None:
+        return path
+    return subprocess.check_output(['winepath', '-w', path], text=True).strip()
+
+
+@functools.cache
+def get_rfd_top_dir() -> str:
+    if MADE_WITH_PYINSTALLER:
+        return os.path.dirname(sys.executable)
+
+    base_file = None
+    # Path for top-level `_main.py`.
+    if hasattr(sys.modules['__main__'], '__file__'):
+        base_file = sys.modules['__main__'].__file__
+
+    # Otherwise, get the path for `~/util`.
+    if base_file is None:
+        base_file = os.path.dirname(__file__)
+
+    # Traverse through parent directory twice.
+    for _ in range(2):
+        base_file = os.path.dirname(base_file)
+    return base_file
+
+
+class dir_type(enum.Enum):
+    RŌBLOX = 0
+    WORKING_DIR = 1
+    MISC = 2
+
+
+class bin_subtype(enum.Enum):
+    SERVER = 'Server'
+    PLAYER = 'Player'
+    STUDIO = 'Studio'
+
+
+DEFAULT_CONFIG_PATH = './GameConfig.toml'
+
+
+def get_path_pieces(d: dir_type) -> list[str]:
+    match (MADE_WITH_PYINSTALLER, d):
+
+        case (_, dir_type.RŌBLOX):
+            return [get_rfd_top_dir(), 'Roblox']
+
+        case (True, dir_type.MISC):
+            return [get_rfd_top_dir()]
+        case (False, dir_type.MISC):
+            return [get_rfd_top_dir()]
+
+        case (True, dir_type.WORKING_DIR):
+            return [os.getcwd()]
+        case (False, dir_type.WORKING_DIR):
+            return [os.getcwd()]
+
+
+def retr_full_path(d: dir_type, *paths: str) -> str:
+    full_path = os.path.join(*get_path_pieces(d), *paths)
+    return full_path
+
+
+def retr_rōblox_full_path(
+    version: util.versions.rōblox,
+    bin_type: bin_subtype,
+    *paths: str,
+    adjust_for_wine: bool = False,
+) -> str:
+    result = retr_full_path(
+        dir_type.RŌBLOX,
+        version.name,
+        bin_type.value,
+        *paths,
+    )
+    if adjust_for_wine:
+        return convert_to_winepath(result)
+    return result
+
+
+def retr_config_full_path(path: str = DEFAULT_CONFIG_PATH) -> str:
+    if os.path.isdir(path):
+        path = os.path.join(
+            path,
+            DEFAULT_CONFIG_PATH,
+        )
+    elif not os.path.isabs(path):
+        path = os.path.join(
+            retr_full_path(dir_type.MISC),
+            path,
+        )
+    return os.path.normpath(path)

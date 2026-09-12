@@ -1,0 +1,1 @@
+Blue screens are scary when you're playing audio. It replays a few milliseconds of the audio that was playing when you crashed.

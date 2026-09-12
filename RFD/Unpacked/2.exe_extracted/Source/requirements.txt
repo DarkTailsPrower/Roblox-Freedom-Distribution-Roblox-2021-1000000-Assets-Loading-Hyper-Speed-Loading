@@ -1,0 +1,7 @@
+trustme~=1.2.0
+urllib3>=2.7.0
+pyzstd~=0.19.1
+py7zr~=1.1.0
+lz4~=4.4.5
+pywin32 ; sys_platform == 'win32'
+dracopy~=2.0.0

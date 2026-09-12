@@ -1,0 +1,1066 @@
+1789042225.02502,3728,6 [FLog::Output] Loading AppSettings.xml, current path: C:\RFD\Roblox\v463\Server
+1789042225.02602,3728,6 [FLog::RCCServiceInit] Got Base url: https://localhost:2005/
+1789042225.02802,3728,6 [FLog::Output] CrashReporter Start
+1789042225.02802,3728,6 [FLog::Output] Service starting
+1789042225.02802,3430,6 [FLog::Output] WatcherThread Started
+1789042225.02902,3728,6 [FLog::Output] setAssetFolder C:\RFD\Roblox\v463\Server\Content\
+1789042225.03102,3728,6 [FLog::Output] setExtraAssetFolder 
+1789042225.03102,3728,6 [DFLog::RCCExecuteInfo] Initializing Roblox Web Service
+1789042225.03402,3728,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 4 ) <req: 0 active: 0>
+1789042225.03602,3728,104 [FLog::Output] TaskSchedulerMk2::applyAsyncTaskThreadCount( 3 ) <req: 4 active: 4>
+1789042225.03902,1bfc,6 [DFLog::RCCExecuteInfo] SecurityDataUpdater failed to fetch data from , HttpError: InvalidUrl
+1789042225.04302,3728,104 [FLog::Output] Service started on port 0
+1789042225.07302,3728,101 [FLog::LocalStorage] LocalStorage loading from path: ../../../LocalStorage\ocalhost:2005_appStorage.json
+1789042225.07402,3728,102 [FLog::RCCServiceJobs] Opened JobItem Test
+1789042225.07402,3a28,101 [FLog::LocalStorage] LocalStorage failed to load: ../../../LocalStorage\ocalhost:2005_appStorage.json
+1789042225.07402,3728,102 [FLog::RCCServiceJobs] DataModel: 047BE090
+1789042225.07402,3728,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] RCC Executing: [{"Mode": "GameServer", "GameId": 13058, "Settings": {"Type": "Avatar", "PlaceId": 1818, "GameId": "Test", "MachineAddress": "https://localhost:2005", "PlaceFetchUrl": "https://localhost:2005/asset/?id=1818", "MaxPlayers": 1000000000, "PreferredPlayerCapacity": 1000000000, "CharacterAppearance": "https://localhost:2005/v1.1/avatar-fetch", "MaxGameInstances": 1, "GsmInterval": 5, "ApiKey": "", "DataCenterId": "69420", "PlaceVisitAccessKey": "", "UniverseId": 13058, "MatchmakingContextId": 1, "CreatorId": 0, "CreatorType": "Group", "PlaceVersion": 1, "BaseUrl": "https://localhost:2005/.127.0.0.1", "JobId": "Test", "PreferredPort": 2005}, "Arguments": {}}]
+1789042225.07402,3728,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] Executing job with mode GameServer
+1789042225.07402,0308,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] Fetching place 1818
+1789042225.07602,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042225.27703,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042225.28704,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::643b:da3f:576:b33f|2005 after 0.211017
+1789042226.65602,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 1.378987
+1789042226.67202,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042226.67302,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042226.87300,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042226.87300,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::c3e1:7f3e:99c0:fa3f|2005 after 0.200981
+1789042226.87400,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042226.87400,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::ae6f:8fc8:b1c4:fa3f|2005 after 0.200981
+1789042226.88300,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.009999
+1789042226.88700,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.012999
+1789042227.63303,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042227.78435,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042227.82205,0308,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Started network server ::1|2005
+1789042227.83316,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042227.83316,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::f694:f947:7210:540|2005 after 0.200132
+1789042227.91598,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.236"
+    Stack Begin
+    Script 'Workspace.236.Script', Line 3
+    Stack End
+1789042227.91699,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.242"
+    Stack Begin
+    Script 'Workspace.242.Script', Line 3
+    Stack End
+1789042227.91800,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.231"
+    Stack Begin
+    Script 'Workspace.231.Script', Line 3
+    Stack End
+1789042227.91800,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.233"
+    Stack Begin
+    Script 'Workspace.233.Script', Line 3
+    Stack End
+1789042227.91901,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.173"
+    Stack Begin
+    Script 'Workspace.173.Script', Line 3
+    Stack End
+1789042227.91901,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.178"
+    Stack Begin
+    Script 'Workspace.178.Script', Line 3
+    Stack End
+1789042227.91901,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.246"
+    Stack Begin
+    Script 'Workspace.246.Script', Line 3
+    Stack End
+1789042227.91902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.169"
+    Stack Begin
+    Script 'Workspace.169.Script', Line 3
+    Stack End
+1789042227.91902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.164"
+    Stack Begin
+    Script 'Workspace.164.Script', Line 3
+    Stack End
+1789042227.91902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.160"
+    Stack Begin
+    Script 'Workspace.160.Script', Line 3
+    Stack End
+1789042227.92002,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.163"
+    Stack Begin
+    Script 'Workspace.163.Script', Line 3
+    Stack End
+1789042227.92002,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.159"
+    Stack Begin
+    Script 'Workspace.159.Script', Line 3
+    Stack End
+1789042227.92102,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.155"
+    Stack Begin
+    Script 'Workspace.155.Script', Line 3
+    Stack End
+1789042227.92102,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.247"
+    Stack Begin
+    Script 'Workspace.247.Script', Line 3
+    Stack End
+1789042227.92102,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.204"
+    Stack Begin
+    Script 'Workspace.204.Script', Line 3
+    Stack End
+1789042227.92102,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.136"
+    Stack Begin
+    Script 'Workspace.136.Script', Line 3
+    Stack End
+1789042227.92102,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.135"
+    Stack Begin
+    Script 'Workspace.135.Script', Line 3
+    Stack End
+1789042227.92302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.61"
+    Stack Begin
+    Script 'Workspace.61.Script', Line 3
+    Stack End
+1789042227.92402,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.124"
+    Stack Begin
+    Script 'Workspace.124.Script', Line 3
+    Stack End
+1789042227.92402,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.125"
+    Stack Begin
+    Script 'Workspace.125.Script', Line 3
+    Stack End
+1789042227.92402,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.123"
+    Stack Begin
+    Script 'Workspace.123.Script', Line 3
+    Stack End
+1789042227.92502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.244"
+    Stack Begin
+    Script 'Workspace.244.Script', Line 3
+    Stack End
+1789042227.92602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.95"
+    Stack Begin
+    Script 'Workspace.95.Script', Line 3
+    Stack End
+1789042227.92602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.55"
+    Stack Begin
+    Script 'Workspace.55.Script', Line 3
+    Stack End
+1789042227.92602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.2"
+    Stack Begin
+    Script 'Workspace.2.Script', Line 3
+    Stack End
+1789042227.92702,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.23"
+    Stack Begin
+    Script 'Workspace.23.Script', Line 3
+    Stack End
+1789042227.92702,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.85"
+    Stack Begin
+    Script 'Workspace.85.Script', Line 3
+    Stack End
+1789042227.92802,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.84"
+    Stack Begin
+    Script 'Workspace.84.Script', Line 3
+    Stack End
+1789042227.92802,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.77"
+    Stack Begin
+    Script 'Workspace.77.Script', Line 3
+    Stack End
+1789042227.92802,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.30"
+    Stack Begin
+    Script 'Workspace.30.Script', Line 3
+    Stack End
+1789042227.92902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.13"
+    Stack Begin
+    Script 'Workspace.13.Script', Line 3
+    Stack End
+1789042227.92902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.62"
+    Stack Begin
+    Script 'Workspace.62.Script', Line 3
+    Stack End
+1789042227.93002,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.32"
+    Stack Begin
+    Script 'Workspace.32.Script', Line 3
+    Stack End
+1789042227.93202,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.18"
+    Stack Begin
+    Script 'Workspace.18.Script', Line 3
+    Stack End
+1789042227.93202,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.75"
+    Stack Begin
+    Script 'Workspace.75.Script', Line 3
+    Stack End
+1789042227.93202,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.70"
+    Stack Begin
+    Script 'Workspace.70.Script', Line 3
+    Stack End
+1789042227.93302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.72"
+    Stack Begin
+    Script 'Workspace.72.Script', Line 3
+    Stack End
+1789042227.93302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.73"
+    Stack Begin
+    Script 'Workspace.73.Script', Line 3
+    Stack End
+1789042227.93302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.71"
+    Stack Begin
+    Script 'Workspace.71.Script', Line 3
+    Stack End
+1789042227.93302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.63"
+    Stack Begin
+    Script 'Workspace.63.Script', Line 3
+    Stack End
+1789042227.93402,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.14"
+    Stack Begin
+    Script 'Workspace.14.Script', Line 3
+    Stack End
+1789042227.93402,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.87"
+    Stack Begin
+    Script 'Workspace.87.Script', Line 3
+    Stack End
+1789042227.93502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.68"
+    Stack Begin
+    Script 'Workspace.68.Script', Line 3
+    Stack End
+1789042227.93502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.67"
+    Stack Begin
+    Script 'Workspace.67.Script', Line 3
+    Stack End
+1789042227.93502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.66"
+    Stack Begin
+    Script 'Workspace.66.Script', Line 3
+    Stack End
+1789042227.93602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.65"
+    Stack Begin
+    Script 'Workspace.65.Script', Line 3
+    Stack End
+1789042227.93602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.69"
+    Stack Begin
+    Script 'Workspace.69.Script', Line 3
+    Stack End
+1789042227.93602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.64"
+    Stack Begin
+    Script 'Workspace.64.Script', Line 3
+    Stack End
+1789042227.93702,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.12"
+    Stack Begin
+    Script 'Workspace.12.Script', Line 3
+    Stack End
+1789042227.93802,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.11"
+    Stack Begin
+    Script 'Workspace.11.Script', Line 3
+    Stack End
+1789042227.93802,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.3"
+    Stack Begin
+    Script 'Workspace.3.Script', Line 3
+    Stack End
+1789042227.94002,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.88"
+    Stack Begin
+    Script 'Workspace.88.Script', Line 3
+    Stack End
+1789042227.94002,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.27"
+    Stack Begin
+    Script 'Workspace.27.Script', Line 3
+    Stack End
+1789042227.94102,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.25"
+    Stack Begin
+    Script 'Workspace.25.Script', Line 3
+    Stack End
+1789042227.94202,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.24"
+    Stack Begin
+    Script 'Workspace.24.Script', Line 3
+    Stack End
+1789042227.94202,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.26"
+    Stack Begin
+    Script 'Workspace.26.Script', Line 3
+    Stack End
+1789042227.94302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.15"
+    Stack Begin
+    Script 'Workspace.15.Script', Line 3
+    Stack End
+1789042227.94302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.29"
+    Stack Begin
+    Script 'Workspace.29.Script', Line 3
+    Stack End
+1789042227.94302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.16"
+    Stack Begin
+    Script 'Workspace.16.Script', Line 3
+    Stack End
+1789042227.94302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.60"
+    Stack Begin
+    Script 'Workspace.60.Script', Line 3
+    Stack End
+1789042227.94402,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.10"
+    Stack Begin
+    Script 'Workspace.10.Script', Line 3
+    Stack End
+1789042227.94502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.57"
+    Stack Begin
+    Script 'Workspace.57.Script', Line 3
+    Stack End
+1789042227.94602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.17"
+    Stack Begin
+    Script 'Workspace.17.Script', Line 3
+    Stack End
+1789042227.94602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.1"
+    Stack Begin
+    Script 'Workspace.1.Script', Line 3
+    Stack End
+1789042227.94702,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.58"
+    Stack Begin
+    Script 'Workspace.58.Script', Line 3
+    Stack End
+1789042227.94702,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.19"
+    Stack Begin
+    Script 'Workspace.19.Script', Line 3
+    Stack End
+1789042227.94702,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.22"
+    Stack Begin
+    Script 'Workspace.22.Script', Line 3
+    Stack End
+1789042227.94901,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.82"
+    Stack Begin
+    Script 'Workspace.82.Script', Line 3
+    Stack End
+1789042227.94901,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.81"
+    Stack Begin
+    Script 'Workspace.81.Script', Line 3
+    Stack End
+1789042227.94901,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.78"
+    Stack Begin
+    Script 'Workspace.78.Script', Line 3
+    Stack End
+1789042227.95001,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.74"
+    Stack Begin
+    Script 'Workspace.74.Script', Line 3
+    Stack End
+1789042227.95001,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.76"
+    Stack Begin
+    Script 'Workspace.76.Script', Line 3
+    Stack End
+1789042227.95101,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.83"
+    Stack Begin
+    Script 'Workspace.83.Script', Line 3
+    Stack End
+1789042227.95101,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.90"
+    Stack Begin
+    Script 'Workspace.90.Script', Line 3
+    Stack End
+1789042227.95101,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.89"
+    Stack Begin
+    Script 'Workspace.89.Script', Line 3
+    Stack End
+1789042227.95101,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.79"
+    Stack Begin
+    Script 'Workspace.79.Script', Line 3
+    Stack End
+1789042227.95101,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.80"
+    Stack Begin
+    Script 'Workspace.80.Script', Line 3
+    Stack End
+1789042227.95301,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.59"
+    Stack Begin
+    Script 'Workspace.59.Script', Line 3
+    Stack End
+1789042227.95301,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.28"
+    Stack Begin
+    Script 'Workspace.28.Script', Line 3
+    Stack End
+1789042227.95401,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.31"
+    Stack Begin
+    Script 'Workspace.31.Script', Line 3
+    Stack End
+1789042227.95601,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.86"
+    Stack Begin
+    Script 'Workspace.86.Script', Line 3
+    Stack End
+1789042227.95701,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.56"
+    Stack Begin
+    Script 'Workspace.56.Script', Line 3
+    Stack End
+1789042227.95801,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.54"
+    Stack Begin
+    Script 'Workspace.54.Script', Line 3
+    Stack End
+1789042227.95801,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.52"
+    Stack Begin
+    Script 'Workspace.52.Script', Line 3
+    Stack End
+1789042227.95801,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.53"
+    Stack Begin
+    Script 'Workspace.53.Script', Line 3
+    Stack End
+1789042227.95801,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.51"
+    Stack Begin
+    Script 'Workspace.51.Script', Line 3
+    Stack End
+1789042227.97201,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.20"
+    Stack Begin
+    Script 'Workspace.20.Script', Line 3
+    Stack End
+1789042227.97301,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.8"
+    Stack Begin
+    Script 'Workspace.8.Script', Line 3
+    Stack End
+1789042227.97301,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.9"
+    Stack Begin
+    Script 'Workspace.9.Script', Line 3
+    Stack End
+1789042227.97401,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.91"
+    Stack Begin
+    Script 'Workspace.91.Script', Line 3
+    Stack End
+1789042227.97501,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.92"
+    Stack Begin
+    Script 'Workspace.92.Script', Line 3
+    Stack End
+1789042227.97501,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.93"
+    Stack Begin
+    Script 'Workspace.93.Script', Line 3
+    Stack End
+1789042227.97501,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.94"
+    Stack Begin
+    Script 'Workspace.94.Script', Line 3
+    Stack End
+1789042227.97601,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.245"
+    Stack Begin
+    Script 'Workspace.245.Script', Line 3
+    Stack End
+1789042227.97701,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.96"
+    Stack Begin
+    Script 'Workspace.96.Script', Line 3
+    Stack End
+1789042227.97701,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.97"
+    Stack Begin
+    Script 'Workspace.97.Script', Line 3
+    Stack End
+1789042227.97801,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.98"
+    Stack Begin
+    Script 'Workspace.98.Script', Line 3
+    Stack End
+1789042227.97801,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.240"
+    Stack Begin
+    Script 'Workspace.240.Script', Line 3
+    Stack End
+1789042227.98901,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042227.99001,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::6692:3690:5946:640|2005 after 0.205662
+1789042227.99101,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.243"
+    Stack Begin
+    Script 'Workspace.243.Script', Line 3
+    Stack End
+1789042227.99301,2438,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Content failed to parse for https://localhost:2005/v1/asset/?id=100808216&serverplaceid=1818&scriptinsert=1&clientinsert=0 because tag expected
+1789042227.99701,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.120"
+    Stack Begin
+    Script 'Workspace.120.Script', Line 3
+    Stack End
+1789042227.99901,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.121"
+    Stack Begin
+    Script 'Workspace.121.Script', Line 3
+    Stack End
+1789042227.99901,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.122"
+    Stack Begin
+    Script 'Workspace.122.Script', Line 3
+    Stack End
+1789042228.00101,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Touched is not a valid member of Model "Workspace.Model"
+    Stack Begin
+    Script 'Workspace.Model.flying cake.PUT THIS IN THE WEAPON', Line 30
+    Stack End
+1789042228.00101,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.011999
+1789042228.00101,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Touched is not a valid member of Model "Workspace.Model"
+    Stack Begin
+    Script 'Workspace.Model.flying poop.PUT THIS IN THE WEAPON', Line 30
+    Stack End
+1789042228.00101,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Touched is not a valid member of Tool "Workspace.Model.flying cake"
+    Stack Begin
+    Script 'Workspace.Model.flying cake.Deadly', Line 11
+    Stack End
+1789042228.00101,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: PelletScript is not a valid member of Tool "Workspace.Model.flying cake"
+    Stack Begin
+    Script 'Workspace.Model.flying cake.Slingshot', Line 17
+    Stack End
+1789042228.00101,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Touched is not a valid member of Tool "Workspace.Model.flying poop"
+    Stack Begin
+    Script 'Workspace.Model.flying poop.Deadly', Line 11
+    Stack End
+1789042228.00201,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: PelletScript is not a valid member of Tool "Workspace.Model.flying poop"
+    Stack Begin
+    Script 'Workspace.Model.flying poop.Slingshot', Line 17
+    Stack End
+1789042228.00301,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Touched is not a valid member of Tool "Workspace.Model.flying poop"
+    Stack Begin
+    Script 'Workspace.Model.flying poop.Deadly', Line 11
+    Stack End
+1789042228.00401,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: PelletScript is not a valid member of Tool "Workspace.Model.flying poop"
+    Stack Begin
+    Script 'Workspace.Model.flying poop.Slingshot', Line 17
+    Stack End
+1789042228.00401,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Touched is not a valid member of Model "Workspace.Model"
+    Stack Begin
+    Script 'Workspace.Model.flying poop.PUT THIS IN THE WEAPON', Line 30
+    Stack End
+1789042228.00501,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: PelletScript is not a valid member of Tool "Workspace.Model.flying  mini man"
+    Stack Begin
+    Script 'Workspace.Model.flying  mini man.Slingshot', Line 17
+    Stack End
+1789042228.00501,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Touched is not a valid member of Tool "Workspace.Model.flying  mini man"
+    Stack Begin
+    Script 'Workspace.Model.flying  mini man.Deadly', Line 11
+    Stack End
+1789042228.00501,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Touched is not a valid member of Model "Workspace.Model"
+    Stack Begin
+    Script 'Workspace.Model.flying  mini man.PUT THIS IN THE WEAPON', Line 30
+    Stack End
+1789042228.00701,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Touched is not a valid member of Tool "Workspace.Model.flying cat"
+    Stack Begin
+    Script 'Workspace.Model.flying cat.Deadly', Line 11
+    Stack End
+1789042228.00701,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Touched is not a valid member of Model "Workspace.Model"
+    Stack Begin
+    Script 'Workspace.Model.flying cat.PUT THIS IN THE WEAPON', Line 30
+    Stack End
+1789042228.00701,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: PelletScript is not a valid member of Tool "Workspace.Model.flying cat"
+    Stack Begin
+    Script 'Workspace.Model.flying cat.Slingshot', Line 17
+    Stack End
+1789042228.00701,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.133"
+    Stack Begin
+    Script 'Workspace.133.Script', Line 3
+    Stack End
+1789042228.00801,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.203"
+    Stack Begin
+    Script 'Workspace.203.Script', Line 3
+    Stack End
+1789042228.00901,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.126"
+    Stack Begin
+    Script 'Workspace.126.Script', Line 3
+    Stack End
+1789042228.01001,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.127"
+    Stack Begin
+    Script 'Workspace.127.Script', Line 3
+    Stack End
+1789042228.01001,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.128"
+    Stack Begin
+    Script 'Workspace.128.Script', Line 3
+    Stack End
+1789042228.01001,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.129"
+    Stack Begin
+    Script 'Workspace.129.Script', Line 3
+    Stack End
+1789042228.01001,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.130"
+    Stack Begin
+    Script 'Workspace.130.Script', Line 3
+    Stack End
+1789042228.01001,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.134"
+    Stack Begin
+    Script 'Workspace.134.Script', Line 3
+    Stack End
+1789042228.01001,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.131"
+    Stack Begin
+    Script 'Workspace.131.Script', Line 3
+    Stack End
+1789042228.01101,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.132"
+    Stack Begin
+    Script 'Workspace.132.Script', Line 3
+    Stack End
+1789042228.01101,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.177"
+    Stack Begin
+    Script 'Workspace.177.Script', Line 3
+    Stack End
+1789042228.01101,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.176"
+    Stack Begin
+    Script 'Workspace.176.Script', Line 3
+    Stack End
+1789042228.01201,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.203"
+    Stack Begin
+    Script 'Workspace.203.Script', Line 3
+    Stack End
+1789042228.01201,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.190"
+    Stack Begin
+    Script 'Workspace.190.Script', Line 3
+    Stack End
+1789042228.01301,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.191"
+    Stack Begin
+    Script 'Workspace.191.Script', Line 3
+    Stack End
+1789042228.01301,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.189"
+    Stack Begin
+    Script 'Workspace.189.Script', Line 3
+    Stack End
+1789042228.01301,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.186"
+    Stack Begin
+    Script 'Workspace.186.Script', Line 3
+    Stack End
+1789042228.01401,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.187"
+    Stack Begin
+    Script 'Workspace.187.Script', Line 3
+    Stack End
+1789042228.01401,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.188"
+    Stack Begin
+    Script 'Workspace.188.Script', Line 3
+    Stack End
+1789042228.01401,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.184"
+    Stack Begin
+    Script 'Workspace.184.Script', Line 3
+    Stack End
+1789042228.01401,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.185"
+    Stack Begin
+    Script 'Workspace.185.Script', Line 3
+    Stack End
+1789042228.01401,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.183"
+    Stack Begin
+    Script 'Workspace.183.Script', Line 3
+    Stack End
+1789042228.01401,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.181"
+    Stack Begin
+    Script 'Workspace.181.Script', Line 3
+    Stack End
+1789042228.01501,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.180"
+    Stack Begin
+    Script 'Workspace.180.Script', Line 3
+    Stack End
+1789042228.01501,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.182"
+    Stack Begin
+    Script 'Workspace.182.Script', Line 3
+    Stack End
+1789042228.01501,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.175"
+    Stack Begin
+    Script 'Workspace.175.Script', Line 3
+    Stack End
+1789042228.01601,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.179"
+    Stack Begin
+    Script 'Workspace.179.Script', Line 3
+    Stack End
+1789042228.02002,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.137"
+    Stack Begin
+    Script 'Workspace.137.Script', Line 3
+    Stack End
+1789042228.02202,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.138"
+    Stack Begin
+    Script 'Workspace.138.Script', Line 3
+    Stack End
+1789042228.02202,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.139"
+    Stack Begin
+    Script 'Workspace.139.Script', Line 3
+    Stack End
+1789042228.02202,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.141"
+    Stack Begin
+    Script 'Workspace.141.Script', Line 3
+    Stack End
+1789042228.02302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.140"
+    Stack Begin
+    Script 'Workspace.140.Script', Line 3
+    Stack End
+1789042228.02302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.146"
+    Stack Begin
+    Script 'Workspace.146.Script', Line 3
+    Stack End
+1789042228.02302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.147"
+    Stack Begin
+    Script 'Workspace.147.Script', Line 3
+    Stack End
+1789042228.02302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.144"
+    Stack Begin
+    Script 'Workspace.144.Script', Line 3
+    Stack End
+1789042228.02302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.142"
+    Stack Begin
+    Script 'Workspace.142.Script', Line 3
+    Stack End
+1789042228.02502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.145"
+    Stack Begin
+    Script 'Workspace.145.Script', Line 3
+    Stack End
+1789042228.02502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.143"
+    Stack Begin
+    Script 'Workspace.143.Script', Line 3
+    Stack End
+1789042228.02502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.148"
+    Stack Begin
+    Script 'Workspace.148.Script', Line 3
+    Stack End
+1789042228.02502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.149"
+    Stack Begin
+    Script 'Workspace.149.Script', Line 3
+    Stack End
+1789042228.02502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.150"
+    Stack Begin
+    Script 'Workspace.150.Script', Line 3
+    Stack End
+1789042228.02602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.156"
+    Stack Begin
+    Script 'Workspace.156.Script', Line 3
+    Stack End
+1789042228.02602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.151"
+    Stack Begin
+    Script 'Workspace.151.Script', Line 3
+    Stack End
+1789042228.02702,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.152"
+    Stack Begin
+    Script 'Workspace.152.Script', Line 3
+    Stack End
+1789042228.02902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.153"
+    Stack Begin
+    Script 'Workspace.153.Script', Line 3
+    Stack End
+1789042228.02902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.154"
+    Stack Begin
+    Script 'Workspace.154.Script', Line 3
+    Stack End
+1789042228.02902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.157"
+    Stack Begin
+    Script 'Workspace.157.Script', Line 3
+    Stack End
+1789042228.03002,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.158"
+    Stack Begin
+    Script 'Workspace.158.Script', Line 3
+    Stack End
+1789042228.03002,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.161"
+    Stack Begin
+    Script 'Workspace.161.Script', Line 3
+    Stack End
+1789042228.03102,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.162"
+    Stack Begin
+    Script 'Workspace.162.Script', Line 3
+    Stack End
+1789042228.03402,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.165"
+    Stack Begin
+    Script 'Workspace.165.Script', Line 3
+    Stack End
+1789042228.03402,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.166"
+    Stack Begin
+    Script 'Workspace.166.Script', Line 3
+    Stack End
+1789042228.03502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.167"
+    Stack Begin
+    Script 'Workspace.167.Script', Line 3
+    Stack End
+1789042228.03502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.168"
+    Stack Begin
+    Script 'Workspace.168.Script', Line 3
+    Stack End
+1789042228.03602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.171"
+    Stack Begin
+    Script 'Workspace.171.Script', Line 3
+    Stack End
+1789042228.03602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.170"
+    Stack Begin
+    Script 'Workspace.170.Script', Line 3
+    Stack End
+1789042228.03702,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.172"
+    Stack Begin
+    Script 'Workspace.172.Script', Line 3
+    Stack End
+1789042228.03702,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.174"
+    Stack Begin
+    Script 'Workspace.174.Script', Line 3
+    Stack End
+1789042228.03902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.250"
+    Stack Begin
+    Script 'Workspace.250.Script', Line 3
+    Stack End
+1789042228.04302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.205"
+    Stack Begin
+    Script 'Workspace.205.Script', Line 3
+    Stack End
+1789042228.06602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.206"
+    Stack Begin
+    Script 'Workspace.206.Script', Line 3
+    Stack End
+1789042228.06802,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.202"
+    Stack Begin
+    Script 'Workspace.202.Script', Line 3
+    Stack End
+1789042228.07002,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.207"
+    Stack Begin
+    Script 'Workspace.207.Script', Line 3
+    Stack End
+1789042228.07502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.201"
+    Stack Begin
+    Script 'Workspace.201.Script', Line 3
+    Stack End
+1789042228.07502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.200"
+    Stack Begin
+    Script 'Workspace.200.Script', Line 3
+    Stack End
+1789042228.07502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.199"
+    Stack Begin
+    Script 'Workspace.199.Script', Line 3
+    Stack End
+1789042228.07602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.196"
+    Stack Begin
+    Script 'Workspace.196.Script', Line 3
+    Stack End
+1789042228.07602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.195"
+    Stack Begin
+    Script 'Workspace.195.Script', Line 3
+    Stack End
+1789042228.07602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.198"
+    Stack Begin
+    Script 'Workspace.198.Script', Line 3
+    Stack End
+1789042228.07602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.197"
+    Stack Begin
+    Script 'Workspace.197.Script', Line 3
+    Stack End
+1789042228.07602,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.193"
+    Stack Begin
+    Script 'Workspace.193.Script', Line 3
+    Stack End
+1789042228.07702,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.192"
+    Stack Begin
+    Script 'Workspace.192.Script', Line 3
+    Stack End
+1789042228.07702,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.194"
+    Stack Begin
+    Script 'Workspace.194.Script', Line 3
+    Stack End
+1789042228.07902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.208"
+    Stack Begin
+    Script 'Workspace.208.Script', Line 3
+    Stack End
+1789042228.07902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.209"
+    Stack Begin
+    Script 'Workspace.209.Script', Line 3
+    Stack End
+1789042228.07902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.212"
+    Stack Begin
+    Script 'Workspace.212.Script', Line 3
+    Stack End
+1789042228.07902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.214"
+    Stack Begin
+    Script 'Workspace.214.Script', Line 3
+    Stack End
+1789042228.07902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.213"
+    Stack Begin
+    Script 'Workspace.213.Script', Line 3
+    Stack End
+1789042228.07902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.215"
+    Stack Begin
+    Script 'Workspace.215.Script', Line 3
+    Stack End
+1789042228.07902,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.210"
+    Stack Begin
+    Script 'Workspace.210.Script', Line 3
+    Stack End
+1789042228.08002,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.211"
+    Stack Begin
+    Script 'Workspace.211.Script', Line 3
+    Stack End
+1789042228.08002,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.219"
+    Stack Begin
+    Script 'Workspace.219.Script', Line 3
+    Stack End
+1789042228.08002,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.216"
+    Stack Begin
+    Script 'Workspace.216.Script', Line 3
+    Stack End
+1789042228.08002,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.218"
+    Stack Begin
+    Script 'Workspace.218.Script', Line 3
+    Stack End
+1789042228.08102,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.217"
+    Stack Begin
+    Script 'Workspace.217.Script', Line 3
+    Stack End
+1789042228.08102,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.220"
+    Stack Begin
+    Script 'Workspace.220.Script', Line 3
+    Stack End
+1789042228.08102,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.222"
+    Stack Begin
+    Script 'Workspace.222.Script', Line 3
+    Stack End
+1789042228.08102,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.221"
+    Stack Begin
+    Script 'Workspace.221.Script', Line 3
+    Stack End
+1789042228.08102,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.226"
+    Stack Begin
+    Script 'Workspace.226.Script', Line 3
+    Stack End
+1789042228.08202,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.227"
+    Stack Begin
+    Script 'Workspace.227.Script', Line 3
+    Stack End
+1789042228.08202,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.228"
+    Stack Begin
+    Script 'Workspace.228.Script', Line 3
+    Stack End
+1789042228.08202,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.223"
+    Stack Begin
+    Script 'Workspace.223.Script', Line 3
+    Stack End
+1789042228.08202,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.224"
+    Stack Begin
+    Script 'Workspace.224.Script', Line 3
+    Stack End
+1789042228.08302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.225"
+    Stack Begin
+    Script 'Workspace.225.Script', Line 3
+    Stack End
+1789042228.08302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.230"
+    Stack Begin
+    Script 'Workspace.230.Script', Line 3
+    Stack End
+1789042228.08302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.229"
+    Stack Begin
+    Script 'Workspace.229.Script', Line 3
+    Stack End
+1789042228.08302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.232"
+    Stack Begin
+    Script 'Workspace.232.Script', Line 3
+    Stack End
+1789042228.08302,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.239"
+    Stack Begin
+    Script 'Workspace.239.Script', Line 3
+    Stack End
+1789042228.08402,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.234"
+    Stack Begin
+    Script 'Workspace.234.Script', Line 3
+    Stack End
+1789042228.08402,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.237"
+    Stack Begin
+    Script 'Workspace.237.Script', Line 3
+    Stack End
+1789042228.08402,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.238"
+    Stack Begin
+    Script 'Workspace.238.Script', Line 3
+    Stack End
+1789042228.08502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.241"
+    Stack Begin
+    Script 'Workspace.241.Script', Line 3
+    Stack End
+1789042228.08502,0308,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: sb is not a valid member of Part "Workspace.235"
+    Stack Begin
+    Script 'Workspace.235.Script', Line 3
+    Stack End
+1789042228.08902,0308,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] ***
+1789042228.08902,0308,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] Finished initializing game
+1789042228.08902,0308,6,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::RCCExecuteInfo] ***
+1789042228.11902,339c,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/Rubber band sling shot.wav: Unable to download sound data
+1789042228.11902,339c,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/Rubber band sling shot.wav: Unable to download sound data
+1789042228.11902,339c,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/pageturn.wav: Unable to download sound data
+1789042228.11902,339c,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/pageturn.wav: Unable to download sound data
+1789042228.13302,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=12221990: unsupported file format
+1789042228.13302,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/bass.wav: unsupported file format
+1789042228.13302,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/bass.wav: unsupported file format
+1789042228.13302,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=12222152: unsupported file format
+1789042228.13302,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/switch.wav: unsupported file format
+1789042228.13302,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/switch.wav: unsupported file format
+1789042228.13302,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=10548108: unsupported file format
+1789042228.13402,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=10548108: unsupported file format
+1789042228.13402,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=10548108: unsupported file format
+1789042228.13402,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound http://www.roblox.com/asset/?id=10548108: unsupported file format
+1789042228.13402,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/electronicpingshort.wav: unsupported file format
+1789042228.13402,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/electronicpingshort.wav: unsupported file format
+1789042228.13402,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/SWITCH3.wav: unsupported file format
+1789042228.13402,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/SWITCH3.wav: unsupported file format
+1789042228.13402,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/clickfast.wav: unsupported file format
+1789042228.13402,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/clickfast.wav: unsupported file format
+1789042228.13402,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/glassbreak.wav: unsupported file format
+1789042228.13402,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/glassbreak.wav: unsupported file format
+1789042228.13402,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/victory.wav: unsupported file format
+1789042228.13402,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/victory.wav: unsupported file format
+1789042228.13402,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/flashbulb.wav: unsupported file format
+1789042228.13502,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/flashbulb.wav: unsupported file format
+1789042228.13502,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/splat.wav: unsupported file format
+1789042228.13502,3ec4,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/splat.wav: unsupported file format
+1789042229.10061,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042229.30158,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042229.30158,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::3347:2ba7:567:1040%1016918784|2005 after 0.200975
+1789042229.30958,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.007999
+1789042231.10064,3a28,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Initialised RFD server scripts.
+1789042231.13465,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042231.33565,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042231.33665,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::48c1:1910:e289:1840|2005 after 0.201994
+1789042234.00029,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 6.167123
+1789042234.00029,3a28,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/swoosh.wav: Unable to download sound data
+1789042234.00029,3a28,106,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Error] Error: Failed to load sound rbxasset://Sounds/swoosh.wav: Unable to download sound data
+1789042251.35260,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.016959
+1789042251.36660,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042251.56660,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042251.56660,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::f68b:f1c9:d95d:3a40|2005 after 0.199994
+1789042255.04160,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042255.24259,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042255.24259,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::149a:e237:a60a:3e40|2005 after 0.200993
+1789042255.25159,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.008999
+1789042255.25159,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042255.45160,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042255.46160,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::8e4:7637:6840:3e40|2005 after 0.210009
+1789042255.47260,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.021000
+1789042271.58977,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.023175
+1789042271.59977,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042271.80176,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042271.80176,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::5f8a:fc62:c54c:4740|2005 after 0.201984
+1789042272.61684,339c,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] New connection from ::ffff:127.0.0.1|60766
+1789042272.61784,339c,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] RakNet connect: ::ffff:127.0.0.1|60766
+1789042272.64308,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042272.72240,339c,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Player 11458577 added
+1789042272.72439,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042272.72439,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042272.72538,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042272.72637,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042272.72737,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042272.72737,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042272.79793,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 54.231.192.56|443
+1789042272.84343,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042272.84343,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::aed9:616a:50d2:4740|2005 after 0.200354
+1789042272.85243,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.009001
+1789042272.85243,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042272.92508,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042272.92508,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::e988:dfa5:b8dc:4740%280487168|2005 after 0.200692
+1789042272.92707,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042272.92707,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::25d0:a37:d9dc:4740%256145152|2005 after 0.201691
+1789042272.92707,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042272.92807,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::25d0:a37:d9dc:4740%250457344|2005 after 0.202688
+1789042272.92906,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042272.93006,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::6117:36c8:f9dc:4740%78598912|2005 after 0.203687
+1789042272.93106,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042272.93205,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::9d5e:6159:1add:4740%278289152|2005 after 0.203690
+1789042272.93205,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042272.94302,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::9d5e:6159:1add:4740%280941568|2005 after 0.215650
+1789042272.99285,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.067775
+1789042272.99385,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042273.00082,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.073755
+1789042273.00282,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042273.00681,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.079735
+1789042273.00681,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042273.01478,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.085715
+1789042273.02162,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.090567
+1789042273.04675,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.114698
+1789042273.05479,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042273.05580,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::4596:5f8c:1ced:4740|2005 after 0.203363
+1789042273.18403,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.129237
+1789042273.19499,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042273.19499,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::853e:756a:36ff:4740%250457088|2005 after 0.201142
+1789042273.20496,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042273.20496,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::d389:85a:5c00:4840|2005 after 0.202137
+1789042273.20894,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042273.20994,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::6872:66fd:de00:4840|2005 after 0.203133
+1789042273.22814,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.033153
+1789042273.23014,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.025186
+1789042273.27110,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.062157
+1789042273.29008,339c,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] gah
+1789042273.44393,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 54.231.192.56|443 after 0.645998
+1789042278.29977,3ec4,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Info: Stack Begin
+1789042278.30077,3ec4,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Info: Script 'Workspace.Kohl's Admin Commands V2', Line 2407
+1789042278.30077,3ec4,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Info: Stack End
+1789042288.15696,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042288.35782,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042288.35882,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::520d:5f45:1794:4f40%1634030080|2005 after 0.201862
+1789042288.36682,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.008995
+1789042288.36882,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042288.56883,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042288.57083,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::403c:7661:35af:4f40|2005 after 0.202016
+1789042288.57983,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.009994
+1789042291.85691,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.055152
+1789042291.86491,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042292.06590,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042292.06790,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::edc3:92af:5ab7:5040|2005 after 0.202993
+1789042312.08057,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.014671
+1789042312.09857,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042312.30058,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042312.30058,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::400e:b:4fc6:5540|2005 after 0.202004
+1789042318.21619,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042318.41621,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042318.41621,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::4383:f811:d64d:5740|2005 after 0.200021
+1789042318.42422,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 0.008009
+1789042332.31159,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: 127.0.0.1|2005 after 20.011014
+1789042332.31359,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042332.51360,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005
+1789042332.52460,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Close: ::dc2:63e4:11d4:5a40%14371840|2005 after 0.211013
+1789042345.39781,3a28,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Disconnect from ::ffff:127.0.0.1|60766
+1789042345.39781,3a28,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] RakNet disco: ::ffff:127.0.0.1|60766 after 72.779971
+1789042345.44875,3a28,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Player 11458577 leaving
+1789042348.22960,3728,104,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::Output] Finalizing RCC handler
+1789042348.23060,3728,102,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::RCCServiceJobs] Closing all jobs command
+1789042348.23060,3728,102,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::RCCServiceJobs] Closing JobItem Test
+1789042348.23060,3728,102,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [FLog::RCCServiceJobs] DataModel: 047BE090
+1789042348.26659,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042348.34392,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042348.34392,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: ::1|2005
+1789042348.46605,31ac,19,GameServer,1818,13058,https://localhost:2005/.127.0.0.1,Test,https://localhost:2005,unknown,Test [DFLog::NetworkAudit] Curl Open: 127.0.0.1|2005

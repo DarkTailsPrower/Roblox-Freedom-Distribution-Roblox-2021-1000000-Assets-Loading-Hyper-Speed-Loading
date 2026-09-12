@@ -1,0 +1,2016 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="ScreenGui" referent="RBX6F13ECD7E11D449CA402204B00D336E3">
+		<Properties>
+			<bool name="AutoLocalize">true</bool>
+			<int name="DisplayOrder">0</int>
+			<bool name="Enabled">true</bool>
+			<bool name="IgnoreGuiInset">false</bool>
+			<string name="Name">ViewSelectorScreenGui</string>
+			<bool name="ResetOnSpawn">true</bool>
+			<Ref name="RootLocalizationTable">null</Ref>
+			<string name="Tags"></string>
+			<token name="ZIndexBehavior">0</token>
+		</Properties>
+		<Item class="Frame" referent="RBX2CA45EC99F4641D682A174B5A54D37F0">
+			<Properties>
+				<bool name="Active">false</bool>
+				<Vector2 name="AnchorPoint">
+					<X>0.5</X>
+					<Y>0.5</Y>
+				</Vector2>
+				<bool name="AutoLocalize">true</bool>
+				<Color3 name="BackgroundColor3">
+					<R>1</R>
+					<G>1</G>
+					<B>1</B>
+				</Color3>
+				<float name="BackgroundTransparency">1</float>
+				<Color3 name="BorderColor3">
+					<R>0.105882362</R>
+					<G>0.164705887</G>
+					<B>0.207843155</B>
+				</Color3>
+				<int name="BorderSizePixel">1</int>
+				<bool name="ClipsDescendants">false</bool>
+				<bool name="Draggable">false</bool>
+				<int name="LayoutOrder">0</int>
+				<string name="Name">Panel</string>
+				<Ref name="NextSelectionDown">null</Ref>
+				<Ref name="NextSelectionLeft">null</Ref>
+				<Ref name="NextSelectionRight">null</Ref>
+				<Ref name="NextSelectionUp">null</Ref>
+				<UDim2 name="Position">
+					<XS>1</XS>
+					<XO>-64</XO>
+					<YS>0</YS>
+					<YO>64</YO>
+				</UDim2>
+				<Ref name="RootLocalizationTable">null</Ref>
+				<float name="Rotation">0</float>
+				<bool name="Selectable">false</bool>
+				<Ref name="SelectionImageObject">null</Ref>
+				<UDim2 name="Size">
+					<XS>0</XS>
+					<XO>128</XO>
+					<YS>0</YS>
+					<YO>128</YO>
+				</UDim2>
+				<token name="SizeConstraint">0</token>
+				<token name="Style">0</token>
+				<string name="Tags"></string>
+				<bool name="Visible">true</bool>
+				<int name="ZIndex">1</int>
+			</Properties>
+			<Item class="ViewportFrame" referent="RBX0CD576F72EDB41E1A7EE1D2CF1437A22">
+				<Properties>
+					<bool name="Active">false</bool>
+					<Color3 name="Ambient">
+						<R>0.784313738</R>
+						<G>0.784313738</G>
+						<B>0.784313738</B>
+					</Color3>
+					<Vector2 name="AnchorPoint">
+						<X>0</X>
+						<Y>0</Y>
+					</Vector2>
+					<bool name="AutoLocalize">true</bool>
+					<Color3 name="BackgroundColor3">
+						<R>1</R>
+						<G>1</G>
+						<B>1</B>
+					</Color3>
+					<float name="BackgroundTransparency">1</float>
+					<Color3 name="BorderColor3">
+						<R>0.105882362</R>
+						<G>0.164705887</G>
+						<B>0.207843155</B>
+					</Color3>
+					<int name="BorderSizePixel">1</int>
+					<CoordinateFrame name="CameraCFrame">
+						<X>1.03471053</X>
+						<Y>1.10682726</Y>
+						<Z>1.30549097</Z>
+						<R00>0.783696055</R00>
+						<R01>-0.343749881</R01>
+						<R02>0.517355323</R02>
+						<R10>-0</R10>
+						<R11>0.832906544</R11>
+						<R12>0.553413689</R12>
+						<R20>-0.621144533</R20>
+						<R21>-0.433708131</R21>
+						<R22>0.652745545</R22>
+					</CoordinateFrame>
+					<float name="CameraFieldOfView">1.22173059</float>
+					<bool name="ClipsDescendants">false</bool>
+					<bool name="Draggable">false</bool>
+					<Color3 name="ImageColor3">
+						<R>1</R>
+						<G>1</G>
+						<B>1</B>
+					</Color3>
+					<float name="ImageTransparency">0</float>
+					<int name="LayoutOrder">0</int>
+					<Color3 name="LightColor">
+						<R>0.549019635</R>
+						<G>0.549019635</G>
+						<B>0.549019635</B>
+					</Color3>
+					<Vector3 name="LightDirection">
+						<X>-1</X>
+						<Y>-1</Y>
+						<Z>-1</Z>
+					</Vector3>
+					<string name="Name">Viewport</string>
+					<Ref name="NextSelectionDown">null</Ref>
+					<Ref name="NextSelectionLeft">null</Ref>
+					<Ref name="NextSelectionRight">null</Ref>
+					<Ref name="NextSelectionUp">null</Ref>
+					<UDim2 name="Position">
+						<XS>0</XS>
+						<XO>0</XO>
+						<YS>0</YS>
+						<YO>0</YO>
+					</UDim2>
+					<Ref name="RootLocalizationTable">null</Ref>
+					<float name="Rotation">0</float>
+					<bool name="Selectable">true</bool>
+					<Ref name="SelectionImageObject">null</Ref>
+					<UDim2 name="Size">
+						<XS>1</XS>
+						<XO>0</XO>
+						<YS>1</YS>
+						<YO>0</YO>
+					</UDim2>
+					<token name="SizeConstraint">0</token>
+					<string name="Tags"></string>
+					<bool name="Visible">true</bool>
+					<int name="ZIndex">10</int>
+				</Properties>
+				<Item class="ImageButton" referent="RBXF6FE53D999C24BD69421BE89747764E3">
+					<Properties>
+						<bool name="Active">true</bool>
+						<Vector2 name="AnchorPoint">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<bool name="AutoButtonColor">true</bool>
+						<bool name="AutoLocalize">true</bool>
+						<Color3 name="BackgroundColor3">
+							<R>1</R>
+							<G>1</G>
+							<B>1</B>
+						</Color3>
+						<float name="BackgroundTransparency">1</float>
+						<Color3 name="BorderColor3">
+							<R>0.105882362</R>
+							<G>0.164705887</G>
+							<B>0.207843155</B>
+						</Color3>
+						<int name="BorderSizePixel">1</int>
+						<bool name="ClipsDescendants">false</bool>
+						<bool name="Draggable">false</bool>
+						<string name="HoverImage"></string>
+						<string name="Image"></string>
+						<Color3 name="ImageColor3">
+							<R>1</R>
+							<G>1</G>
+							<B>1</B>
+						</Color3>
+						<Vector2 name="ImageRectOffset">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<Vector2 name="ImageRectSize">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<float name="ImageTransparency">1</float>
+						<int name="LayoutOrder">0</int>
+						<bool name="Modal">false</bool>
+						<string name="Name">EventReceiver</string>
+						<Ref name="NextSelectionDown">null</Ref>
+						<Ref name="NextSelectionLeft">null</Ref>
+						<Ref name="NextSelectionRight">null</Ref>
+						<Ref name="NextSelectionUp">null</Ref>
+						<UDim2 name="Position">
+							<XS>0</XS>
+							<XO>0</XO>
+							<YS>0</YS>
+							<YO>0</YO>
+						</UDim2>
+						<string name="PressedImage"></string>
+						<Ref name="RootLocalizationTable">null</Ref>
+						<float name="Rotation">0</float>
+						<token name="ScaleType">0</token>
+						<bool name="Selectable">true</bool>
+						<bool name="Selected">false</bool>
+						<Ref name="SelectionImageObject">null</Ref>
+						<UDim2 name="Size">
+							<XS>1</XS>
+							<XO>0</XO>
+							<YS>1</YS>
+							<YO>30</YO>
+						</UDim2>
+						<token name="SizeConstraint">0</token>
+						<Rect2D name="SliceCenter">
+							<min>
+								<X>0</X>
+								<Y>0</Y>
+							</min>
+							<max>
+								<X>0</X>
+								<Y>0</Y>
+							</max>
+						</Rect2D>
+						<float name="SliceScale">1</float>
+						<token name="Style">0</token>
+						<string name="Tags"></string>
+						<UDim2 name="TileSize">
+							<XS>1</XS>
+							<XO>0</XO>
+							<YS>1</YS>
+							<YO>0</YO>
+						</UDim2>
+						<bool name="Visible">true</bool>
+						<int name="ZIndex">2</int>
+					</Properties>
+				</Item>
+				<Item class="MeshPart" referent="RBX8C71383D14E34F9FAF27F2055D413201">
+					<Properties>
+						<bool name="Anchored">false</bool>
+						<float name="BackParamA">-0.5</float>
+						<float name="BackParamB">0.5</float>
+						<token name="BackSurface">0</token>
+						<token name="BackSurfaceInput">0</token>
+						<float name="BottomParamA">-0.5</float>
+						<float name="BottomParamB">0.5</float>
+						<token name="BottomSurface">0</token>
+						<token name="BottomSurfaceInput">0</token>
+						<CoordinateFrame name="CFrame">
+							<X>0.289999992</X>
+							<Y>17.6000004</Y>
+							<Z>22.0299988</Z>
+							<R00>1</R00>
+							<R01>0</R01>
+							<R02>0</R02>
+							<R10>0</R10>
+							<R11>1</R11>
+							<R12>0</R12>
+							<R20>0</R20>
+							<R21>0</R21>
+							<R22>1</R22>
+						</CoordinateFrame>
+						<bool name="CanCollide">true</bool>
+						<bool name="CastShadow">true</bool>
+						<int name="CollisionGroupId">0</int>
+						<Color3uint8 name="Color3uint8">4290100167</Color3uint8>
+						<PhysicalProperties name="CustomPhysicalProperties">
+							<CustomPhysics>false</CustomPhysics>
+						</PhysicalProperties>
+						<float name="FrontParamA">-0.5</float>
+						<float name="FrontParamB">0.5</float>
+						<token name="FrontSurface">0</token>
+						<token name="FrontSurfaceInput">0</token>
+						<Vector3 name="InitialSize">
+							<X>49.9999847</X>
+							<Y>49.9999771</Y>
+							<Z>50</Z>
+						</Vector3>
+						<string name="LODData"></string>
+						<float name="LeftParamA">-0.5</float>
+						<float name="LeftParamB">0.5</float>
+						<token name="LeftSurface">0</token>
+						<token name="LeftSurfaceInput">0</token>
+						<bool name="Locked">false</bool>
+						<bool name="Massless">false</bool>
+						<token name="Material">256</token>
+						<string name="MeshID">rbxasset://models/ViewSelector/Basic.mesh</string>
+						<string name="MeshId">rbxasset://models/ViewSelector/Basic.mesh</string>
+						<string name="Name">Model</string>
+						<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+						<string name="PhysicsData"></string>
+						<float name="Reflectance">0</float>
+						<token name="RenderFidelity">1</token>
+						<float name="RightParamA">-0.5</float>
+						<float name="RightParamB">0.5</float>
+						<token name="RightSurface">0</token>
+						<token name="RightSurfaceInput">0</token>
+						<int name="RootPriority">0</int>
+						<Vector3 name="RotVelocity">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+						</Vector3>
+						<string name="Tags"></string>
+						<string name="TextureID"></string>
+						<float name="TopParamA">-0.5</float>
+						<float name="TopParamB">0.5</float>
+						<token name="TopSurface">0</token>
+						<token name="TopSurfaceInput">0</token>
+						<float name="Transparency">0.5</float>
+						<Vector3 name="Velocity">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+						</Vector3>
+						<Vector3 name="size">
+							<X>0.949999988</X>
+							<Y>0.949999988</Y>
+							<Z>0.949999988</Z>
+						</Vector3>
+					</Properties>
+					<Item class="MeshPart" referent="RBX8702659DF5D64FC88F1F46DD31073B59">
+						<Properties>
+							<bool name="Anchored">false</bool>
+							<float name="BackParamA">-0.5</float>
+							<float name="BackParamB">0.5</float>
+							<token name="BackSurface">0</token>
+							<token name="BackSurfaceInput">0</token>
+							<float name="BottomParamA">-0.5</float>
+							<float name="BottomParamB">0.5</float>
+							<token name="BottomSurface">0</token>
+							<token name="BottomSurfaceInput">0</token>
+							<CoordinateFrame name="CFrame">
+								<X>0.611999989</X>
+								<Y>17.2779999</Y>
+								<Z>22.3519993</Z>
+								<R00>4.37113883e-008</R00>
+								<R01>-3.82137093e-015</R01>
+								<R02>-1</R02>
+								<R10>-8.74227766e-008</R10>
+								<R11>-1</R11>
+								<R12>0</R12>
+								<R20>-1</R20>
+								<R21>8.74227766e-008</R21>
+								<R22>-4.37113883e-008</R22>
+							</CoordinateFrame>
+							<bool name="CanCollide">true</bool>
+							<bool name="CastShadow">true</bool>
+							<int name="CollisionGroupId">0</int>
+							<Color3uint8 name="Color3uint8">4283413221</Color3uint8>
+							<PhysicalProperties name="CustomPhysicalProperties">
+								<CustomPhysics>false</CustomPhysics>
+							</PhysicalProperties>
+							<float name="FrontParamA">-0.5</float>
+							<float name="FrontParamB">0.5</float>
+							<token name="FrontSurface">0</token>
+							<token name="FrontSurfaceInput">0</token>
+							<Vector3 name="InitialSize">
+								<X>0.767377019</X>
+								<Y>0.767378807</Y>
+								<Z>0.767378032</Z>
+							</Vector3>
+							<string name="LODData"></string>
+							<float name="LeftParamA">-0.5</float>
+							<float name="LeftParamB">0.5</float>
+							<token name="LeftSurface">0</token>
+							<token name="LeftSurfaceInput">0</token>
+							<bool name="Locked">false</bool>
+							<bool name="Massless">false</bool>
+							<token name="Material">256</token>
+							<string name="MeshID">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="MeshId">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="Name">pnp</string>
+							<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+							<string name="PhysicsData"></string>
+							<float name="Reflectance">0</float>
+							<token name="RenderFidelity">1</token>
+							<float name="RightParamA">-0.5</float>
+							<float name="RightParamB">0.5</float>
+							<token name="RightSurface">0</token>
+							<token name="RightSurfaceInput">0</token>
+							<int name="RootPriority">0</int>
+							<Vector3 name="RotVelocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<string name="Tags"></string>
+							<string name="TextureID"></string>
+							<float name="TopParamA">-0.5</float>
+							<float name="TopParamB">0.5</float>
+							<token name="TopSurface">0</token>
+							<token name="TopSurfaceInput">0</token>
+							<float name="Transparency">1</float>
+							<Vector3 name="Velocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<Vector3 name="size">
+								<X>0.300000012</X>
+								<Y>0.300000012</Y>
+								<Z>0.300000012</Z>
+							</Vector3>
+						</Properties>
+					</Item>
+					<Item class="Part" referent="RBX3399F918CEE04EFFA4952058D04FA146">
+						<Properties>
+							<bool name="Anchored">true</bool>
+							<float name="BackParamA">-0.5</float>
+							<float name="BackParamB">0.5</float>
+							<token name="BackSurface">0</token>
+							<token name="BackSurfaceInput">0</token>
+							<float name="BottomParamA">-0.5</float>
+							<float name="BottomParamB">0.5</float>
+							<token name="BottomSurface">0</token>
+							<token name="BottomSurfaceInput">0</token>
+							<CoordinateFrame name="CFrame">
+								<X>-0.189999998</X>
+								<Y>17.5699997</Y>
+								<Z>21.5499992</Z>
+								<R00>1</R00>
+								<R01>0</R01>
+								<R02>0</R02>
+								<R10>0</R10>
+								<R11>1</R11>
+								<R12>0</R12>
+								<R20>0</R20>
+								<R21>0</R21>
+								<R22>1</R22>
+							</CoordinateFrame>
+							<bool name="CanCollide">false</bool>
+							<bool name="CastShadow">true</bool>
+							<int name="CollisionGroupId">0</int>
+							<Color3uint8 name="Color3uint8">4282967173</Color3uint8>
+							<PhysicalProperties name="CustomPhysicalProperties">
+								<CustomPhysics>false</CustomPhysics>
+							</PhysicalProperties>
+							<float name="FrontParamA">-0.5</float>
+							<float name="FrontParamB">0.5</float>
+							<token name="FrontSurface">0</token>
+							<token name="FrontSurfaceInput">0</token>
+							<float name="LeftParamA">-0.5</float>
+							<float name="LeftParamB">0.5</float>
+							<token name="LeftSurface">0</token>
+							<token name="LeftSurfaceInput">0</token>
+							<bool name="Locked">false</bool>
+							<bool name="Massless">false</bool>
+							<token name="Material">256</token>
+							<string name="Name">y</string>
+							<float name="Reflectance">0</float>
+							<float name="RightParamA">-0.5</float>
+							<float name="RightParamB">0.5</float>
+							<token name="RightSurface">0</token>
+							<token name="RightSurfaceInput">0</token>
+							<int name="RootPriority">0</int>
+							<Vector3 name="RotVelocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<string name="Tags"></string>
+							<float name="TopParamA">-0.5</float>
+							<float name="TopParamB">0.5</float>
+							<token name="TopSurface">0</token>
+							<token name="TopSurfaceInput">0</token>
+							<float name="Transparency">0</float>
+							<Vector3 name="Velocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<token name="formFactorRaw">1</token>
+							<token name="shape">1</token>
+							<Vector3 name="size">
+								<X>1.15999997</X>
+								<Y>0.0500000007</Y>
+								<Z>0.0500000007</Z>
+							</Vector3>
+						</Properties>
+						<Item class="FileMesh" referent="RBXD48B938A00D347D986911755931405C5">
+							<Properties>
+								<token name="LODX">2</token>
+								<token name="LODY">2</token>
+								<string name="MeshId">rbxasset://models/ViewSelector/Axis.mesh</string>
+								<string name="Name">Mesh</string>
+								<Vector3 name="Offset">
+									<X>0</X>
+									<Y>0</Y>
+									<Z>0</Z>
+								</Vector3>
+								<Vector3 name="Scale">
+									<X>1.5</X>
+									<Y>0.899999976</Y>
+									<Z>1.5</Z>
+								</Vector3>
+								<string name="Tags"></string>
+								<string name="TextureId"></string>
+								<Vector3 name="VertexColor">
+									<X>1</X>
+									<Y>1</Y>
+									<Z>1</Z>
+								</Vector3>
+							</Properties>
+						</Item>
+					</Item>
+					<Item class="MeshPart" referent="RBX1DB2E65950284C8FAB484933F67ABB0E">
+						<Properties>
+							<bool name="Anchored">false</bool>
+							<float name="BackParamA">-0.5</float>
+							<float name="BackParamB">0.5</float>
+							<token name="BackSurface">0</token>
+							<token name="BackSurfaceInput">0</token>
+							<float name="BottomParamA">-0.5</float>
+							<float name="BottomParamB">0.5</float>
+							<token name="BottomSurface">0</token>
+							<token name="BottomSurfaceInput">0</token>
+							<CoordinateFrame name="CFrame">
+								<X>-0.0320000015</X>
+								<Y>17.2779999</Y>
+								<Z>21.7079983</Z>
+								<R00>-4.37113883e-008</R00>
+								<R01>-1</R01>
+								<R02>0</R02>
+								<R10>1</R10>
+								<R11>-4.37113883e-008</R11>
+								<R12>0</R12>
+								<R20>0</R20>
+								<R21>0</R21>
+								<R22>1</R22>
+							</CoordinateFrame>
+							<bool name="CanCollide">true</bool>
+							<bool name="CastShadow">true</bool>
+							<int name="CollisionGroupId">0</int>
+							<Color3uint8 name="Color3uint8">4283413221</Color3uint8>
+							<PhysicalProperties name="CustomPhysicalProperties">
+								<CustomPhysics>false</CustomPhysics>
+							</PhysicalProperties>
+							<float name="FrontParamA">-0.5</float>
+							<float name="FrontParamB">0.5</float>
+							<token name="FrontSurface">0</token>
+							<token name="FrontSurfaceInput">0</token>
+							<Vector3 name="InitialSize">
+								<X>0.767377019</X>
+								<Y>0.767378807</Y>
+								<Z>0.767378032</Z>
+							</Vector3>
+							<string name="LODData"></string>
+							<float name="LeftParamA">-0.5</float>
+							<float name="LeftParamB">0.5</float>
+							<token name="LeftSurface">0</token>
+							<token name="LeftSurfaceInput">0</token>
+							<bool name="Locked">false</bool>
+							<bool name="Massless">false</bool>
+							<token name="Material">256</token>
+							<string name="MeshID">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="MeshId">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="Name">nnn</string>
+							<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+							<string name="PhysicsData"></string>
+							<float name="Reflectance">0</float>
+							<token name="RenderFidelity">1</token>
+							<float name="RightParamA">-0.5</float>
+							<float name="RightParamB">0.5</float>
+							<token name="RightSurface">0</token>
+							<token name="RightSurfaceInput">0</token>
+							<int name="RootPriority">0</int>
+							<Vector3 name="RotVelocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<string name="Tags"></string>
+							<string name="TextureID"></string>
+							<float name="TopParamA">-0.5</float>
+							<float name="TopParamB">0.5</float>
+							<token name="TopSurface">0</token>
+							<token name="TopSurfaceInput">0</token>
+							<float name="Transparency">1</float>
+							<Vector3 name="Velocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<Vector3 name="size">
+								<X>0.300000012</X>
+								<Y>0.300000012</Y>
+								<Z>0.300000012</Z>
+							</Vector3>
+						</Properties>
+					</Item>
+					<Item class="MeshPart" referent="RBX869017253DBF468685582855121E02A2">
+						<Properties>
+							<bool name="Anchored">false</bool>
+							<float name="BackParamA">-0.5</float>
+							<float name="BackParamB">0.5</float>
+							<token name="BackSurface">0</token>
+							<token name="BackSurfaceInput">0</token>
+							<float name="BottomParamA">-0.5</float>
+							<float name="BottomParamB">0.5</float>
+							<token name="BottomSurface">0</token>
+							<token name="BottomSurfaceInput">0</token>
+							<CoordinateFrame name="CFrame">
+								<X>-0.0320000015</X>
+								<Y>17.9219971</Y>
+								<Z>21.7079983</Z>
+								<R00>1</R00>
+								<R01>0</R01>
+								<R02>0</R02>
+								<R10>0</R10>
+								<R11>1</R11>
+								<R12>0</R12>
+								<R20>0</R20>
+								<R21>0</R21>
+								<R22>1</R22>
+							</CoordinateFrame>
+							<bool name="CanCollide">true</bool>
+							<bool name="CastShadow">true</bool>
+							<int name="CollisionGroupId">0</int>
+							<Color3uint8 name="Color3uint8">4283413221</Color3uint8>
+							<PhysicalProperties name="CustomPhysicalProperties">
+								<CustomPhysics>false</CustomPhysics>
+							</PhysicalProperties>
+							<float name="FrontParamA">-0.5</float>
+							<float name="FrontParamB">0.5</float>
+							<token name="FrontSurface">0</token>
+							<token name="FrontSurfaceInput">0</token>
+							<Vector3 name="InitialSize">
+								<X>0.767377019</X>
+								<Y>0.767378807</Y>
+								<Z>0.767378032</Z>
+							</Vector3>
+							<string name="LODData"></string>
+							<float name="LeftParamA">-0.5</float>
+							<float name="LeftParamB">0.5</float>
+							<token name="LeftSurface">0</token>
+							<token name="LeftSurfaceInput">0</token>
+							<bool name="Locked">false</bool>
+							<bool name="Massless">false</bool>
+							<token name="Material">256</token>
+							<string name="MeshID">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="MeshId">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="Name">npn</string>
+							<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+							<string name="PhysicsData"></string>
+							<float name="Reflectance">0</float>
+							<token name="RenderFidelity">1</token>
+							<float name="RightParamA">-0.5</float>
+							<float name="RightParamB">0.5</float>
+							<token name="RightSurface">0</token>
+							<token name="RightSurfaceInput">0</token>
+							<int name="RootPriority">0</int>
+							<Vector3 name="RotVelocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<string name="Tags"></string>
+							<string name="TextureID"></string>
+							<float name="TopParamA">-0.5</float>
+							<float name="TopParamB">0.5</float>
+							<token name="TopSurface">0</token>
+							<token name="TopSurfaceInput">0</token>
+							<float name="Transparency">1</float>
+							<Vector3 name="Velocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<Vector3 name="size">
+								<X>0.300000012</X>
+								<Y>0.300000012</Y>
+								<Z>0.300000012</Z>
+							</Vector3>
+						</Properties>
+					</Item>
+					<Item class="MeshPart" referent="RBX99E76C9C119740F19BD2A7D8EFD23DC6">
+						<Properties>
+							<bool name="Anchored">false</bool>
+							<float name="BackParamA">-0.5</float>
+							<float name="BackParamB">0.5</float>
+							<token name="BackSurface">0</token>
+							<token name="BackSurfaceInput">0</token>
+							<float name="BottomParamA">-0.5</float>
+							<float name="BottomParamB">0.5</float>
+							<token name="BottomSurface">0</token>
+							<token name="BottomSurfaceInput">0</token>
+							<CoordinateFrame name="CFrame">
+								<X>0.611999989</X>
+								<Y>17.2779999</Y>
+								<Z>21.7079983</Z>
+								<R00>-1</R00>
+								<R01>8.74227766e-008</R01>
+								<R02>0</R02>
+								<R10>-8.74227766e-008</R10>
+								<R11>-1</R11>
+								<R12>0</R12>
+								<R20>0</R20>
+								<R21>0</R21>
+								<R22>1</R22>
+							</CoordinateFrame>
+							<bool name="CanCollide">true</bool>
+							<bool name="CastShadow">true</bool>
+							<int name="CollisionGroupId">0</int>
+							<Color3uint8 name="Color3uint8">4283413221</Color3uint8>
+							<PhysicalProperties name="CustomPhysicalProperties">
+								<CustomPhysics>false</CustomPhysics>
+							</PhysicalProperties>
+							<float name="FrontParamA">-0.5</float>
+							<float name="FrontParamB">0.5</float>
+							<token name="FrontSurface">0</token>
+							<token name="FrontSurfaceInput">0</token>
+							<Vector3 name="InitialSize">
+								<X>0.767377019</X>
+								<Y>0.767378807</Y>
+								<Z>0.767378032</Z>
+							</Vector3>
+							<string name="LODData"></string>
+							<float name="LeftParamA">-0.5</float>
+							<float name="LeftParamB">0.5</float>
+							<token name="LeftSurface">0</token>
+							<token name="LeftSurfaceInput">0</token>
+							<bool name="Locked">false</bool>
+							<bool name="Massless">false</bool>
+							<token name="Material">256</token>
+							<string name="MeshID">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="MeshId">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="Name">pnn</string>
+							<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+							<string name="PhysicsData"></string>
+							<float name="Reflectance">0</float>
+							<token name="RenderFidelity">1</token>
+							<float name="RightParamA">-0.5</float>
+							<float name="RightParamB">0.5</float>
+							<token name="RightSurface">0</token>
+							<token name="RightSurfaceInput">0</token>
+							<int name="RootPriority">0</int>
+							<Vector3 name="RotVelocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<string name="Tags"></string>
+							<string name="TextureID"></string>
+							<float name="TopParamA">-0.5</float>
+							<float name="TopParamB">0.5</float>
+							<token name="TopSurface">0</token>
+							<token name="TopSurfaceInput">0</token>
+							<float name="Transparency">1</float>
+							<Vector3 name="Velocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<Vector3 name="size">
+								<X>0.300000012</X>
+								<Y>0.300000012</Y>
+								<Z>0.300000012</Z>
+							</Vector3>
+						</Properties>
+					</Item>
+					<Item class="Decal" referent="RBX47E009838F0541C094B82005E904F2E5">
+						<Properties>
+							<Color3 name="Color3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<token name="Face">1</token>
+							<string name="Name">0p0</string>
+							<string name="Tags"></string>
+							<string name="Texture">rbxasset://textures/ViewSelector/top.png</string>
+							<float name="Transparency">0.200000003</float>
+						</Properties>
+					</Item>
+					<Item class="Part" referent="RBXFF6A13A72A7C4918AE871851EA0A9324">
+						<Properties>
+							<bool name="Anchored">true</bool>
+							<float name="BackParamA">-0.5</float>
+							<float name="BackParamB">0.5</float>
+							<token name="BackSurface">0</token>
+							<token name="BackSurfaceInput">0</token>
+							<float name="BottomParamA">-0.5</float>
+							<float name="BottomParamB">0.5</float>
+							<token name="BottomSurface">0</token>
+							<token name="BottomSurfaceInput">0</token>
+							<CoordinateFrame name="CFrame">
+								<X>-0.189999998</X>
+								<Y>17.1199989</Y>
+								<Z>22.0400009</Z>
+								<R00>1.91068547e-015</R00>
+								<R01>4.37113883e-008</R01>
+								<R02>1</R02>
+								<R10>1</R10>
+								<R11>-4.37113883e-008</R11>
+								<R12>0</R12>
+								<R20>4.37113883e-008</R20>
+								<R21>1</R21>
+								<R22>-4.37113883e-008</R22>
+							</CoordinateFrame>
+							<bool name="CanCollide">false</bool>
+							<bool name="CastShadow">true</bool>
+							<int name="CollisionGroupId">0</int>
+							<Color3uint8 name="Color3uint8">4281491192</Color3uint8>
+							<PhysicalProperties name="CustomPhysicalProperties">
+								<CustomPhysics>false</CustomPhysics>
+							</PhysicalProperties>
+							<float name="FrontParamA">-0.5</float>
+							<float name="FrontParamB">0.5</float>
+							<token name="FrontSurface">0</token>
+							<token name="FrontSurfaceInput">0</token>
+							<float name="LeftParamA">-0.5</float>
+							<float name="LeftParamB">0.5</float>
+							<token name="LeftSurface">0</token>
+							<token name="LeftSurfaceInput">0</token>
+							<bool name="Locked">false</bool>
+							<bool name="Massless">false</bool>
+							<token name="Material">256</token>
+							<string name="Name">z</string>
+							<float name="Reflectance">0</float>
+							<float name="RightParamA">-0.5</float>
+							<float name="RightParamB">0.5</float>
+							<token name="RightSurface">0</token>
+							<token name="RightSurfaceInput">0</token>
+							<int name="RootPriority">0</int>
+							<Vector3 name="RotVelocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<string name="Tags"></string>
+							<float name="TopParamA">-0.5</float>
+							<float name="TopParamB">0.5</float>
+							<token name="TopSurface">0</token>
+							<token name="TopSurfaceInput">0</token>
+							<float name="Transparency">0</float>
+							<Vector3 name="Velocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<token name="formFactorRaw">1</token>
+							<token name="shape">1</token>
+							<Vector3 name="size">
+								<X>1.10000002</X>
+								<Y>0.0500000007</Y>
+								<Z>0.0500000007</Z>
+							</Vector3>
+						</Properties>
+						<Item class="FileMesh" referent="RBXA20DC2544BD7470DAB0DF6FDFA2FCAA4">
+							<Properties>
+								<token name="LODX">2</token>
+								<token name="LODY">2</token>
+								<string name="MeshId">rbxasset://models/ViewSelector/Axis.mesh</string>
+								<string name="Name">Mesh</string>
+								<Vector3 name="Offset">
+									<X>0</X>
+									<Y>0</Y>
+									<Z>0</Z>
+								</Vector3>
+								<Vector3 name="Scale">
+									<X>1.5</X>
+									<Y>0.899999976</Y>
+									<Z>1.5</Z>
+								</Vector3>
+								<string name="Tags"></string>
+								<string name="TextureId"></string>
+								<Vector3 name="VertexColor">
+									<X>1</X>
+									<Y>1</Y>
+									<Z>1</Z>
+								</Vector3>
+							</Properties>
+						</Item>
+					</Item>
+					<Item class="Decal" referent="RBXBD492AD9DFE74C8B9D88E1DE562E236C">
+						<Properties>
+							<Color3 name="Color3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<token name="Face">4</token>
+							<string name="Name">0n0</string>
+							<string name="Tags"></string>
+							<string name="Texture">rbxasset://textures/ViewSelector/bottom.png</string>
+							<float name="Transparency">0.200000003</float>
+						</Properties>
+					</Item>
+					<Item class="Decal" referent="RBX14A5E9806A8040A2BEE41FA33061C983">
+						<Properties>
+							<Color3 name="Color3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<token name="Face">0</token>
+							<string name="Name">p00</string>
+							<string name="Tags"></string>
+							<string name="Texture">rbxasset://textures/ViewSelector/right.png</string>
+							<float name="Transparency">0.200000003</float>
+						</Properties>
+					</Item>
+					<Item class="Decal" referent="RBX5A648B4E35A9469486F4313E6D420244">
+						<Properties>
+							<Color3 name="Color3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<token name="Face">5</token>
+							<string name="Name">00n</string>
+							<string name="Tags"></string>
+							<string name="Texture">rbxasset://textures/ViewSelector/front.png</string>
+							<float name="Transparency">0.200000003</float>
+						</Properties>
+					</Item>
+					<Item class="Part" referent="RBX073BC385107F442DBFFC54549B067F8D">
+						<Properties>
+							<bool name="Anchored">true</bool>
+							<float name="BackParamA">-0.5</float>
+							<float name="BackParamB">0.5</float>
+							<token name="BackSurface">0</token>
+							<token name="BackSurfaceInput">0</token>
+							<float name="BottomParamA">-0.5</float>
+							<float name="BottomParamB">0.5</float>
+							<token name="BottomSurface">0</token>
+							<token name="BottomSurfaceInput">0</token>
+							<CoordinateFrame name="CFrame">
+								<X>0.300000012</X>
+								<Y>17.1199989</Y>
+								<Z>21.5499992</Z>
+								<R00>-4.37113883e-008</R00>
+								<R01>-1</R01>
+								<R02>0</R02>
+								<R10>1</R10>
+								<R11>-4.37113883e-008</R11>
+								<R12>0</R12>
+								<R20>0</R20>
+								<R21>0</R21>
+								<R22>1</R22>
+							</CoordinateFrame>
+							<bool name="CanCollide">false</bool>
+							<bool name="CastShadow">true</bool>
+							<int name="CollisionGroupId">0</int>
+							<Color3uint8 name="Color3uint8">4293869911</Color3uint8>
+							<PhysicalProperties name="CustomPhysicalProperties">
+								<CustomPhysics>false</CustomPhysics>
+							</PhysicalProperties>
+							<float name="FrontParamA">-0.5</float>
+							<float name="FrontParamB">0.5</float>
+							<token name="FrontSurface">0</token>
+							<token name="FrontSurfaceInput">0</token>
+							<float name="LeftParamA">-0.5</float>
+							<float name="LeftParamB">0.5</float>
+							<token name="LeftSurface">0</token>
+							<token name="LeftSurfaceInput">0</token>
+							<bool name="Locked">false</bool>
+							<bool name="Massless">false</bool>
+							<token name="Material">256</token>
+							<string name="Name">x</string>
+							<float name="Reflectance">0</float>
+							<float name="RightParamA">-0.5</float>
+							<float name="RightParamB">0.5</float>
+							<token name="RightSurface">0</token>
+							<token name="RightSurfaceInput">0</token>
+							<int name="RootPriority">0</int>
+							<Vector3 name="RotVelocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<string name="Tags"></string>
+							<float name="TopParamA">-0.5</float>
+							<float name="TopParamB">0.5</float>
+							<token name="TopSurface">0</token>
+							<token name="TopSurfaceInput">0</token>
+							<float name="Transparency">0</float>
+							<Vector3 name="Velocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<token name="formFactorRaw">1</token>
+							<token name="shape">1</token>
+							<Vector3 name="size">
+								<X>1.10000002</X>
+								<Y>0.0500000007</Y>
+								<Z>0.0500000007</Z>
+							</Vector3>
+						</Properties>
+						<Item class="FileMesh" referent="RBX155F215DFAC24EA3B472BE0C6C25C0A9">
+							<Properties>
+								<token name="LODX">2</token>
+								<token name="LODY">2</token>
+								<string name="MeshId">rbxasset://models/ViewSelector/Axis.mesh</string>
+								<string name="Name">Mesh</string>
+								<Vector3 name="Offset">
+									<X>0</X>
+									<Y>0</Y>
+									<Z>0</Z>
+								</Vector3>
+								<Vector3 name="Scale">
+									<X>1.5</X>
+									<Y>0.899999976</Y>
+									<Z>1.5</Z>
+								</Vector3>
+								<string name="Tags"></string>
+								<string name="TextureId"></string>
+								<Vector3 name="VertexColor">
+									<X>1</X>
+									<Y>1</Y>
+									<Z>0</Z>
+								</Vector3>
+							</Properties>
+						</Item>
+					</Item>
+					<Item class="Decal" referent="RBXD3BA28F5EC394C9E9EFFCE1489661B33">
+						<Properties>
+							<Color3 name="Color3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<token name="Face">2</token>
+							<string name="Name">00p</string>
+							<string name="Tags"></string>
+							<string name="Texture">rbxasset://textures/ViewSelector/back.png</string>
+							<float name="Transparency">0.200000003</float>
+						</Properties>
+					</Item>
+					<Item class="MeshPart" referent="RBX3FF2834E862B4A42B848125580F9EDAE">
+						<Properties>
+							<bool name="Anchored">false</bool>
+							<float name="BackParamA">-0.5</float>
+							<float name="BackParamB">0.5</float>
+							<token name="BackSurface">0</token>
+							<token name="BackSurfaceInput">0</token>
+							<float name="BottomParamA">-0.5</float>
+							<float name="BottomParamB">0.5</float>
+							<token name="BottomSurface">0</token>
+							<token name="BottomSurfaceInput">0</token>
+							<CoordinateFrame name="CFrame">
+								<X>-0.0320000015</X>
+								<Y>17.2779999</Y>
+								<Z>22.3519993</Z>
+								<R00>1</R00>
+								<R01>-8.74227766e-008</R01>
+								<R02>-8.74227766e-008</R02>
+								<R10>-8.74227766e-008</R10>
+								<R11>-1</R11>
+								<R12>0</R12>
+								<R20>-8.74227766e-008</R20>
+								<R21>7.64274186e-015</R21>
+								<R22>-1</R22>
+							</CoordinateFrame>
+							<bool name="CanCollide">true</bool>
+							<bool name="CastShadow">true</bool>
+							<int name="CollisionGroupId">0</int>
+							<Color3uint8 name="Color3uint8">4283413221</Color3uint8>
+							<PhysicalProperties name="CustomPhysicalProperties">
+								<CustomPhysics>false</CustomPhysics>
+							</PhysicalProperties>
+							<float name="FrontParamA">-0.5</float>
+							<float name="FrontParamB">0.5</float>
+							<token name="FrontSurface">0</token>
+							<token name="FrontSurfaceInput">0</token>
+							<Vector3 name="InitialSize">
+								<X>0.767377019</X>
+								<Y>0.767378807</Y>
+								<Z>0.767378032</Z>
+							</Vector3>
+							<string name="LODData"></string>
+							<float name="LeftParamA">-0.5</float>
+							<float name="LeftParamB">0.5</float>
+							<token name="LeftSurface">0</token>
+							<token name="LeftSurfaceInput">0</token>
+							<bool name="Locked">false</bool>
+							<bool name="Massless">false</bool>
+							<token name="Material">256</token>
+							<string name="MeshID">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="MeshId">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="Name">nnp</string>
+							<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+							<string name="PhysicsData"></string>
+							<float name="Reflectance">0</float>
+							<token name="RenderFidelity">1</token>
+							<float name="RightParamA">-0.5</float>
+							<float name="RightParamB">0.5</float>
+							<token name="RightSurface">0</token>
+							<token name="RightSurfaceInput">0</token>
+							<int name="RootPriority">0</int>
+							<Vector3 name="RotVelocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<string name="Tags"></string>
+							<string name="TextureID"></string>
+							<float name="TopParamA">-0.5</float>
+							<float name="TopParamB">0.5</float>
+							<token name="TopSurface">0</token>
+							<token name="TopSurfaceInput">0</token>
+							<float name="Transparency">1</float>
+							<Vector3 name="Velocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<Vector3 name="size">
+								<X>0.300000012</X>
+								<Y>0.300000012</Y>
+								<Z>0.300000012</Z>
+							</Vector3>
+						</Properties>
+					</Item>
+					<Item class="Decal" referent="RBXF62C0D3B3CAB4804BDEEE97B39C9953A">
+						<Properties>
+							<Color3 name="Color3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<token name="Face">3</token>
+							<string name="Name">n00</string>
+							<string name="Tags"></string>
+							<string name="Texture">rbxasset://textures/ViewSelector/left.png</string>
+							<float name="Transparency">0.200000003</float>
+						</Properties>
+					</Item>
+					<Item class="MeshPart" referent="RBX23A7D5570A72491DAEFB772ADB93CDB5">
+						<Properties>
+							<bool name="Anchored">false</bool>
+							<float name="BackParamA">-0.5</float>
+							<float name="BackParamB">0.5</float>
+							<token name="BackSurface">0</token>
+							<token name="BackSurfaceInput">0</token>
+							<float name="BottomParamA">-0.5</float>
+							<float name="BottomParamB">0.5</float>
+							<token name="BottomSurface">0</token>
+							<token name="BottomSurfaceInput">0</token>
+							<CoordinateFrame name="CFrame">
+								<X>-0.0320000015</X>
+								<Y>17.9219971</Y>
+								<Z>22.3519993</Z>
+								<R00>1</R00>
+								<R01>0</R01>
+								<R02>0</R02>
+								<R10>0</R10>
+								<R11>-4.37113883e-008</R11>
+								<R12>-1</R12>
+								<R20>0</R20>
+								<R21>1</R21>
+								<R22>-4.37113883e-008</R22>
+							</CoordinateFrame>
+							<bool name="CanCollide">true</bool>
+							<bool name="CastShadow">true</bool>
+							<int name="CollisionGroupId">0</int>
+							<Color3uint8 name="Color3uint8">4283413221</Color3uint8>
+							<PhysicalProperties name="CustomPhysicalProperties">
+								<CustomPhysics>false</CustomPhysics>
+							</PhysicalProperties>
+							<float name="FrontParamA">-0.5</float>
+							<float name="FrontParamB">0.5</float>
+							<token name="FrontSurface">0</token>
+							<token name="FrontSurfaceInput">0</token>
+							<Vector3 name="InitialSize">
+								<X>0.767377019</X>
+								<Y>0.767378807</Y>
+								<Z>0.767378032</Z>
+							</Vector3>
+							<string name="LODData"></string>
+							<float name="LeftParamA">-0.5</float>
+							<float name="LeftParamB">0.5</float>
+							<token name="LeftSurface">0</token>
+							<token name="LeftSurfaceInput">0</token>
+							<bool name="Locked">false</bool>
+							<bool name="Massless">false</bool>
+							<token name="Material">256</token>
+							<string name="MeshID">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="MeshId">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="Name">npp</string>
+							<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+							<string name="PhysicsData"></string>
+							<float name="Reflectance">0</float>
+							<token name="RenderFidelity">1</token>
+							<float name="RightParamA">-0.5</float>
+							<float name="RightParamB">0.5</float>
+							<token name="RightSurface">0</token>
+							<token name="RightSurfaceInput">0</token>
+							<int name="RootPriority">0</int>
+							<Vector3 name="RotVelocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<string name="Tags"></string>
+							<string name="TextureID"></string>
+							<float name="TopParamA">-0.5</float>
+							<float name="TopParamB">0.5</float>
+							<token name="TopSurface">0</token>
+							<token name="TopSurfaceInput">0</token>
+							<float name="Transparency">1</float>
+							<Vector3 name="Velocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<Vector3 name="size">
+								<X>0.300000012</X>
+								<Y>0.300000012</Y>
+								<Z>0.300000012</Z>
+							</Vector3>
+						</Properties>
+					</Item>
+					<Item class="MeshPart" referent="RBXB60EC0B890524ED1A2F10BA276A33E6B">
+						<Properties>
+							<bool name="Anchored">false</bool>
+							<float name="BackParamA">-0.5</float>
+							<float name="BackParamB">0.5</float>
+							<token name="BackSurface">0</token>
+							<token name="BackSurfaceInput">0</token>
+							<float name="BottomParamA">-0.5</float>
+							<float name="BottomParamB">0.5</float>
+							<token name="BottomSurface">0</token>
+							<token name="BottomSurfaceInput">0</token>
+							<CoordinateFrame name="CFrame">
+								<X>0.611999989</X>
+								<Y>17.9219971</Y>
+								<Z>22.3519993</Z>
+								<R00>-4.37113883e-008</R00>
+								<R01>1</R01>
+								<R02>-4.37113883e-008</R02>
+								<R10>0</R10>
+								<R11>-4.37113883e-008</R11>
+								<R12>-1</R12>
+								<R20>-1</R20>
+								<R21>-4.37113883e-008</R21>
+								<R22>1.91068547e-015</R22>
+							</CoordinateFrame>
+							<bool name="CanCollide">true</bool>
+							<bool name="CastShadow">true</bool>
+							<int name="CollisionGroupId">0</int>
+							<Color3uint8 name="Color3uint8">4283413221</Color3uint8>
+							<PhysicalProperties name="CustomPhysicalProperties">
+								<CustomPhysics>false</CustomPhysics>
+							</PhysicalProperties>
+							<float name="FrontParamA">-0.5</float>
+							<float name="FrontParamB">0.5</float>
+							<token name="FrontSurface">0</token>
+							<token name="FrontSurfaceInput">0</token>
+							<Vector3 name="InitialSize">
+								<X>0.767377019</X>
+								<Y>0.767378807</Y>
+								<Z>0.767378032</Z>
+							</Vector3>
+							<string name="LODData"></string>
+							<float name="LeftParamA">-0.5</float>
+							<float name="LeftParamB">0.5</float>
+							<token name="LeftSurface">0</token>
+							<token name="LeftSurfaceInput">0</token>
+							<bool name="Locked">false</bool>
+							<bool name="Massless">false</bool>
+							<token name="Material">256</token>
+							<string name="MeshID">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="MeshId">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="Name">ppp</string>
+							<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+							<string name="PhysicsData"></string>
+							<float name="Reflectance">0</float>
+							<token name="RenderFidelity">1</token>
+							<float name="RightParamA">-0.5</float>
+							<float name="RightParamB">0.5</float>
+							<token name="RightSurface">0</token>
+							<token name="RightSurfaceInput">0</token>
+							<int name="RootPriority">0</int>
+							<Vector3 name="RotVelocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<string name="Tags"></string>
+							<string name="TextureID"></string>
+							<float name="TopParamA">-0.5</float>
+							<float name="TopParamB">0.5</float>
+							<token name="TopSurface">0</token>
+							<token name="TopSurfaceInput">0</token>
+							<float name="Transparency">1</float>
+							<Vector3 name="Velocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<Vector3 name="size">
+								<X>0.300000012</X>
+								<Y>0.300000012</Y>
+								<Z>0.300000012</Z>
+							</Vector3>
+						</Properties>
+					</Item>
+					<Item class="MeshPart" referent="RBX88DC1C55D13941C4880980B1A1F38BCF">
+						<Properties>
+							<bool name="Anchored">false</bool>
+							<float name="BackParamA">-0.5</float>
+							<float name="BackParamB">0.5</float>
+							<token name="BackSurface">0</token>
+							<token name="BackSurfaceInput">0</token>
+							<float name="BottomParamA">-0.5</float>
+							<float name="BottomParamB">0.5</float>
+							<token name="BottomSurface">0</token>
+							<token name="BottomSurfaceInput">0</token>
+							<CoordinateFrame name="CFrame">
+								<X>0.611999989</X>
+								<Y>17.9219971</Y>
+								<Z>21.7079983</Z>
+								<R00>-1</R00>
+								<R01>8.74227766e-008</R01>
+								<R02>-3.82137093e-015</R02>
+								<R10>0</R10>
+								<R11>-4.37113883e-008</R11>
+								<R12>-1</R12>
+								<R20>-8.74227766e-008</R20>
+								<R21>-1</R21>
+								<R22>4.37113883e-008</R22>
+							</CoordinateFrame>
+							<bool name="CanCollide">true</bool>
+							<bool name="CastShadow">true</bool>
+							<int name="CollisionGroupId">0</int>
+							<Color3uint8 name="Color3uint8">4283413221</Color3uint8>
+							<PhysicalProperties name="CustomPhysicalProperties">
+								<CustomPhysics>false</CustomPhysics>
+							</PhysicalProperties>
+							<float name="FrontParamA">-0.5</float>
+							<float name="FrontParamB">0.5</float>
+							<token name="FrontSurface">0</token>
+							<token name="FrontSurfaceInput">0</token>
+							<Vector3 name="InitialSize">
+								<X>0.767377019</X>
+								<Y>0.767378807</Y>
+								<Z>0.767378032</Z>
+							</Vector3>
+							<string name="LODData"></string>
+							<float name="LeftParamA">-0.5</float>
+							<float name="LeftParamB">0.5</float>
+							<token name="LeftSurface">0</token>
+							<token name="LeftSurfaceInput">0</token>
+							<bool name="Locked">false</bool>
+							<bool name="Massless">false</bool>
+							<token name="Material">256</token>
+							<string name="MeshID">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="MeshId">rbxasset://models/ViewSelector/Corner.mesh</string>
+							<string name="Name">ppn</string>
+							<SharedString name="PhysicalConfigData">DldRwCblQ7Loqy6wYJnaoQ==</SharedString>
+							<string name="PhysicsData"></string>
+							<float name="Reflectance">0</float>
+							<token name="RenderFidelity">1</token>
+							<float name="RightParamA">-0.5</float>
+							<float name="RightParamB">0.5</float>
+							<token name="RightSurface">0</token>
+							<token name="RightSurfaceInput">0</token>
+							<int name="RootPriority">0</int>
+							<Vector3 name="RotVelocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<string name="Tags"></string>
+							<string name="TextureID"></string>
+							<float name="TopParamA">-0.5</float>
+							<float name="TopParamB">0.5</float>
+							<token name="TopSurface">0</token>
+							<token name="TopSurfaceInput">0</token>
+							<float name="Transparency">1</float>
+							<Vector3 name="Velocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<Vector3 name="size">
+								<X>0.300000012</X>
+								<Y>0.300000012</Y>
+								<Z>0.300000012</Z>
+							</Vector3>
+						</Properties>
+					</Item>
+				</Item>
+			</Item>
+			<Item class="Frame" referent="RBX383F68DADD3A42FA8775ADADC6038242">
+				<Properties>
+					<bool name="Active">false</bool>
+					<Vector2 name="AnchorPoint">
+						<X>0.5</X>
+						<Y>0.5</Y>
+					</Vector2>
+					<bool name="AutoLocalize">true</bool>
+					<Color3 name="BackgroundColor3">
+						<R>1</R>
+						<G>1</G>
+						<B>1</B>
+					</Color3>
+					<float name="BackgroundTransparency">1</float>
+					<Color3 name="BorderColor3">
+						<R>0.105882362</R>
+						<G>0.164705887</G>
+						<B>0.207843155</B>
+					</Color3>
+					<int name="BorderSizePixel">1</int>
+					<bool name="ClipsDescendants">false</bool>
+					<bool name="Draggable">false</bool>
+					<int name="LayoutOrder">0</int>
+					<string name="Name">ArrowButtons</string>
+					<Ref name="NextSelectionDown">null</Ref>
+					<Ref name="NextSelectionLeft">null</Ref>
+					<Ref name="NextSelectionRight">null</Ref>
+					<Ref name="NextSelectionUp">null</Ref>
+					<UDim2 name="Position">
+						<XS>0.5</XS>
+						<XO>0</XO>
+						<YS>0.5</YS>
+						<YO>0</YO>
+					</UDim2>
+					<Ref name="RootLocalizationTable">null</Ref>
+					<float name="Rotation">0</float>
+					<bool name="Selectable">false</bool>
+					<Ref name="SelectionImageObject">null</Ref>
+					<UDim2 name="Size">
+						<XS>0.720000029</XS>
+						<XO>0</XO>
+						<YS>0.720000029</YS>
+						<YO>0</YO>
+					</UDim2>
+					<token name="SizeConstraint">0</token>
+					<token name="Style">0</token>
+					<string name="Tags"></string>
+					<bool name="Visible">true</bool>
+					<int name="ZIndex">20</int>
+				</Properties>
+				<Item class="ImageButton" referent="RBX27BA6B1CD05E4BBF87EF9F9A1B767ED5">
+					<Properties>
+						<bool name="Active">true</bool>
+						<Vector2 name="AnchorPoint">
+							<X>0.5</X>
+							<Y>0</Y>
+						</Vector2>
+						<bool name="AutoButtonColor">true</bool>
+						<bool name="AutoLocalize">true</bool>
+						<Color3 name="BackgroundColor3">
+							<R>1</R>
+							<G>1</G>
+							<B>1</B>
+						</Color3>
+						<float name="BackgroundTransparency">1</float>
+						<Color3 name="BorderColor3">
+							<R>0.105882362</R>
+							<G>0.164705887</G>
+							<B>0.207843155</B>
+						</Color3>
+						<int name="BorderSizePixel">1</int>
+						<bool name="ClipsDescendants">false</bool>
+						<bool name="Draggable">false</bool>
+						<string name="HoverImage"></string>
+						<string name="Image">rbxasset://textures/ViewSelector/face_arrow.png</string>
+						<Color3 name="ImageColor3">
+							<R>0.968627512</R>
+							<G>0.976470649</G>
+							<B>1</B>
+						</Color3>
+						<Vector2 name="ImageRectOffset">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<Vector2 name="ImageRectSize">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<float name="ImageTransparency">0.600000024</float>
+						<int name="LayoutOrder">0</int>
+						<bool name="Modal">false</bool>
+						<string name="Name">UpArrow</string>
+						<Ref name="NextSelectionDown">null</Ref>
+						<Ref name="NextSelectionLeft">null</Ref>
+						<Ref name="NextSelectionRight">null</Ref>
+						<Ref name="NextSelectionUp">null</Ref>
+						<UDim2 name="Position">
+							<XS>0.5</XS>
+							<XO>0</XO>
+							<YS>0</YS>
+							<YO>0</YO>
+						</UDim2>
+						<string name="PressedImage"></string>
+						<Ref name="RootLocalizationTable">null</Ref>
+						<float name="Rotation">90</float>
+						<token name="ScaleType">0</token>
+						<bool name="Selectable">true</bool>
+						<bool name="Selected">false</bool>
+						<Ref name="SelectionImageObject">null</Ref>
+						<UDim2 name="Size">
+							<XS>0</XS>
+							<XO>12</XO>
+							<YS>0</YS>
+							<YO>12</YO>
+						</UDim2>
+						<token name="SizeConstraint">0</token>
+						<Rect2D name="SliceCenter">
+							<min>
+								<X>0</X>
+								<Y>0</Y>
+							</min>
+							<max>
+								<X>0</X>
+								<Y>0</Y>
+							</max>
+						</Rect2D>
+						<float name="SliceScale">1</float>
+						<token name="Style">0</token>
+						<string name="Tags"></string>
+						<UDim2 name="TileSize">
+							<XS>1</XS>
+							<XO>0</XO>
+							<YS>1</YS>
+							<YO>0</YO>
+						</UDim2>
+						<bool name="Visible">true</bool>
+						<int name="ZIndex">20</int>
+					</Properties>
+				</Item>
+				<Item class="ImageButton" referent="RBXA39C78D6160B4FFFB47349E34DE63585">
+					<Properties>
+						<bool name="Active">true</bool>
+						<Vector2 name="AnchorPoint">
+							<X>1</X>
+							<Y>0.5</Y>
+						</Vector2>
+						<bool name="AutoButtonColor">true</bool>
+						<bool name="AutoLocalize">true</bool>
+						<Color3 name="BackgroundColor3">
+							<R>1</R>
+							<G>1</G>
+							<B>1</B>
+						</Color3>
+						<float name="BackgroundTransparency">1</float>
+						<Color3 name="BorderColor3">
+							<R>0.105882362</R>
+							<G>0.164705887</G>
+							<B>0.207843155</B>
+						</Color3>
+						<int name="BorderSizePixel">1</int>
+						<bool name="ClipsDescendants">false</bool>
+						<bool name="Draggable">false</bool>
+						<string name="HoverImage"></string>
+						<string name="Image">rbxasset://textures/ViewSelector/face_arrow.png</string>
+						<Color3 name="ImageColor3">
+							<R>0.968627512</R>
+							<G>0.976470649</G>
+							<B>1</B>
+						</Color3>
+						<Vector2 name="ImageRectOffset">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<Vector2 name="ImageRectSize">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<float name="ImageTransparency">0.600000024</float>
+						<int name="LayoutOrder">0</int>
+						<bool name="Modal">false</bool>
+						<string name="Name">RightArrow</string>
+						<Ref name="NextSelectionDown">null</Ref>
+						<Ref name="NextSelectionLeft">null</Ref>
+						<Ref name="NextSelectionRight">null</Ref>
+						<Ref name="NextSelectionUp">null</Ref>
+						<UDim2 name="Position">
+							<XS>1</XS>
+							<XO>0</XO>
+							<YS>0.5</YS>
+							<YO>0</YO>
+						</UDim2>
+						<string name="PressedImage"></string>
+						<Ref name="RootLocalizationTable">null</Ref>
+						<float name="Rotation">180</float>
+						<token name="ScaleType">0</token>
+						<bool name="Selectable">true</bool>
+						<bool name="Selected">false</bool>
+						<Ref name="SelectionImageObject">null</Ref>
+						<UDim2 name="Size">
+							<XS>0</XS>
+							<XO>12</XO>
+							<YS>0</YS>
+							<YO>12</YO>
+						</UDim2>
+						<token name="SizeConstraint">0</token>
+						<Rect2D name="SliceCenter">
+							<min>
+								<X>0</X>
+								<Y>0</Y>
+							</min>
+							<max>
+								<X>0</X>
+								<Y>0</Y>
+							</max>
+						</Rect2D>
+						<float name="SliceScale">1</float>
+						<token name="Style">0</token>
+						<string name="Tags"></string>
+						<UDim2 name="TileSize">
+							<XS>1</XS>
+							<XO>0</XO>
+							<YS>1</YS>
+							<YO>0</YO>
+						</UDim2>
+						<bool name="Visible">true</bool>
+						<int name="ZIndex">20</int>
+					</Properties>
+				</Item>
+				<Item class="ImageButton" referent="RBX3D3CABF54BE144B1A9157C8E234DCF99">
+					<Properties>
+						<bool name="Active">true</bool>
+						<Vector2 name="AnchorPoint">
+							<X>0</X>
+							<Y>0.5</Y>
+						</Vector2>
+						<bool name="AutoButtonColor">true</bool>
+						<bool name="AutoLocalize">true</bool>
+						<Color3 name="BackgroundColor3">
+							<R>1</R>
+							<G>1</G>
+							<B>1</B>
+						</Color3>
+						<float name="BackgroundTransparency">1</float>
+						<Color3 name="BorderColor3">
+							<R>0.105882362</R>
+							<G>0.164705887</G>
+							<B>0.207843155</B>
+						</Color3>
+						<int name="BorderSizePixel">1</int>
+						<bool name="ClipsDescendants">false</bool>
+						<bool name="Draggable">false</bool>
+						<string name="HoverImage"></string>
+						<string name="Image">rbxasset://textures/ViewSelector/face_arrow.png</string>
+						<Color3 name="ImageColor3">
+							<R>0.968627512</R>
+							<G>0.976470649</G>
+							<B>1</B>
+						</Color3>
+						<Vector2 name="ImageRectOffset">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<Vector2 name="ImageRectSize">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<float name="ImageTransparency">0.600000024</float>
+						<int name="LayoutOrder">0</int>
+						<bool name="Modal">false</bool>
+						<string name="Name">LeftArrow</string>
+						<Ref name="NextSelectionDown">null</Ref>
+						<Ref name="NextSelectionLeft">null</Ref>
+						<Ref name="NextSelectionRight">null</Ref>
+						<Ref name="NextSelectionUp">null</Ref>
+						<UDim2 name="Position">
+							<XS>0</XS>
+							<XO>0</XO>
+							<YS>0.5</YS>
+							<YO>0</YO>
+						</UDim2>
+						<string name="PressedImage"></string>
+						<Ref name="RootLocalizationTable">null</Ref>
+						<float name="Rotation">0</float>
+						<token name="ScaleType">0</token>
+						<bool name="Selectable">true</bool>
+						<bool name="Selected">false</bool>
+						<Ref name="SelectionImageObject">null</Ref>
+						<UDim2 name="Size">
+							<XS>0</XS>
+							<XO>12</XO>
+							<YS>0</YS>
+							<YO>12</YO>
+						</UDim2>
+						<token name="SizeConstraint">0</token>
+						<Rect2D name="SliceCenter">
+							<min>
+								<X>0</X>
+								<Y>0</Y>
+							</min>
+							<max>
+								<X>0</X>
+								<Y>0</Y>
+							</max>
+						</Rect2D>
+						<float name="SliceScale">1</float>
+						<token name="Style">0</token>
+						<string name="Tags"></string>
+						<UDim2 name="TileSize">
+							<XS>1</XS>
+							<XO>0</XO>
+							<YS>1</YS>
+							<YO>0</YO>
+						</UDim2>
+						<bool name="Visible">true</bool>
+						<int name="ZIndex">20</int>
+					</Properties>
+				</Item>
+				<Item class="ImageButton" referent="RBXF4A404A9412F47F38E6713B79AE164D3">
+					<Properties>
+						<bool name="Active">true</bool>
+						<Vector2 name="AnchorPoint">
+							<X>0.5</X>
+							<Y>1</Y>
+						</Vector2>
+						<bool name="AutoButtonColor">true</bool>
+						<bool name="AutoLocalize">true</bool>
+						<Color3 name="BackgroundColor3">
+							<R>1</R>
+							<G>1</G>
+							<B>1</B>
+						</Color3>
+						<float name="BackgroundTransparency">1</float>
+						<Color3 name="BorderColor3">
+							<R>0.105882362</R>
+							<G>0.164705887</G>
+							<B>0.207843155</B>
+						</Color3>
+						<int name="BorderSizePixel">1</int>
+						<bool name="ClipsDescendants">false</bool>
+						<bool name="Draggable">false</bool>
+						<string name="HoverImage"></string>
+						<string name="Image">rbxasset://textures/ViewSelector/face_arrow.png</string>
+						<Color3 name="ImageColor3">
+							<R>0.968627512</R>
+							<G>0.976470649</G>
+							<B>1</B>
+						</Color3>
+						<Vector2 name="ImageRectOffset">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<Vector2 name="ImageRectSize">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<float name="ImageTransparency">0.600000024</float>
+						<int name="LayoutOrder">0</int>
+						<bool name="Modal">false</bool>
+						<string name="Name">DownArrow</string>
+						<Ref name="NextSelectionDown">null</Ref>
+						<Ref name="NextSelectionLeft">null</Ref>
+						<Ref name="NextSelectionRight">null</Ref>
+						<Ref name="NextSelectionUp">null</Ref>
+						<UDim2 name="Position">
+							<XS>0.5</XS>
+							<XO>0</XO>
+							<YS>1</YS>
+							<YO>0</YO>
+						</UDim2>
+						<string name="PressedImage"></string>
+						<Ref name="RootLocalizationTable">null</Ref>
+						<float name="Rotation">-90</float>
+						<token name="ScaleType">0</token>
+						<bool name="Selectable">true</bool>
+						<bool name="Selected">false</bool>
+						<Ref name="SelectionImageObject">null</Ref>
+						<UDim2 name="Size">
+							<XS>0</XS>
+							<XO>12</XO>
+							<YS>0</YS>
+							<YO>12</YO>
+						</UDim2>
+						<token name="SizeConstraint">0</token>
+						<Rect2D name="SliceCenter">
+							<min>
+								<X>0</X>
+								<Y>0</Y>
+							</min>
+							<max>
+								<X>0</X>
+								<Y>0</Y>
+							</max>
+						</Rect2D>
+						<float name="SliceScale">1</float>
+						<token name="Style">0</token>
+						<string name="Tags"></string>
+						<UDim2 name="TileSize">
+							<XS>1</XS>
+							<XO>0</XO>
+							<YS>1</YS>
+							<YO>0</YO>
+						</UDim2>
+						<bool name="Visible">true</bool>
+						<int name="ZIndex">20</int>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="TextLabel" referent="RBX0D33FEAB98C44EDEBA51375F75F5076D">
+				<Properties>
+					<bool name="Active">false</bool>
+					<Vector2 name="AnchorPoint">
+						<X>0.5</X>
+						<Y>0.5</Y>
+					</Vector2>
+					<bool name="AutoLocalize">true</bool>
+					<Color3 name="BackgroundColor3">
+						<R>1</R>
+						<G>1</G>
+						<B>1</B>
+					</Color3>
+					<float name="BackgroundTransparency">1</float>
+					<Color3 name="BorderColor3">
+						<R>0.105882362</R>
+						<G>0.164705887</G>
+						<B>0.207843155</B>
+					</Color3>
+					<int name="BorderSizePixel">1</int>
+					<bool name="ClipsDescendants">false</bool>
+					<bool name="Draggable">false</bool>
+					<token name="Font">3</token>
+					<int name="LayoutOrder">0</int>
+					<float name="LineHeight">1</float>
+					<string name="Name">X</string>
+					<Ref name="NextSelectionDown">null</Ref>
+					<Ref name="NextSelectionLeft">null</Ref>
+					<Ref name="NextSelectionRight">null</Ref>
+					<Ref name="NextSelectionUp">null</Ref>
+					<UDim2 name="Position">
+						<XS>0</XS>
+						<XO>48</XO>
+						<YS>0</YS>
+						<YO>83</YO>
+					</UDim2>
+					<Ref name="RootLocalizationTable">null</Ref>
+					<float name="Rotation">0</float>
+					<bool name="Selectable">false</bool>
+					<Ref name="SelectionImageObject">null</Ref>
+					<UDim2 name="Size">
+						<XS>0</XS>
+						<XO>20</XO>
+						<YS>0</YS>
+						<YO>20</YO>
+					</UDim2>
+					<token name="SizeConstraint">0</token>
+					<string name="Tags"></string>
+					<string name="Text">X</string>
+					<Color3 name="TextColor3">
+						<R>0.937254906</R>
+						<G>0.254901975</G>
+						<B>0.34117648</B>
+					</Color3>
+					<bool name="TextScaled">false</bool>
+					<float name="TextSize">14</float>
+					<Color3 name="TextStrokeColor3">
+						<R>0</R>
+						<G>0</G>
+						<B>0</B>
+					</Color3>
+					<float name="TextStrokeTransparency">1</float>
+					<float name="TextTransparency">0</float>
+					<token name="TextTruncate">0</token>
+					<bool name="TextWrapped">false</bool>
+					<token name="TextXAlignment">2</token>
+					<token name="TextYAlignment">1</token>
+					<bool name="Visible">true</bool>
+					<int name="ZIndex">9</int>
+				</Properties>
+			</Item>
+			<Item class="TextLabel" referent="RBXC2C93CDD061A4F9197CDEFD1B613EDE1">
+				<Properties>
+					<bool name="Active">false</bool>
+					<Vector2 name="AnchorPoint">
+						<X>0.5</X>
+						<Y>0.5</Y>
+					</Vector2>
+					<bool name="AutoLocalize">true</bool>
+					<Color3 name="BackgroundColor3">
+						<R>0.282352954</R>
+						<G>0.894117653</G>
+						<B>0.521568656</B>
+					</Color3>
+					<float name="BackgroundTransparency">1</float>
+					<Color3 name="BorderColor3">
+						<R>0.105882362</R>
+						<G>0.164705887</G>
+						<B>0.207843155</B>
+					</Color3>
+					<int name="BorderSizePixel">1</int>
+					<bool name="ClipsDescendants">false</bool>
+					<bool name="Draggable">false</bool>
+					<token name="Font">3</token>
+					<int name="LayoutOrder">0</int>
+					<float name="LineHeight">1</float>
+					<string name="Name">Y</string>
+					<Ref name="NextSelectionDown">null</Ref>
+					<Ref name="NextSelectionLeft">null</Ref>
+					<Ref name="NextSelectionRight">null</Ref>
+					<Ref name="NextSelectionUp">null</Ref>
+					<UDim2 name="Position">
+						<XS>0</XS>
+						<XO>37</XO>
+						<YS>0</YS>
+						<YO>33</YO>
+					</UDim2>
+					<Ref name="RootLocalizationTable">null</Ref>
+					<float name="Rotation">0</float>
+					<bool name="Selectable">false</bool>
+					<Ref name="SelectionImageObject">null</Ref>
+					<UDim2 name="Size">
+						<XS>0</XS>
+						<XO>20</XO>
+						<YS>0</YS>
+						<YO>20</YO>
+					</UDim2>
+					<token name="SizeConstraint">0</token>
+					<string name="Tags"></string>
+					<string name="Text">Y</string>
+					<Color3 name="TextColor3">
+						<R>0.298039228</R>
+						<G>0.941176474</G>
+						<B>0.549019635</B>
+					</Color3>
+					<bool name="TextScaled">false</bool>
+					<float name="TextSize">14</float>
+					<Color3 name="TextStrokeColor3">
+						<R>0</R>
+						<G>0</G>
+						<B>0</B>
+					</Color3>
+					<float name="TextStrokeTransparency">1</float>
+					<float name="TextTransparency">0</float>
+					<token name="TextTruncate">0</token>
+					<bool name="TextWrapped">false</bool>
+					<token name="TextXAlignment">2</token>
+					<token name="TextYAlignment">1</token>
+					<bool name="Visible">true</bool>
+					<int name="ZIndex">11</int>
+				</Properties>
+			</Item>
+			<Item class="TextLabel" referent="RBX372C18ED7A7044F1B206C227CEB38A0F">
+				<Properties>
+					<bool name="Active">false</bool>
+					<Vector2 name="AnchorPoint">
+						<X>0.5</X>
+						<Y>0.5</Y>
+					</Vector2>
+					<bool name="AutoLocalize">true</bool>
+					<Color3 name="BackgroundColor3">
+						<R>0.376470596</R>
+						<G>0.600000024</G>
+						<B>1</B>
+					</Color3>
+					<float name="BackgroundTransparency">1</float>
+					<Color3 name="BorderColor3">
+						<R>0.105882362</R>
+						<G>0.164705887</G>
+						<B>0.207843155</B>
+					</Color3>
+					<int name="BorderSizePixel">1</int>
+					<bool name="ClipsDescendants">false</bool>
+					<bool name="Draggable">false</bool>
+					<token name="Font">3</token>
+					<int name="LayoutOrder">0</int>
+					<float name="LineHeight">1</float>
+					<string name="Name">Z</string>
+					<Ref name="NextSelectionDown">null</Ref>
+					<Ref name="NextSelectionLeft">null</Ref>
+					<Ref name="NextSelectionRight">null</Ref>
+					<Ref name="NextSelectionUp">null</Ref>
+					<UDim2 name="Position">
+						<XS>0</XS>
+						<XO>104</XO>
+						<YS>0</YS>
+						<YO>100</YO>
+					</UDim2>
+					<Ref name="RootLocalizationTable">null</Ref>
+					<float name="Rotation">0</float>
+					<bool name="Selectable">false</bool>
+					<Ref name="SelectionImageObject">null</Ref>
+					<UDim2 name="Size">
+						<XS>0</XS>
+						<XO>20</XO>
+						<YS>0</YS>
+						<YO>20</YO>
+					</UDim2>
+					<token name="SizeConstraint">0</token>
+					<string name="Tags"></string>
+					<string name="Text">Z</string>
+					<Color3 name="TextColor3">
+						<R>0.196078435</R>
+						<G>0.368627459</G>
+						<B>0.972549021</B>
+					</Color3>
+					<bool name="TextScaled">false</bool>
+					<float name="TextSize">14</float>
+					<Color3 name="TextStrokeColor3">
+						<R>0</R>
+						<G>0</G>
+						<B>0</B>
+					</Color3>
+					<float name="TextStrokeTransparency">1</float>
+					<float name="TextTransparency">0</float>
+					<token name="TextTruncate">0</token>
+					<bool name="TextWrapped">false</bool>
+					<token name="TextXAlignment">2</token>
+					<token name="TextYAlignment">1</token>
+					<bool name="Visible">true</bool>
+					<int name="ZIndex">11</int>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+	<SharedStrings>
+		<SharedString md5="DldRwCblQ7Loqy6wYJnaoQ=="></SharedString>
+	</SharedStrings>
+</roblox>

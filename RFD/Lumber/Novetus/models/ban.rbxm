@@ -1,0 +1,52 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Script" referent="RBX0">
+		<Properties>
+			<bool name="Disabled">false</bool>
+			<Content name="LinkedSource"><null></null></Content>
+			<string name="Name">TheIPBanScript</string>
+			<string name="Source">local Chat = &quot;YourName,MostTrusted,Respected&quot; --Change this to person who can IP ban
+local IPSets = {}
+local Banned = {}
+function Ban(msg)
+	if(string.sub(msg,1,4)==&quot;Ban/&quot;)then
+		msg = string.sub(msg,5)
+	else return end
+	for i = 1,#IPSets do
+		if(IPSets[i][1].Name == msg)then
+			rawset(Banned,#Banned+1,IPSets[i][2])
+			IPSets[i][3]:Remove()
+			table.remove(IPSets,i)
+			return
+		end
+	end
+end
+function IPGet(Inst) 
+local Plyr = game.Players.ChildAdded:wait() 
+local IP = string.sub(Inst.Name,1,string.find(Inst.Name,&quot;:&quot;)-1)
+for i = 1,#Banned do
+	if(Banned[i]==IP)then
+		Plyr:Remove()
+		return
+	end
+end
+rawset(IPSets,#IPSets+1,{Plyr,IP,Inst})
+print(&quot;New connection&quot;)
+wait(1)
+if(Plyr.Name == Chat)then
+	Plyr.Chatted:connect(Ban)
+end
+end 
+game.NetworkServer.ChildAdded:connect(IPGet) 
+game.NetworkServer.ChildRemoved:connect(function(Inst)
+for i = 1,#IPSets do
+	if(IPSets[i][3] == Inst)then
+		table.remove(IPSets,i)
+	end
+end
+end)</string>
+			<bool name="archivable">true</bool>
+		</Properties>
+	</Item>
+</roblox>

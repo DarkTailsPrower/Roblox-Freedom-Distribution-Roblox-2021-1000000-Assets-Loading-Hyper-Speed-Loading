@@ -1,0 +1,71 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="LocalScript" referent="RBX5AF6272CB41A4F9B9082643B51024CAD">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<bool name="Disabled">false</bool>
+			<string name="LinkedSource"></string>
+			<string name="Name">CharacterStateMachineLocalMonitor</string>
+			<token name="RunContext">0</token>
+			<string name="ScriptGuid">{D7287CF1-8696-457B-BA49-06BA1E9D8CCA}</string>
+			<string name="Source">--!strict
+
+
+-- Watching for messages from server
+local debug = false
+local replicatedStorage : ReplicatedStorage = game:GetService(&quot;ReplicatedStorage&quot;)
+local humanoidStateMachineUpdateInstance : Instance = replicatedStorage:WaitForChild(&quot;HumanoidStateMachineUpdate&quot;)
+local characterStateMachineFolder : Instance = replicatedStorage:WaitForChild(&quot;CharacterStateMachine&quot;)
+local commonTypes = require(characterStateMachineFolder:WaitForChild(&quot;CharacterStateMachineTypes&quot;))
+local commonFuncs = require(characterStateMachineFolder:WaitForChild(&quot;CharacterStateMachineCommon&quot;))
+local playersService : Players = game:FindService(&quot;Players&quot;)
+local clientMonitor = require(characterStateMachineFolder:WaitForChild(&quot;ClientMonitor&quot;))
+
+local runningStateMachines : { [Model]: commonTypes.RunningStateMachineRecord } = {}
+
+local humanoidStateMachineUpdateEvent : RemoteEvent = nil
+if humanoidStateMachineUpdateInstance:IsA(&quot;RemoteEvent&quot;) then
+&#9;humanoidStateMachineUpdateEvent = humanoidStateMachineUpdateInstance
+end
+
+local localHumanoidStateMachineEvent : BindableEvent = Instance.new(&quot;BindableEvent&quot;)
+localHumanoidStateMachineEvent.Name = &quot;LocalHumanoidStateMachineEvent&quot;
+localHumanoidStateMachineEvent.Parent = script
+
+-- SETUP CHARACTER CONTROL STATE MACHINE -----------------------------------------------------------
+local CCSMDef = require(characterStateMachineFolder:WaitForChild(&quot;CharacterControlStateMachine&quot;))
+
+if debug then
+&#9;print(&quot;Starting client monitor&quot;)
+end
+local clientMonitorObject = clientMonitor.new(localHumanoidStateMachineEvent)
+
+-- Create state machine definition here
+local CCSMDef = require(characterStateMachineFolder:WaitForChild(&quot;CharacterControlStateMachine&quot;))
+
+-- WATCH FOR LOCAL Events -----------------------------------------------------------
+local function onClientLocalHumanoidStateMachineEvent(characterInstance : Model, humanoidInstance : Humanoid, eventType : string, data : any)
+&#9;clientMonitorObject:onLocalCharacterStateMachineEvent(characterInstance, humanoidInstance, CCSMDef, eventType, data)
+end
+
+localHumanoidStateMachineEvent.Event:Connect(onClientLocalHumanoidStateMachineEvent)
+
+-- LISTEN TO SERVER REQUESTS -----------------------------------------------------
+local function onClientHumanoidRemoteEventClient(eventType : string, data : any)
+&#9;clientMonitorObject:onClientHumanoidRemoteEventClient(eventType, data, CCSMDef)
+end
+
+if humanoidStateMachineUpdateEvent ~= nil then
+&#9;humanoidStateMachineUpdateEvent.OnClientEvent:Connect(onClientHumanoidRemoteEventClient)
+else
+&#9;error(&quot;Unable to find remote event for state machine messaging.&quot;)
+end
+
+</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+		</Properties>
+	</Item>
+</roblox>

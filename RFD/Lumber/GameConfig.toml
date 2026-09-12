@@ -1,0 +1,195 @@
+# EXAMPLE GAME CONFIGURATION FILE.
+# PLEASE REVIEW AND MODIFY IF YOU WISH TO RUN YOUR OWN SERVERS!
+# Some arguments are provided as absolute paths and only work on my machine.
+
+metadata.config_version_wildcard = "*"
+
+[game_setup]
+# Aliases for "v348" is "2018M", "v463" is "2021E".
+roblox_version = '2021'
+asset_cache.dir_path = "./AssetCache"
+[game_setup.database]
+clear_on_start = false
+
+[server_core.place_file]
+rbxl_uri = '.rbxl'
+# When game:SavePlace() is called, overwrites the place at `.place_path`
+enable_saveplace = false
+
+[server_core.metadata]
+title = 'Lumber Tycoon 2'
+description = ''
+creator.name = 'ÒÓ'
+icon_uri = 'https://ia800506.us.archive.org/34/items/soundcloud-1509042007/1509042007.jpg'
+
+[server_core]
+# 'game.workspace.FilteringEnabled = false' Muste Disabled
+startup_script = 'game.workspace.FilteringEnabled = false'
+
+check_user_allowed = '''
+def f(user_code) -> bool:
+    return True
+'''
+
+retrieve_default_user_code = '''
+import time
+def f(tick=None) -> str:
+    return 'Player%d' % time.time()
+''' 
+
+retrieve_avatar = '''
+def f(user_iden, user_code) -> dict:
+    return {
+        'type': 'R6',
+        'colors': {
+            "head": 315, "left_arm": 315, "left_leg": 315, "right_arm": 315, "right_leg": 315, "torso": 315,
+        },
+        'scales': {
+            "height": 1, "width": 1, "head": 1, "depth": 1, "proportion": 0, "body_type": 0,
+        },
+        'items': [
+            {
+                'id': 7385369456,    # ID каталога для Terno Shirt
+                'item_type': 'Shirt'
+            },
+            {
+                'id': 144076760,     # ID каталога для Green Jeans Pants
+                'item_type': 'Pants'
+            }
+        ]
+    }
+'''
+
+
+
+
+retrieve_username = '''
+def f(user_id_num, user_code):
+    return user_code
+'''
+
+retrieve_user_id = '''
+import random
+def f(user_code) -> int:
+    return random.randint(1, 16777216)
+'''
+
+retrieve_account_age = '''
+def f(*a):
+    return 6767
+'''
+
+filter_text = '''
+def f(text, user_id_num, user_code):
+    return (
+        text
+        .replace('oo','òó')
+        .replace('OO','ÒÓ')
+        .replace('ee','èé')
+        .replace('EE','ÈÉ')
+        .replace('Roblox','Rōblox')
+        .replace('ROBLOX','RŌBLOX')
+    )
+'''
+
+chat_style = 'ClassicAndBubble'
+
+
+
+[remote_data]
+asset_redirects_call_mode = 'python'
+asset_redirects = '''
+import os
+
+def f(asset_iden):
+    asset_iden = str(asset_iden)
+    
+    # === 1. ОБРАБОТКА РУБАШКИ ===
+    # Если игра просит ОБЪЕКТ рубашки, отдаем XML-структуру Roblox со ссылкой на текстуру
+    if asset_iden == '7385369456':
+        xml_shirt = '<roblox xmlns:xmime="http://w3.org" xmlns:xsi="http://w3.org" xsi:noNamespaceSchemaLocation="http://roblox.com" version="4"><Item class="Shirt" referent="RBX0"><Properties><string name="Name">Shirt</string><Content name="ShirtTemplate"><url>http://localhost:2005/asset/?id=7385369448</url></Content></Properties></Item></roblox>'
+        return { 'raw_data': xml_shirt.encode('utf-8') }
+        
+    # Если игра пришла по ссылке выше за самой ТЕКСТУРОЙ рубашки, отдаем PNG
+    if asset_iden == '7385369448':
+        local_file = 'C:/RFD/MyClothes/7385369448.png'
+        if os.path.exists(local_file):
+            with open(local_file, 'rb') as file:
+                return { 'raw_data': file.read() }
+
+    # === 2. ОБРАБОТКА ШТАНОВ ===
+    # Если игра просит ОБЪЕКТ штанов, отдаем XML-структуру Roblox
+    if asset_iden == '144076760':
+        xml_pants = '<roblox xmlns:xmime="http://w3.org" xmlns:xsi="http://w3.org" xsi:noNamespaceSchemaLocation="http://roblox.com" version="4"><Item class="Pants" referent="RBX0"><Properties><string name="Name">Pants</string><Content name="PantsTemplate"><url>http://localhost:2005/asset/?id=144076759</url></Content></Properties></Item></roblox>'
+        return { 'raw_data': xml_pants.encode('utf-8') }
+        
+    # Если игра пришла за ТЕКСТУРОЙ штанов, отдаем PNG
+    if asset_iden == '144076759':
+        local_file = 'C:/RFD/MyClothes/144076759.png'
+        if os.path.exists(local_file):
+            with open(local_file, 'rb') as file:
+                return { 'raw_data': file.read() }
+                
+    return None
+'''
+
+
+
+
+
+
+
+#[remote_data]
+#asset_redirects_call_mode = 'python'
+#asset_redirects = '''
+#import json
+#import requests
+#import os
+
+# Читаем файл локально, чтобы не зависеть от блокировок archive.org
+#file_path = 'C:/RFD/asset_dump_merged.json'
+#if os.path.exists(file_path):
+#    with open(file_path, 'r', encoding='utf-8') as f:
+#        redirs = json.load(f)
+#else:
+#    redirs = {}
+#
+#def f(asset_iden):
+#    asset_iden = str(asset_iden)
+#    if asset_iden in redirs:
+#        try:
+#            # Для загрузки самих ассетов всё ещё нужен будет интернет/VPN,
+#            # но сервер хотя бы запустится и не упадет по таймауту.
+#            return {
+#                'raw_data': requests.get(redirs[asset_iden], timeout=5).content,
+#            }
+#        except:
+#            return None
+#'''
+
+#[remote_data]
+#asset_redirects_call_mode = 'python'
+#asset_redirects = '''
+#import requests
+#redirs = requests.get('https://ia800509.us.archive.org/5/items/roblox-asset-hash-archive/asset_dump_merged.json').json()
+#def f(asset_iden):
+#    asset_iden = str(asset_iden)
+#    if asset_iden in redirs:
+#       return {
+#            'raw_data': requests.get(redirs[asset_iden]).content,
+#        }
+#'''
+
+#[remote_data]
+#asset_redirects_call_mode = 'python'
+#asset_redirects = '''
+#def f(asset_iden):
+#    return None
+#'''
+
+
+
+
+
+# ... ваши старые настройки (title, startup_script) ...
+preferred_port = 2005

@@ -1,0 +1,57 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Script" referent="RBX2BEB0BFD21FF49E99DFDA68E25728095">
+		<Properties>
+			<string name="AttributesSerialize"></string>
+			<bool name="Disabled">false</bool>
+			<string name="LinkedSource"></string>
+			<string name="Name">CharacterStateMachineMonitor</string>
+			<token name="RunContext">0</token>
+			<string name="ScriptGuid">{42899FD6-9D1E-4546-8C11-9F0A05410F3B}</string>
+			<string name="Source">--!strict
+local debug : boolean = false
+local replicatedStorage : ReplicatedStorage = game:GetService(&quot;ReplicatedStorage&quot;)
+
+local localHumanoidStateMachineEvent : BindableEvent = Instance.new(&quot;BindableEvent&quot;)
+localHumanoidStateMachineEvent.Name = &quot;LocalHumanoidStateMachineEvent&quot;
+localHumanoidStateMachineEvent.Parent = script
+
+local humanoidRemoteEvent : RemoteEvent = Instance.new(&quot;RemoteEvent&quot;)
+humanoidRemoteEvent.Name = &quot;HumanoidStateMachineUpdate&quot;
+humanoidRemoteEvent.Parent = replicatedStorage
+
+
+local characterStateMachineFolder : Instance = replicatedStorage:WaitForChild(&quot;CharacterStateMachine&quot;)
+local commonFuncs = require(characterStateMachineFolder:WaitForChild(&quot;CharacterStateMachineCommon&quot;))
+local serverMonitor = require(characterStateMachineFolder:WaitForChild(&quot;ServerMonitor&quot;))
+
+local CCSMDef = require(characterStateMachineFolder:WaitForChild(&quot;CharacterControlStateMachine&quot;))
+
+local serverMonitorObject = serverMonitor.new(localHumanoidStateMachineEvent, CCSMDef)
+
+-- WATCH FOR REMOTE MESSAGES -----------------------------------------------------------
+local function onServerHumanoidRemoteEventServer(player : Player, eventType : string, data : any)
+&#9;serverMonitorObject:onServerHumanoidRemoteEventServer(player,eventType, data)
+end
+
+humanoidRemoteEvent.OnServerEvent:Connect(onServerHumanoidRemoteEventServer)
+
+-- WATCH FOR LOCAL MESSAGES -----------------------------------------------------------
+local function onServerLocalHumanoidStateMachineEvent(characterInstance : Model, humanoidInstance : Humanoid, eventType : string, data : any, localEvent : BindableEvent)
+&#9;serverMonitorObject:onServerLocalHumanoidStateMachineEvent(characterInstance, humanoidInstance, eventType, data)
+end
+localHumanoidStateMachineEvent.Event:Connect(onServerLocalHumanoidStateMachineEvent)
+
+-- poll for ownership changes
+while(wait(0.1)) do
+&#9;serverMonitorObject:pollForNetworkOwnership()
+end
+
+</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<string name="Tags"></string>
+		</Properties>
+	</Item>
+</roblox>

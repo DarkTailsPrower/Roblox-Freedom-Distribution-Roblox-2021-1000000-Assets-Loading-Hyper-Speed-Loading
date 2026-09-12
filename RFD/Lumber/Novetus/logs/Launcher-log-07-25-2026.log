@@ -1,0 +1,23 @@
+2026-07-25 13:00:32.6338|ERROR|GlobalFuncs|EXCEPTION|MESSAGE: Произошла одна или несколько ошибок.
+2026-07-25 13:00:32.7448|ERROR|GlobalFuncs|EXCEPTION|STACK TRACE:    в System.Threading.Tasks.Task.WaitAll(Task[] tasks, Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   в NovetusLauncher.ServerBrowser.<LoadServers>d__12.MoveNext()
+2026-07-25 13:00:32.7648|ERROR|GlobalFuncs|EXCEPTION|ADDITIONAL INFO: System.AggregateException: Произошла одна или несколько ошибок. ---> System.Net.WebException: Невозможно соединиться с удаленным сервером ---> System.Net.Sockets.SocketException: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение 127.0.0.1:80
+   в System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   в System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   в System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- Конец трассировки внутреннего стека исключений ---
+   в Microsoft.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в Microsoft.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccess(Task task)
+   в NovetusLauncher.ServerBrowser.<LoadServerInfoFromFile>d__11.MoveNext()
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Threading.Tasks.Task.WaitAll(Task[] tasks, Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   в NovetusLauncher.ServerBrowser.<LoadServers>d__12.MoveNext()
+---> (Внутреннее исключение #0) System.Net.WebException: Невозможно соединиться с удаленным сервером ---> System.Net.Sockets.SocketException: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение 127.0.0.1:80
+   в System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   в System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   в System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- Конец трассировки внутреннего стека исключений ---
+   в Microsoft.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в Microsoft.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccess(Task task)
+   в NovetusLauncher.ServerBrowser.<LoadServerInfoFromFile>d__11.MoveNext()<---
+
