@@ -6,7 +6,7 @@ how to use unpack RFD
 config
 and go to cd C:\RFD\Unpacked\2.exe_extracted\Source
 
-_main.py server --config GameConfig.toml --port 2005 --ipv4-only
+_main.py server --config C:\RFD\Lumber./GameConfig.toml --port 2005 --ipv4-only
 
 second C:\RFD\Unpacked\2.exe_extracted\Source
 
