@@ -5,10 +5,6 @@
 # Исключения для папки Examples
 Examples/**/AssetCache/
 
-# Блокируем исполняемые файлы (компиляты)
-RFD
-*.exe
-**/*.exe
 
 
 GlobalBasicSettings_13.xml
