@@ -78,6 +78,10 @@ def f(user_iden, user_code) -> dict:
 '''
 ```
 
+Last Update - 
+
+Fast transfer of Assets in RCCService and fast transfer of Data-transfer in RCCService – delays removed and critical errors fixed.
+
 
 I think we need RFD, but only C# will give ideal speed without any lag
 
